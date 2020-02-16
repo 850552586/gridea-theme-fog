@@ -1,0 +1,50 @@
+
+<link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/font-awesome.css%>">
+<body>
+    <div class="allcontent">
+        <div class="postshow">
+            <% if (themeConfig.showFeatureImage && post.feature) { %>
+            <img src="<%= post.feature%>" class="postimage" style="cursor:auto">
+
+            <div class="postinfo">
+                <div class="postdate"><i class="fa fa-calendar"></i><%= post.dateFormat %></div>
+                <div class="poststatus postdate"><i class="fa fa-clock-o"></i> <%= post.stats.text %></div>
+                <div class="posttag">
+                    <% post.tags.forEach(function(tag) { %>
+                    <a href="<%= tag.link %>" class="postlink">
+                        <i class="fa fa-tag"></i> <%= tag.name %>
+                    </a>
+                    <% }); %>
+                </div>
+            </div>
+            <% } else {%>
+            <img src="<%= site.customConfig['postdefaultimage'] %>" class="postimage">
+            <div class="postinfo">
+                <div class="postdate"><i class="fa fa-calendar"></i><%= post.dateFormat %></div>
+                <div class="poststatus postdate"><i class="fa fa-clock-o"></i> <%= post.stats.text %></div>
+                <div class="posttag">
+                    <% post.tags.forEach(function(tag) { %>
+                    <a href="<%= tag.link %>" class="postlink">
+                        <i class="fa fa-tag"></i> <%= tag.name %>
+                    </a>
+                    <% }); %>
+                </div>
+            </div>
+            <% } %>
+            <div id="texttitle" style="text-align: center">
+                <h2><%= post.title %></h2>
+            </div>
+            <div class="text">
+                <%- post.content %>
+            </div>
+            <% if (post.prevPost && !post.hideInList) { %>
+            <div class="prev-post">
+                上一篇
+                <a href="<%= post.prevPost.link %>">
+                    <%= post.prevPost.title %>
+                </a>
+            </div>
+            <% } %>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,40 @@
+.toc-container {
+    position: fixed;
+    width: 20%;
+    z-index: 101;
+    right: 2%;
+    top: 20%;
+    text-align: left;
+}
+
+.toc-container li{
+    position:sticky;
+    list-style: none;
+    font-family: sans-serif;
+    font-weight: bold;
+    padding-top:15px;
+}
+.markdownIt-TOC{
+    padding-left: 25%;
+}
+
+.markdownIt-TOC li {
+    padding-left: 9%;
+    a {
+      color: antiquewhite;
+      display: block;
+      transition: all 0.3s;
+      &:hover {
+        text-decoration: underline;
+      }
+      &.current {
+        color: white;
+        border: solid;
+        border-radius: 5px;
+      }
+    }
+  } 
+  .markdownIt-TOC li ul{
+    padding-left: 0%;
+  }
+  

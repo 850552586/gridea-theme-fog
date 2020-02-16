@@ -1,0 +1,328 @@
+#tab1 {
+    position: fixed;
+    left: 3%;
+}
+
+.tab {
+    position: fixed;
+    z-index: 1000;
+    top: 5%;
+    left: 15%;
+    width: 50px;
+    height: 50px;
+    margin-left: -35px;
+    margin-top: -35px;
+    cursor: pointer;
+}
+
+.tab .bars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 100%;
+}
+
+.tab .bars span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    width: 26px;
+    height: 3px;
+    margin-left: -13px;
+    margin-top: -1px;
+    background-color: #8dc1ca;
+    -webkit-transition: all 0.15s ease;
+    transition: all 0.15s ease;
+}
+
+.tab .bars span:first-child {
+    margin-top: -7px;
+}
+
+.tab .bars span:nth-child(2) {
+    -webkit-transition-delay: 0.075s;
+    transition-delay: 0.075s;
+}
+
+.tab .bars span:last-child {
+    margin-top: 5px;
+    -webkit-transition-delay: 0.15s;
+    transition-delay: 0.15s;
+}
+
+.tab:hover .bars span {
+    width: 30px;
+    margin-left: -15px;
+}
+
+.tab.active .bars span {
+    width: 0;
+    margin-left: -15px;
+}
+
+.tab.active .bars span:first-child {
+    margin-top: 0px;
+    width: 30px;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.tab.active .bars span:last-child {
+    margin-top: 0px;
+    width: 30px;
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    -webkit-transition-delay: 0.15s;
+    transition-delay: 0.15s;
+}
+
+@media screen and (min-width:1300px) {
+    //-----------------------浏览器滑动条美化-----------------------------------------//
+    body::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+        background-color: rgba(0, 0, 0, .1)
+    }
+
+    body::-webkit-scrollbar-track {
+        border-radius: 10px;
+        background-color: rgba(0, 0, 0, .01);
+        -webkit-box-shadow: inset 0 0 6px transparent
+    }
+
+    body::-webkit-scrollbar-track:hover {
+        background-color: rgba(0, 0, 0, .2);
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .4)
+    }
+
+    body::-webkit-scrollbar-track:active {
+        background-color: rgba(0, 0, 0, .2);
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .1)
+    }
+
+    body::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background-color: rgba(0, 0, 0, .2);
+        -webkit-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1)
+    }
+
+    body::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(0, 0, 0, .4);
+        -webkit-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1)
+    }
+
+    body::-webkit-scrollbar-thumb:active {
+        background: rgba(0, 0, 0, .4)
+    }
+    body{
+        overflow-x:hidden;
+    }
+
+    .side {
+        position: fixed;
+        width: 25%;
+        z-index: 100;
+        justify-content: center;
+    }
+
+    #main {
+        left: 25%;
+        justify-content: center;
+        text-align: center;
+        width: 60%;
+    }
+
+    #content{
+        width: 100%;
+        position: relative;
+    }
+
+    #bg{
+        width: 100%;/*宽度铺满屏幕*/
+        padding-top: 52.734%;/*图片高度除以宽度，得到此值*/
+        background: url("") center center no-repeat;/*两个center分别为水平和垂直方向的对齐方式*/
+        background-size: 100%;/*背景水平铺满*/
+        filter:blur(10px);/*虚化值，越大越模糊*/
+        position: fixed;
+    }
+
+    .nav-large {
+        display: block;
+        position: absolute;/*设置内容层绝对定位*/
+        width: 100%;
+        text-align: center;
+        z-index: 2;/*将内容至于上层*/
+    }
+
+    .nav-small {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .nav-large {
+        display: none;
+    }
+
+    .nav-small {
+        display: block;
+    }
+
+    ul {
+        display: inline-block;
+        list-style: none;
+        width: 100%;
+    }
+
+    li {
+        padding: 10px;
+    }
+
+    ul a {
+        text-decoration: none;
+        color: rgb(255, 255, 255);
+        font-size: 16px;
+        font-weight: 700;
+        display: inline-block;
+        width: 100%;
+    }
+    .mobile {
+        float: left;
+        position: relative;
+        box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.5);
+        width: 100%;
+        height: 100vh;
+    }
+
+    /*Hiding the checkbox*/
+
+    #open {
+        display: none;
+    }
+
+    /*Content area*/
+
+    .mobile section {
+        width: 100%;
+        min-height: 100vh;
+        position: relative;
+        transition: all 0.25s;
+        background: white;
+        filter: none;
+    }
+
+    /*Nav styles*/
+
+    .sidenav {
+
+        background: rgb(50, 60, 60);
+        width: 70%;
+        max-height: 100vh;
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        margin:0;
+    }
+
+    .sidenav li {
+        list-style-type: none;
+    }
+
+    .sidenav a {
+        color: white;
+        text-decoration: none;
+    }
+
+    .sidenav b {
+
+        font: bold 12px/48px Montserrat;
+        display: block;
+
+        opacity: 0;
+        transform: translateX(50px);
+        transition: all 0.4s;
+
+    }
+
+    .sidenav i {
+
+        display: block;
+        width: 50px;
+        float: left;
+        font-size: 16px;
+        line-height: 48px;
+        text-align: center;
+
+    }
+
+    /*Animation controls using checkbox hack*/
+
+    /*Animate content area to the right*/
+
+    #open:checked~section {
+        transform: translateX(80%);
+        filter: blur(10px);
+    }
+
+    /*Animate links from right to left + fade in effect*/
+
+    #open:checked~.sidenav b {
+        opacity: 1;
+        transform: translateX(0);
+        overflow: hidden;
+    }
+
+    .mobile-header{
+        width: 100%;
+        height: 10vh;
+        background: black;
+        position: fixed;
+    }
+    .mobile-indexcontent{
+        top:10vh;
+        min-height: 90vh;
+        position: relative;
+    }
+    .smallavatar-border{
+        margin: 0 auto;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;;
+        float: right;
+        margin-right: 40px;
+        margin-top:10px;
+    }
+    .smallavatar{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+    .smallavatar-border-post{
+        margin: 0 auto;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;;
+        float: right;
+        margin-right: 60px;
+        margin-top:10px;
+    }
+    .smallavatar-post{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+}
+
+@import "./components/side.less";
+@import "./components/pagination.less";
+@import "./components/post-list.less";
+@import "./components/post.less";
+@import "./components/archives-detail.less";
+@import "./components/post-detail.less";

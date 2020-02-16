@@ -1,0 +1,43 @@
+<div class="pagination">
+        <ul>
+                <% if (pagination.prev) { %>
+                <li><a href="<%= pagination.prev %>" style="width:100px" id="prev">上一页</a></li>
+                <% } %>
+                <li><a id="page1">1</a></li>
+                <li><a id="page2" class="active">2</a></li>
+                <li><a id="page3">3</a></li>
+                <% if (pagination.next) { %>
+                <li><a href="<%= pagination.next %>" style="width:100px" id="next">下一页</a></li>
+                <% } %>
+            </ul>
+</div>
+
+<div id="pagination-prev" style="display:none"> <%= pagination.prev %></div>
+<div id="pagination-next" style="display:none"> <%= pagination.next %></div>
+
+
+<script>
+    var prevstr = document.getElementById("pagination-prev").innerHTML;
+    var nextstr = document.getElementById("pagination-next").innerHTML;
+    var page1 = document.getElementById("page1");
+    var page2 = document.getElementById("page2");
+    var page3 = document.getElementById("page3");
+    page1.innerHTML = '-';
+    page2.innerHTML = '1';
+    page3.innerHTML = '-';
+    if (prevstr.length > 5) {
+        if (prevstr.indexOf("page/") != -1) {
+            var prevnum = parseInt(prevstr.split("page/")[1]);
+            page1.innerHTML = prevnum;
+            page2.innerHTML = prevnum + 1;
+        } else {
+            page1.innerHTML = 1;
+            page2.innerHTML = 2;
+        }
+    }
+    if (nextstr.indexOf("page/") != -1) {
+        var nextnum = parseInt(nextstr.split("page/")[1]);
+        page3.innerHTML = nextnum;
+        page2.innerHTML = nextnum - 1;
+    }
+</script>

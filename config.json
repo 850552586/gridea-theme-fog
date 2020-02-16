@@ -1,0 +1,135 @@
+{
+  "name": "wind",
+  "version": "0.1",
+  "author": "Ericam_",
+  "repository": "https://github.com/850552586/gridea-theme-fog",
+  "customConfig": [{
+      "name": "sitenameColor",
+      "group": "颜色",
+      "value": "antiquewhite",
+      "type": "input",
+      "card": "color",
+      "note": "网站名称颜色 默认：antiquewhite"
+    },
+    {
+      "name": "sitedescribtionColor",
+      "group": "颜色",
+      "value": "white",
+      "type": "input",
+      "card": "color",
+      "note": "网站描述颜色 默认：white"
+    },
+    {
+      "name": "sitemenuColor",
+      "group": "颜色",
+      "value": "antiquewhite",
+      "type": "input",
+      "card": "color",
+      "note": "网站菜单按钮颜色 默认：antiquewhite"
+    },
+    {
+      "name": "titleWithImgColor",
+      "group": "颜色",
+      "value": "white",
+      "type": "input",
+      "card": "color",
+      "note": "有封面图文章标题颜色 默认：white"
+    },
+    {
+      "name": "titleWithoutImgColor",
+      "group": "颜色",
+      "value": "white",
+      "type": "input",
+      "card": "color",
+      "note": "无封面图文章标题颜色 默认：white"
+    },
+    {
+      "name": "footinfoColor",
+      "group": "颜色",
+      "value": "white",
+      "type": "input",
+      "card": "color",
+      "note": "底部信息颜色（默认:white）"
+    },
+    {
+      "name": "sitegotime",
+      "label": "站点创建时间",
+      "group": "站点时间",
+      "value": "02/02/2020",
+      "type": "input",
+      "note": "输入日期（格式:02/02/2020）"
+    },
+    {
+      "name": "valineID",
+      "label": "appId",
+      "group": "Valine 评论配置",
+      "value": "",
+      "type": "input",
+      "note": "请输入appId"
+    },
+    {
+      "name": "valineKey",
+      "label": "appKey",
+      "group": "Valine 评论配置",
+      "value": "",
+      "type": "input",
+      "note": "请输入appKey"
+    },
+    {
+      "name": "github",
+      "label": "Github",
+      "group": "社交",
+      "value": "",
+      "type": "input",
+      "note": "链接地址"
+    },
+    {
+      "name": "QQ",
+      "label": "QQ",
+      "group": "社交",
+      "value": "",
+      "type": "input",
+      "note": "QQ号"
+    },
+    {
+      "name": "zhihu",
+      "label": "知乎",
+      "group": "社交",
+      "value": "",
+      "type": "input",
+      "note": "链接地址"
+    },
+    {
+      "name": "bilibili",
+      "label": "bilibili",
+      "group": "社交",
+      "value": "",
+      "type": "input",
+      "note": "链接地址"
+    },
+    {
+      "name": "postdefaultimage",
+      "label": "文章封面默认背景图",
+      "group": "背景图",
+      "value": "/media/images/postdefault.png",
+      "type": "picture-upload",
+      "note": ""
+    },
+    {
+      "name": "tagimage",
+      "label": "标签云页面置顶图",
+      "group": "背景图",
+      "value": "/media/images/tagimg.png",
+      "type": "picture-upload",
+      "note": ""
+    },
+    {
+      "name": "bgimage",
+      "label": "全局背景虚化图",
+      "group": "背景图",
+      "value": "/media/images/bgimg.png",
+      "type": "picture-upload",
+      "note": ""
+    }
+  ]
+}

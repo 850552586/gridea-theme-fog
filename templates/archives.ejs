@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <meta name="description" content="<%- site.customConfig.metaDescription || themeConfig.siteDescription %>" />
+    <title><%- themeConfig.siteName %></title>
+</head>
+<style>
+    @media screen and (max-width: 1300px) {
+        .archives-content ul li>span {
+            display: none;
+        }
+
+        .archives-content ul {
+            padding: 0px;
+        }
+    }
+</style>
+
+<body>
+    <!-- 响应式布局，针对PC端内容显示 -->
+    <div id="content">
+        <div class="nav-large">
+            <div class="row">
+                <div class="side"><%- include('./includes/side') %></div>
+                <div id="tab1" class="tab">
+                    <div class="bars">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="close"></div>
+                </div>
+                <div id="main" class="col-xs-12 col-sm-7">
+                    <%- include('./includes/archives-detail') %>
+                </div>
+                <div class="col-xs-6 col-sm-2"></div>
+            </div>
+        </div>
+        <div id="bg">
+        </div>
+        <div id="bgurl" style="display:none"><%= site.customConfig['bgimage'] %></div>
+    </div>
+
+    <!-- 响应式布局，针对手机端内容显示 -->
+    <div class="nav-small">
+        <div class="mobile">
+
+            <!-- Checkbox to toggle the menu -->
+
+            <input type="checkbox" id="open" />
+            <!-- The menu -->
+
+            <ul class="sidenav" style="width:80%">
+                <label id="mobilemenu2" for="open"><i style="width:80%;"><img class="icon"
+                            src="<%= themeConfig.domain %>/media/images/close.png%>" alt=""></i></label>
+                <div class="side" style="width:80%"><%- include('./includes/side') %></div>
+            </ul>
+
+            <!-- Content area -->
+
+            <section>
+                <div class="mobile-header">
+                    <label id="mobilemenu" for="open">
+                        <div id="tab1" class="tab" style="left:10%">
+                            <div class="bars">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                    </label>
+                    <div class="smallavatar-border">
+                        <img src="<%= themeConfig.domain %>/images/avatar.png?v=<%= site.utils.now %>"
+                            class="smallavatar">
+                    </div>
+                </div>
+
+
+                <div class="mobile-indexcontent">
+                    <%- include('./includes/archives-detail') %>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    var side, main, tab2, ClickbarState;
+
+    function init() {
+        side = $('.side');
+        tab1 = $('#tab1');
+        tab1.css('display', 'none');
+        var bg = $('#bg');
+        var bgurl = document.getElementById("bgurl").innerHTML;
+        for (var i = 0; i < 3; i++)
+            bgurl = bgurl.replace("\\", "/");
+        bg.css("background", "url('" + bgurl + "')");
+        mobilemenu = document.querySelector("#mobilemenu");
+        mobilemenu2 = document.querySelector("#mobilemenu2");
+        tab2 = document.querySelector("#tab2");
+        ClickbarState = 0;
+    }
+    init();
+    var iflock = 0;
+
+    function lock() {
+        mobile = $('.mobile');
+        if (iflock == 0) {
+            mobile.css('overflow', 'hidden');
+            iflock = 1;
+        } else {
+            mobile.css('overflow', 'auto');
+            iflock = 0;
+        }
+    }
+    mobilemenu.addEventListener('click', lock);
+    mobilemenu2.addEventListener('click', lock);
+
+    function menu_openclose2() {
+        if (ClickbarState == 0) {
+            menu.animate({
+                'left': 0
+            });
+            ClickbarState = 1;
+        } else {
+            menu.animate({
+                'left': -1200
+            });
+            ClickbarState = 0;
+        }
+        (tab2.className == 'tab') ?
+        tab2.className = 'tab active':
+            tab2.className = 'tab';
+    }
+    tab2.addEventListener('click', menu_openclose2);
+</script>

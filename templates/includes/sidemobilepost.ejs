@@ -1,0 +1,109 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="<%= themeConfig.domain %>/styles/main.css">
+    <meta name="description" content="<%- site.customConfig.metaDescription || themeConfig.siteDescription %>" />
+    <title>Document</title>
+</head>
+<style>
+    .avatar-bordermobile {
+        margin: 0 auto;
+        top: 10vh;
+        margin-top: 15%;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+    }
+
+    .avatarmobile {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    .sitenamemobile {
+        text-align: center;
+        font-size: 60px;
+        font-weight: 900;
+        color: antiquewhite;
+        font-family: Arial, Verdana, "宋体";
+        margin-top:10%;
+    }
+
+    .describtionmobile {
+        margin-top: 10%;
+        text-align: center;
+        font-size: 32px;
+        color: white;
+        font-weight: lighter;
+    }
+
+    .share-buttonmobile {
+        margin: 0 auto;
+        margin-top: 10%;
+        width: 500px;
+        height: 60px;
+        background: #dfe6e9;
+        border-radius: 20px;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+        transition: 0.3s linear;
+    }
+
+    .sidenav i {
+        display: block;
+        width: 140px;
+        float: left;
+        font-size: 16px;
+        line-height: 48px;
+        text-align: center;
+    }
+    .menubuttonmobile {
+    font-size: 3em;
+    font-family: kaiti;
+    color: antiquewhite;
+}
+</style>
+
+<body>
+    <div class="avatar-bordermobile">
+        <img src="<%= themeConfig.domain %>/images/avatar.png?v=<%= site.utils.now %>" class="avatarmobile">
+    </div>
+    <div class="sitenamemobile"><%=themeConfig.siteName%></div>
+    <div class="describtionmobile"><%- themeConfig.siteDescription %></div>
+    <div class="share-buttonmobile">
+        <a href="<%= site.customConfig['github'] %>" target="_blank"><i><img class="icon"
+                    src="<%= themeConfig.domain %>/media/images/github.png%>" alt=""></i></a>
+        <a onclick="showqq()"><i><img class="icon" src="<%= themeConfig.domain %>/media/images/QQ.png%>" alt=""></i></a>
+        <a href="<%= site.customConfig['zhihu'] %>" target="_blank"><i><img class="icon"
+                    src="<%= themeConfig.domain %>/media/images/zh.png%>" alt=""></i></a>
+        <a href="<%= site.customConfig['bilibili'] %>" target="_blank"><i><img class="icon"
+                    src="<%= themeConfig.domain %>/media/images/bilibili.png%>" alt=""></i></a>
+    </div>
+    <div id="qq" style="display:none"><%= site.customConfig['QQ'] %></div>
+    <% menus.forEach(function(menu) { %>
+    <% if (menu.openType === 'External') { %>
+    <a href="<%= menu.link %>" class="mchocie describtion" target="_blank">
+        <%= menu.name %>
+    </a>
+    <% } else { %>
+    <div class="mchocie describtion">
+        <a href="<%= menu.link %>" class="menubuttonmobile">
+            <%= menu.name %>
+        </a>
+    </div>
+
+    <% } %>
+    <% }); %>
+    <hr>
+</body>
+
+</html>
+<script>
+
+</script>

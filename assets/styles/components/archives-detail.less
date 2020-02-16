@@ -1,0 +1,103 @@
+.archives-year {
+    padding-top: 5%;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: left;
+    text-decoration: underline;
+    padding-left: 5%;
+
+}
+
+.archives-content {
+    background: white;
+    min-height: 100vh;
+}
+
+.archives-content ul {
+    margin: 0;
+    margin-top: 2%;
+    list-style: none;
+    position: relative;
+    color: #fff;
+    font-size: 13px;
+}
+
+@media screen and (min-width: 1300px) {
+    .archives-content ul {
+        padding: 1px 100px;
+
+    }
+}
+
+
+
+.archives-content ul li {
+    position: relative;
+    margin-left: 30px;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 14px;
+    border-radius: 6px;
+    width: 80%;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.08);
+}
+
+.archives-content ul li:not(:first-child) {
+    margin-top: 60px;
+}
+
+.archives-content ul li>span {
+    width: 2px;
+    height: 100%;
+    background: #ff4e6a;
+    opacity: .8;
+    left: -30px;
+    top: 0;
+    position: absolute;
+}
+
+.archives-content ul li>span:before,
+.archives-content ul li>span:after {
+    content: "";
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    position: absolute;
+    background: #ff4e6a;
+    left: -5px;
+    top: 0;
+}
+
+.archives-content ul li span:after {
+    top: 100%;
+}
+
+.archives-content ul li>div {
+    margin-left: 10px;
+}
+
+.archives-content div .title,
+.archives-content div .type {
+    font-weight: 600;
+    font-size: 12px;
+}
+
+
+.archives-content div>div {
+    margin-top: 5px;
+}
+
+.archives-title {
+    color: black;
+    text-align: left;
+    font-weight: 300;
+    font-size: 1.5em;
+}
+
+.archives-time {
+    padding-top: 3%;
+    text-align: left;
+    font-weight: lighter;
+    color: #ced4da;
+    ;
+}
