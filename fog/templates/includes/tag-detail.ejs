@@ -7,19 +7,20 @@
     background: white;
 }
 </style>
+<link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/font-awesome.css%>">
 <div class="tag-container">
         <% posts.forEach(function(post) { %>
         <div class="postshow">
             <% if (themeConfig.showFeatureImage && post.feature) { %>
             <img src="<%= post.feature%>" class="postimage" onclick="window.location.href= '<%=post.link%>';return false">
-            <div class="posttitlebox">
+            <div class="posttitlebox" >
                 <div class="posttitle" onclick="window.location.href= '<%=post.link%>';return false">
                     <%= post.title %>
                 </div>
             </div>
             <div class="postinfo">
                 <div class="postdate"><i class="fa fa-calendar"></i><%= post.dateFormat %></div>
-                <div class="poststatus postdate"><i class="fa fa-clock"></i> <%= post.stats.text %></div>
+                <div class="poststatus postdate"><i class="fa fa-clock-o"></i> <%= post.stats.text %></div>
                 <div class="posttag">
                     <% post.tags.forEach(function(tag) { %>
                     <a href="<%= tag.link %>" class="postlink">
@@ -29,15 +30,15 @@
                 </div>
             </div>
             <% } else {%>
-            <img src="<%= site.customConfig['postdefaultimage'] %>" class="postimage">
+            <img src="<%= site.customConfig['postdefaultimage'] %>" class="postimage" onclick="window.location.href= '<%=post.link%>';return false">
             <div class="posttitlebox">
-                <div class="posttitle">
+                <div class="posttitle" onclick="window.location.href= '<%=post.link%>';return false">
                     <%= post.title %>
                 </div>
             </div>
             <div class="postinfo">
                 <div class="postdate"><i class="fa fa-calendar"></i><%= post.dateFormat %></div>
-                <div class="poststatus postdate"><i class="fa fa-clock"></i> <%= post.stats.text %></div>
+                <div class="poststatus postdate"><i class="fa fa-clock-o"></i> <%= post.stats.text %></div>
                 <div class="posttag">
                     <% post.tags.forEach(function(tag) { %>
                     <a href="<%= tag.link %>" class="postlink">

@@ -1,65 +1,104 @@
-
 <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/font-awesome.css%>">
-    <body>
-        <div class="allcontent">
-            <div class="postshow">
-                <% if (themeConfig.showFeatureImage && post.feature) { %>
-                <img src="<%= post.feature%>" class="postimage" style="cursor:auto">
+<style>
+    h6,
+    .text,
+    code,
+    span,
+    pre,
+    a,
+    div {
+        font-size: 15px;
+    }
 
-                <div class="postinfo">
-                    <div class="postdate"><i class="fa fa-calendar"></i><%= post.dateFormat %></div>
-                    <div class="poststatus postdate"><i class="fa fa-clock-o"></i> <%= post.stats.text %></div>
-                    <div class="posttag">
-                        <% post.tags.forEach(function(tag) { %>
-                        <a href="<%= tag.link %>" class="postlink">
-                            <i class="fa fa-tag"></i> <%= tag.name %>
-                        </a>
-                        <% }); %>
-                    </div>
+    h1 {
+        font-size: 25px;
+    }
+
+    h2 {
+        font-size: 23px;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+
+    h4 {
+        font-size: 17px;
+    }
+
+    h5 {
+        font-size: 15px;
+    }
+</style>
+
+<body>
+    <div class="allcontent">
+        <div class="postshow">
+            <% if (themeConfig.showFeatureImage && post.feature) { %>
+            <img src="<%= post.feature%>" class="postimage" style="cursor:auto">
+
+            <div class="postinfo">
+                <div class="postdate"><i class="fa fa-calendar"></i><%= post.dateFormat %></div>
+                <div class="poststatus postdate"><i class="fa fa-clock-o"></i> <%= post.stats.text %></div>
+                <div class="posttag">
+                    <% post.tags.forEach(function(tag) { %>
+                    <a href="<%= tag.link %>" class="postlink">
+                        <i class="fa fa-tag"></i> <%= tag.name %>
+                    </a>
+                    <% }); %>
                 </div>
-                <% } else {%>
-                <img src="<%= site.customConfig['postdefaultimage'] %>" class="postimage">
-                <div class="postinfo">
-                    <div class="postdate"><i class="fa fa-calendar"></i><%= post.dateFormat %></div>
-                    <div class="poststatus postdate"><i class="fa fa-clock-o"></i> <%= post.stats.text %></div>
-                    <div class="posttag">
-                        <% post.tags.forEach(function(tag) { %>
-                        <a href="<%= tag.link %>" class="postlink">
-                            <i class="fa fa-tag"></i> <%= tag.name %>
-                        </a>
-                        <% }); %>
-                    </div>
+            </div>
+            <% } else {%>
+            <img src="<%= site.customConfig['postdefaultimage'] %>" class="postimage">
+            <div class="postinfo">
+                <div class="postdate"><i class="fa fa-calendar"></i><%= post.dateFormat %></div>
+                <div class="poststatus postdate"><i class="fa fa-clock-o"></i> <%= post.stats.text %></div>
+                <div class="posttag">
+                    <% post.tags.forEach(function(tag) { %>
+                    <a href="<%= tag.link %>" class="postlink">
+                        <i class="fa fa-tag"></i> <%= tag.name %>
+                    </a>
+                    <% }); %>
                 </div>
-                <% } %>
-                <div id="texttitle" style="text-align: center">
-                    <h2><%= post.title %></h2>
-                </div>
-                <div class="text">
-                    <%- post.content %>
-                </div>
-                <% if (post.prevPost && !post.hideInList) { %>
-                <div class="prev-post">
-                    上一篇
-                    <a href="<%= post.prevPost.link %>">
-                        <%= post.prevPost.title %>
+            </div>
+            <% } %>
+            <div id="texttitle" style="text-align: center">
+                <h2><%= post.title %></h2>
+            </div>
+            <div class="text">
+                <%- post.content %>
+            </div>
+            <% if (post.prevPost && !post.hideInList) { %>
+            <div class="prev-post">
+                上一篇
+                <a href="<%= post.prevPost.link %>">
+                    <%= post.prevPost.title %>
+                </a>
+            </div>
+            <% } %>
+            <% if (post.nextPost && !post.hideInList) { %>
+                <div class="next-post">
+                    下一篇
+                    <a href="<%= post.nextPost.link %>">
+                        <%= post.nextPost.title %>
                     </a>
                 </div>
                 <% } %>
-                <div name="comment" style="width:90%;left:5%">
-                    <%if (site.customConfig.valineID && site.customConfig.valineKey) { %>
-                    <%- include('./valine') %>
-                    <div class="clear"></div>
-                    <% }else if ( typeof commentSetting !== 'undefined' && commentSetting.showComment) { %>
-                    <% if (commentSetting.commentPlatform === 'gitalk') { %>
-                    <%- include('./gitalk') %>
-                    <% } %>
-                    <% if (commentSetting.commentPlatform === 'disqus') { %>
-                    <%- include('./disqus') %>
-                    <% } %>
-                    <% }else { %>
-                    <p>请到客户端“主题--自定义配置--valine”中填入ID和KEY</p>
-                    <% } %>
-                </div>
+            <div name="comment" style="width:90%;left:5%;margin-top:10%">
+                <%if (site.customConfig.valineID && site.customConfig.valineKey) { %>
+                <%- include('./valine') %>
+                <div class="clear"></div>
+                <% }else if ( typeof commentSetting !== 'undefined' && commentSetting.showComment) { %>
+                <% if (commentSetting.commentPlatform === 'gitalk') { %>
+                <%- include('./gitalk') %>
+                <% } %>
+                <% if (commentSetting.commentPlatform === 'disqus') { %>
+                <%- include('./disqus') %>
+                <% } %>
+                <% }else { %>
+                <p>请到客户端“主题--自定义配置--valine”中填入ID和KEY</p>
+                <% } %>
             </div>
         </div>
-    </body>
+    </div>
+</body>
