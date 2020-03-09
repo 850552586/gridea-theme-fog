@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/bootstrap.min.css%>">
+    <meta name="description" content="<%- site.customConfig.metaDescription || themeConfig.siteDescription %>" />
+    <title><%- themeConfig.siteName %></title>
+</head>
+<style>
+    @media screen and (max-width: 1300px) {
+        .archives-content ul li>span {
+            display: none;
+        }
+
+        .archives-content ul {
+            padding: 0px;
+        }
+    }
+</style>
+
+<body>
+    <!-- 响应式布局，针对PC端内容显示 -->
+    <div id="content">
+        <div class="nav-large">
+            <div class="row">
+                <div class="side"><%- include('./includes/side') %></div>
+                <div id="main" class="col-xs-12 col-sm-7" style="z-index: 999;">
+                        <%- include('./includes/friends-detail') %>
+                </div>
+                <div class="col-xs-6 col-sm-2"></div>
+            </div>
+        </div>
+        <div id="bg">
+        </div>
+        <div id="bgurl" style="display:none"><%= site.customConfig['bgimage'] %></div>
+    </div>
+
+    <!-- 响应式布局，针对手机端内容显示 -->
+    <div class="nav-small">
+        <%- include('./includes/bar') %>
+        <div style="margin-top:60px"></div>
+        <%- include('./includes/friends-detail') %>
+        <div style="margin-bottom:60px">&nbsp;</div>
+    </div>
+</body>
+
+</html>
+<script src="<%= themeConfig.domain %>/media/js/index.js%>"></script>
+<%if (site.customConfig.live2d){ %>
+<script src="https://l2dwidget.js.org//lib/L2Dwidget.min.js"></script>
+<script src="<%= themeConfig.domain %>/media/js/live2d.js%>"></script>
+<%}%>

@@ -62,9 +62,13 @@
             <%= menu.name %>
         </a>
     </div>
-
     <% } %>
     <% }); %>
+    <%if(site.customConfig.friendschoice){%>
+        <div class="mchocie describtion">
+            <a href="<%= themeConfig.domain %>/friends" class="menubutton">友链</a>
+        </div>
+    <%}%>
     <hr>
     <div id="footinfo"><%- themeConfig.footerInfo%> | Theme: Fog</div>
     <div id="sitegotimeDate">载入天数...</div>

@@ -35,6 +35,10 @@
           </li>
           <% } %>
           <% }); %>
+          <%if(site.customConfig.friendschoice){%>
+          <li><a href="<%= themeConfig.domain %>/friends">友链</a></li>
+
+          <%}%>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
