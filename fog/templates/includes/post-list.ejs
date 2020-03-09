@@ -3,10 +3,13 @@
     <% posts.forEach(function(post) { %>
     <div class="postshow">
         <% if (themeConfig.showFeatureImage && post.feature) { %>
-        <img src="<%= post.feature%>" class="postimage" onclick="window.location.href= '<%=post.link%>';return false">
-        <div class="posttitlebox">
-            <div class="posttitle" onclick="window.location.href= '<%=post.link%>';return false">
-                <%= post.title %>
+        <div style="width:100%">
+            <img src="<%= post.feature%>" class="postimage"
+                onclick="window.location.href= '<%=post.link%>';return false">
+            <div class="posttitlebox">
+                <div class="posttitle" onclick="window.location.href= '<%=post.link%>';return false">
+                    <%= post.title %>
+                </div>
             </div>
         </div>
         <div class="postinfo">
@@ -21,10 +24,13 @@
             </div>
         </div>
         <% } else {%>
-        <img src="<%= site.customConfig['postdefaultimage'] %>" class="postimage" onclick="window.location.href= '<%=post.link%>';return false">
-        <div class="posttitlebox">
-            <div class="posttitlewithoutimg" onclick="window.location.href= '<%=post.link%>';return false">
-                <%= post.title %>
+        <div style="width:100%">
+            <img src="<%= site.customConfig['postdefaultimage'] %>" class="postimage"
+                onclick="window.location.href= '<%=post.link%>';return false">
+            <div class="posttitlebox">
+                <div class="posttitlewithoutimg" onclick="window.location.href= '<%=post.link%>';return false">
+                    <%= post.title %>
+                </div>
             </div>
         </div>
         <div class="postinfo">
@@ -41,5 +47,4 @@
         <% } %>
     </div>
     <% }); %>
-    <%- include('./pagination') %>
 </div>

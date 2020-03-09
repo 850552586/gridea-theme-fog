@@ -85,11 +85,19 @@
     }
 
     @media screen and (max-width: 1300px) {
+        .v .vwrap .vmark .valert{
+            margin-top:60%;
+        }
+        .vwrap{
+            margin: 15px;
+            width: 90%;
+        }
         .v .vwrap .vheader .vinput {
-            width: 33.33%;
             padding: 10px 5px;
         }
-
+        .v .vwrap{
+            overflow: auto;
+        }
         .v .veditor {
             min-height: 30rem;
             resize: none;
@@ -126,13 +134,6 @@
             avatar: 'retro',
             pageSize: 30,
             placeholder: '既然来了，那就留个痕迹吧~',
-        })
-        $(document).ready(function () {
-            $('.vemoji-btn').text('😀');
-            $("#vcomments").on('click', 'span.vat', function () {
-                $(this).parent('div.vmeta').next("div.vcontent").after($("div.vwrap"));
-                $('textarea#veditor').focus();
-            })
         })
     </script>
 </body>

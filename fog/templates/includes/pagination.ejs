@@ -1,18 +1,23 @@
-<div class="pagination">
-        <ul>
-                <% if (pagination.prev) { %>
-                <li><a href="<%= pagination.prev %>" style="width:100px" id="prev">上一页</a></li>
-                <% } %>
+<div class="pagi">
+    <ul>
+        <% if (pagination.prev) { %>
+        <li><a href="<%= pagination.prev %>" style="width:100px" id="prev">上一页</a></li>
+        <% }else{%>
+        <li><a style="width:100px">&nbsp;</a></li>
+        <%}%>
                 <li><a id="page1">1</a></li>
                 <li><a id="page2" class="active">2</a></li>
                 <li><a id="page3">3</a></li>
                 <% if (pagination.next) { %>
-                <li><a href="<%= pagination.next %>" style="width:100px" id="next">下一页</a></li>
-                <% } %>
+        <li><a href="<%= pagination.next %>" style="width:100px" id="next">下一页</a></li>
+        <% } else{%>
+        <li><a style="width:100px">&nbsp;</a></li>
+        <%}%>
             </ul>
 </div>
 
-<div id="pagination-prev" style="display:none"> <%= pagination.prev %></div>
+<div id="pagination-prev" style="display:none"> <%= pagination.prev %>
+</div>
 <div id="pagination-next" style="display:none"> <%= pagination.next %></div>
 
 

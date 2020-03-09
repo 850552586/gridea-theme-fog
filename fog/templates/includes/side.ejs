@@ -1,38 +1,61 @@
 <html>
+
 <head>
     <link rel="stylesheet" href="<%= themeConfig.domain %>/styles/main.css">
     <meta name="description" content="<%- site.customConfig.metaDescription || themeConfig.siteDescription %>" />
-
     <title>Document</title>
 </head>
 <style>
 </style>
+
 <body>
-    <div class="avatar-border">
-        <img src="<%= themeConfig.domain %>/images/avatar.png?v=<%= site.utils.now %>" class="avatar">
-    </div>
-    <div class="sitename"><%=themeConfig.siteName%></div>
-    <div class="describtion"><%- themeConfig.siteDescription %></div>
-    <div class="search">
-        <input type="text" class="search-input" placeholder="标题搜索(●'◡'●)" />
-        <div class="search-results"></div>
-    </div>
+    <div id=side>
+        <div class="avatar-border">
+            <img src="<%= themeConfig.domain %>/images/avatar.png?v=<%= site.utils.now %>" class="avatar">
+        </div>
+        <div class="sitename"><%=themeConfig.siteName%></div>
+        <span class="describtion" data-text='["<%- themeConfig.siteDescription %>"]'>&nbsp;</span>
+        <%if (site.customConfig.search){ %>
+        <div class="search">
+            <!-- <input type="text" class="search-input" placeholder="标题搜索(●'◡'●)" /> -->
+            <input type="text" class="search-input" placeholder="<%= site.customConfig['searchplaceholder'] %>">
+            <div class="search-results"></div>
+        </div>
+        <%}%>
     <div class="share-button">
-        <span>&nbsp;&nbsp;Contact</span>
+        <span>Contact</span>
+        <% if (site.customConfig['github']) { %>
         <a href="<%= site.customConfig['github'] %>" target="_blank"><i><img class="icon"
                     src="<%= themeConfig.domain %>/media/images/github.png%>" alt=""></i></a>
+        <% } %>
+        <% if (site.customConfig['QQ']) { %>
         <a onclick="showqq()"><i><img class="icon" src="<%= themeConfig.domain %>/media/images/QQ.png%>" alt=""></i></a>
-        <a href="<%= site.customConfig['zhihu'] %>" target="_blank"><i><img class="icon" src="<%= themeConfig.domain %>/media/images/zh.png%>"
-                    alt=""></i></a>
-        <a href="<%= site.customConfig['bilibili'] %>" target="_blank"><i><img class="icon" src="<%= themeConfig.domain %>/media/images/bilibili.png%>"
-                    alt=""></i></a>
+        <% } %>
+        <% if (site.customConfig['zhihu']) { %>
+        <a href="<%= site.customConfig['zhihu'] %>" target="_blank"><i><img class="icon"
+                    src="<%= themeConfig.domain %>/media/images/zh.png%>" alt=""></i></a>
+        <% } %>
+        <% if (site.customConfig['bilibili']) { %>
+        <a href="<%= site.customConfig['bilibili'] %>" target="_blank"><i><img class="icon"
+                    src="<%= themeConfig.domain %>/media/images/bilibili.png%>" alt=""></i></a>
+        <% } %>
+        <% if (site.customConfig['wechat']) { %>
+        <a href="<%= site.customConfig['wechat'] %>" target="_blank"><i><img class="icon"
+                    src="<%= themeConfig.domain %>/media/images/wechat.png%>" alt=""></i></a>
+        <% } %>
+        <% if (site.customConfig['steam']) { %>
+        <a href="<%= site.customConfig['steam'] %>" target="_blank"><i><img class="icon"
+                    src="<%= themeConfig.domain %>/media/images/steam.png%>" alt=""></i></a>
+        <% } %>
     </div>
     <div id="qq" style="display:none"><%= site.customConfig['QQ'] %></div>
     <% menus.forEach(function(menu) { %>
     <% if (menu.openType === 'External') { %>
-    <a href="<%= menu.link %>" class="mchocie describtion" target="_blank">
-        <%= menu.name %>
-    </a>
+    <div class="mchocie describtion">
+        <a href="<%= menu.link %>" class="mchocie describtion" target="_blank">
+            <%= menu.name %>
+        </a>
+    </div>
     <% } else { %>
     <div class="mchocie describtion">
         <a href="<%= menu.link %>" class="menubutton">
@@ -43,12 +66,15 @@
     <% } %>
     <% }); %>
     <hr>
-    <div id="footinfo"><%- themeConfig.footerInfo%></div>
-    <div id="sitegotimeDate">载入天数...</div><div id="sitegotimes">载入时分秒...</div>
+    <div id="footinfo"><%- themeConfig.footerInfo%> | Theme: Fog</div>
+    <div id="sitegotimeDate">载入天数...</div>
+    <div id="sitegotimes">载入时分秒...</div>
     <div id="cussitetime" style="display:none"><%= site.customConfig['sitegotime'] %></div>
+    </div>
 </body>
 
 </html>
+<script src="<%= themeConfig.domain %>/media/js/wordshow.js%>"></script>
 <script>
     //----------------------站点运行时间
     var now = new Date();
@@ -193,7 +219,7 @@
         for (i = 0; i < arrResults.length; i++) {
             var itemDiv = tmpDiv.cloneNode(true);
             itemDiv.innerHTML = '<b>[' + arrTitles[indexItem[i]] +
-                ']</b><p>' + arrResults[i]+"</p><hr />";
+                ']</b><p>' + arrResults[i] + "</p><hr />";
             itemDiv.setAttribute('onclick', 'changeHref(arrLinks[indexItem[' + i + ']])');
             searchResults.appendChild(itemDiv);
         }
@@ -202,12 +228,12 @@
     function changeHref(href) {
         location.href = href;
     }
-    function showqq()
-    {
+
+    function showqq() {
         var qq = document.getElementById("qq").innerHTML;
-        if(qq!='')
-        alert("博主的QQ联系方式为："+qq);
+        if (qq != '')
+            alert("博主的QQ联系方式为：" + qq);
         else
-        alert("博主暂未设置QQ联系方式");
+            alert("博主暂未设置QQ联系方式");
     }
 </script>

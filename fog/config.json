@@ -1,6 +1,6 @@
 {
   "name": "fog",
-  "version": "0.1",
+  "version": "0.2",
   "author": "Ericam_",
   "repository": "https://github.com/850552586/gridea-theme-fog",
   "customConfig": [{
@@ -108,6 +108,38 @@
       "note": "链接地址"
     },
     {
+      "name": "wechat",
+      "label": "wechat",
+      "group": "社交",
+      "value": "",
+      "type": "input",
+      "note": "链接地址"
+    },
+    {
+      "name": "steam",
+      "label": "steam",
+      "group": "社交",
+      "value": "",
+      "type": "input",
+      "note": "链接地址"
+    },
+    {
+      "name": "search",
+      "label": "是否开启搜索框",
+      "group": "搜索框",
+      "value": true,
+      "type": "switch",
+      "note": ""
+    },
+    {
+      "name": "searchplaceholder",
+      "label": "搜索框提示文字",
+      "group": "搜索框",
+      "value": "标题搜索 ⚆_⚆ つ♡",
+      "type": "input",
+      "note": ""
+    },
+    {
       "name": "postdefaultimage",
       "label": "文章封面默认背景图",
       "group": "背景图",
@@ -130,6 +162,47 @@
       "value": "/media/images/bgimg.png",
       "type": "picture-upload",
       "note": ""
+    }, 
+    {
+      "name": "mobilebgimage",
+      "label": "移动端首页图",
+      "group": "背景图",
+      "value": "/media/images/mobilebgimg.jpg",
+      "type": "picture-upload",
+      "note": ""
+    },
+    {
+      "name": "live2d",
+      "label": "是否开启看板娘",
+      "group": "看板娘",
+      "value": true,
+      "type": "switch",
+      "note": ""
+    },
+    {
+      "name": "codetheme",
+      "label": "代码主题",
+      "group": "代码主题",
+      "value": "default",
+      "type": "select",
+      "options": [
+        {
+          "label": "简约白",
+          "value": "default"
+        },
+        {
+          "label": "vs",
+          "value": "vs2015"
+        },
+        {
+          "label": "rainbow",
+          "value": "rainbow"
+        },
+        {
+          "label": "dracula",
+          "value": "dracula"
+        }
+      ]
     }
   ]
 }

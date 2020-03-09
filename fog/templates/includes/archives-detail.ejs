@@ -1,4 +1,4 @@
-<body>
+<body">
     <div class="archives-content">
         <% let years = []; posts.forEach((item) => { const year = item.date.substring(0, 4); if (!years.includes(year)) { years.push(year); } }); %>
         <% years.forEach(function(year) { %>
@@ -20,6 +20,5 @@
             <% }); %>
         </ul>
         <% }); %>
-        <div style="padding-bottom:10%"></div>
     </div>
-</body>
+</body">

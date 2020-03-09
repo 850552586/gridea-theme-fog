@@ -1,17 +1,22 @@
-<html>
-<style>
-
-</style>
-
 <head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="<%- post.description %>" />
     <meta name="keywords" content="<%- post.tags.map(tag => tag.name).join(',') %>" />
-    <link href="http://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet">
-    <script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/bootstrap.min.css%>">
+    <%if(site.customConfig.codetheme=='default'){%>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/default.min.css">
+    <%}else if(site.customConfig.codetheme=='vs2015'){%>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/vs2015.min.css">
+    <%}else if(site.customConfig.codetheme=='rainbow'){%>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/rainbow.min.css">
+    <%}else{%>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/dracula.min.css">
+    <%}%>          
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
-        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/bootstrap.min.css%>">
     <title><%- themeConfig.siteName %></title>
 </head>
 
@@ -31,6 +36,23 @@
                 </div>
                 <div id="main" class="col-xs-12 col-sm-7">
                     <%- include('./includes/post-detail') %>
+                    <div name="comment" style="background: white">
+                        <div class="commentcontainer">
+                            <%if (site.customConfig.valineID && site.customConfig.valineKey) { %>
+                            <%- include('./includes/valine') %>
+                            <div class="clear"></div>
+                            <% }else if ( typeof commentSetting !== 'undefined' && commentSetting.showComment) { %>
+                            <% if (commentSetting.commentPlatform === 'gitalk') { %>
+                            <%- include('./includes/gitalk') %>
+                            <% } %>
+                            <% if (commentSetting.commentPlatform === 'disqus') { %>
+                            <%- include('./includes/disqus') %>
+                            <% } %>
+                            <% }else { %>
+                            <p>请到客户端“主题--自定义配置--valine”中填入ID和KEY</p>
+                            <% } %>
+                        </div>
+                    </div>
                 </div>
                 <div class="toc-container">
                     <%- post.toc %>
@@ -43,154 +65,34 @@
     </div>
     <!-- 响应式布局，针对手机端内容显示 -->
     <div class="nav-small">
-        <div class="mobile">
-
-            <!-- Checkbox to toggle the menu -->
-
-            <input type="checkbox" id="open" />
-            <!-- The menu -->
-
-            <ul class="sidenav" style="width:60%">
-                <label id="mobilemenu2" for="open"><i ><img class="icon"
-                    src="<%= themeConfig.domain %>/media/images/close.png%>" alt="" style="width:80%"></i></label>
-                <div class="side"><%- include('./includes/sidemobilepost') %></div>
-            </ul>
-
-            <!-- Content area -->
-
-            <section>
-                <div class="mobile-header">
-                    <label id="mobilemenu" for="open">
-                        <div id="tab1" class="tab" style="left:10%">
-                            <div class="bars">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                        </div>
-                    </label>
-                    <div class="smallavatar-border-post">
-                        <img src="<%= themeConfig.domain %>/images/avatar.png?v=<%= site.utils.now %>"
-                            class="smallavatar-post">
-                    </div>
-                </div>
-
-                <div class="mobile-indexcontent">
-                    <%- include('./includes/post-detail-mobile') %>
-                </div>
-            </section>
-
+        <%- include('./includes/bar') %>
+        <div style="margin-top:30px"></div>
+        <%- include('./includes/post-detail') %>
+        <div name="comment" style="background: white">
+            <div class="commentcontainer">
+                <%if (site.customConfig.valineID && site.customConfig.valineKey) { %>
+                <%- include('./includes/valinemobile') %>
+                <div class="clear"></div>
+                <% }else if ( typeof commentSetting !== 'undefined' && commentSetting.showComment) { %>
+                <% if (commentSetting.commentPlatform === 'gitalk') { %>
+                <%- include('./includes/gitalk') %>
+                <% } %>
+                <% if (commentSetting.commentPlatform === 'disqus') { %>
+                <%- include('./includes/disqus') %>
+                <% } %>
+                <% }else { %>
+                <p>请到客户端“主题--自定义配置--valine”中填入ID和KEY</p>
+                <% } %>
+            </div>
         </div>
     </div>
 
-    <script>
-        hljs.initHighlightingOnLoad()
-        var menu, side, main, postimage, tab1, tab2, ClicksideState, ClickbarState, maindom, mainstyle, mainleft,
-            mainwidth, postimage, posttitle;
-
-        function init() {
-            menu = $('.menu');
-            side = $('.side');
-            main = $('#main');
-            postinfo = $('.postinfo');
-            postimage = $('.postimage');
-            toc = $('.toc-container');
-            postimage = $('.postimage');
-            var bg = $('#bg');
-            var bgurl = document.getElementById("bgurl").innerHTML;
-            for (var i = 0; i < 3; i++)
-                bgurl = bgurl.replace("\\", "/");
-            bg.css("background", "url('" + bgurl + "')");
-            tab1 = document.querySelector("#tab1");
-            mobilemenu = document.querySelector("#mobilemenu");
-            mobilemenu2 = document.querySelector("#mobilemenu2");
-            ClicksideState = 0;
-            ClickbarState = 0;
-            maindom = document.querySelector('#main');
-            mainstyle = window.getComputedStyle(maindom, null);
-            mainleft = mainstyle.left;
-            posttitle = $('.posttitle');
-        }
-        init();
-        var iflock=0;
-        function lock(){
-            mobile = $('.mobile');
-            if(iflock==0)
-            {
-                mobile.css('overflow','hidden');
-                iflock=1;
-            }else
-            {
-                mobile.css('overflow','auto');
-                iflock=0;
-            }
-        }
-    mobilemenu.addEventListener('click',lock);
-    mobilemenu2.addEventListener('click',lock);
-
-        // ---------------------侧边栏----------------------------------
-        function menu_openclose1() {
-            if (ClicksideState == 0) {
-                side.animate({
-                    'left': 0
-                });
-                main.css('width', '60%');
-                postimage.css('width', '100%');
-                postinfo.css('margin-left', '0%');
-                posttitle.css('margin-left', '0');
-                postimage.css('width', '100%');
-                main.animate({
-                    'left': mainleft
-                })
-                ClicksideState = 1;
-            } else {
-                side.animate({
-                    'left': -1200
-                });
-                main.css('width', '70%');
-                postimage.css('width', '60%');
-                postinfo.css('margin-left', '20%');
-                posttitle.css('margin-left', '20%');
-                postimage.css('width', '100%');
-                main.animate({
-                    'left': 220
-                })
-                ClicksideState = 0;
-            }
-            (tab1.className == 'tab') ?
-            tab1.className = 'tab active':
-                tab1.className = 'tab';
-        }
-
-
-        tab1.addEventListener('click', menu_openclose1);
-        menu_openclose1();
-
-        // ------------索引滑动切换----------------------------------------------------
-        let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
-        window.addEventListener("scroll", event => {
-            let fromTop = window.scrollY;
-
-            mainNavLinks.forEach((link, index) => {
-                let section = document.getElementById(decodeURI(link.hash).substring(1));
-                let nextSection = null
-                if (mainNavLinks[index + 1]) {
-                    nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash)
-                        .substring(1));
-                }
-                if (section.offsetTop <= fromTop) {
-                    if (nextSection) {
-                        if (nextSection.offsetTop > fromTop) {
-                            link.classList.add("current");
-                        } else {
-                            link.classList.remove("current");
-                        }
-                    } else {
-                        link.classList.add("current");
-                    }
-                } else {
-                    link.classList.remove("current");
-                }
-            });
-        });
-    </script>
+</body>
+<script>
+    hljs.initHighlightingOnLoad()
+</script>
+<script src="<%= themeConfig.domain %>/media/js/post.js%>"></script>
+<%if (site.customConfig.live2d){ %>
+<script src="https://l2dwidget.js.org//lib/L2Dwidget.min.js"></script>
+<script src="<%= themeConfig.domain %>/media/js/live2d.js%>"></script>
+<%}%>

@@ -1,42 +1,15 @@
 <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/font-awesome.css%>">
 <style>
-    h6,
-    .text,
-    code,
-    span,
-    pre,
-    a,
-    div {
-        font-size: 15px;
-    }
 
-    h1 {
-        font-size: 25px;
-    }
-
-    h2 {
-        font-size: 23px;
-    }
-
-    h3 {
-        font-size: 20px;
-    }
-
-    h4 {
-        font-size: 17px;
-    }
-
-    h5 {
-        font-size: 15px;
-    }
 </style>
 
 <body>
     <div class="allcontent">
         <div class="postshow">
             <% if (themeConfig.showFeatureImage && post.feature) { %>
-            <img src="<%= post.feature%>" class="postimage" style="cursor:auto">
-
+            <div class="postdetailimg" style="width:100%;overflow: hidden;display: none">
+                <img src="<%= post.feature%>" class="postimage" style="cursor:auto">
+            </div>
             <div class="postinfo">
                 <div class="postdate"><i class="fa fa-calendar"></i><%= post.dateFormat %></div>
                 <div class="poststatus postdate"><i class="fa fa-clock-o"></i> <%= post.stats.text %></div>
@@ -49,7 +22,9 @@
                 </div>
             </div>
             <% } else {%>
-            <img src="<%= site.customConfig['postdefaultimage'] %>" class="postimage">
+            <div class="postdetailimg" style="width:100%;overflow: hidden;display: none">
+                <img src="<%= site.customConfig['postdefaultimage'] %>" class="postimage">
+            </div>
             <div class="postinfo">
                 <div class="postdate"><i class="fa fa-calendar"></i><%= post.dateFormat %></div>
                 <div class="poststatus postdate"><i class="fa fa-clock-o"></i> <%= post.stats.text %></div>
@@ -65,7 +40,7 @@
             <div id="texttitle" style="text-align: center">
                 <h2><%= post.title %></h2>
             </div>
-            <div class="text">
+            <div class="text ">
                 <%- post.content %>
             </div>
             <% if (post.prevPost && !post.hideInList) { %>
@@ -77,28 +52,45 @@
             </div>
             <% } %>
             <% if (post.nextPost && !post.hideInList) { %>
-                <div class="next-post">
-                    下一篇
-                    <a href="<%= post.nextPost.link %>">
-                        <%= post.nextPost.title %>
-                    </a>
-                </div>
-                <% } %>
-            <div name="comment" style="width:90%;left:5%;margin-top:10%">
-                <%if (site.customConfig.valineID && site.customConfig.valineKey) { %>
-                <%- include('./valine') %>
-                <div class="clear"></div>
-                <% }else if ( typeof commentSetting !== 'undefined' && commentSetting.showComment) { %>
-                <% if (commentSetting.commentPlatform === 'gitalk') { %>
-                <%- include('./gitalk') %>
-                <% } %>
-                <% if (commentSetting.commentPlatform === 'disqus') { %>
-                <%- include('./disqus') %>
-                <% } %>
-                <% }else { %>
-                <p>请到客户端“主题--自定义配置--valine”中填入ID和KEY</p>
-                <% } %>
+            <div class="next-post">
+                下一篇
+                <a href="<%= post.nextPost.link %>">
+                    <%= post.nextPost.title %>
+                </a>
             </div>
+            <% } %>
         </div>
     </div>
 </body>
+<script>
+    var t_img; // 定时器
+    var isLoad = true; // 控制变量
+    isImgLoad(function () {
+        // 加载完成
+        $('.postdetailimg').css("display", "block");
+    });
+    // 判断图片加载的函数
+    function isImgLoad(callback) {
+        // 注意我的图片类名都是cover，因为我只需要处理cover。其它图片可以不管。
+        // 查找所有封面图，迭代处理
+        $('.postdetailimg').each(function () {
+            // 找到为0就将isLoad设为false，并退出each
+            if (this.height === 0) {
+                isLoad = false;
+                return false;
+            }
+        });
+        // 为true，没有发现为0的。加载完毕
+        if (isLoad) {
+            clearTimeout(t_img); // 清除定时器
+            // 回调函数
+            callback();
+            // 为false，因为找到了没有加载完成的图，将调用定时器递归
+        } else {
+            isLoad = true;
+            t_img = setTimeout(function () {
+                isImgLoad(callback); // 递归扫描
+            }, 500); // 我这里设置的是500毫秒就扫描一次，可以自己调整
+        }
+    }
+</script>
