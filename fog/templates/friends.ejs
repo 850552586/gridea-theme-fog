@@ -30,7 +30,24 @@
             <div class="row">
                 <div class="side"><%- include('./includes/side') %></div>
                 <div id="main" class="col-xs-12 col-sm-7" style="z-index: 999;">
-                        <%- include('./includes/friends-detail') %>
+                    <%- include('./includes/friends-detail') %>
+                    <div name="comment" style="background: white">
+                        <div class="commentcontainer">
+                            <%if (site.customConfig.valineID && site.customConfig.valineKey) { %>
+                            <%- include('./includes/valine') %>
+                            <div class="clear"></div>
+                            <% }else if ( typeof commentSetting !== 'undefined' && commentSetting.showComment) { %>
+                            <% if (commentSetting.commentPlatform === 'gitalk') { %>
+                            <%- include('./includes/gitalk') %>
+                            <% } %>
+                            <% if (commentSetting.commentPlatform === 'disqus') { %>
+                            <%- include('./includes/disqus') %>
+                            <% } %>
+                            <% }else { %>
+                            <p>请到客户端“主题--自定义配置--valine”中填入ID和KEY</p>
+                            <% } %>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-xs-6 col-sm-2"></div>
             </div>
@@ -46,6 +63,23 @@
         <div style="margin-top:60px"></div>
         <%- include('./includes/friends-detail') %>
         <div style="margin-bottom:60px">&nbsp;</div>
+        <div name="comment" style="background: white">
+            <div class="commentcontainer">
+                <%if (site.customConfig.valineID && site.customConfig.valineKey) { %>
+                <%- include('./includes/valinemobile') %>
+                <div class="clear"></div>
+                <% }else if ( typeof commentSetting !== 'undefined' && commentSetting.showComment) { %>
+                <% if (commentSetting.commentPlatform === 'gitalk') { %>
+                <%- include('./includes/gitalk') %>
+                <% } %>
+                <% if (commentSetting.commentPlatform === 'disqus') { %>
+                <%- include('./includes/disqus') %>
+                <% } %>
+                <% }else { %>
+                <p>请到客户端“主题--自定义配置--valine”中填入ID和KEY</p>
+                <% } %>
+            </div>
+        </div>
     </div>
 </body>
 
