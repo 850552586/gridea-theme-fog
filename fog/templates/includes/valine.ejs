@@ -1,65 +1,9 @@
 <head>
-    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    <script src='<%= themeConfig.domain %>/media/js/valine.min.js%>'></script>
     <script src="<%= themeConfig.domain %>/media/js/jquery.min.js%>"></script>
 </head>
 <style>
     @media screen and (min-width: 1300px) {
-        .v {
-            margin-top: 10%;
-        }
-
-        .v .vwrap {
-            overflow: hidden;
-        }
-
-        .v .vwrap {
-            padding: 0 0 44px;
-        }
-
-        .v .veditor {
-            min-height: 7rem;
-            resize: none;
-        }
-
-        .v .vwrap .vedit {
-            padding-top: 0
-        }
-
-        .v .vwrap .vheader {
-            width: 80%;
-            bottom: 0;
-            position: absolute;
-            background: #f7f7f7;
-        }
-
-        .v .vinput {
-            padding: 10px 15px;
-        }
-
-        .v .vwrap .vheader .vinput {
-            border-bottom: 0px
-        }
-
-        .v .vwrap .vedit .vctrl {
-            margin-top: -44px;
-            right: 0;
-            position: absolute;
-            margin-right: -3px;
-        }
-
-        .v .vwrap .vcontrol {
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            width: 20%;
-            padding-top: 0px;
-        }
-    }
-
-    .v .vwrap .vcontrol .col.col-80 {
-        width: 100%;
-    }
-
     .v .vbtn.vsubmit {
         border-radius: 0;
         padding: 0;
@@ -83,6 +27,7 @@
     .vtext{
         padding: 0;
     }
+}
 
     @media screen and (max-width: 1300px) {
         .v .vwrap .vmark .valert{
@@ -133,7 +78,7 @@
             verify: false,
             avatar: 'retro',
             pageSize: 30,
-            placeholder: '既然来了，那就留个痕迹吧~',
+            placeholder: '既然来了，何不畅所欲言呢？',
         })
     </script>
 </body>

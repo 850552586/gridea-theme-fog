@@ -1,9 +1,12 @@
 #post-container {
-    background: white;
+  background: whitesmoke;     
 }
 
+#post{
+    position: relative;
+}
 .postshow {
-    padding: 40px 20px 40px 20px;
+    padding: 0px 0 80px 0;
     position: relative;
     z-index: 1;
 }
@@ -46,7 +49,7 @@
 
 .postimage {
     position: relative;
-    border-radius: 30px;
+    border-radius: 5px;
     cursor: pointer;
 }
 
@@ -86,6 +89,11 @@
     color: #3cdc82;
 }
 
+.postlink:hover{
+    text-decoration: none;
+    color: #3cdc82;
+}
+
 .postinfo {
     margin-left: 0;
 }
@@ -98,18 +106,62 @@ a:hover {
     text-decoration: none
 }
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width:1300px) {
+    #post{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     .posttitlewithoutimg,.posttitle{
-        font-size: 1.2em;
-        padding-left: 5%;
+        font-size: 3em;
+        padding:0;
+        font-weight: bold;
     }
     .posttitlebox {
-        position: absolute;
+        display: flex;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
         z-index: 2;
-        bottom: 45px;
+        bottom: inherit;
         width: 100%;
     }    
+
     .poststatus{
         display: none;
     }
+
+    #post-container {
+        background: white;
+        margin-top:50px;
+    }
+    .postshow {
+        padding: 0px 20px 80px 20px;
+    }
+    .postimage {
+        position: relative;
+        cursor: pointer;
+        border-radius: 5px;
+        width:90%;
+    }
 }
+
+@media screen and (max-width:1024px)
+{
+    .posttitlewithoutimg,.posttitle{
+        font-size: 2.5em;
+        padding:0;
+        font-weight: bold;
+    }
+}
+
+@media screen and (max-width:760px)
+{
+    .posttitlewithoutimg,.posttitle{
+        font-size: 1.2em;
+        padding:0;
+        font-weight: bold;
+    }
+} 

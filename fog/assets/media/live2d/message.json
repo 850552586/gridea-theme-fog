@@ -1,0 +1,26 @@
+{
+    "mouseover": [
+        {
+            "selector": ".posttitlewithoutimg",
+            "text": ["要看看 {text} 么？"]
+        },
+        {
+            "selector": ".posttitle",
+            "text": ["要看看 {text} 么？"]
+        },
+        {
+            "selector": ".search-input",
+            "text": ["只阔以搜索标题哦"]
+        },
+        {
+            "selector": ".avatar",
+            "text": ["快来交换友链吧！"]
+        }
+    ],
+    "click": [
+        {
+            "selector": "#landlord #live2d",
+            "text": ["不要动手动脚的！快把手拿开~~", "再摸的话我可要报警了！⌇●﹏●⌇", "110吗，这里有个变态一直在摸我(ó﹏ò｡)"]
+        }
+    ]
+}

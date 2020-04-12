@@ -23,7 +23,7 @@
         </div>
         <%}%>
     <div class="share-button">
-        <span>Contact</span>
+        <span>社交按钮</span>
         <% if (site.customConfig['github']) { %>
         <a href="<%= site.customConfig['github'] %>" target="_blank"><i><img class="icon"
                     src="<%= themeConfig.domain %>/media/images/github.png%>" alt=""></i></a>
@@ -66,11 +66,11 @@
     <% }); %>
     <%if(site.customConfig.friendschoice){%>
         <div class="mchocie describtion">
-            <a href="<%= themeConfig.domain %>/friends" class="menubutton">友链</a>
+            <a href="<%= themeConfig.domain %>/friends" class="menubutton">友人帐</a>
         </div>
     <%}%>
     <hr>
-    <div id="footinfo"><%- themeConfig.footerInfo%> | Theme: Fog</div>
+    <div id="footinfo"><%- themeConfig.footerInfo%> | Theme: <a href="https://github.com/850552586/gridea-theme-fog">Fog</a></div>
     <div id="sitegotimeDate">载入天数...</div>
     <div id="sitegotimes">载入时分秒...</div>
     <div id="cussitetime" style="display:none"><%= site.customConfig['sitegotime'] %></div>
@@ -201,9 +201,7 @@
                 var step = 10;
 
                 // 将匹配到内容的地方进行黄色标记，并包括周围一定数量的文本
-                arrResults.push(arr[i].slice(indexContent - step, indexContent) +
-                    '<mark>' + arr[i].slice(indexContent, indexContent + l) + '</mark>' +
-                    arr[i].slice(indexContent + l, indexContent + l + step));
+                arrResults.push(arr[i].slice(indexContent - step, indexContent));
             }
         }
 

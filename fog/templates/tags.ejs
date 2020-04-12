@@ -44,6 +44,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/live2d.css%>">
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/bootstrap.min.css%>">
     <title><%- themeConfig.siteName %></title>
@@ -83,6 +84,10 @@
             <% }); %>
         </div>
     </div>
+    <div id="landlord">
+        <div class="message" style="opacity:0"></div>
+        <canvas id="live2d" width="240" height="250" class="live2d"></canvas>
+    </div>
 </body>
 
 </html>
@@ -94,6 +99,13 @@
     });
 </script>
 <%if (site.customConfig.live2d){ %>
-<script src="https://l2dwidget.js.org//lib/L2Dwidget.min.js"></script>
-<script src="<%= themeConfig.domain %>/media/js/live2d.js%>"></script>
+<script type="text/javascript">
+    var message_Path = '/live2d/'
+    var home_Path = 'http://ericam.top/' //此处修改为你的域名，必须带斜杠
+</script>
+<script type="text/javascript" src="<%= themeConfig.domain %>/media/live2d/js/live2d.js%>"></script>
+<script type="text/javascript" src="<%= themeConfig.domain %>/media/live2d/js/message.js%>"></script>
+<script type="text/javascript">
+    loadlive2d("live2d", "<%= themeConfig.domain %>/media/live2d/assets/tororo.model.json%>");
+</script>
 <%}%>

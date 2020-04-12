@@ -3,7 +3,7 @@
     <% posts.forEach(function(post) { %>
     <div class="postshow">
         <% if (themeConfig.showFeatureImage && post.feature) { %>
-        <div style="width:100%">
+        <div id="post" style="width:100%">
             <img src="<%= post.feature%>" class="postimage"
                 onclick="window.location.href= '<%=post.link%>';return false">
             <div class="posttitlebox">
@@ -24,7 +24,7 @@
             </div>
         </div>
         <% } else {%>
-        <div style="width:100%">
+        <div id="post" style="width:100%">
             <img src="<%= site.customConfig['postdefaultimage'] %>" class="postimage"
                 onclick="window.location.href= '<%=post.link%>';return false">
             <div class="posttitlebox">
