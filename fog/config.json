@@ -1,6 +1,6 @@
 {
   "name": "fog",
-  "version": "0.3",
+  "version": "0.4",
   "author": "Ericam_",
   "repository": "https://github.com/850552586/gridea-theme-fog",
   "customConfig": [{
@@ -52,12 +52,36 @@
       "note": "底部信息颜色（默认:white）"
     },
     {
+      "name": "appinfoColor",
+      "group": "颜色",
+      "value": "white",
+      "type": "input",
+      "card": "color",
+      "note": "手机端博客首页网站描述颜色（默认:white）"
+    },
+    {
+      "name": "sitegotimeChoice",
+      "label": "是否开启站点创建时间",
+      "group": "统计",
+      "value": false,
+      "type": "switch",
+      "note": ""
+    },
+    {
       "name": "sitegotime",
       "label": "站点创建时间",
-      "group": "站点时间",
+      "group": "统计",
       "value": "02/02/2020",
       "type": "input",
       "note": "输入日期（格式:02/02/2020）"
+    },
+    {
+      "name": "sitenumChoice",
+      "label": "是否开启访客统计",
+      "group": "统计",
+      "value": false,
+      "type": "switch",
+      "note": "不蒜子会影响网页加载速度，请慎重考虑！"
     },
     {
       "name": "valineID",
@@ -140,12 +164,58 @@
       "note": ""
     },
     {
+      "name": "bgchoice",
+      "label": "图片加载方式",
+      "group": "背景图",
+      "value": "",
+      "type": "select",
+      "note":"选择本地上传便在下方选项添加图片，选择外链则在下方输入框输入外链链接【推荐使用外链】",
+      "options": [
+        {
+          "label": "本地上传",
+          "value": "default"
+        },
+        {
+          "label": "外链",
+          "value": "link"
+        }
+      ]
+    },
+    {
+      "name": "postdefaultimagelink",
+      "label": "文章封面默认背景图-外链",
+      "group": "背景图",
+      "value": "",
+      "type": "input"
+    },
+    {
+      "name": "tagimagelink",
+      "label": "标签云页面置顶图-外链",
+      "group": "背景图",
+      "value": "",
+      "type": "input"
+    },
+    {
+      "name": "bgimagelink",
+      "label": "全局背景虚化图-外链",
+      "group": "背景图",
+      "value": "",
+      "type": "input"
+    }, 
+    {
+      "name": "mobilebgimagelink",
+      "label": "移动端首页图-外链",
+      "group": "背景图",
+      "value": "",
+      "type": "input"
+    },
+    {
       "name": "postdefaultimage",
       "label": "文章封面默认背景图",
       "group": "背景图",
       "value": "/media/images/postdefault.png",
       "type": "picture-upload",
-      "note": ""
+      "note": "本地上传"
     },
     {
       "name": "tagimage",
@@ -153,7 +223,7 @@
       "group": "背景图",
       "value": "/media/images/tagimg.png",
       "type": "picture-upload",
-      "note": ""
+      "note": "本地上传"
     },
     {
       "name": "bgimage",
@@ -161,7 +231,7 @@
       "group": "背景图",
       "value": "/media/images/bgimg.png",
       "type": "picture-upload",
-      "note": ""
+      "note": "本地上传"
     }, 
     {
       "name": "mobilebgimage",
@@ -169,7 +239,7 @@
       "group": "背景图",
       "value": "/media/images/mobilebgimg.jpg",
       "type": "picture-upload",
-      "note": ""
+      "note": "本地上传"
     },
     {
       "name": "live2d",
@@ -220,9 +290,31 @@
       "value": [],
       "arrayItems": [
         { "label": "名称", "name": "siteName", "type": "input", "value": "" },
-        { "label": "链接", "name": "siteLink", "type": "input", "value": "" },
-        { "label": "Logo", "name": "siteLogo", "type": "picture-upload", "value": "" },
+        { "label": "网站链接", "name": "siteLink", "type": "input", "value": "" },
+        { "label": "头像", "name": "siteLogo", "type": "input", "value": "","note":"外链" },
         { "label": "描述", "name": "description", "type": "textarea", "value": "" }
+      ],
+      "note": ""
+    },    
+    {
+      "name": "talkchoice",
+      "label": "是否开启说说",
+      "group": "说说",
+      "value": false,
+      "type": "switch",
+      "note": ""
+    },
+    {
+      "name": "talks",
+      "label": "说说",
+      "group": "说说",
+      "type": "array",
+      "value": [],
+      "arrayItems": [
+        { "label": "昵称", "name": "author", "type": "input", "value": "" },
+        { "label": "发布时间", "name": "time", "type": "input", "value": "" },
+        { "label": "说说内容", "name": "text", "type": "input", "value": ""},
+        { "label": "配图", "name": "img", "type": "input", "value": "","note":"外链"}
       ],
       "note": ""
     }

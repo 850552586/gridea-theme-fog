@@ -16,7 +16,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#"><%=themeConfig.siteName%>&nbsp;&nbsp;|</a>
+        <a class="navbar-brand" href="<%= themeConfig.domain %>"><%=themeConfig.siteName%>&nbsp;&nbsp;|</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -35,6 +35,9 @@
           </li>
           <% } %>
           <% }); %>
+          <%if(site.customConfig.talkchoice){%>
+            <li><a href="<%= themeConfig.domain %>/talk">说说</a></li>
+            <%}%>
           <%if(site.customConfig.friendschoice){%>
           <li><a href="<%= themeConfig.domain %>/friends">友链</a></li>
 

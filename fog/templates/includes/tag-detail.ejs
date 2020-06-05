@@ -1,16 +1,61 @@
 <style>
+    @keyframes fade-in {
+        0% {
+            opacity: 0;
+        }
+
+        /*初始状态 透明度为0*/
+        40% {
+            opacity: 0;
+        }
+
+        /*过渡状态 透明度为0*/
+        100% {
+            opacity: 1;
+        }
+
+        /*结束状态 透明度为1*/
+    }
+
+    @-webkit-keyframes fade-in {
+
+        /*针对webkit内核*/
+        0% {
+            opacity: 0;
+        }
+
+        40% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
     .postimage {
         width: 100%;
     }
 
     .tag-container {
         min-height: 100vh;
-        background: white;
+        animation: fade-in;
+        /*动画名称*/
+        animation-duration: 1s;
+        /*动画持续时间*/
+        -webkit-animation: fade-in 1s;
+        /*针对webkit内核*/
     }
 
-    @media screen and (max-width:1300px){
-        .tag-container{
-            margin-top:100px;
+    @media screen and (max-width:1300px) {
+        .tag-container {
+            margin-top: 100px;
+            animation: fade-in;
+            /*动画名称*/
+            animation-duration: 1s;
+            /*动画持续时间*/
+            -webkit-animation: fade-in 1s;
+            /*针对webkit内核*/
         }
     }
 </style>
@@ -41,26 +86,31 @@
         </div>
         <% } else {%>
         <div id="post" style="width:100%">
-        <img src="<%= site.customConfig['postdefaultimage'] %>" class="postimage"
-            onclick="window.location.href= '<%=post.link%>';return false">
+            <%if(site.customConfig.bgchoice=='default'){%>
+            <img src="<%= site.customConfig['postdefaultimage'] %>" class="postimage"
+                onclick="window.location.href= '<%=post.link%>';return false">
+            <%}else{%>
+            <img src="<%= site.customConfig['postdefaultimagelink'] %>" class="postimage"
+                onclick="window.location.href= '<%=post.link%>';return false">
+            <%}%>
         <div class="posttitlebox">
             <div class="posttitle" onclick="window.location.href= '<%=post.link%>';return false">
-                <%= post.title %>
-            </div>
+            <%= post.title %>
         </div>
     </div>
-    <div class="postinfo">
-        <div class="postdate"><i class="fa fa-calendar"></i><%= post.dateFormat %></div>
-        <div class="poststatus postdate"><i class="fa fa-clock-o"></i> <%= post.stats.text %></div>
-        <div class="posttag">
-            <% post.tags.forEach(function(tag) { %>
-            <a href="<%= tag.link %>" class="postlink">
-                <i class="fa fa-tag"></i> <%= tag.name %>
-            </a>
-            <% }); %>
-        </div>
+</div>
+<div class="postinfo">
+    <div class="postdate"><i class="fa fa-calendar"></i><%= post.dateFormat %></div>
+    <div class="poststatus postdate"><i class="fa fa-clock-o"></i> <%= post.stats.text %></div>
+    <div class="posttag">
+        <% post.tags.forEach(function(tag) { %>
+        <a href="<%= tag.link %>" class="postlink">
+            <i class="fa fa-tag"></i> <%= tag.name %>
+        </a>
+        <% }); %>
     </div>
-    <% } %>
+</div>
+<% } %>
 </div>
 <% }); %>
 </div>

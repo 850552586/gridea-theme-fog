@@ -17,7 +17,7 @@
     <div id="friendscontainer">
         <% if (site.customConfig.friendschoice) { %>
         <% site.customConfig.friends.forEach(function(friend) { %>
-        <div class="background" onclick="window.location.href= '<%= friend.siteLink %>';return false">
+        <div class="background" onclick="window.open('<%= friend.siteLink %>');return false">
             <div class="infoForm">
                 <img class="favatar" src="<%= friend.siteLogo %>">
                 <h2><%= friend.siteName %></h2>

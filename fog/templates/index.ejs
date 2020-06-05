@@ -27,7 +27,7 @@
                 </div>
                 <div id="main" class="col-xs-12 col-sm-7">
                     <%- include('./includes/post-list') %>
-                    <div style="background:whitesmoke; ">
+                    <div>
                         <%- include('./includes/pagination') %>
                     </div>
                 </div>
@@ -36,7 +36,12 @@
         </div>
         <div id="bg">
         </div>
+        <div id="bgchoice" style="display: none"><%= site.customConfig.bgchoice%></div>
+        <%if(site.customConfig.bgchoice=='default'){%>
         <div id="bgurl" style="display:none"><%= site.customConfig['bgimage'] %></div>
+        <%} else{%>
+        <div id="bgurl" style="display:none"><%= site.customConfig['bgimagelink'] %></div>
+        <%}%>    
     </div>
     <!-- 响应式布局，针对手机端内容显示 -->
     <div class="nav-small">

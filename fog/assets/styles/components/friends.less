@@ -1,8 +1,22 @@
+@keyframes fade-in {  
+    0% {opacity: 0;}/*初始状态 透明度为0*/  
+    40% {opacity: 0;}/*过渡状态 透明度为0*/  
+    100% {opacity: 1;}/*结束状态 透明度为1*/  
+}  
+@-webkit-keyframes fade-in {/*针对webkit内核*/  
+    0% {opacity: 0;}  
+    40% {opacity: 0;}  
+    100% {opacity: 1;}  
+} 
+
 @media screen and (max-width: 1300px) {
     #friendscontainermobile {
         position: flex;
         min-height: 70vh;
         display: block;
+        animation: fade-in;/*动画名称*/  
+        animation-duration: 1s;/*动画持续时间*/  
+        -webkit-animation:fade-in 1s;/*针对webkit内核*/  
     }
 
     #friendscontainer {
@@ -58,12 +72,16 @@
     #friendscontainer {
         width: 80%;
         min-height: 100vh;
+        animation: fade-in;/*动画名称*/  
+        animation-duration: 1s;/*动画持续时间*/  
+        -webkit-animation:fade-in 1s;/*针对webkit内核*/  
     }
 
     /* ---------------------------------用户信息展示表单 ------------------------------*/
     #friendscontainer .infoForm {
-        width: 100%;
-        height: 100px;
+        float: left;
+        width: 40%;
+        height: 70px;
         margin-top: 20px;
         margin-left: 50px;
         flex-direction: column;
@@ -83,8 +101,8 @@
 
 
     #friendscontainer .favatar {
-        width: 100px;
-        height: 100px;
+        width: 70px;
+        height: 70px;
         overflow: hidden;
         float: left;
         display: inline;
@@ -105,5 +123,8 @@
         font-size:15px;
         margin:0;
         margin-top:5px;
+        white-space:nowrap;
+        overflow: hidden;
+        text-align: center;
     }
 }

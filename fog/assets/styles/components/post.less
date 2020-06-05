@@ -3,7 +3,7 @@
   width: 20%;
   z-index: 101;
   right: 2%;
-  top: 20%;
+  top: 10%;
   text-align: left;
 }
 
@@ -16,9 +16,8 @@
 }
 
 .markdownIt-TOC {
-  margin-left:28%;
+  margin-left: 28%;
   padding-left: 2px;
-  z-index: 9999;
   width: 80%;
 }
 
@@ -44,15 +43,16 @@
   }
 }
 
-.text{
-  padding:20px;
+.text {
+  padding: 20px;
 }
 
 .markdownIt-TOC li ul {
   padding-left: 0%;
 }
+
 code,
-span,{
+span {
   font-size: 13px;
 }
 
@@ -64,7 +64,7 @@ div {
   font-size: 15px;
 }
 
-.text{
+.text {
   line-height: 1.8;
 }
 
@@ -87,24 +87,140 @@ h4 {
 h5 {
   font-size: 15px;
 }
-code{
+
+code {
   overflow: scroll;
 }
 
+.vcomments {
+  z-index: 102;
+}
+
 //-------------------------代码插件
-pre code{
+pre code {
   font-size: 13px;
-  white-space: inherit;//不换行
+  white-space: inherit; //不换行
 }
 
 @media screen and (min-width: 1300px) {
   .commentcontainer {
-      padding: 30px;
+    padding: 30px;
+  }
+
+  //复制代码button
+  .copybt {
+    position: absolute;
+    width: 10%;
+    right: 7%;
+    color: white;
+    /*字体颜色*/
+    background-color: cornflowerblue;
+    /*按钮背景颜色*/
+    border-radius: 3px;
+    /*让按钮变得圆滑一点*/
+    border-width: 0;
+    /*消去按钮丑的边框*/
+    margin: 0;
+    outline: none;
+    /*取消轮廓*/
+    font-family: "Microsoft JhengHei", miranafont, "Hiragino Sans GB", STXihei, "Microsoft YaHei", SimSun, Sans-Serif;
+    text-align: center;
+    /*字体居中*/
+    cursor: pointer;
+  }
+
+  .toggleContainer {
+    position: fixed;
+    right: 16%;
+    bottom: 12%;
+    z-index:100;
+    display: none;
+    cursor: pointer;
+  }
+
+  .toggle {
+    background: black;
+    width: 50px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-radius: 50%;
+  }
+
+  .toggle i {
+    font-size: 25px;
+    color: white;
   }
 }
 
 @media screen and (max-width: 1300px) {
   .commentcontainer {
-      width: 90%;
+    width: 90%;
   }
+
+  //复制代码button
+  .copybt {
+    position: absolute;
+    width: 15%;
+    right: 15%;
+    color: white;
+    /*字体颜色*/
+    background-color: cornflowerblue;
+    /*按钮背景颜色*/
+    border-radius: 3px;
+    /*让按钮变得圆滑一点*/
+    border-width: 0;
+    /*消去按钮丑的边框*/
+    margin: 0;
+    outline: none;
+    /*取消轮廓*/
+    font-family: "Microsoft JhengHei", miranafont, "Hiragino Sans GB", STXihei, "Microsoft YaHei", SimSun, Sans-Serif;
+    text-align: center;
+    /*字体居中*/
+    cursor: pointer;
+  }
+}
+
+/* for block of numbers */
+.hljs-ln-numbers {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+  color: #ccc;
+  vertical-align: top;
+  padding-right: 5px;
+
+  /* your custom style here */
+}
+
+/* for block of code */
+.hljs-ln-code {
+  padding-left: 30px;
+}
+
+
+
+.tvcontainer {
+  position: relative;
+  padding: 30% 45%;
+}
+
+.tv {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+.music {
+  width: 100%;
+  height: 110;
+  border: 0;
+  margin: 0;
 }

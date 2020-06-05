@@ -14,10 +14,11 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/dracula.min.css">
     <%}%>          
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
     <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/live2d.css%>">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
-    <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/bootstrap.min.css%>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
     <title><%- themeConfig.siteName %></title>
 </head>
 
@@ -60,16 +61,26 @@
                 </div>
             </div>
         </div>
+        <div class="toggleContainer">
+            <div class="toggle">
+                <i class="fas fa-angle-double-up"></i>
+            </div>
+        </div>
         <div id="bg">
         </div>
+        <div id="bgchoice" style="display: none"><%= site.customConfig.bgchoice%></div>
+        <%if(site.customConfig.bgchoice=='default'){%>
         <div id="bgurl" style="display:none"><%= site.customConfig['bgimage'] %></div>
+        <%} else{%>
+        <div id="bgurl" style="display:none"><%= site.customConfig['bgimagelink'] %></div>
+        <%}%>   
     </div>
     <!-- 响应式布局，针对手机端内容显示 -->
     <div class="nav-small">
         <%- include('./includes/bar') %>
         <div style="margin-top:30px"></div>
         <%- include('./includes/post-detail') %>
-        <div name="comment" style="background: white">
+        <div name="comment" style="background: white;margin-top:100px">
             <div class="commentcontainer">
                 <%if (site.customConfig.valineID && site.customConfig.valineKey) { %>
                 <%- include('./includes/valinemobile') %>
@@ -92,10 +103,31 @@
         <canvas id="live2d" width="240" height="250" class="live2d"></canvas>
     </div>
 </body>
-<script>
-    hljs.initHighlightingOnLoad()
-</script>
 <script src="<%= themeConfig.domain %>/media/js/post.js%>"></script>
+<script>
+    //寻找所有code标签，加复制按钮鸭！
+    var codes = document.getElementsByTagName('code');
+    if (codes.length) {
+        for (var i = 0; i < codes.length; i++) {
+            var code_id = "code_id_" + i;
+            var btn = document.createElement("button");
+            btn.setAttribute("class", "copybt");
+            btn.setAttribute("data-clipboard-target", "#" + code_id);
+            codes[i].setAttribute("id", code_id);
+            btn.innerHTML = '复制代码';
+            codes[i].parentNode.insertBefore(btn, codes[i]);
+        }
+    };
+    var cop = new ClipboardJS('.copybt');
+    cop.on('success', function (e) {
+        alert("代码复制成功了哦");
+        e.clearSelection();
+    });
+    cop.on('error', function (e) {
+        alert("矮油，复制失败了...手动复制吧勇士！");
+        e.clearSelection();
+    });
+</script>
 <%if (site.customConfig.live2d){ %>
 <script type="text/javascript">
     var message_Path = '/live2d/'
@@ -107,3 +139,17 @@
     loadlive2d("live2d", "<%= themeConfig.domain %>/media/live2d/assets/tororo.model.json%>");
 </script>
 <%}%>
+<script>
+$(function () {
+    $('.toggleContainer').click(function(){$('html,body').animate({scrollTop: '0px'}, 800);});
+	$(window).scroll(function() {
+        var st = $(window).scrollTop();
+        if(st > 30){
+            $(".toggleContainer").fadeIn(400);
+        }else{
+            $(".toggleContainer").fadeOut(100);
+        }
+	});
+});
+
+</script>

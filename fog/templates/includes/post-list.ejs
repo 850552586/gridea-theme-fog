@@ -25,8 +25,13 @@
         </div>
         <% } else {%>
         <div id="post" style="width:100%">
+            <%if(site.customConfig.bgchoice=='default'){%>
             <img src="<%= site.customConfig['postdefaultimage'] %>" class="postimage"
                 onclick="window.location.href= '<%=post.link%>';return false">
+            <%}else{%>
+            <img src="<%= site.customConfig['postdefaultimagelink'] %>" class="postimage"
+                onclick="window.location.href= '<%=post.link%>';return false">  
+            <%}%>
             <div class="posttitlebox">
                 <div class="posttitlewithoutimg" onclick="window.location.href= '<%=post.link%>';return false">
                     <%= post.title %>

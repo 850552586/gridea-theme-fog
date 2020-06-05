@@ -1,9 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-han">
 <style>
+    @keyframes fade-in {
+        0% {
+            opacity: 0;
+        }
+
+        /*初始状态 透明度为0*/
+        40% {
+            opacity: 0;
+        }
+
+        /*过渡状态 透明度为0*/
+        100% {
+            opacity: 1;
+        }
+
+        /*结束状态 透明度为1*/
+    }
+
+    @-webkit-keyframes fade-in {
+
+        /*针对webkit内核*/
+        0% {
+            opacity: 0;
+        }
+
+        40% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
     .tags-container {
         min-height: 100vh;
         background: white;
+        position: absolute;
+        padding-bottom: 70px;
+        animation: fade-in;
+        /*动画名称*/
+        animation-duration: 1s;
+        /*动画持续时间*/
+        -webkit-animation: fade-in 1s;
+        /*针对webkit内核*/
     }
 
     .tagintro {
@@ -59,7 +101,11 @@
                 <div class="side"><%- include('./includes/side') %></div>
                 <div id="main" class="col-xs-12 col-sm-7">
                     <div class="tags-container">
+                        <%if(site.customConfig.bgchoice=='default'){%>
                         <img class="tagsimg" src="<%= site.customConfig['tagimage'] %>" alt="">
+                        <%}else{%>
+                        <img class="tagsimg" src="<%= site.customConfig['tagimagelink'] %>" alt="">
+                        <%}%>
                         <% tags.forEach((tag) => { %>
                         <a class="tag" href="<%= tag.link %>"># <%= tag.name %></a>
                         <% }); %>
@@ -70,7 +116,12 @@
         </div>
         <div id="bg">
         </div>
+        <div id="bgchoice" style="display: none"><%= site.customConfig.bgchoice%></div>
+        <%if(site.customConfig.bgchoice=='default'){%>
         <div id="bgurl" style="display:none"><%= site.customConfig['bgimage'] %></div>
+        <%} else{%>
+        <div id="bgurl" style="display:none"><%= site.customConfig['bgimagelink'] %></div>
+        <%}%>   
     </div>
 
     <!-- 响应式布局，针对手机端内容显示 -->
@@ -78,7 +129,11 @@
         <%- include('./includes/bar') %>
         <div style="margin-top:50px"></div>
         <div class="tags-container">
+            <%if(site.customConfig.bgchoice=='default'){%>
             <img class="tagsimg" src="<%= site.customConfig['tagimage'] %>" alt="">
+            <%}else{%>
+            <img class="tagsimg" src="<%= site.customConfig['tagimagelink'] %>" alt="">
+            <%}%>
             <% tags.forEach((tag) => { %>
             <a class="tag" href="<%= tag.link %>"># <%= tag.name %></a>
             <% }); %>

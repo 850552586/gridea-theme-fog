@@ -55,6 +55,15 @@ const generateOverride = (params = {}) => {
         }
       `
     }
+  
+    //移动端网站描述颜色
+    if (params.appinfoColor && params.appinfoColor !== 'white') {
+      result += `
+        .mobiledescribtion{
+          color: ${params.footinfoColor};
+        }
+      `
+    }
 
   if (params.customCss) {
     result += `

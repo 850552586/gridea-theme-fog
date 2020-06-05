@@ -1,8 +1,15 @@
 <!-- 移动端欢迎页 -->
 <div class="welcome">
+    <div class="avatar-border">
+        <img src="<%= themeConfig.domain %>/images/avatar.png?v=<%= site.utils.now %>" class="avatar">
+    </div>
     <span class="mobiledescribtion"></span>
 </div>
+<%if(site.customConfig.bgchoice=='default'){%>
 <div id="mobilebgurl" style="display:none"><%= site.customConfig['mobilebgimage'] %></div>
+<%}else{%>
+    <div id="mobilebgurl" style="display:none"><%= site.customConfig['mobilebgimagelink'] %></div>
+<%}%>
 <script>
     var welcome = $('.welcome');
     var bgurl = document.getElementById("mobilebgurl").innerHTML;

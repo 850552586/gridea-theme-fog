@@ -22,7 +22,7 @@
                 <div class="side"><%- include('./includes/side') %></div>
                 <div id="main" class="col-xs-12 col-sm-7">
                     <%- include('./includes/tag-detail') %>
-                    <div style="background:white">
+                    <div>
                         <%- include('./includes/pagination') %>
                         <div style="padding-bottom:10%"></div>
                     </div>
@@ -32,7 +32,12 @@
         </div>
         <div id="bg">
         </div>
+        <div id="bgchoice" style="display: none"><%= site.customConfig.bgchoice%></div>
+        <%if(site.customConfig.bgchoice=='default'){%>
         <div id="bgurl" style="display:none"><%= site.customConfig['bgimage'] %></div>
+        <%} else{%>
+        <div id="bgurl" style="display:none"><%= site.customConfig['bgimagelink'] %></div>
+        <%}%>   
     </div>
 
 

@@ -1,9 +1,23 @@
+@keyframes fade-in {  
+    0% {opacity: 0;}/*��ʼ״̬ ͸����Ϊ0*/  
+    40% {opacity: 0;}/*����״̬ ͸����Ϊ0*/  
+    100% {opacity: 1;}/*����״̬ ͸����Ϊ1*/  
+}  
+@-webkit-keyframes fade-in {/*���webkit�ں�*/  
+    0% {opacity: 0;}  
+    40% {opacity: 0;}  
+    100% {opacity: 1;}  
+} 
+
 .allcontent {
     background: white;
     height: auto;
     min-height: 100vh;
     justify-content: left;
     text-align: left;
+    animation: fade-in;/*��������*/  
+    animation-duration: 1s;/*��������ʱ��*/  
+    -webkit-animation:fade-in 1s;/*���webkit�ں�*/  
 }
 
 .text {
@@ -51,6 +65,10 @@
     padding-top: 50px;
 }
 
+.readercount{
+    opacity: 0.7;
+    font-weight: lighter;
+}
 
 
 @media screen and (min-width: 1300px) {
@@ -58,7 +76,6 @@
     .allcontent .postdate,
     .allcontent .poststatus,
     .allcontent .posttag {
-        width: 20%;
         font-size: 15px;
     }
 
@@ -84,5 +101,9 @@
         box-shadow: 2ch;
         width: 100%;
         padding: 0;
+    }
+
+    .readercount{
+        display: none;
     }
 }

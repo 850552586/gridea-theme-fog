@@ -1,5 +1,19 @@
+@keyframes fade-in {  
+    0% {opacity: 0;}/*???? ????0*/  
+    40% {opacity: 0;}/*???? ????0*/  
+    100% {opacity: 1;}/*???? ????1*/  
+}  
+@-webkit-keyframes fade-in {/*??webkit??*/  
+    0% {opacity: 0;}  
+    40% {opacity: 0;}  
+    100% {opacity: 1;}  
+} 
+
 #side{
     height:100vh;
+    animation: fade-in;/*????*/  
+    animation-duration: 1s;/*??????*/  
+    -webkit-animation:fade-in 1s;/*??webkit??*/  
 }
 
 .describtion {
@@ -60,7 +74,7 @@
     width: 250px;
     height: 35px;
     background: #dfe6e9;
-    border-radius: 5px;
+    border-radius: 10px;
     align-items: center;
     justify-content: center;
     display: flex;
@@ -142,7 +156,7 @@ hr {
 
 .menubutton:hover {
     font-size: 1.2em;
-    color: white;
+    color:white;
 }
 
 #footinfo {
@@ -159,6 +173,7 @@ hr {
 
 #sitegotimeDate,
 #sitegotimes {
+    margin-top:2%;
     color: white;
     font-weight: lighter;
     font-size: 12px;
@@ -167,7 +182,7 @@ hr {
 }
 
 .icon {
-    width: 30%;
+    width: 18px;
 }
 
 .search {
@@ -208,8 +223,17 @@ hr {
     border-radius: 10px;
     outline: none;
     font-size: 12px;
-    background: #F9F0DA;
+    background: white;
     color: #9E9C9C;
+    opacity: 0.6;
+}
+
+.search input:hover{
+    opacity: 1;
+}
+
+.search input:focus{
+    opacity: 1;
 }
 
 .search .search-results {
@@ -272,5 +296,30 @@ hr {
     border-radius: 2px;
     cursor: pointer;
     font-size: 12px;
+}
+
+#vistornum{
+    margin-top:1%;
+    color:white;
+}
+
+#busuanzi_value_site_uv{
+  color:lightgreen;
+}
+
+
+@media screen and (max-width: 1300px){
+    .avatar-border{
+        position: absolute;
+        /* margin-bottom: 10%; */
+        top: 30%;
+        width: 120px;
+        height: 120px;
+        margin-top:0;
+    }
+    .avatar{
+        width: 120px;
+        height: 120px;
+    }
 }
 

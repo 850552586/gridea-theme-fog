@@ -64,21 +64,39 @@
     </div>
     <% } %>
     <% }); %>
-    <%if(site.customConfig.friendschoice){%>
+    <%if(site.customConfig.talkchoice){%>
         <div class="mchocie describtion">
-            <a href="<%= themeConfig.domain %>/friends" class="menubutton">友人帐</a>
+            <a href="<%= themeConfig.domain %>/talk" class="menubutton">说说</a>
         </div>
+        <%}%>
+    <%if(site.customConfig.friendschoice){%>
+    <div class="mchocie describtion">
+        <a href="<%= themeConfig.domain %>/friends" class="menubutton">友人帐</a>
+    </div>
     <%}%>
     <hr>
-    <div id="footinfo"><%- themeConfig.footerInfo%> | Theme: <a href="https://github.com/850552586/gridea-theme-fog">Fog</a></div>
+    <div id="footinfo"><%- themeConfig.footerInfo%> | Theme: <a
+        href="https://github.com/850552586/gridea-theme-fog">Fog</a></div>
+    <%if (site.customConfig.sitegotimeChoice){ %>
     <div id="sitegotimeDate">载入天数...</div>
     <div id="sitegotimes">载入时分秒...</div>
     <div id="cussitetime" style="display:none"><%= site.customConfig['sitegotime'] %></div>
+    <%}%>
+    <%if (site.customConfig.sitenumChoice){ %>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <div id="vistornum">
+        <span id="busuanzi_container_site_uv">
+            🎈总访问量:<span id="busuanzi_value_site_pv"></span>&nbsp;&nbsp;|&nbsp;&nbsp;
+            🙍‍访问人数:<span id="busuanzi_value_site_uv"></span>
+        </span>
+    </div>
+    <%}%>
     </div>
 </body>
 
 </html>
 <script src="<%= themeConfig.domain %>/media/js/wordshow.js%>"></script>
+<%if (site.customConfig.sitegotimeChoice){ %>
 <script>
     //----------------------站点运行时间
     var now = new Date();
@@ -108,7 +126,9 @@
         document.getElementById("sitegotimes").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
     }
     setInterval("createtime()", 250);
-
+</script>
+<%}%>
+<script>
     //-------------------------------------------------搜索
     // 获取搜索框、搜索按钮、清空搜索、结果输出对应的元素
     var searchInput = document.querySelector('.search-input');
@@ -132,7 +152,6 @@
             xml = xhr.responseXML;
             arrItems = xml.getElementsByTagName('entry');
             itemLength = arrItems.length;
-            console.log(arrItems);
             // 遍历并保存所有文章对应的标题、链接、内容到对应的数组中
             // 同时过滤掉 HTML 标签
             for (i = 0; i < itemLength; i++) {

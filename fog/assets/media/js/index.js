@@ -2,10 +2,12 @@
         menu = $('.menu');
         side = $('.side');
         main = $('#main');
+        var bgchoice=$('#bgchoice').html();
         var bg = $('#bg');
         var bgurl = document.getElementById("bgurl").innerHTML;
-        for (var i = 0; i < 3; i++)
-            bgurl = bgurl.replace("\\", "/");
+        if(bgchoice=='default')
+            for (var i = 0; i < 3; i++)
+                bgurl = bgurl.replace("\\", "/");
         bg.css("background", "url('" + bgurl + "')");
         postinfo = $('.postinfo');
         postimage = $('.postimage');

@@ -18,66 +18,215 @@
 
 下载完后挑选一个自己喜欢的模型，复制assets文件夹替换到fog\assets\media\live2d路径下的assets文件夹即可。
 
-
-
-## 待更新
-
-挺多想加的功能...待更新吧
-
 # 更新日志
 
 <details>
-<summary><b>version 0.3</b></summary>
+
+<summary><b>version 0.4-最终版</b></summary>
+
 <pre>
+
 <ul>
-- 优化：总体布局
-- 优化：适配了Microsoft edge浏览器
-- 调整：友链页面样式
-- 调整：更换了看板娘模型
+
+\- 调整：valine评论样式
+
+\- 调整：文章大纲样式
+
+\- 调整：友链页面样式
+
+\- 调整：社交按钮大小样式
+
+\- 调整：搜索框样式
+
+\- 调整：博客列表样式（增加了阴影效果
+
+\- 增加：页面淡入淡出加载
+
+\- 增加：自定义配置中背景图加载方式添加了外链方式（不上传图片便可以规避无法保存主题内容的bug，这个bug是由软件产生）
+
+\- 增加：不蒜子统计博客访客
+
+\- 增加：valine统计文章阅读量
+
+\- 增加：网易云音乐外链嵌入样式
+
+\- 增加：bilibili视频外链嵌入样式
+
+\- 增加：文章内代码复制功能
+
+\- 增加：移动端首页显示头像
+
+\- 核心增加：添加了说说功能
+
+\- 增加：valine评论加载qq头像（如果用户添加了qq邮箱
+
+\- 增加：valine评论框内加载今日诗词
+
+\- 修复：修复了文章多个标签标签会加载混乱的Bug
+
+  </ul>
+
+  </pre>
+
+  </details>
+
+ 
+
+ 
+
+ 
+
+<details>
+
+<summary><b>version 0.3</b></summary>
+
+<pre>
+
+<ul>
+
+ 
+
+\- 优化：总体布局
+
+\- 优化：适配了Microsoft edge浏览器
+
+\- 调整：友链页面样式
+
+\- 调整：更换了看板娘模型
+
+  </ul>
+
+  </pre>
+
+  </details>
+
+ 
+
+<details>
+
+<summary><b>version 0.2</b></summary>
+
+<pre>
+
+<ul>
+
+\- 重构移动端界面
+
+\- 添加：移动端首页大图
+
+\- 添加：网站介绍闪烁跳动
+
+\- 添加：看板娘
+
+\- 添加：两款社交按钮（微信+steam）
+
+\- 添加：4款代码块主题风格
+
+\- 调整：分页按钮布局（虽然可能还有点Bug）
+
+\- 调整：社交按钮（并新增微信+steam）
+
+\- 修复：归档页无分页按钮bug
+
+\- 修复：移动端无评论界面的bug
+
+\- 修复：代码块自适应问题
+
+\- 修复：移动端无法加载valine评论系统
+
 </ul>
+
 </pre>
+
 </details>
 
 <details>
-<summary><b>version 0.2</b></summary>
-<pre>
-<ul>
-- 重构移动端界面
-- 添加：移动端首页大图
-- 添加：网站介绍闪烁跳动
-- 添加：看板娘
-- 添加：两款社交按钮（微信+steam）
-- 添加：4款代码块主题风格
-- 调整：分页按钮布局（虽然可能还有点Bug）
-- 调整：社交按钮（并新增微信+steam）
-- 修复：归档页无分页按钮bug
-- 修复：移动端无评论界面的bug
-- 修复：代码块自适应问题
-- 修复：移动端无法加载valine评论系统
-</ul>
-</pre>
-</details>
-&nbsp;
-&nbsp;
-<details>
+
 <summary><b>version 0.1</b></summary>
+
 <pre>
+
 <ul>
-- 添加了博客自定义配置背景大图
-- 侧边栏伸缩滑动
-- 无封面图采用自定义配置图片
-- 4款社交按钮
-- 头像悬浮 旋转功能
-- 暗黑金属系分页按钮-显示当前页面数
-- 站点运行时间统计
-- 浏览文章时加载目录树
-- 浏览器滑动条美化（chrome等）
-- 优先采用valine评论系统
-- 标签云标签随机颜色显示
-- 站内文章标题搜索功能
+
+\- 添加了博客自定义配置背景大图
+
+\- 侧边栏伸缩滑动
+
+\- 无封面图采用自定义配置图片
+
+\- 4款社交按钮
+
+\- 头像悬浮 旋转功能
+
+\- 暗黑金属系分页按钮-显示当前页面数
+
+\- 站点运行时间统计
+
+\- 浏览文章时加载目录树
+
+\- 浏览器滑动条美化（chrome等）
+
+\- 优先采用valine评论系统
+
+\- 标签云标签随机颜色显示
+
+\- 站内文章标题搜索功能
+
 </ul>
+
 </pre>
+
 </details>
+
+&nbsp;
+
+&nbsp;
+
+ 
+
+\### 目前支持的主题自定义目录
+
+&nbsp;
+
+![](https://ericamblog.oss-cn-shanghai.aliyuncs.com/GrideaFog/pz.png)
+
+ 
+
+\## 网易云、bilibili外链使用帮助
+
+**网易云：**
+
+\```
+
+<iframe  class="music" frameborder="no" src="//music.163.com/outchain/player?type=1&id=89680147&auto=0&height=90"></iframe>
+
+\```
+
+直接复制放进文章内就行，通过修改src的值来更换音乐
+
+其中auto=0代表不会自动播放,auto=1代表自动播放。
+
+其他值请不要修改。
+
+**bilibili：**
+
+\```
+
+<div class="tvcontainer">
+
+​                        <iframe class="tv"
+
+​                            src="https://player.bilibili.com/player.html?cid=145147963&aid=84267566&page=1&as_wide=1&high_quality=1&danmaku=0"
+
+​                            frameborder="no" scrolling="no"></iframe>
+
+</div>
+
+\```
+
+通过修改cid来更换视频。
+
+
 
 ## 主题部分截图
 
@@ -109,4 +258,4 @@
 
 ### 目前支持的主题自定义目录
 
-![](https://ericamblog.oss-cn-shanghai.aliyuncs.com/GrideaFog/16.png)
+![](https://ericamblog.oss-cn-shanghai.aliyuncs.com/GrideaFog/pz.png)
