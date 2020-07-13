@@ -67,7 +67,7 @@
             <div class="pagination-container">
                 <% if (pagination.prev) { %>
                 <a href="<%= pagination.prev %>" class="mobile-prevpage">上一页</a>
-                <% } else{%>
+                <% } else if (pagination.next){%>
                     <a href="#" class="mobile-prevpage"></a>
                 <%}%>  
                 <% if (pagination.next) { %>
