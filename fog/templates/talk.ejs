@@ -13,28 +13,6 @@
     <link rel="stylesheet" href="<%= themeConfig.domain %>/styles/main.css">
     <title><%- themeConfig.siteName %></title>
 </head>
-<style>
-@media screen and (max-width: 1300px){
-    #main{
-        padding:5%;
-        width: 90%;
-    }
-    #talkContainer .talk .talkcontent{
-        font-size: 15px;
-    }
-}
-@media screen and (max-width: 425px){
-    #main{
-        margin-left: 10px;
-    }
-    #talkContainer .talk .talkcontent{
-        width: 55%;
-    }
-    .author{
-        display: none;
-    }
-}
-</style>
 
 <body>
     <!-- 响应式布局，针对PC端内容显示 -->
@@ -50,7 +28,7 @@
                     <%- include('./includes/talk-detail') %>
                 </div>
                 <%}else{%>
-                <div id="main" class="col-xs-12 col-sm-7" style="z-index: 999;margin-top:70px">
+                <div id="main" class="col-xs-12 col-sm-7 top" style="z-index: 999;">
                     <%- include('./includes/talk-detail') %>
                 </div>
                 <%}%>
