@@ -4,13 +4,13 @@
 </style>
 
 <body>
-    <div class="allcontent">
+    <div class="allcontent" id="postdetail">
         <div class="postshow">
             <% if (themeConfig.showFeatureImage && post.feature) { %>
             <div class="postdetailimg" style="width:100%;overflow: hidden;display: none">
                 <img src="<%= post.feature%>" class="postimage" style="cursor:auto">
             </div>
-            <div class="postinfo">
+            <div class="postinfo-detail">
                 <div class="postdate"><i class="fa fa-calendar"></i><%= post.dateFormat %></div>
                 <div class="poststatus postdate"><i class="fa fa-clock-o"></i> <%= post.stats.text %></div>
                 <div class="posttag">
@@ -29,7 +29,7 @@
                 <img src="<%= site.customConfig['postdefaultimagelink'] %>" class="postimage">
                 <%}%>
             </div>
-            <div class="postinfo">
+            <div class="postinfo-detail">
                 <div class="postdate"><i class="fa fa-calendar"></i><%= post.dateFormat %></div>
             <div class="poststatus postdate"><i class="fa fa-clock-o"></i> <%= post.stats.text %></div>
             <div class="posttag">

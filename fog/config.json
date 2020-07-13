@@ -3,7 +3,33 @@
   "version": "0.4",
   "author": "Ericam_",
   "repository": "https://github.com/850552586/gridea-theme-fog",
-  "customConfig": [{
+  "customConfig": [ {
+    "name": "live2d",
+    "label": "是否开启看板娘",
+    "group": "布局",
+    "value": true,
+    "type": "switch",
+    "note": ""
+  },
+  {
+    "name": "menuposition",
+    "label": "菜单栏布局",
+    "group": "布局",
+    "value": "left",
+    "type": "select",
+    "options": [
+      {
+        "label": "顶部",
+        "value": "top"
+      },
+      {
+        "label": "左侧",
+        "value": "left"
+      }
+    ],
+    "note": "两种风格"
+  },
+    {
       "name": "sitenameColor",
       "group": "颜色",
       "value": "antiquewhite",
@@ -82,6 +108,14 @@
       "value": false,
       "type": "switch",
       "note": "不蒜子会影响网页加载速度，请慎重考虑！"
+    },
+    {
+      "name": "recordText",
+      "label": "备案信息",
+      "group": "统计",
+      "value": "Copyright © 2020  备案号: 鄂ICP备...号",
+      "type": "input",
+      "note": "填写网站备案号，如无则空着即可"
     },
     {
       "name": "valineID",
@@ -242,17 +276,9 @@
       "note": "本地上传"
     },
     {
-      "name": "live2d",
-      "label": "是否开启看板娘",
-      "group": "看板娘",
-      "value": true,
-      "type": "switch",
-      "note": ""
-    },
-    {
       "name": "codetheme",
       "label": "代码主题",
-      "group": "代码主题",
+      "group": "代码",
       "value": "default",
       "type": "select",
       "options": [
@@ -273,6 +299,22 @@
           "value": "dracula"
         }
       ]
+    },
+    {
+      "name": "codeCopyText",
+      "label": "复制代码-提示文字",
+      "group": "代码",
+      "value": "代码复制成功了哦",
+      "type": "input",
+      "note": "点击代码框内复制代码按钮时弹出的提示文字"
+    },
+    {
+      "name": "Mathchoice",
+      "label": "是否开启数学公式",
+      "group": "代码",
+      "value": false,
+      "type": "switch",
+      "note": "开启后支持数学公式（影响博客加载速度）"
     },
     {
       "name": "friendschoice",

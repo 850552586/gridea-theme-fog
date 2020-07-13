@@ -1,14 +1,11 @@
-<html>
-
 <head>
-    <link rel="stylesheet" href="<%= themeConfig.domain %>/styles/main.css">
     <meta name="description" content="<%- site.customConfig.metaDescription || themeConfig.siteDescription %>" />
-    <title>Document</title>
+    <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/bootstrap.min.css%>">
 </head>
-<style>
-</style>
+
 
 <body>
+    <%if(site.customConfig.menuposition=='left'){%>
     <div id=side>
         <div class="avatar-border">
             <img src="<%= themeConfig.domain %>/images/avatar.png?v=<%= site.utils.now %>" class="avatar">
@@ -65,10 +62,10 @@
     <% } %>
     <% }); %>
     <%if(site.customConfig.talkchoice){%>
-        <div class="mchocie describtion">
-            <a href="<%= themeConfig.domain %>/talk" class="menubutton">说说</a>
-        </div>
-        <%}%>
+    <div class="mchocie describtion">
+        <a href="<%= themeConfig.domain %>/talk" class="menubutton">说说</a>
+    </div>
+    <%}%>
     <%if(site.customConfig.friendschoice){%>
     <div class="mchocie describtion">
         <a href="<%= themeConfig.domain %>/friends" class="menubutton">友人帐</a>
@@ -90,44 +87,142 @@
             🙍‍访问人数:<span id="busuanzi_value_site_uv"></span>
         </span>
     </div>
+    <div style="color:white"><%= site.customConfig.recordText %></div>
     <%}%>
     </div>
-</body>
 
-</html>
+
 <script src="<%= themeConfig.domain %>/media/js/wordshow.js%>"></script>
-<%if (site.customConfig.sitegotimeChoice){ %>
-<script>
-    //----------------------站点运行时间
-    var now = new Date();
+    <%if (site.customConfig.sitegotimeChoice){ %>
+    <script>
+        //----------------------站点运行时间
+        var now = new Date();
 
-    function createtime() {
-        var sitegotime = document.getElementById("cussitetime").innerHTML + " 00:00:00";
-        var grt = new Date(sitegotime); //此处修改你的建站时间或者网站上线时间 
-        now.setTime(now.getTime() + 250);
-        days = (now - grt) / 1000 / 60 / 60 / 24;
-        dnum = Math.floor(days);
-        hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
-        hnum = Math.floor(hours);
-        if (String(hnum).length == 1) {
-            hnum = "0" + hnum;
+        function createtime() {
+            var sitegotime = document.getElementById("cussitetime").innerHTML + " 00:00:00";
+            var grt = new Date(sitegotime); //此处修改你的建站时间或者网站上线时间 
+            now.setTime(now.getTime() + 250);
+            days = (now - grt) / 1000 / 60 / 60 / 24;
+            dnum = Math.floor(days);
+            hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+            hnum = Math.floor(hours);
+            if (String(hnum).length == 1) {
+                hnum = "0" + hnum;
+            }
+            minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+            mnum = Math.floor(minutes);
+            if (String(mnum).length == 1) {
+                mnum = "0" + mnum;
+            }
+            seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+            snum = Math.round(seconds);
+            if (String(snum).length == 1) {
+                snum = "0" + snum;
+            }
+            document.getElementById("sitegotimeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
+            document.getElementById("sitegotimes").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
         }
-        minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
-        mnum = Math.floor(minutes);
-        if (String(mnum).length == 1) {
-            mnum = "0" + mnum;
-        }
-        seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
-        snum = Math.round(seconds);
-        if (String(snum).length == 1) {
-            snum = "0" + snum;
-        }
-        document.getElementById("sitegotimeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
-        document.getElementById("sitegotimes").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
-    }
-    setInterval("createtime()", 250);
-</script>
+        setInterval("createtime()", 250);
+    </script>
+    <%}%>
 <%}%>
+
+
+
+    <%if(site.customConfig.menuposition=='top'){%>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="<%= themeConfig.domain %>"
+                    style="font-size:21px"><%=themeConfig.siteName%>&nbsp;&nbsp;|&nbsp;&nbsp;</a>
+                <a class="navbar-brand" href=""
+                    style="font-size:15px;font-family:kaiti"><%- themeConfig.siteDescription %></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse">
+                <%if (site.customConfig.search){ %>
+                <div class="search nav navbar-nav" style="margin-top:8px">
+                    <!-- <input type="text" class="search-input" placeholder="标题搜索(●'◡'●)" /> -->
+                    <input type="text" class="search-input" placeholder="<%= site.customConfig['searchplaceholder'] %>">
+                    <div class="search-results"></div>
+                </div>
+                <%}%>
+                <div class="search nav navbar-nav">
+                <a title="text" onclick="document.getElementById('socialMenu').style.display='block'"><i><img class="social"
+                    src="<%= themeConfig.domain %>/media/images/social.png%>" alt=""></i></a>
+            </div>
+            <ul class="nav navbar-nav" style="float: right;margin-right:5%">
+                <% menus.forEach(function(menu) { %>
+                <% if (menu.openType === 'External') { %>
+                <li><a href="<%= menu.link %>" target="_blank" style="color:white">
+                        <%= menu.name %>
+                    </a></li>
+                <% } else { %>
+                <li>
+                    <a href="<%= menu.link %>" style="color:white">
+                        <%= menu.name %>
+                    </a>
+                </li>
+                <% } %>
+                <% }); %>
+                <%if(site.customConfig.talkchoice){%>
+                <li><a href="<%= themeConfig.domain %>/talk" style="color:white;">说说</a></li>
+                <%}%>
+                  <%if(site.customConfig.friendschoice){%>
+                <li><a href="<%= themeConfig.domain %>/friends" style="color:white">友链</a></li>
+                <%}%>
+                  <li><img src="<%= themeConfig.domain %>/images/avatar.png?v=<%= site.utils.now %>" alt=""
+                class="menutopavatar"></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <div id="socialMenu" class="modal">
+        <div class="animate">
+            <div class="socialContainer">
+                <% if (site.customConfig['github']) { %>
+                <a href="<%= site.customConfig['github'] %>" target="_blank"><i><img class="icon"
+                            src="<%= themeConfig.domain %>/media/images/github.png%>" alt=""></i></a>
+                <% } %>
+                <% if (site.customConfig['QQ']) { %>
+                <a onclick="showqq()" style="cursor:pointer"><i><img class="icon" src="<%= themeConfig.domain %>/media/images/QQ.png%>"
+                            alt=""></i></a>
+                <% } %>
+                <% if (site.customConfig['zhihu']) { %>
+                <a href="<%= site.customConfig['zhihu'] %>" target="_blank"><i><img class="icon"
+                            src="<%= themeConfig.domain %>/media/images/zh.png%>" alt=""></i></a>
+                <% } %>
+                <% if (site.customConfig['bilibili']) { %>
+                <a href="<%= site.customConfig['bilibili'] %>" target="_blank"><i><img class="icon"
+                            src="<%= themeConfig.domain %>/media/images/bilibili.png%>" alt=""></i></a>
+                <% } %>
+                <% if (site.customConfig['wechat']) { %>
+                <a href="<%= site.customConfig['wechat'] %>" target="_blank"><i><img class="icon"
+                            src="<%= themeConfig.domain %>/media/images/wechat.png%>" alt=""></i></a>
+                <% } %>
+                <% if (site.customConfig['steam']) { %>
+                <a href="<%= site.customConfig['steam'] %>" target="_blank"><i><img class="icon"
+                            src="<%= themeConfig.domain %>/media/images/steam.png%>" alt=""></i></a>
+                <% } %>
+            </div>
+            <div id="qq" style="display:none"><%= site.customConfig['QQ'] %></div>
+        </div>
+    </div>
+    <!-- 引入jQuery核心js文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+    <script>
+        var social = document.getElementById('socialMenu');
+        // 鼠标点击模型外区域关闭登录框
+        window.onclick = function (event) {
+            if (event.target == social) {
+                social.style.display = "none";
+            }
+        }
+    </script>
+    <%}%>
+</body>
 <script>
     //-------------------------------------------------搜索
     // 获取搜索框、搜索按钮、清空搜索、结果输出对应的元素

@@ -11,6 +11,7 @@
 <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
 <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/bootstrap.min.css%>">
 <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/live2d.css%>">
+<link rel="stylesheet" href="<%= themeConfig.domain %>/styles/main.css">
 <title>标签-<%- themeConfig.siteName %></title>
 
 
@@ -59,19 +60,32 @@
         <div class="message" style="opacity:0"></div>
         <canvas id="live2d" width="240" height="250" class="live2d"></canvas>
     </div>
+    <div id="domainname" style="display:none"><%= themeConfig.domain %></div>
 </body>
 
 </html>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
-<script src="<%= themeConfig.domain %>/media/js/index.js%>"></script>
 <%if (site.customConfig.live2d){ %>
 <script type="text/javascript">
     var message_Path = '/live2d/'
-    var home_Path = 'http://ericam.top/' //此处修改为你的域名，必须带斜杠
+    var home_Path = document.getElementById("domainname").innerHTML+"/"; //此处修改为你的域名，必须带斜杠
 </script>
 <script type="text/javascript" src="<%= themeConfig.domain %>/media/live2d/js/live2d.js%>"></script>
 <script type="text/javascript" src="<%= themeConfig.domain %>/media/live2d/js/message.js%>"></script>
 <script type="text/javascript">
     loadlive2d("live2d", "<%= themeConfig.domain %>/media/live2d/assets/tororo.model.json%>");
 </script>
+<%}%>
+
+<script>
+        var bgchoice=$('#bgchoice').html();
+        var bg = $('#bg');
+        var bgurl = document.getElementById("bgurl").innerHTML;
+        if(bgchoice=='default')
+            for (var i = 0; i < 3; i++)
+                bgurl = bgurl.replace("\\", "/");
+        bg.css("background", "url('" + bgurl + "')");
+</script>
+<%if (site.customConfig.menuposition=='left'){ %>
+    <script src="<%= themeConfig.domain %>/media/js/index.js%>"></script>
 <%}%>

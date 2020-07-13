@@ -131,7 +131,7 @@
     .side {
         position: fixed;
         width: 25%;
-        z-index: 100;
+        z-index: 1000;
         justify-content: center;
     }
 
@@ -179,9 +179,10 @@
 
 
 @media screen and (max-width: 1300px) {
-    #landlord{
+    #landlord {
         display: none;
     }
+
     .nav-large {
         display: none;
     }
@@ -192,22 +193,28 @@
 
     .pagination-container {
         margin-top: 30px;
+        display: flex;
     }
 
     .pagination-container a {
-        width: auto;
-        border: solid;
+        width: 50%;
+        border: solid grey;
         color: black;
-        border-radius: 5px;
         padding-top: 5px;
         padding-bottom: 5px;
-        padding-left: 7%;
-        padding-right: 7%;
-        margin: 20px;
+        padding-left: 20%;
+        background: #4AC29A;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #BDFFF3, #4AC29A);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #BDFFF3, #4AC29A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        font-weight: bold;
     }
 
     .pagination-container .mobile-nextpage {
-        float: right;
+        border-radius: 0 5px 5px 0;
+    }
+
+    .pagination-container .mobile-prevpage {
+        border-radius: 5 0px 0px 5px;
     }
 
     .tag {

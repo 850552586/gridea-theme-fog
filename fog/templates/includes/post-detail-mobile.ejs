@@ -6,7 +6,7 @@
             <% if (themeConfig.showFeatureImage && post.feature) { %>
             <img src="<%= post.feature%>" class="postimage" style="cursor:auto">
 
-            <div class="postinfo">
+            <div class="postinfo-detail">
                 <div class="postdate"><i class="fa fa-calendar"></i><%= post.dateFormat %></div>
                 <div class="poststatus postdate"><i class="fa fa-clock-o"></i> <%= post.stats.text %></div>
                 <div class="posttag">
@@ -19,7 +19,7 @@
             </div>
             <% } else {%>
             <img src="<%= site.customConfig['postdefaultimage'] %>" class="postimage">
-            <div class="postinfo">
+            <div class="postinfo-detail">
                 <div class="postdate"><i class="fa fa-calendar"></i><%= post.dateFormat %></div>
                 <div class="poststatus postdate"><i class="fa fa-clock-o"></i> <%= post.stats.text %></div>
                 <div class="posttag">

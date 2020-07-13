@@ -1,6 +1,7 @@
 <head>
     <script src='<%= themeConfig.domain %>/media/js/valine.min.js%>'></script>
     <script src="<%= themeConfig.domain %>/media/js/jquery.min.js%>"></script>
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
 </head>
 <style>
     @media screen and (min-width: 1300px) {
@@ -48,7 +49,7 @@
     </script>
 </body>
 
-<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+
 <script type="text/javascript">
     jinrishici.load(function (result) {
         var jrsc_plac = result.data.content + "\n「" + result.data.origin.title + "」" + result.data.origin

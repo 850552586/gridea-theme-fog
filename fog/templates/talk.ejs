@@ -10,10 +10,30 @@
     <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/bootstrap.min.css%>">
     <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/live2d.css%>">
     <meta name="description" content="<%- site.customConfig.metaDescription || themeConfig.siteDescription %>" />
+    <link rel="stylesheet" href="<%= themeConfig.domain %>/styles/main.css">
     <title><%- themeConfig.siteName %></title>
 </head>
 <style>
-
+@media screen and (max-width: 1300px){
+    #main{
+        padding:5%;
+        width: 90%;
+    }
+    #talkContainer .talk .talkcontent{
+        font-size: 15px;
+    }
+}
+@media screen and (max-width: 425px){
+    #main{
+        margin-left: 10px;
+    }
+    #talkContainer .talk .talkcontent{
+        width: 55%;
+    }
+    .author{
+        display: none;
+    }
+}
 </style>
 
 <body>
@@ -25,37 +45,57 @@
                 <div class="tbar"> <%- include('./includes/bar') %>
                     <div style="margin-top:60px"></div>
                 </div>
+                <%if(site.customConfig.menuposition=='left'){%>
                 <div id="main" class="col-xs-12 col-sm-7" style="z-index: 999;">
                     <%- include('./includes/talk-detail') %>
                 </div>
+                <%}else{%>
+                <div id="main" class="col-xs-12 col-sm-7" style="z-index: 999;margin-top:70px">
+                    <%- include('./includes/talk-detail') %>
+                </div>
+                <%}%>
                 <div class="col-xs-6 col-sm-2"></div>
             </div>
         </div>
         <div id="bg">
         </div>
-        <div id="bgchoice" style="display: none"><%= site.customConfig.bgchoice%></div>
-        <%if(site.customConfig.bgchoice=='default'){%>
-        <div id="bgurl" style="display:none"><%= site.customConfig['bgimage'] %></div>
-        <%} else{%>
-        <div id="bgurl" style="display:none"><%= site.customConfig['bgimagelink'] %></div>
-        <%}%>   
+        <div id="bgchoice" style="display: none"><%= site.customConfig.bgchoice%>
+            </div>
+            <%if(site.customConfig.bgchoice=='default'){%>
+            <div id="bgurl" style="display:none"><%= site.customConfig['bgimage'] %></div>
+            <%} else{%>
+            <div id="bgurl" style="display:none"><%= site.customConfig['bgimagelink'] %></div>
+            <%}%>   
     </div>
     <div id="landlord">
         <div class="message" style="opacity:0"></div>
         <canvas id="live2d" width="240" height="250" class="live2d"></canvas>
     </div>
+    <div id="domainname" style="display:none"><%= themeConfig.domain %></div>
 </body>
 
 </html>
-<script src="<%= themeConfig.domain %>/media/js/index.js%>"></script>
         <%if (site.customConfig.live2d){ %>
-        <script type="text/javascript">
-            var message_Path = '/live2d/'
-            var home_Path = 'http://ericam.top/' //此处修改为你的域名，必须带斜杠
-        </script>
-        <script type="text/javascript" src="<%= themeConfig.domain %>/media/live2d/js/live2d.js%>"></script>
-        <script type="text/javascript" src="<%= themeConfig.domain %>/media/live2d/js/message.js%>"></script>
-        <script type="text/javascript">
-            loadlive2d("live2d", "<%= themeConfig.domain %>/media/live2d/assets/tororo.model.json%>");
-        </script>
-        <%}%>
+            <script type="text/javascript">
+                var message_Path = '/live2d/'
+                var home_Path = document.getElementById("domainname").innerHTML+"/"; //此处修改为你的域名，必须带斜杠
+            </script>
+            <script type="text/javascript" src="<%= themeConfig.domain %>/media/live2d/js/live2d.js%>"></script>
+            <script type="text/javascript" src="<%= themeConfig.domain %>/media/live2d/js/message.js%>"></script>
+            <script type="text/javascript">
+                loadlive2d("live2d", "<%= themeConfig.domain %>/media/live2d/assets/tororo.model.json%>");
+            </script>
+            <%}%>
+
+<script>
+        var bgchoice=$('#bgchoice').html();
+        var bg = $('#bg');
+        var bgurl = document.getElementById("bgurl").innerHTML;
+        if(bgchoice=='default')
+            for (var i = 0; i < 3; i++)
+                bgurl = bgurl.replace("\\", "/");
+        bg.css("background", "url('" + bgurl + "')");
+</script>
+<%if (site.customConfig.menuposition=='left'){ %>
+            <script src="<%= themeConfig.domain %>/media/js/index.js%>"></script>
+            <%}%>

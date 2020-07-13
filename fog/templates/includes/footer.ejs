@@ -1,0 +1,63 @@
+<style>
+ .copyright{
+    font-size: 15px;
+    color: #d9d9d9;
+ }
+</style>
+<body>
+    <div style="width:100%;height:130px;padding:15px">
+        <%if (site.customConfig.sitenumChoice){ %>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <div id="vistornum" style="margin:0">
+            <span id="busuanzi_container_site_uv">
+                🎈总访问量:<span id="busuanzi_value_site_pv"></span>&nbsp;&nbsp;|&nbsp;&nbsp;
+                🙍‍访问人数:<span id="busuanzi_value_site_uv"></span>
+            </span>
+        </div>
+        <%}%>
+
+        <%if (site.customConfig.sitegotimeChoice){ %>
+        <div id="sitegotimeDate">载入天数...</div>
+        <div id="sitegotimes">载入时分秒...</div>
+        <div id="cussitetime" style="display:none"><%= site.customConfig['sitegotime'] %></div>
+        <%}%>
+        <div id="footinfo"><%- themeConfig.footerInfo%> | Theme: <a
+            href="https://github.com/850552586/gridea-theme-fog">Fog</a>
+    </div>
+    <div class="copyright">
+        <%= site.customConfig.recordText %>
+    </div>
+    </div>
+</body>
+<%if (site.customConfig.sitegotimeChoice){ %>
+<script>
+    //----------------------站点运行时间
+    var now = new Date();
+
+    function createtime() {
+        var sitegotime = document.getElementById("cussitetime").innerHTML + " 00:00:00";
+        var grt = new Date(sitegotime); //此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime() + 250);
+        days = (now - grt) / 1000 / 60 / 60 / 24;
+        dnum = Math.floor(days);
+        hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+        hnum = Math.floor(hours);
+        if (String(hnum).length == 1) {
+            hnum = "0" + hnum;
+        }
+        minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes);
+        if (String(mnum).length == 1) {
+            mnum = "0" + mnum;
+        }
+        seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds);
+        if (String(snum).length == 1) {
+            snum = "0" + snum;
+        }
+        document.getElementById("sitegotimeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
+        document.getElementById("sitegotimes").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+    setInterval("createtime()", 250);
+</script>
+<%}%>
