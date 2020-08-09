@@ -100,7 +100,7 @@
 
         function createtime() {
             var sitegotime = document.getElementById("cussitetime").innerHTML + " 00:00:00";
-            var grt = new Date(sitegotime); //此处修改你的建站时间或者网站上线时间 
+            var grt = new Date(sitegotime); //此处修改你的建站时间或者网站上线时间
             now.setTime(now.getTime() + 250);
             days = (now - grt) / 1000 / 60 / 60 / 24;
             dnum = Math.floor(days);
@@ -348,7 +348,7 @@
     function showqq() {
         var qq = document.getElementById("qq").innerHTML;
         if (qq != '')
-            alert("博主的QQ联系方式为：" + qq);
+            window.location.href = "tencent://message/?uin=" + qq + "&Site=&Menu=yes";
         else
             alert("博主暂未设置QQ联系方式");
     }
