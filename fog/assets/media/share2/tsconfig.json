@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "target": "es5",
+    "module": "es2015",
+    "lib": [
+      "es5",
+      "es2015",
+      "es2016",
+      "es2017",
+      "dom"
+    ],
+    "strict": true,
+    "allowJs": true,
+    "sourceMap": true,
+    "declaration": true,
+    "declarationDir": "types",
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "resolveJsonModule": true,
+    "keyofStringsOnly": true,
+    "noImplicitAny": false,
+    "types": [
+      "@types/node"
+    ],
+    "typeRoots": [
+      "src/interface"
+    ]
+  },
+  "include": [
+    "./src/**/*"
+  ],
+  "exclude": [
+    "./src/utils/qrcode.js"
+  ]
+}

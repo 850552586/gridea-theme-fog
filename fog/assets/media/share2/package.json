@@ -1,0 +1,57 @@
+{
+  "_from": "share2",
+  "_id": "share2@0.0.4",
+  "_inBundle": false,
+  "_integrity": "sha1-SSxEV0t5McSdM9TIjP/2AerDzI4=",
+  "_location": "/share2",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "share2",
+    "name": "share2",
+    "escapedName": "share2",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npm.taobao.org/share2/download/share2-0.0.4.tgz",
+  "_shasum": "492c44574b7931c49d33d4c88cfff601eac3cc8e",
+  "_spec": "share2",
+  "_where": "E:\\X2\\MyBlog\\themes\\fog",
+  "author": {
+    "name": "oliver_m",
+    "email": "18364076997@163.com"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "qrcodejs2": "^0.0.2"
+  },
+  "deprecated": false,
+  "description": "一键分享到微博、QQ空间、QQ好友、微信、腾讯微博、豆瓣、Facebook、Twitter、Linkedin、Google+、点点等,仅46k,包含样式与图标，无需繁杂的引入",
+  "devDependencies": {
+    "rollup": "^1.27.7",
+    "rollup-plugin-buble": "^0.19.8",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-less": "^1.1.2",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-typescript2": "^0.25.3",
+    "rollup-plugin-uglify": "^6.0.3",
+    "tslib": "^1.10.0",
+    "typescript": "^3.7.2"
+  },
+  "homepage": "https://github.com/maopixin/share",
+  "license": "MIT",
+  "main": "dist/Share.js",
+  "name": "share2",
+  "scripts": {
+    "build": "NODE_ENV=production node_modules/.bin/rollup -c build/rollup.config.prod.js",
+    "dev": "NODE_ENV=develop node_modules/.bin/rollup -w -c build/rollup.config.dev.js",
+    "start": "NODE_ENV=develop node_modules/.bin/rollup -w -c build/rollup.config.dev.js"
+  },
+  "version": "0.0.4"
+}
