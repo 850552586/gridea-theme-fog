@@ -48,17 +48,21 @@
     </div>
     <%if(site.customConfig.menuposition=='top'){%>
                 <%- include('./includes/footer') %>
-                <%}%>
+    <%}%>
+    <%if(site.customConfig.aplayerchoice){%>
+        <%- include('./includes/aplayer') %>
+    <%}%>
     </div>
     <div id="bg">
     </div>
     <div id="bgchoice" style="display: none"><%= site.customConfig.bgchoice%>
-            </div>
+    </div>
             <%if(site.customConfig.bgchoice=='default'){%>
             <div id="bgurl" style="display:none"><%= site.customConfig['bgimage'] %></div>
             <%} else{%>
             <div id="bgurl" style="display:none"><%= site.customConfig['bgimagelink'] %></div>
-            <%}%>  
+            <%}%> 
+
     <!-- 响应式布局，针对手机端内容显示 -->
     <div class="nav-small">
             <%- include('./includes/bar') %>
@@ -74,7 +78,6 @@
                 <a href="<%= pagination.next %>" class="mobile-nextpage">下一页</a>
                 <% } %>
             </div>
-            <div style="margin-bottom:60px">&nbsp;</div>
         </div>
 
         <div id="landlord">

@@ -1,18 +1,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="<%- post.description %>"/>
-    <meta name="keywords" content="<%- post.tags.map(tag => tag.name).join(',') %>"/>
+    <meta name="description" content="<%- post.description %>" />
+    <meta name="keywords" content="<%- post.tags.map(tag => tag.name).join(',') %>" />
     <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/bootstrap.min.css%>">
     <link rel="stylesheet" href="<%= themeConfig.domain %>/styles/main.css">
     <% if(site.customConfig.codetheme == 'default'){ %>
-        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/default.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/default.min.css">
     <% }else if(site.customConfig.codetheme == 'vs2015'){ %>
-        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/vs2015.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/vs2015.min.css">
     <% }else if(site.customConfig.codetheme == 'rainbow'){ %>
-        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/rainbow.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/rainbow.min.css">
     <% }else{ %>
-        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/dracula.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/dracula.min.css">
     <% } %>
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
     <script src="<%= themeConfig.domain %>/media/js/clipboard.min.js%>"></script>
@@ -22,69 +22,71 @@
     <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.1/css/all.min.css" rel="stylesheet">
     <!-- 数学公式 -->
     <% if (site.customConfig.Mathchoice){ %>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/katex.min.css"
-              integrity="sha384-9tPv11A+glH/on/wEu99NVwDPwkMQESOocs/ZGXPoIiLE8MU/qkqUcZ3zzL+6DuH"
-              crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/katex.min.js"
-                integrity="sha384-U8Vrjwb8fuHMt6ewaCy8uqeUXv4oitYACKdB0VziCerzt011iQ/0TqlSlv8MReCm"
-                crossorigin="anonymous">
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/contrib/auto-render.min.js"
-                integrity="sha384-aGfk5kvhIq5x1x5YdvCp4upKZYnA8ckafviDpmWEKp4afOZEqOli7gqSnh8I6enH"
-                crossorigin="anonymous">
-        </script>
-        <script>
-            renderMathInElement(document.body, {
-                delimiters: [{
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/katex.min.css"
+        integrity="sha384-9tPv11A+glH/on/wEu99NVwDPwkMQESOocs/ZGXPoIiLE8MU/qkqUcZ3zzL+6DuH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/katex.min.js"
+        integrity="sha384-U8Vrjwb8fuHMt6ewaCy8uqeUXv4oitYACKdB0VziCerzt011iQ/0TqlSlv8MReCm" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/contrib/auto-render.min.js"
+        integrity="sha384-aGfk5kvhIq5x1x5YdvCp4upKZYnA8ckafviDpmWEKp4afOZEqOli7gqSnh8I6enH" crossorigin="anonymous">
+    </script>
+    <script>
+        renderMathInElement(document.body, {
+            delimiters: [{
                     left: "$$",
                     right: "$$",
                     display: true
                 },
-                    {
-                        left: "$",
-                        right: "$",
-                        display: false
-                    }
-                ]
-            });
-        </script>
+                {
+                    left: "$",
+                    right: "$",
+                    display: false
+                }
+            ]
+        });
+    </script>
 
     <% } %>
     <title><%- themeConfig.siteName %></title>
     <% if(site.customConfig.menuposition == 'left'){ %>
-        <style>
-            .markdownIt-TOC {
-                margin-left: 28%;
-                padding-left: 2px;
-                width: 80%;
-            }
+    <style>
+        .markdownIt-TOC {
+            margin-left: 28%;
+            padding-left: 2px;
+            width: 80%;
+        }
 
-            .markdownIt-TOC li {
-                padding-left: 8%;
-            }
-
-        </style>
+        .markdownIt-TOC li {
+            padding-left: 8%;
+        }
+    </style>
     <% }else{ %>
-        <style>
-            .markdownIt-TOC {
-                padding-left: 2px;
-                width: 100%;
-            }
+    <style>
+        .markdownIt-TOC {
+            padding-left: 2px;
+            width: 100%;
+        }
 
-            .markdownIt-TOC li {
-                padding-left: 2%;
-            }
-        </style>
+        .markdownIt-TOC li {
+            padding-left: 2%;
+        }
+    </style>
     <% } %>
 </head>
 
 <body>
-<!-- 响应式布局，针对PC端内容显示 -->
-<div id="content">
-    <div class="nav-large">
-        <div class="row">
-            <div class="side"><%- include('./includes/side') %></div>
-            <% if(site.customConfig.menuposition == 'left'){ %>
+    <div id="landlord">
+        <div class="message" style="opacity:0"></div>
+        <canvas id="live2d" width="240" height="250" class="live2d"></canvas>
+    </div>
+    <div id="codeCopyText" style="display: none"><%= site.customConfig.codeCopyText %></div>
+    <div id="domainname" style="display:none"><%= themeConfig.domain %></div>
+    <!-- 响应式布局，针对PC端内容显示 -->
+    <div id="content">
+        <div class="nav-large">
+            <div class="row">
+                <div class="side"><%- include('./includes/side') %></div>
+                <% if(site.customConfig.menuposition == 'left'){ %>
                 <div id="tab1" class="tab">
                     <div class="bars">
                         <span></span>
@@ -95,58 +97,55 @@
                 </div>
                 <div id="main" class="col-xs-12 col-sm-7">
                     <%- include('./includes/post-detail') %>
-                    <div style="background: white;">分享</div>
-                    <div class="share" style="height:30px;background: white;">
-
-                    </div>
-                    <div name="comment" style="background: white">
-                        <div class="commentcontainer">
-                            <% if (site.customConfig.valineID && site.customConfig.valineKey) { %>
-                                <%- include('./includes/valine') %>
-                                <div class="clear"></div>
-                            <% }else if ( typeof commentSetting !== 'undefined' && commentSetting.showComment) { %>
-                                <% if (commentSetting.commentPlatform === 'gitalk') { %>
-                                    <%- include('./includes/gitalk') %>
-                                <% } %>
-                                <% if (commentSetting.commentPlatform === 'disqus') { %>
-                                    <%- include('./includes/disqus') %>
-                                <% } %>
-                            <% }else { %>
-                                <p>请到客户端“主题--自定义配置--valine”中填入ID和KEY</p>
-                            <% } %>
-                        </div>
+                </div>
+                <div id="comment" style="background: white">
+                    <div class="commentcontainer">
+                        <% if (site.customConfig.valineID && site.customConfig.valineKey) { %>
+                        <%- include('./includes/valine') %>
+                        <div class="clear"></div>
+                        <% }else if ( typeof commentSetting !== 'undefined' && commentSetting.showComment) { %>
+                        <% if (commentSetting.commentPlatform === 'gitalk') { %>
+                        <%- include('./includes/gitalk') %>
+                        <% } %>
+                        <% if (commentSetting.commentPlatform === 'disqus') { %>
+                        <%- include('./includes/disqus') %>
+                        <% } %>
+                        <% }else { %>
+                        <p>请到客户端“主题--自定义配置--valine”中填入ID和KEY</p>
+                        <% } %>
                     </div>
                 </div>
-            <% }else{ %>
-                <div id="main" class="col-xs-12 col-sm-7" style="width:50%;margin-top:50px;left:27%">
-                    <%- include('./includes/post-detail') %>
-                    <div style="background: white;">分享</div>
-                    <div class="share" style="height:30px;background: white;">
-
-                    </div>
-                    <div name="comment" style="background: white">
-                        <div class="commentcontainer">
-                            <% if (site.customConfig.valineID && site.customConfig.valineKey) { %>
-                                <%- include('./includes/valine') %>
-                                <div class="clear"></div>
-                            <% }else if ( typeof commentSetting !== 'undefined' && commentSetting.showComment) { %>
-                                <% if (commentSetting.commentPlatform === 'gitalk') { %>
-                                    <%- include('./includes/gitalk') %>
-                                <% } %>
-                                <% if (commentSetting.commentPlatform === 'disqus') { %>
-                                    <%- include('./includes/disqus') %>
-                                <% } %>
-                            <% }else { %>
-                                <p>请到客户端“主题--自定义配置--valine”中填入ID和KEY</p>
-                            <% } %>
-                        </div>
-                    </div>
-                </div>
-            <% } %>
-            <div class="toc-container">
-                <%- post.toc %>
             </div>
+            <% }else{ %>
+            <div id="main" class="col-xs-12 col-sm-7" style="width:50%;margin-top:50px;left:27%">
+                <%- include('./includes/post-detail') %>
+            </div>
+            <div id="comment" style="background: white">
+                <div class="commentcontainer">
+                    <% if (site.customConfig.valineID && site.customConfig.valineKey) { %>
+                    <%- include('./includes/valine') %>
+                    <div class="clear"></div>
+                    <% }else if ( typeof commentSetting !== 'undefined' && commentSetting.showComment) { %>
+                    <% if (commentSetting.commentPlatform === 'gitalk') { %>
+                    <%- include('./includes/gitalk') %>
+                    <% } %>
+                    <% if (commentSetting.commentPlatform === 'disqus') { %>
+                    <%- include('./includes/disqus') %>
+                    <% } %>
+                    <% }else { %>
+                    <p>请到客户端“主题--自定义配置--valine”中填入ID和KEY</p>
+                    <% } %>
+                </div>
+            </div>
+            <%if(site.customConfig.aplayerchoice){%>
+                <%- include('./includes/aplayer') %>
+            <%}%>
         </div>
+        <% } %>
+        <div class="toc-container">
+            <%- post.toc %>
+        </div>
+    </div>
     </div>
     <div class="toggleContainer">
         <div class="toggle">
@@ -157,41 +156,47 @@
     </div>
     <div id="bgchoice" style="display: none"><%= site.customConfig.bgchoice %></div>
     <% if(site.customConfig.bgchoice == 'default'){ %>
-        <div id="bgurl" style="display:none"><%= site.customConfig['bgimage'] %></div>
+    <div id="bgurl" style="display:none"><%= site.customConfig['bgimage'] %></div>
     <% } else{ %>
-        <div id="bgurl" style="display:none"><%= site.customConfig['bgimagelink'] %></div>
+    <div id="bgurl" style="display:none"><%= site.customConfig['bgimagelink'] %></div>
     <% } %>
-</div>
-<!-- 响应式布局，针对手机端内容显示 -->
-<div class="nav-small">
-    <%- include('./includes/bar') %>
-    <div style="margin-top:30px"></div>
-    <%- include('./includes/post-detail') %>
-    <div name="comment" style="background: white;margin-top:100px">
-        <div class="commentcontainer">
-            <% if (site.customConfig.valineID && site.customConfig.valineKey) { %>
+    </div>
+    <!-- 响应式布局，针对手机端内容显示 -->
+    <div class="nav-small">
+        <%- include('./includes/bar') %>
+        <div style="margin-top:30px"></div>
+        <%- include('./includes/post-detail') %>
+        <div name="comment" style="background: white;margin-top:100px">
+            <div class="commentcontainer">
+                <% if (site.customConfig.valineID && site.customConfig.valineKey) { %>
                 <%- include('./includes/valinemobile') %>
                 <div class="clear"></div>
-            <% }else if ( typeof commentSetting !== 'undefined' && commentSetting.showComment) { %>
+                <% }else if ( typeof commentSetting !== 'undefined' && commentSetting.showComment) { %>
                 <% if (commentSetting.commentPlatform === 'gitalk') { %>
-                    <%- include('./includes/gitalk') %>
+                <%- include('./includes/gitalk') %>
                 <% } %>
                 <% if (commentSetting.commentPlatform === 'disqus') { %>
-                    <%- include('./includes/disqus') %>
+                <%- include('./includes/disqus') %>
                 <% } %>
-            <% }else { %>
+                <% }else { %>
                 <p>请到客户端“主题--自定义配置--valine”中填入ID和KEY</p>
-            <% } %>
+                <% } %>
+            </div>
         </div>
     </div>
-</div>
-<div id="landlord">
-    <div class="message" style="opacity:0"></div>
-    <canvas id="live2d" width="240" height="250" class="live2d"></canvas>
-</div>
-<div id="codeCopyText" style="display: none"><%= site.customConfig.codeCopyText %></div>
-<div id="domainname" style="display:none"><%= themeConfig.domain %></div>
 </body>
+<script>
+    var img = $("img");
+    for (var i = 0; i < img.length; i++) {
+        if (img.eq(i).attr("class") == undefined) {
+            img.eq(i).attr("class", "lazyload");
+            var imgsrc = img.eq(i).attr("src");
+            img.eq(i).attr("data-original", imgsrc);
+            img.eq(i).attr("src", "");
+            img.eq(i).hide();
+        }
+    }
+</script>
 <script src="<%= themeConfig.domain %>/media/js/post.js%>"></script>
 <script>
     //寻找所有code标签，加复制按钮鸭！(行内代码除外)
@@ -213,8 +218,7 @@
             btn.innerHTML = '复制代码';
             codes[i].parentNode.insertBefore(btn, codes[i]);
         }
-    }
-    ;
+    };
     var cop = new ClipboardJS('.copybt');
     var codeCopyText = $("#codeCopyText").html();
     cop.on('success', function (e) {
@@ -227,20 +231,22 @@
     });
 </script>
 <% if (site.customConfig.live2d){ %>
-    <script type="text/javascript">
-        var message_Path = '/live2d/'
-        var home_Path = document.getElementById("domainname").innerHTML + "/"; //此处修改为你的域名，必须带斜杠
-    </script>
-    <script type="text/javascript" src="<%= themeConfig.domain %>/media/live2d/js/live2d.js%>"></script>
-    <script type="text/javascript" src="<%= themeConfig.domain %>/media/live2d/js/message.js%>"></script>
-    <script type="text/javascript">
-        loadlive2d("live2d", "<%= themeConfig.domain %>/media/live2d/assets/tororo.model.json%>");
-    </script>
+<script type="text/javascript">
+    var message_Path = '/live2d/'
+    var home_Path = document.getElementById("domainname").innerHTML + "/"; //此处修改为你的域名，必须带斜杠
+</script>
+<script type="text/javascript" src="<%= themeConfig.domain %>/media/live2d/js/live2d.js%>"></script>
+<script type="text/javascript" src="<%= themeConfig.domain %>/media/live2d/js/message.js%>"></script>
+<script type="text/javascript">
+    loadlive2d("live2d", "<%= themeConfig.domain %>/media/live2d/assets/tororo.model.json%>");
+</script>
 <% } %>
 <script>
     $(function () {
         $('.toggleContainer').click(function () {
-            $('html,body').animate({scrollTop: '0px'}, 800);
+            $('html,body').animate({
+                scrollTop: '0px'
+            }, 800);
         });
         $(window).scroll(function () {
             var st = $(window).scrollTop();
@@ -263,25 +269,122 @@
     bg.css("background", "url('" + bgurl + "')");
 </script>
 <% if (site.customConfig.menuposition == 'left'){ %>
-    <script src="<%= themeConfig.domain %>/media/js/index.js%>"></script>
+<script src="<%= themeConfig.domain %>/media/js/index.js%>"></script>
 <% } %>
 
-<script src="<%= themeConfig.domain %>/media/share2/dist/Share.js%>"></script>
+<script>
+    //文章阅读热度
+    var pl = $("#pl").html();
+    var rootaddr = $("#rootaddr").html();
+    pl = pl.replace(rootaddr, "");
+    $("#hotnum").attr('id', pl);
+</script>
+
+<!-- 动态更改上(下)一篇博客图片框长宽 -->
+<script>
+    npcontainer = document.querySelector('#npcontainer');
+    npstyle = window.getComputedStyle(npcontainer, null);
+    npwidth = npstyle.width;
+    npheight = 0.6 * Number(npwidth.replace("px", ""));
+    npheight = npheight.toString() + "px";
+    var op = $(".opimg");
+    op.css("height", npheight);
+</script>
+
+<script src="<%= themeConfig.domain %>/media/share/dist/Share.js%>"></script>
+<%if(site.customConfig.menuposition=='top'){%>
+<script>
+    var avatarSrc = $(".menutopavatar").attr("src");
+    var dp = document.getElementsByClassName("navbar-brand")[1].innerHTML;
+</script>
+<%}else{%>
+<script>
+    var avatarSrc = $(".avatar").attr("src");
+    var dp = document.getElementsByClassName("describtion")[0].innerHTML;
+</script>
+<%}%>
+
 <script>
     var title = document.getElementById("texttitle").getElementsByTagName("h2");
+    
     var share = new Share('.share', {
         title: title[0].innerHTML,
+        initialized: true,
         //默认获取网站描述
-        description: document.getElementsByClassName("navbar-brand")[1].innerHTML,
+        description: dp,
         //网站图片默认获取的是设置的用户头像
-        image: $(".menutopavatar").attr("src"),
+        image: avatarSrc,
         //激活的分享网站
-        sites: ['qq', 'qzone', 'wechat', 'weibo', 'douban', 'twitter', 'facebook'],
+        sites: ["weibo", "qq", "wechat", "douban", "qzone", "facebook", "twitter", "google"],
         //微信分享PC端会生成二维码分享,移动端如果可以唤起微信最好
         wechatQrcodeTitle: "微信扫一扫：分享", // 微信二维码提示文字
         wechatQrcodeHelper: '<p>微信里扫一下二维码</p><p>便可将本文分享至朋友圈。</p>',
         //关闭的网站分享
         disabled: ['google', 'linkedin'],
         wechatQrcodePosition: 'bottom'
+    });
+
+    //点击分享按钮展现出分享icons
+    var sharebtnTag = false;
+    $(".sharebtn").click(function () {
+        if(!sharebtnTag)
+        {
+            $(".share").show();
+            sharebtnTag = true;
+        }
+        else
+        {
+            $(".share").hide();
+            sharebtnTag = false;
+        }
+    })
+
+    var donatebtnTag = false;
+    $(".donateImg").click(function () {
+        if(!donatebtnTag)
+        {
+            $(".donate").show();
+            donatebtnTag = true;
+        }
+        else{
+            $(".donate").hide();
+            donatebtnTag = false;
+        }
+    })
+
+    window.onload=function(){
+        var sharepc = $(".share").eq(0).html();
+        $(".share").eq(1).html(sharepc);
+        setTimeout(function(){
+            var hn = $(".leancloud-visitors-count").eq(0).html();
+            hn = '<i class="fa fa-eye" aria-hidden="true"'+
+                            'style="color: #FF8C00;"></i>&nbsp;&nbsp;热度</i>: <i'+
+                            'class="leancloud-visitors-count">'+hn+'</i></h4>'
+            $(".readercount").eq(1).html(hn);
+        }, 1000);
+        document.getElementById("veditor").setAttribute("placeholder", jrsc);
+    }
+</script>
+
+
+<script>
+    jQuery(document).ready(function ($) {
+        function lazyload() {
+            var oLazyload = $("img.lazyload"),
+                fLazyload = function (hLazyload) {
+                    var nLazyload = $(window).height() + $(document).scrollTop();
+                    oLazyload.each(function () {
+                        $(this).offset().top < nLazyload && ($(this).trigger("appear"), oLazyload =
+                            oLazyload.not(this));
+                    }), 0 == oLazyload.length && $(window).unbind("scroll", fLazyload);
+                };
+            oLazyload.each(function () {
+                $(this).one("appear", function () {
+                    $(this).attr("src", $(this).attr("data-original"));
+                    $(this).fadeIn(500);
+                });
+            }), $(window).bind("scroll", fLazyload), fLazyload();
+        }
+        lazyload();
     });
 </script>

@@ -25,6 +25,12 @@
     animation: fade-in;/*动画名称*/  
     animation-duration: 1s;/*动画持续时间*/  
     -webkit-animation:fade-in 1s;/*针对webkit内核*/  
+
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, .5);
+    /*考虑浏览器兼容性*/
+    -moz-box-shadow: 10px 10px 10px rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, .5);
+    border-radius: 10px 10px 0 0;
 }
 
 .archives-content ul {

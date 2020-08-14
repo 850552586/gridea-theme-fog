@@ -1,13 +1,10 @@
 <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/font-awesome.css%>">
-<style>
-
-</style>
 
 <body>
     <div class="allcontent" id="postdetail">
-        <div class="postshow">
+        <div class="postshow" style="padding-bottom: 0;">
             <% if (themeConfig.showFeatureImage && post.feature) { %>
-            <div class="postdetailimg" style="width:100%;overflow: hidden;display: none">
+            <div class="postdetailimg" style="width:100%;overflow: hidden;">
                 <img src="<%= post.feature%>" class="postimage" style="cursor:auto">
             </div>
             <div class="postinfo-detail">
@@ -22,7 +19,7 @@
                 </div>
             </div>
             <% } else {%>
-            <div class="postdetailimg" style="width:100%;overflow: hidden;display: none">
+            <div class="postdetailimg" style="width:100%;overflow: hidden;">
                 <%if(site.customConfig.bgchoice=='default'){%>
                 <img src="<%= site.customConfig['postdefaultimage'] %>" class="postimage">
                 <%}else{%>
@@ -41,69 +38,89 @@
             </div>
         </div>
         <% } %>
-        <div id="texttitle" style="text-align: center">
-            <h2><%= post.title %></h2>
-            <!-- id 将作为查询条件 -->
-            <div id="pl" style="display:none"><%=post.link%></div>
-            <div id="rootaddr" style="display:none"><%= themeConfig.domain %></div>
-            <span id="hotnum" class="leancloud_visitors" data-flag-title="<%= post.title %>">
-                <h4 class="readercount">热度🔥: <i class="leancloud-visitors-count">loading...</i></h4>
-            </span>
+        <div id="articlecontent">
+            <div id="texttitle" style="text-align: center">
+                <h2><%= post.title %></h2>
+                <!-- id 将作为查询条件 -->
+                <div id="pl" style="display:none"><%=post.link%></div>
+                <div id="rootaddr" style="display:none"><%= themeConfig.domain %></div>
+                <span id="hotnum" class="leancloud_visitors" data-flag-title="<%= post.title %>">
+                    <h4 class="readercount"><i class="fa fa-eye" aria-hidden="true"
+                            style="color: #FF8C00;"></i>&nbsp;&nbsp;热度</i>: <i
+                            class="leancloud-visitors-count">loading...</i></h4>
+                </span>
+            </div>
+            <div class="text ">
+                <%- post.content %>
+            </div>
+            <hr style="width: 80%;">
+            <%if(site.customConfig.shareChoice==true){%>
+            <div class="sharebtnContainer">
+                <button type="button" class="sharebtn">转载分享</button>
+            </div>
+            <div class="shareContainer">
+                <div class="share" style="height:30px;background: white;">
+                    <a class="qq" href=""><i><img class="shareicon"
+                                src="<%= themeConfig.domain %>/media/images/QQ.png%>" alt=""></i></a>
+                    <a class="wechat" href=""><i><img class="shareicon"
+                                src="<%= themeConfig.domain %>/media/images/wechat.png%>" alt=""></i></a>
+                    <a class="weibo" href=""><i><img class="shareicon"
+                                src="<%= themeConfig.domain %>/media/images/weibo.png%>" alt=""></i></a>
+                    <a class="qzone" href=""><i><img class="shareicon"
+                                src="<%= themeConfig.domain %>/media/images/qzone.png%>" alt=""></i></a>
+                                <a class="douban" href=""><i><img class="shareicon"
+                                    src="<%= themeConfig.domain %>/media/images/douban.png%>" alt=""></i></a>
+                                <a class="facebook" href=""><i><img class="shareicon"
+                                src="<%= themeConfig.domain %>/media/images/facebook.png%>" alt=""></i></a>
+                    <a class="twitter" href=""><i><img class="shareicon"
+                                src="<%= themeConfig.domain %>/media/images/twitter.png%>" alt=""></i></a>
+                </div>
+            </div>
+            <%}%>
+            <%if(site.customConfig.donateChoice==true){%>
+            <div class="donateContainer">
+                <img src="<%= themeConfig.domain %>/media/images/donate.png%>" alt="" class="donateImg">
+            </div>
+            <div class="donateContainer">
+                <img src="<%= site.customConfig.donateImg%>" alt="" class="donate">
+            </div>
+            <%}%>
+            <div class="postfooter">
+                <ul class="post-copyright">
+                    <li><strong>文章作者：</strong><%= site.customConfig.postAuthor%></li>
+            <li><strong>原文链接：</strong><%= post.link%></li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用<i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA
+                许可协议。转载请注明出处！</li>
+            </ul>
         </div>
-        <div class="text ">
-            <%- post.content %>
+        <div id="otherpost">
+            <% if (post.prevPost && !post.hideInList) { %>
+            <div class="prev-post-pc">
+                <div id="ppcontainer" onclick="window.location.href= '<%=post.prevPost.link%>';return false">
+                    <img src="<%= post.prevPost.feature%>" style="width: 100%;" class="opimg">
+                    <h4 class="optitle"><%= post.prevPost.title%></h4>
+                </div>
+            </div>
+            <div class="prev-post">
+                上一篇 <a href="<%= post.prevPost.link%>"><%= post.prevPost.title%></a>
+            </div>
+            <% } %>
+            <% if (post.nextPost && !post.hideInList) { %>
+            <div class="next-post-pc">
+                <div id="npcontainer" onclick="window.location.href= '<%=post.nextPost.link%>';return false">
+                    <img src="<%= post.nextPost.feature%>" style="width: 100%;" class="opimg">
+                    <h4 class="optitle"><%= post.nextPost.title%></h4>
+                </div>
+            </div>
+            <div class="next-post">
+                下一篇 <a href="<%= post.nextPost.link%>"><%= post.nextPost.title%></a>
+            </div>
+            <% } %>
         </div>
-        <% if (post.prevPost && !post.hideInList) { %>
-        <div class="prev-post">
-            上一篇
-            <a href="<%= post.prevPost.link %>">
-                <%= post.prevPost.title %>
-            </a>
-        </div>
-        <% } %>
-        <% if (post.nextPost && !post.hideInList) { %>
-        <div class="next-post">
-            下一篇
-            <a href="<%= post.nextPost.link %>">
-                <%= post.nextPost.title %>
-            </a>
-        </div>
-        <% } %>
     </div>
     </div>
 </body>
 <script>
-    var t_img; // 定时�?
-    var isLoad = true; // 控制变量
-    isImgLoad(function () {
-        // 加载完成
-        $('.postdetailimg').css("display", "block");
-    });
-    // 判断图片加载的函�?
-    function isImgLoad(callback) {
-        // 注意我的图片类名都是cover，因为我�?需要�?�理cover。其它图片可以不管�?
-        // 查找所有封面图，迭代�?�理
-        $('.postdetailimg').each(function () {
-            // 找到�?0就将isLoad设为false，并退出each
-            if (this.height === 0) {
-                isLoad = false;
-                return false;
-            }
-        });
-        // 为true，没有发现为0的。加载完�?
-        if (isLoad) {
-            clearTimeout(t_img); // 清除定时�?
-            // 回调函数
-            callback();
-            // 为false，因为找到了没有加载完成的图，将调用定时器递归
-        } else {
-            isLoad = true;
-            t_img = setTimeout(function () {
-                isImgLoad(callback); // 递归�?�?
-            }, 500); // 我这里�?�置的是500�?秒就�?描一次，�?以自己调�?
-        }
-    }
-
     //文章阅读热度
     var pl = $("#pl").html();
     var rootaddr = $("#rootaddr").html();

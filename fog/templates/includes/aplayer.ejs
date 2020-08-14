@@ -1,0 +1,25 @@
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+</head>
+<body>
+    <div class="miniMode">
+        <meting-js id="myaplayer" server="netease" type="playlist" fixed="true" order="default">
+        </meting-js>
+    </div>   
+</body>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+<script>
+    var aplayerid = "<%= site.customConfig.aplayerid%>";
+    var aplayerserver = "<%= site.customConfig.aplayerserver%>";
+    var aplayerorder = "<%= site.customConfig.aplayerorder%>";
+    var aplayer = $("#myaplayer");
+    aplayer.attr("server",aplayerserver);
+    aplayer.attr("id",aplayerid);
+    aplayer.attr("order",aplayerorder);
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>

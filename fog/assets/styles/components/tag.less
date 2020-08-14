@@ -1,0 +1,136 @@
+//-----------start:tag.ejs---------------------
+
+
+a {
+    text-decoration: none;
+}
+
+//------------end:tag.ejs----------------------
+
+
+// -----------start:tags.ejs--------------------
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    /*初始状态 透明度为0*/
+    40% {
+        opacity: 0;
+    }
+
+    /*过渡状态 透明度为0*/
+    100% {
+        opacity: 1;
+    }
+
+    /*结束状态 透明度为1*/
+}
+
+@-webkit-keyframes fade-in {
+
+    /*针对webkit内核*/
+    0% {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.tags-container {
+    min-height: 100vh;
+    position: absolute;
+    padding-bottom: 70px;
+    animation: fade-in;
+    /*动画名称*/
+    animation-duration: 1s;
+    /*动画持续时间*/
+    -webkit-animation: fade-in 1s;
+    /*针对webkit内核*/
+}
+
+.tagsbackgroundleft{
+    position: fixed;
+    min-height: 100vh;
+    background: whitesmoke;
+    width: 60%;
+    opacity: 0.6;
+}
+
+.tagsbackgroundtop{
+    position: fixed;
+    min-height: 100vh;
+    background: whitesmoke;
+    width: 50%;
+    opacity: 0.6;
+}
+
+.tagintro {
+    padding-top: 2%;
+    padding-left: 5%;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: left;
+}
+
+.tag {
+    display: inline;
+    float: left;
+    width: 20%;
+    margin-left: 2%;
+    margin-top: 5%;
+    margin-right: 2%;
+    border: solid;
+    border-radius: 7px;
+    padding: 5px;
+    color: #3cdc82;
+    font-size: 1.2em;
+}
+
+.tagsimg {
+    width: 100%;
+}
+
+@media screen and (max-width: 1300px) {
+    .tag {
+        width: 40%;
+    }
+}
+
+
+//---------end:tags.ejs---------------------------
+
+
+//----------start:tag-detail.ejs---------------
+.postimage {
+    width: 100%;
+}
+
+.tag-container {
+    min-height: 100vh;
+    animation: fade-in;
+    /*��������*/
+    animation-duration: 1s;
+    /*��������ʱ��*/
+    -webkit-animation: fade-in 1s;
+    /*���webkit�ں�*/
+}
+
+@media screen and (max-width:1300px) {
+    .tag-container {
+        margin-top: 100px;
+        animation: fade-in;
+        /*��������*/
+        animation-duration: 1s;
+        /*��������ʱ��*/
+        -webkit-animation: fade-in 1s;
+        /*���webkit�ں�*/
+    }
+}
+//---------end:tag-detail.ejs-------------------

@@ -1,9 +1,3 @@
-<head>
-    <meta name="description" content="<%- site.customConfig.metaDescription || themeConfig.siteDescription %>" />
-    <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/bootstrap.min.css%>">
-</head>
-
-
 <body>
     <%if(site.customConfig.menuposition=='left'){%>
     <div id=side>
@@ -22,26 +16,26 @@
     <div class="share-button">
         <span>社交按钮</span>
         <% if (site.customConfig['github']) { %>
-        <a href="<%= site.customConfig['github'] %>" target="_blank"><i><img class="icon"
+        <a href="<%= site.customConfig['github'] %>" target="_blank"><i style="font-size: 20px;"><img class="icon"
                     src="<%= themeConfig.domain %>/media/images/github.png%>" alt=""></i></a>
         <% } %>
         <% if (site.customConfig['QQ']) { %>
-        <a onclick="showqq()"><i><img class="icon" src="<%= themeConfig.domain %>/media/images/QQ.png%>" alt=""></i></a>
+        <a onclick="showqq()"><i style="font-size: 20px;"><img class="icon" src="<%= themeConfig.domain %>/media/images/QQ.png%>" alt=""></i></a>
         <% } %>
         <% if (site.customConfig['zhihu']) { %>
-        <a href="<%= site.customConfig['zhihu'] %>" target="_blank"><i><img class="icon"
+        <a href="<%= site.customConfig['zhihu'] %>" target="_blank"><i style="font-size: 20px;"><img class="icon"
                     src="<%= themeConfig.domain %>/media/images/zh.png%>" alt=""></i></a>
         <% } %>
         <% if (site.customConfig['bilibili']) { %>
-        <a href="<%= site.customConfig['bilibili'] %>" target="_blank"><i><img class="icon"
+        <a href="<%= site.customConfig['bilibili'] %>" target="_blank"><i style="font-size: 20px;"><img class="icon"
                     src="<%= themeConfig.domain %>/media/images/bilibili.png%>" alt=""></i></a>
         <% } %>
         <% if (site.customConfig['wechat']) { %>
-        <a href="<%= site.customConfig['wechat'] %>" target="_blank"><i><img class="icon"
+        <a href="<%= site.customConfig['wechat'] %>" target="_blank"><i style="font-size: 20px;"><img class="icon"
                     src="<%= themeConfig.domain %>/media/images/wechat.png%>" alt=""></i></a>
         <% } %>
         <% if (site.customConfig['steam']) { %>
-        <a href="<%= site.customConfig['steam'] %>" target="_blank"><i><img class="icon"
+        <a href="<%= site.customConfig['steam'] %>" target="_blank"><i style="font-size: 20px;"><img class="icon"
                     src="<%= themeConfig.domain %>/media/images/steam.png%>" alt=""></i></a>
         <% } %>
     </div>
@@ -83,8 +77,8 @@
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <div id="vistornum">
         <span id="busuanzi_container_site_uv">
-            🎈总访问量:<span id="busuanzi_value_site_pv"></span>&nbsp;&nbsp;|&nbsp;&nbsp;
-            🙍‍访问人数:<span id="busuanzi_value_site_uv"></span>
+            <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i> 总访问量:<span id="busuanzi_value_site_pv"></span>&nbsp;&nbsp;|&nbsp;&nbsp;
+            <i class="fa fa-user-o" aria-hidden="true"></i> 访问人数:<span id="busuanzi_value_site_uv"></span>
         </span>
     </div>
     <div style="color:white"><%= site.customConfig.recordText %></div>
@@ -179,11 +173,11 @@
         </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
-    <div id="socialMenu" class="modal">
+    <div id="socialMenu">
         <div class="animate">
             <div class="socialContainer">
                 <% if (site.customConfig['github']) { %>
-                <a href="<%= site.customConfig['github'] %>" target="_blank"><i><img class="icon"
+                <a href="<%= site.customConfig['github'] %>" target="_blank"><i><img class="icon "
                             src="<%= themeConfig.domain %>/media/images/github.png%>" alt=""></i></a>
                 <% } %>
                 <% if (site.customConfig['QQ']) { %>

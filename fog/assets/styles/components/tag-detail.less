@@ -1,0 +1,59 @@
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    /*��ʼ״̬ ͸����Ϊ0*/
+    40% {
+        opacity: 0;
+    }
+
+    /*����״̬ ͸����Ϊ0*/
+    100% {
+        opacity: 1;
+    }
+
+    /*����״̬ ͸����Ϊ1*/
+}
+
+@-webkit-keyframes fade-in {
+
+    /*���webkit�ں�*/
+    0% {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.postimage {
+    width: 100%;
+}
+
+.tag-container {
+    min-height: 100vh;
+    animation: fade-in;
+    /*��������*/
+    animation-duration: 1s;
+    /*��������ʱ��*/
+    -webkit-animation: fade-in 1s;
+    /*���webkit�ں�*/
+}
+
+@media screen and (max-width:1300px) {
+    .tag-container {
+        margin-top: 100px;
+        animation: fade-in;
+        /*��������*/
+        animation-duration: 1s;
+        /*��������ʱ��*/
+        -webkit-animation: fade-in 1s;
+        /*���webkit�ں�*/
+    }
+}

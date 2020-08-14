@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,6 +31,9 @@
                 <%}%>
                 <div class="col-xs-6 col-sm-2"></div>
             </div>
+            <%if(site.customConfig.aplayerchoice){%>
+                <%- include('./includes/aplayer') %>
+            <%}%>
         </div>
         <div id="bg">
         </div>
@@ -76,4 +76,99 @@
 </script>
 <%if (site.customConfig.menuposition=='left'){ %>
             <script src="<%= themeConfig.domain %>/media/js/index.js%>"></script>
-            <%}%>
+<%}%>
+
+<script>
+    var talksall = [];
+    var talks = [];
+    var talkindex;
+
+    get();
+    add();
+
+    function get() {
+        var t = JSON.parse('<%- JSON.stringify(site.customConfig.talks) %>');
+        talkindex = t.length - 1;
+        for (var i = t.length - 1; i >= 0; i--) {
+            var d = {};
+            d["time"] = t[i].time;
+            d["author"] = t[i].author;
+            d["text"] = t[i].text;
+            d["img"] = t[i].img;
+            talksall.push(d);
+        }
+    }
+
+    function add() {
+        for (var i = talkindex; i >= 0 && i > talkindex - 3; i--) {
+            talks.push(talksall[i]);
+        }
+        talkindex = (talkindex - 3) >= 0 ? (talkindex - 3) : -1;
+        if (talkindex < 0) $("#getmorebt").hide();
+        show();
+        refreshImg();
+    }
+
+    function show() {
+        var talkT = document.getElementById("talkContainer");
+        talkT.innerHTML = "";
+        for (var i = 0; i < talks.length; i++) {
+            if (talks[i].img != '') {
+                talkT.innerHTML += '\
+            <div class="talk" v-for="t in talks"> \
+                <img src="' + talks[i].img + '" class="talkimg"> \
+                <div class="ainfo">\
+                    <div class="ainfo-intro">\
+                        <img class="intro1" src="<%= themeConfig.domain %>/images/avatar.png?v=<%= site.utils.now %>">\
+                        <div class="author">' + talks[i].author + '</div>·\
+                        <div class="time">' + talks[i].time + '</div>\
+                    </div>\
+                </div>\
+                <div class="talkcontent">' + talks[i].text + '\
+                </div\>\
+            ';
+            } else {
+                talkT.innerHTML += '\
+            <div class="talk" v-for="t in talks"> \
+                <div class="ainfo">\
+                    <div class="ainfo-intro">\
+                        <img class="intro1" src="<%= themeConfig.domain %>/images/avatar.png?v=<%= site.utils.now %>">\
+                        <div class="author">' + talks[i].author + '</div>·\
+                        <div class="time">' + talks[i].time + '</div>\
+                    </div>\
+                </div>\
+                <div class="talkcontent">' + talks[i].text + '\
+                </div\>\
+            ';
+            }
+        }
+    }
+
+    function refreshImg() {
+        // 获取弹窗
+        var modal = document.getElementById('myModal');
+
+        // 获取图片插入到弹窗 - 使用 "alt" 属性作为文本部分的内容
+        var img = document.getElementsByClassName("talkimg");
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        for (var i in img) {
+            img[i].onclick = function () {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+            }
+        }
+    
+        // 图片关闭
+        var modalImg = document.getElementById('img01');
+        // 鼠标点击模型外区域关闭登录框
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+            if (event.target == social) {
+                social.style.display = "none";
+            }
+        }
+    }
+</script>

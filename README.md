@@ -34,6 +34,21 @@
 下载完后挑选一个自己喜欢的模型，复制assets文件夹替换到fog\assets\media\live2d路径下的assets文件夹即可。
 
 # 更新日志
+
+<details>
+<summary><b>version 0.6</b></summary>
+<pre>
+<ul>
+- 增加：分享功能（感谢codingbear）
+- 增加：赞赏功能
+- 增加：文章底层版权信息
+- 增加：aplayer音乐播放器
+- 调整：文章内上下博客样式
+- 修复：说说页面图片宽度不一致问题
+  </ul>
+  </pre>
+</details>
+
 <details>
 
 <summary><b>version 0.5</b></summary>

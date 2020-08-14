@@ -1,86 +1,3 @@
-<!DOCTYPE html>
-<html lang="zh-han">
-<style>
-    @keyframes fade-in {
-        0% {
-            opacity: 0;
-        }
-
-        /*初始状态 透明度为0*/
-        40% {
-            opacity: 0;
-        }
-
-        /*过渡状态 透明度为0*/
-        100% {
-            opacity: 1;
-        }
-
-        /*结束状态 透明度为1*/
-    }
-
-    @-webkit-keyframes fade-in {
-
-        /*针对webkit内核*/
-        0% {
-            opacity: 0;
-        }
-
-        40% {
-            opacity: 0;
-        }
-
-        100% {
-            opacity: 1;
-        }
-    }
-
-    .tags-container {
-        min-height: 100vh;
-        background: white;
-        position: absolute;
-        padding-bottom: 70px;
-        animation: fade-in;
-        /*动画名称*/
-        animation-duration: 1s;
-        /*动画持续时间*/
-        -webkit-animation: fade-in 1s;
-        /*针对webkit内核*/
-    }
-
-    .tagintro {
-        padding-top: 2%;
-        padding-left: 5%;
-        font-size: 2em;
-        font-weight: bold;
-        text-align: left;
-    }
-
-    .tag {
-        display: inline;
-        float: left;
-        width: 15%;
-        margin-left: 2%;
-        margin-top: 5%;
-        margin-right: 2%;
-        border: solid;
-        border-radius: 7px;
-        padding: 5px;
-        color: #3cdc82;
-        font-size: 1.2em;
-    }
-
-    .tagsimg {
-        width: 100%;
-    }
-
-    @media screen and (max-width: 1300px) {
-        .tag {
-            width: 80%;
-        }
-    }
-</style>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -102,6 +19,7 @@
                 <div class="side"><%- include('./includes/side') %></div>
                 <%if(site.customConfig.menuposition=='left'){%>
                 <div id="main" class="col-xs-12 col-sm-7">
+                    <div class="tagsbackgroundleft"></div>
                     <div class="tags-container">
                         <%if(site.customConfig.bgchoice=='default'){%>
                         <img class="tagsimg" src="<%= site.customConfig['tagimage'] %>" alt="">
@@ -115,13 +33,14 @@
                 </div>
                 <%}else{%>
                 <div id="main" class="col-xs-12 col-sm-7" style="width:50%;margin-top:50px;left:27%">
+                    <div class="tagsbackgroundtop"></div>
                     <div class="tags-container">
                         <%if(site.customConfig.bgchoice=='default'){%>
                         <img class="tagsimg" src="<%= site.customConfig['tagimage'] %>" alt="">
                         <%}else{%>
                         <img class="tagsimg" src="<%= site.customConfig['tagimagelink'] %>" alt="">
                         <%}%>
-                                <% tags.forEach((tag) => { %>
+                        <% tags.forEach((tag) => { %>
                         <a class="tag" href="<%= tag.link %>"># <%= tag.name %></a>
                         <% }); %>
                     </div>
@@ -129,6 +48,9 @@
                 <%}%>
                 <div class="col-xs-6 col-sm-2"></div>
             </div>
+            <%if(site.customConfig.aplayerchoice){%>
+                <%- include('./includes/aplayer') %>
+            <%}%>
         </div>
         <div id="bg">
         </div>
@@ -166,7 +88,7 @@
 </html>
 <script>
     $(".tag").each(function () {
-        var rgb = '#' + Math.floor(Math.random() * 0xffffff).toString(16);;
+        var rgb = '#' + Math.floor((Math.random()) * 0xffffff).toString(16);;
         $(this).css('color', rgb);
     });
 </script>

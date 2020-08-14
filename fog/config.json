@@ -118,6 +118,38 @@
       "note": "填写网站备案号，如无则空着即可"
     },
     {
+      "name": "postAuthor",
+      "label": "文章作者",
+      "group": "文章",
+      "value": "",
+      "type": "input",
+      "note": "博客文章下版权声明内的作者名称"
+    },
+    {
+      "name": "shareChoice",
+      "label": "是否开启文章分享转载功能",
+      "group": "文章",
+      "value": true,
+      "type": "switch",
+      "note": ""
+    },
+    {
+      "name": "donateChoice",
+      "label": "是否开启文章赞赏功能",
+      "group": "文章",
+      "value": true,
+      "type": "switch",
+      "note": "请在下方放置赞赏图片外链"
+    },
+    {
+      "name": "donateImg",
+      "label": "赞赏图",
+      "group": "文章",
+      "value": "",
+      "type": "input",
+      "note": "请输入图片外链"
+    },
+    {
       "name": "valineID",
       "label": "appId",
       "group": "Valine 评论配置",
@@ -359,6 +391,70 @@
         { "label": "配图", "name": "img", "type": "input", "value": "","note":"外链"}
       ],
       "note": ""
+    },
+    {
+      "name": "aplayerchoice",
+      "label": "是否开启音乐播放器",
+      "group": "音乐播放器",
+      "value": false,
+      "type": "switch",
+      "note": ""
+    },
+    {
+      "name": "aplayerserver",
+      "label": "源平台",
+      "group": "音乐播放器",
+      "value": "netease",
+      "type": "select",
+      "note":"",
+      "options": [
+        {
+          "label": "网易云",
+          "value": "netease"
+        },
+        {
+          "label": "QQ音乐",
+          "value": "tencent"
+        },
+        {
+          "label": "酷狗",
+          "value": "kugou"
+        },
+        {
+          "label": "虾米",
+          "value": "xiami"
+        },
+        {
+          "label": "百度",
+          "value": "baidu"
+        }
+      ]
+    },
+    {
+      "name": "aplayerid",
+      "label": "歌单ID",
+      "group": "音乐播放器",
+      "value": "",
+      "type": "input",
+      "note": ""
+    },
+    {
+      "name": "aplayerorder",
+      "label": "播放模式",
+      "group": "音乐播放器",
+      "value": "default",
+      "type": "select",
+      "note":"",
+      "options": [
+        {
+          "label": "顺序播放",
+          "value": "default"
+        },
+        {
+          "label": "随机播放",
+          "value": "random"
+        }
+      ]
     }
   ]
 }

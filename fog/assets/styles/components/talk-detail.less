@@ -1,5 +1,5 @@
 body {
-    overflow-x:hidden;
+    overflow-x: hidden;
     animation: fade-in;
     /*动画名称*/
     animation-duration: 1s;
@@ -64,6 +64,7 @@ body {
 }
 
 @-webkit-keyframes fade-in {
+
     /*针对webkit内核*/
     0% {
         opacity: 0;
@@ -77,6 +78,7 @@ body {
         opacity: 1;
     }
 }
+
 #talkContainer .talk {
     width: 80%;
     min-height: 130px;
@@ -90,7 +92,7 @@ body {
     margin-bottom: 30px;
     border: 1px solid;
     border-radius: 10px;
-    background:#FEFFF9;
+    background: #FEFFF9;
     overflow: auto;
 }
 
@@ -98,11 +100,12 @@ body {
     padding: 20px;
     height: auto;
 }
-.ainfo-intro{
+
+.ainfo-intro {
     float: left;
 }
 
-.introcomment{
+.introcomment {
     display: inline;
     width: 45px;
     height: 45px;
@@ -122,7 +125,7 @@ body {
 .author {
     display: inline;
     font-size: 18px;
-    color: 	#6A5ACD;
+    color: #6A5ACD;
     margin-right: 10px;
     font-weight: bold;
 }
@@ -135,7 +138,7 @@ body {
 }
 
 
-#talkContainer .talk .talkcontent{
+#talkContainer .talk .talkcontent {
     position: absolute;
     margin-top: 30px;
     margin-left: 30px;
@@ -144,13 +147,15 @@ body {
     text-align: left;
     font-size: 18px;
 }
-.talk .talkimg{
+
+.talk .talkimg {
     position: absolute;
     height: 100%;
+    width: 170px;
     right: 0;
 }
 
-#getmorebt{
+#getmorebt {
     width: 80%;
     float: left;
     padding: 10px;
@@ -161,64 +166,178 @@ body {
     margin-bottom: 50px;
 }
 
-#getmorebt:focus{
+#getmorebt:focus {
     outline: 0;
 }
 
-@media screen and (min-width: 1300px){
-    .talkShow
-    {
+@media screen and (min-width: 1300px) {
+    .talkShow {
         display: block;
         position: absolute;
         /*设置内容层绝对定位*/
         width: 100%;
         text-align: center;
-        z-index: 2;        
+        z-index: 2;
     }
-    .tbar{
+
+    .tbar {
         display: none;
     }
 }
 
-@media screen and (max-width: 1300px){
-.side{
-    display: none;
-}
-
-.tbar{
-    display: block;
-}
-
-#talkContainer .talk{
-    width: 110%;
-}
-#getmorebt{
-    width: 110%; 
-}
-}
-
-.top{
-    margin-top:70px;
-}
-
-@media screen and (max-width: 1300px){
-    #main{
-        padding:5%;
-        width: 90%;
-        margin:0;
+@media screen and (max-width: 475px) {
+    .talk .talkimg {
+        width: 100px;
     }
-    #talkContainer .talk .talkcontent{
+}
+
+@media screen and (max-width: 768px) {
+    .talk .talkimg {
+        width: 150px;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .side {
+        display: none;
+    }
+
+    .tbar {
+        display: block;
+    }
+
+    #talkContainer .talk {
+        width: 110%;
+    }
+
+    #getmorebt {
+        width: 110%;
+    }
+}
+
+.top {
+    margin-top: 70px;
+}
+
+@media screen and (max-width: 1300px) {
+    #main {
+        padding: 5%;
+        width: 90%;
+        margin: 0;
+    }
+
+    #talkContainer .talk .talkcontent {
         font-size: 15px;
     }
 }
-@media screen and (max-width: 425px){
-    #main{
+
+@media screen and (max-width: 425px) {
+    #main {
         margin-left: 10px;
     }
-    #talkContainer .talk .talkcontent{
+
+    #talkContainer .talk .talkcontent {
         width: 55%;
     }
-    .author{
+
+    .author {
         display: none;
+    }
+}
+
+/* 触发弹窗图片的样式 */
+.talkimg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.talkimg:hover {
+    opacity: 0.7;
+}
+
+/* 弹窗背景 */
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.9);
+    /* Black w/ opacity */
+}
+
+/* 图片 */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+
+
+/* 添加动画 */
+.modal-content,
+#caption {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {
+        -webkit-transform: scale(0)
+    }
+
+    to {
+        -webkit-transform: scale(1)
+    }
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0)
+    }
+
+    to {
+        transform: scale(1)
+    }
+}
+
+/* 关闭按钮 */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 80px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 小屏幕中图片宽度为 100% */
+@media only screen and (max-width: 700px) {
+    .modal-content {
+        width: 100%;
     }
 }

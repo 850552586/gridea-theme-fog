@@ -1,10 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
-<style>
-    a {
-        text-decoration: none;
-    }
-</style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -12,7 +6,7 @@
 <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/bootstrap.min.css%>">
 <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/live2d.css%>">
 <link rel="stylesheet" href="<%= themeConfig.domain %>/styles/main.css">
-<title>标签-<%- themeConfig.siteName %></title>
+<title><%- themeConfig.siteName %></title>
 
 
 <body>
@@ -20,6 +14,7 @@
     <div id="content">
         <div class="nav-large">
             <div class="row">
+                <%if(site.customConfig.menuposition=='left'){%>
                 <div class="side"><%- include('./includes/side') %></div>
                 <div id="main" class="col-xs-12 col-sm-7">
                     <%- include('./includes/tag-detail') %>
@@ -29,38 +24,53 @@
                     </div>
                 </div>
                 <div class="col-xs-6 col-sm-2"></div>
+                <%}else{%>
+                <div class="side"><%- include('./includes/side') %></div>
+                <div id="main" class="col-xs-12 col-sm-7" style="width:50%;margin-top:50px;left:27%">
+                    <%- include('./includes/tag-detail') %>
+                    <div>
+                        <%- include('./includes/pagination') %>
+                        <div style="padding-bottom:10%"></div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-2"></div>
+                <%}%>
             </div>
+            <%if(site.customConfig.aplayerchoice){%>
+                <%- include('./includes/aplayer') %>
+            <%}%>
         </div>
         <div id="bg">
         </div>
-        <div id="bgchoice" style="display: none"><%= site.customConfig.bgchoice%></div>
-        <%if(site.customConfig.bgchoice=='default'){%>
-        <div id="bgurl" style="display:none"><%= site.customConfig['bgimage'] %></div>
-        <%} else{%>
-        <div id="bgurl" style="display:none"><%= site.customConfig['bgimagelink'] %></div>
-        <%}%>   
+        <div id="bgchoice" style="display: none"><%= site.customConfig.bgchoice%>
+            </div>
+            <%if(site.customConfig.bgchoice=='default'){%>
+            <div id="bgurl" style="display:none"><%= site.customConfig['bgimage'] %></div>
+            <%} else{%>
+            <div id="bgurl" style="display:none"><%= site.customConfig['bgimagelink'] %></div>
+            <%}%>   
     </div>
 
 
     <!-- 响应式布局，针对手机端内容显示 -->
     <div class="nav-small">
         <%- include('./includes/bar') %>
-        <div style="margin-top:50px"></div>
-        <%- include('./includes/tag-detail') %>
-        <div class="pagination-container">
-            <% if (pagination.prev) { %>
-            <a href="<%= pagination.prev %>" class="mobile-prevpage">上一页</a>
-            <% } %>
-            <% if (pagination.next) { %>
-            <a href="<%= pagination.next %>" class="mobile-nextpage">下一页</a>
-            <% } %>
+            <div style="margin-top:50px"></div>
+            <%- include('./includes/tag-detail') %>
+            <div class="pagination-container">
+                <% if (pagination.prev) { %>
+                <a href="<%= pagination.prev %>" class="mobile-prevpage">上一页</a>
+                <% } %>
+                <% if (pagination.next) { %>
+                <a href="<%= pagination.next %>" class="mobile-nextpage">下一页</a>
+                <% } %>
+            </div>
         </div>
-    </div>
-    <div id="landlord">
-        <div class="message" style="opacity:0"></div>
-        <canvas id="live2d" width="240" height="250" class="live2d"></canvas>
-    </div>
-    <div id="domainname" style="display:none"><%= themeConfig.domain %></div>
+        <div id="landlord">
+            <div class="message" style="opacity:0"></div>
+            <canvas id="live2d" width="240" height="250" class="live2d"></canvas>
+        </div>
+        <div id="domainname" style="display:none"><%= themeConfig.domain %></div>
 </body>
 
 </html>
@@ -68,7 +78,7 @@
 <%if (site.customConfig.live2d){ %>
 <script type="text/javascript">
     var message_Path = '/live2d/'
-    var home_Path = document.getElementById("domainname").innerHTML+"/"; //此处修改为你的域名，必须带斜杠
+    var home_Path = document.getElementById("domainname").innerHTML + "/"; //此处修改为你的域名，必须带斜杠
 </script>
 <script type="text/javascript" src="<%= themeConfig.domain %>/media/live2d/js/live2d.js%>"></script>
 <script type="text/javascript" src="<%= themeConfig.domain %>/media/live2d/js/message.js%>"></script>
@@ -87,5 +97,5 @@
         bg.css("background", "url('" + bgurl + "')");
 </script>
 <%if (site.customConfig.menuposition=='left'){ %>
-    <script src="<%= themeConfig.domain %>/media/js/index.js%>"></script>
+<script src="<%= themeConfig.domain %>/media/js/index.js%>"></script>
 <%}%>

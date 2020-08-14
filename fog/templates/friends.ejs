@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,17 +10,6 @@
     <meta name="description" content="<%- site.customConfig.metaDescription || themeConfig.siteDescription %>" />
     <title><%- themeConfig.siteName %></title>
 </head>
-<style>
-    @media screen and (max-width: 1300px) {
-        .archives-content ul li>span {
-            display: none;
-        }
-
-        .archives-content ul {
-            padding: 0px;
-        }
-    }
-</style>
 
 <body>
     <!-- 响应式布局，针对PC端内容显示 -->
@@ -36,7 +22,7 @@
                        <div style="margin-top:80px"></div>
                     <%}%>
                     <%- include('./includes/friends-detail') %>
-                    <div name="comment" style="background: white">
+                    <div id="comment" style="background: white">
                         <div class="commentcontainer">
                             <%if (site.customConfig.valineID && site.customConfig.valineKey) { %>
                             <%- include('./includes/valine') %>
@@ -56,6 +42,9 @@
                 </div>
                 <div class="col-xs-6 col-sm-2"></div>
             </div>
+            <%if(site.customConfig.aplayerchoice){%>
+                <%- include('./includes/aplayer') %>
+            <%}%>
         </div>
         <div id="bg">
         </div>
