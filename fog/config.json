@@ -455,6 +455,14 @@
           "value": "random"
         }
       ]
+    },
+    {
+      "name": "aplayerautoplay",
+      "label": "自动播放",
+      "group": "音乐播放器",
+      "value": false,
+      "type": "switch",
+      "note": ""
     }
   ]
 }
