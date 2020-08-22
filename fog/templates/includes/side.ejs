@@ -69,12 +69,12 @@
     <div id="footinfo"><%- themeConfig.footerInfo%> | Theme: <a
         href="https://github.com/850552586/gridea-theme-fog">Fog</a></div>
     <%if (site.customConfig.sitegotimeChoice){ %>
-    <div id="sitegotimeDate">载入天数...</div>
-    <div id="sitegotimes">载入时分秒...</div>
+    <div class="sitetime"><div id="sitegotimeDate">载入天数...</div>
+    <div id="sitegotimes">载入时分秒...</div></div>
     <div id="cussitetime" style="display:none"><%= site.customConfig['sitegotime'] %></div>
     <%}%>
     <%if (site.customConfig.sitenumChoice){ %>
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <script async src="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/js/busuanzi.pure.mini.js"></script>
     <div id="vistornum">
         <span id="busuanzi_container_site_uv">
             <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i> 总访问量:<span id="busuanzi_value_site_pv"></span>&nbsp;&nbsp;|&nbsp;&nbsp;
@@ -143,7 +143,7 @@
                     <div class="search-results"></div>
                 </div>
                 <%}%>
-                <div class="search nav navbar-nav">
+                <div class="search nav navbar-nav searchtop">
                 <a title="text" onclick="document.getElementById('socialMenu').style.display='block'"><i><img class="social"
                     src="<%= themeConfig.domain %>/media/images/social.png%>" alt=""></i></a>
             </div>

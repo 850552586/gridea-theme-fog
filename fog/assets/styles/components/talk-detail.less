@@ -170,7 +170,7 @@ body {
     outline: 0;
 }
 
-@media screen and (min-width: 1300px) {
+@media screen and (min-width: 1200px) {
     .talkShow {
         display: block;
         position: absolute;
@@ -191,13 +191,13 @@ body {
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) and (min-width:475px) {
     .talk .talkimg {
         width: 150px;
     }
 }
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1200px){
     .side {
         display: none;
     }
@@ -219,22 +219,19 @@ body {
     margin-top: 70px;
 }
 
-@media screen and (max-width: 1300px) {
-    #main {
-        padding: 5%;
-        width: 90%;
-        margin: 0;
-    }
+@media screen and (max-width: 1200px) {
 
     #talkContainer .talk .talkcontent {
-        font-size: 15px;
+        font-size : 15px;
     }
+
+    .talkShow{
+        width: 90%;
+    }
+
 }
 
 @media screen and (max-width: 425px) {
-    #main {
-        margin-left: 10px;
-    }
 
     #talkContainer .talk .talkcontent {
         width: 55%;

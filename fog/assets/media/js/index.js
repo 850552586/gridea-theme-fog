@@ -6,7 +6,6 @@
         postimage = $('.postimage');
         tab1 = document.querySelector("#tab1");
         ClicksideState = 0;
-        ClickbarState = 0;
         maindom = document.querySelector('#main')
         mainstyle = window.getComputedStyle(maindom, null)
         mainleft = mainstyle.left;
@@ -19,27 +18,11 @@
             side.animate({
                 'left': 0
             });
-            main.css('width', '60%');
-            postimage.css('width', '100%');
-            postinfo.css('margin-left', '0%');
-            posttitle.css('margin-left', '0');
-            posttitle2.css('margin-left', '0');
-            main.animate({
-                'left': mainleft
-            })
             ClicksideState = 1;
         } else {
             side.animate({
                 'left': -1200
             });
-            main.css('width', '100%');
-            postimage.css('width', '60%');
-            postinfo.css('margin-left', '20%');
-            posttitle.css('margin-left', '20%');
-            posttitle2.css('margin-left', '20%');
-            main.animate({
-                'left': 0
-            })
             ClicksideState = 0;
         }
         (tab1.className == 'tab') ?

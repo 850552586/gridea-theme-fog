@@ -1,84 +1,105 @@
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/bootstrap.min.css%>">
-    <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/live2d.css%>">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/css/live2d.css">
     <link rel="stylesheet" href="<%= themeConfig.domain %>/styles/main.css">
     <meta name="description" content="<%- site.customConfig.metaDescription || themeConfig.siteDescription %>" />
+    <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/font-awesome.css%>">
     <title><%- themeConfig.siteName %></title>
 </head>
-
 <body>
     <!-- 响应式布局，针对PC端内容显示 -->
     <div id="content">
-        <div class="nav-large">
+        <div class="fricontent">
+            <div id="bar">
+                <%- include('./includes/bar') %>
+            </div>
             <div class="row">
                 <div class="side"><%- include('./includes/side') %></div>
-                <div id="main" class="col-xs-12 col-sm-7" style="z-index: 999;">
-                    <%if(site.customConfig.menuposition=='top'){%>
-                       <div style="margin-top:80px"></div>
-                    <%}%>
+                <% if(site.customConfig.menuposition == 'left'){ %>
+                <div id="tab1" class="tab">
+                    <div class="bars">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="close"></div>
+                </div>
+                <div class="col-md-1 col-lg-3"></div>
+                <div id="main" class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
                     <%- include('./includes/friends-detail') %>
-                    <div id="comment" style="background: white">
-                        <div class="commentcontainer">
-                            <%if (site.customConfig.valineID && site.customConfig.valineKey) { %>
-                            <%- include('./includes/valine') %>
-                            <div class="clear"></div>
-                            <% }else if ( typeof commentSetting !== 'undefined' && commentSetting.showComment) { %>
-                            <% if (commentSetting.commentPlatform === 'gitalk') { %>
-                            <%- include('./includes/gitalk') %>
-                            <% } %>
-                            <% if (commentSetting.commentPlatform === 'disqus') { %>
-                            <%- include('./includes/disqus') %>
-                            <% } %>
-                            <% }else { %>
-                            <p>请到客户端“主题--自定义配置--valine”中填入ID和KEY</p>
-                            <% } %>
-                        </div>
+                <div id="comment" class="fcl" style="background: white;">
+                    <div class="commentcontainer">
+                        <% if (site.customConfig.valineID && site.customConfig.valineKey) { %>
+                        <%- include('./includes/valine') %>
+                        <div class="clear"></div>
+                        <% }else if ( typeof commentSetting !== 'undefined' && commentSetting.showComment) { %>
+                        <% if (commentSetting.commentPlatform === 'gitalk') { %>
+                        <%- include('./includes/gitalk') %>
+                        <% } %>
+                        <% if (commentSetting.commentPlatform === 'disqus') { %>
+                        <%- include('./includes/disqus') %>
+                        <% } %>
+                        <% }else { %>
+                        <p>请到客户端“主题--自定义配置--valine”中填入ID和KEY</p>
+                        <% } %>
                     </div>
                 </div>
-                <div class="col-xs-6 col-sm-2"></div>
+                </div>
+                <div class="col-md-1 col-lg-1"></div>
+                <div id="bg">
+                </div>
             </div>
-            <%if(site.customConfig.aplayerchoice){%>
-                <%- include('./includes/aplayer') %>
-            <%}%>
+            <% }else{ %>
+            <div class="col-md-2 col-lg-2"></div>
+            <div id="postmain" class="col-xs-12 col-sm-12 col-md-8  col-lg-10 posttop" >
+                <%- include('./includes/friends-detail') %>
+                <div id="comment" class="fct" style="background: white;">
+                    <div class="commentcontainer">
+                        <% if (site.customConfig.valineID && site.customConfig.valineKey) { %>
+                        <%- include('./includes/valine') %>
+                        <div class="clear"></div>
+                        <% }else if ( typeof commentSetting !== 'undefined' && commentSetting.showComment) { %>
+                        <% if (commentSetting.commentPlatform === 'gitalk') { %>
+                        <%- include('./includes/gitalk') %>
+                        <% } %>
+                        <% if (commentSetting.commentPlatform === 'disqus') { %>
+                        <%- include('./includes/disqus') %>
+                        <% } %>
+                        <% }else { %>
+                        <p>请到客户端“主题--自定义配置--valine”中填入ID和KEY</p>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 col-lg-1">
+            </div>
+            <div id="bg">
+            </div>
         </div>
-        <div id="bg">
-        </div>
-        <div id="bgchoice" style="display: none"><%= site.customConfig.bgchoice%></div>
-        <%if(site.customConfig.bgchoice=='default'){%>
-        <div id="bgurl" style="display:none"><%= site.customConfig['bgimage'] %></div>
-        <%} else{%>
-        <div id="bgurl" style="display:none"><%= site.customConfig['bgimagelink'] %></div>
-        <%}%>   
-    </div>
+        <% } %>
+        <%if(site.customConfig.aplayerchoice){%>
+        <%- include('./includes/aplayer') %>
+        <%}%>
 
-    <!-- 响应式布局，针对手机端内容显示 -->
-    <div class="nav-small">
-        <%- include('./includes/bar') %>
-        <div style="margin-top:60px"></div>
-        <%- include('./includes/friends-detail') %>
-        <div style="margin-bottom:60px">&nbsp;</div>
-        <div name="comment" style="background: white">
-            <div class="commentcontainer">
-                <%if (site.customConfig.valineID && site.customConfig.valineKey) { %>
-                <%- include('./includes/valinemobile') %>
-                <div class="clear"></div>
-                <% }else if ( typeof commentSetting !== 'undefined' && commentSetting.showComment) { %>
-                <% if (commentSetting.commentPlatform === 'gitalk') { %>
-                <%- include('./includes/gitalk') %>
-                <% } %>
-                <% if (commentSetting.commentPlatform === 'disqus') { %>
-                <%- include('./includes/disqus') %>
-                <% } %>
-                <% }else { %>
-                <p>请到客户端“主题--自定义配置--valine”中填入ID和KEY</p>
-                <% } %>
+    </div>
+    <div class="tog">
+        <div class="toggleContainer">
+            <div class="toggle">
+                <i class="fas fa-angle-double-up"></i>
             </div>
         </div>
+    </div>
+    <div id="bgchoice" style="display: none"><%= site.customConfig.bgchoice %></div>
+    <% if(site.customConfig.bgchoice == 'default'){ %>
+    <div id="bgurl" style="display:none"><%= site.customConfig['bgimage'] %></div>
+    <% } else{ %>
+    <div id="bgurl" style="display:none"><%= site.customConfig['bgimagelink'] %></div>
+    <% } %>
     </div>
     <div id="landlord">
         <div class="message" style="opacity:0"></div>
@@ -93,7 +114,7 @@
     var message_Path = '/live2d/'
     var home_Path = document.getElementById("domainname").innerHTML+"/"; //此处修改为你的域名，必须带斜杠
 </script>
-<script type="text/javascript" src="<%= themeConfig.domain %>/media/live2d/js/live2d.js%>"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/js/live2d.js"></script>
 <script type="text/javascript" src="<%= themeConfig.domain %>/media/live2d/js/message.js%>"></script>
 <script type="text/javascript">
     loadlive2d("live2d", "<%= themeConfig.domain %>/media/live2d/assets/tororo.model.json%>");
@@ -108,6 +129,10 @@
             for (var i = 0; i < 3; i++)
                 bgurl = bgurl.replace("\\", "/");
         bg.css("background", "url('" + bgurl + "')");
+
+        window.onload = function(){
+            aplayerbtnInit();
+        }
 </script>
 <%if (site.customConfig.menuposition=='left'){ %>
     <script src="<%= themeConfig.domain %>/media/js/index.js%>"></script>

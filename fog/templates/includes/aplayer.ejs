@@ -23,6 +23,41 @@
         aplayer.attr("autoplay","true");
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/js/Aplayer.min.js"></script>
 <!-- require MetingJS -->
 <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+<script>
+    function aplayerbtnInit(){
+        var player = document.querySelectorAll('meting-js')[0].aplayer;
+        player.lrc.hide();
+        var mbabtn = $("#mbaplayer");
+        if(player.paused==false)
+        {
+            mbabtn.removeClass("fa-play-circle-o");
+            mbabtn.addClass("fa-pause-circle");
+        }
+        else
+        {
+            mbabtn.addClass("fa-play-circle-o");
+            mbabtn.removeClass("fa-pause-circle");
+        }
+    }
+
+    function aplayerPlay(){
+        var player = document.querySelectorAll('meting-js')[0].aplayer;
+        var mbabtn = $("#mbaplayer");
+        if(player.paused==true)
+        {
+            player.play();
+            mbabtn.removeClass("fa-play-circle-o");
+            mbabtn.addClass("fa-pause-circle");
+        }
+        else
+        {
+            player.pause();
+            mbabtn.addClass("fa-play-circle-o");
+            mbabtn.removeClass("fa-pause-circle");
+        }
+    }
+</script>

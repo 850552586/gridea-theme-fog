@@ -10,11 +10,15 @@
 } 
 
 #side{
-    height:100vh;
     animation: fade-in;/*????*/  
     animation-duration: 1s;/*??????*/  
     -webkit-animation:fade-in 1s;/*??webkit??*/  
 }
+
+.side{
+    min-height: 80%;
+}
+
 
 .describtion {
     margin-top: 3%;
@@ -22,6 +26,8 @@
     font-size: 12px;
     color: white;
     font-weight: lighter;
+    display: flex;
+    justify-content: center;
 }
 
 .sitename {
@@ -31,6 +37,11 @@
     font-weight: 900;
     color: antiquewhite;
     font-family: Arial, Verdana, "宋体";
+}
+
+.sitetime{
+    display: flex;
+    justify-content: center;
 }
 
 .avatar {
@@ -297,6 +308,10 @@ hr {
     font-size: 12px;
 }
 
+.searchtop{
+    width: auto;
+}
+
 #vistornum{
     margin-top:1%;
     color:white;
@@ -307,7 +322,7 @@ hr {
 }
 
 
-@media screen and (max-width: 1300px){
+@media screen and (max-width: 1200px){
     .avatar-border{
         position: absolute;
         /* margin-bottom: 10%; */
@@ -357,9 +372,9 @@ hr {
         align-items: center;
         background: #F8F8FF;
         border-radius: 15px;
-        margin-left: 30%;
-        width: 40%;
-        height: 5vh;
+        margin-left: 20%;
+        width: 60%;
+        height: 7vh;
         margin-top:35vh;
     }
 

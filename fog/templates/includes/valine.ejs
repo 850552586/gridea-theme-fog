@@ -1,4 +1,6 @@
 <style>
+
+
     @media screen and (min-width: 1300px) {
         .veditor::placeholder {
             color: #b3b3b3;
@@ -13,8 +15,9 @@
 <body>
     <div id="vcomments">
     </div>
-    <script src='<%= themeConfig.domain %>/media/js/valine.min.js%>'></script>
-    <script src="<%= themeConfig.domain %>/media/js/jquery.min.js%>"></script>
+    <script src="<%= themeConfig.domain %>/media/js/valine.min.js%>"></script>
+    <!-- <script src="https://unpkg.com/valine/dist/Valine.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
     <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
     <script>
         new Valine({
@@ -43,4 +46,5 @@
                  .dynasty + " · " + result.data.origin.author;
             });
     </script> 
+    
 </body>

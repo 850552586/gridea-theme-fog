@@ -9,14 +9,24 @@
     100% {opacity: 1;}  
 } 
 
-@media screen and (max-width: 1300px) {
+#friendscontainer{
+    position: relative;
+    z-index: 999;
+}
+
+@media screen and (max-width: 1200px) {
     #friendscontainermobile {
-        position: flex;
+        margin-top: 60px;
+        position: relative;
         min-height: 70vh;
         display: block;
         animation: fade-in;/*动画名称*/  
         animation-duration: 1s;/*动画持续时间*/  
         -webkit-animation:fade-in 1s;/*针对webkit内核*/  
+    }
+
+    .fricontent{
+        width: 90%;
     }
 
     #friendscontainer {
@@ -33,7 +43,6 @@
     }
 
     .friend-box {
-        float: left;
         border-radius: 10px;
         cursor: pointer;
         background: black;
@@ -60,7 +69,7 @@
     }
 }
 
-@media screen and (min-width: 1300px) {
+@media screen and (min-width: 1200px) {
     #friendscontainermobile {
         display: none;
     }
@@ -127,14 +136,34 @@
         overflow: hidden;
         text-align: center;
     }
+
+    .fcl{
+        width: 80%;
+        margin-left: 5%;
+    }
+
+    .fct{
+        width: 70%;
+        margin-left: 5%;
+    }
 }
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1200px) {
     .archives-content ul li>span {
         display: none;
     }
 
     .archives-content ul {
         padding: 0px;
+    }
+
+    .fcl,.fct{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 750px){
+    .fcl,.fct{
+        margin-left: 5%;
     }
 }

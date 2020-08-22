@@ -44,10 +44,9 @@
                 <!-- id 将作为查询条件 -->
                 <div id="pl" style="display:none"><%=post.link%></div>
                 <div id="rootaddr" style="display:none"><%= themeConfig.domain %></div>
-                <span id="hotnum" class="leancloud_visitors" data-flag-title="<%= post.title %>">
-                    <h4 class="readercount"><i class="fa fa-eye" aria-hidden="true"
-                            style="color: #FF8C00;"></i>&nbsp;&nbsp;热度</i>: <i
-                            class="leancloud-visitors-count">loading...</i></h4>
+                <span id="hotnum">
+                    <h4><i class="fa fa-eye" aria-hidden="true" style="color: #FF8C00;"></i>&nbsp;&nbsp;热度</i>: <i
+                            class="hotnum">loading...</i></h4>
                 </span>
             </div>
             <div class="text ">
@@ -68,9 +67,9 @@
                                 src="<%= themeConfig.domain %>/media/images/weibo.png%>" alt=""></i></a>
                     <a class="qzone" href=""><i><img class="shareicon"
                                 src="<%= themeConfig.domain %>/media/images/qzone.png%>" alt=""></i></a>
-                                <a class="douban" href=""><i><img class="shareicon"
-                                    src="<%= themeConfig.domain %>/media/images/douban.png%>" alt=""></i></a>
-                                <a class="facebook" href=""><i><img class="shareicon"
+                    <a class="douban" href=""><i><img class="shareicon"
+                                src="<%= themeConfig.domain %>/media/images/douban.png%>" alt=""></i></a>
+                    <a class="facebook" href=""><i><img class="shareicon"
                                 src="<%= themeConfig.domain %>/media/images/facebook.png%>" alt=""></i></a>
                     <a class="twitter" href=""><i><img class="shareicon"
                                 src="<%= themeConfig.domain %>/media/images/twitter.png%>" alt=""></i></a>
@@ -97,7 +96,15 @@
             <% if (post.prevPost && !post.hideInList) { %>
             <div class="prev-post-pc">
                 <div id="ppcontainer" onclick="window.location.href= '<%=post.prevPost.link%>';return false">
+                    <% if (themeConfig.showFeatureImage && post.prevPost.feature) { %>
                     <img src="<%= post.prevPost.feature%>" style="width: 100%;" class="opimg">
+                    <% } else {%>
+                    <%if(site.customConfig.bgchoice=='default'){%>
+                    <img src="<%= site.customConfig['postdefaultimage'] %>" style="width: 100%;" class="opimg">
+                    <%}else{%>
+                    <img src="<%= site.customConfig['postdefaultimagelink'] %>" style="width: 100%;" class="opimg">
+                    <%}%>
+                    <%}%>
                     <h4 class="optitle"><%= post.prevPost.title%></h4>
                 </div>
             </div>
@@ -108,7 +115,15 @@
             <% if (post.nextPost && !post.hideInList) { %>
             <div class="next-post-pc">
                 <div id="npcontainer" onclick="window.location.href= '<%=post.nextPost.link%>';return false">
+                    <% if (themeConfig.showFeatureImage && post.nextPost.feature) { %>
                     <img src="<%= post.nextPost.feature%>" style="width: 100%;" class="opimg">
+                    <% } else {%>
+                    <%if(site.customConfig.bgchoice=='default'){%>
+                    <img src="<%= site.customConfig['postdefaultimage'] %>" style="width: 100%;" class="opimg">
+                    <%}else{%>
+                    <img src="<%= site.customConfig['postdefaultimagelink'] %>" style="width: 100%;" class="opimg">
+                    <%}%>
+                        <%}%>
                     <h4 class="optitle"><%= post.nextPost.title%></h4>
                 </div>
             </div>
@@ -119,6 +134,8 @@
         </div>
     </div>
     </div>
+    </div>
+
 </body>
 <script>
     //文章阅读热度

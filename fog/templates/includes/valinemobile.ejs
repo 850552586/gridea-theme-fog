@@ -1,21 +1,3 @@
 <body>
-    <div id="vcomments1"></div>
-
-<script src='<%= themeConfig.domain %>/media/js/valine.min.js%>'></script>
-<script src="<%= themeConfig.domain %>/media/js/jquery.min.js%>"></script>
-<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-<script>
-    new Valine({
-        el: '#vcomments1',
-        appId: '<%= site.customConfig.valineID %>',
-        appKey: '<%= site.customConfig.valineKey %>',
-        notify: true,
-        verify: false,
-        avatar: 'retro',
-        pageSize: 10,
-        placeholder: '既然来了，那就留个痕迹吧~',
-        visitor: true // 阅读量统计
-    })
-</script>
-
+    <div id="vcomments1" class=" v" data-class="v"></div>
 </body>

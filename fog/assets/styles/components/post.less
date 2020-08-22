@@ -1,3 +1,15 @@
+@keyframes fade-in {  
+  0% {opacity: 0;}/*初始状态 透明度为0*/  
+  40% {opacity: 0;}/*过渡状态 透明度为0*/  
+  100% {opacity: 1;}/*结束状态 透明度为1*/  
+}  
+@-webkit-keyframes fade-in {/*针对webkit内核*/  
+  0% {opacity: 0;}  
+  40% {opacity: 0;}  
+  100% {opacity: 1;}  
+} 
+
+
 .toc-container {
   position: fixed;
   width: 20%;
@@ -17,7 +29,7 @@
 
 
 .markdownIt-TOC li {
-  
+
 
   a {
     color: antiquewhite;
@@ -91,13 +103,34 @@ code {
   z-index: 102;
 }
 
-#comment{
-  margin-top: 350px;
+#comment {
   box-shadow: 10px 10px 10px rgba(0, 0, 0, .5);
   /*考虑浏览器兼容性*/
   -moz-box-shadow: 10px 10px 10px rgba(0, 0, 0, .5);
   -webkit-box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, .5);
   border-radius: 10px;
+  background: white;
+  z-index: 99;
+  padding: 10px;
+}
+
+.comment{
+  width: 90%;
+  margin-left: 5%;
+}
+
+@media screen and (max-width: 1200px) {
+  .tog{
+    display: none;
+  }
+
+  .postinfo-detail{
+    margin-left: 10px;
+  }
+
+  .toc-container{
+    display: none;
+  }
 }
 
 //-------------------------代码插件
@@ -106,9 +139,18 @@ pre code {
   white-space: inherit; //不换行
 }
 
-@media screen and (min-width: 1300px) {
+
+@media screen and (min-width: 1200px) {
+  #comment {
+    margin-top:350px;
+  }
+
   .commentcontainer {
     padding: 30px;
+  }
+
+  .postinfo-detail {
+    margin-left: 0;
   }
 
   //复制代码button
@@ -137,7 +179,7 @@ pre code {
     position: fixed;
     right: 16%;
     bottom: 12%;
-    z-index:100;
+    z-index: 100;
     display: none;
     cursor: pointer;
   }
@@ -158,12 +200,7 @@ pre code {
   }
 }
 
-@media screen and (max-width: 1300px) {
-  .commentcontainer {
-    width: 90%;
-    margin-left: 5%;
-  }
-
+@media screen and (max-width: 1200px) {
   //复制代码button
   .copybt {
     position: absolute;
@@ -230,3 +267,42 @@ pre code {
   margin: 0;
 }
 
+table {
+  width: 80%;
+  margin: 30px auto;
+  border: #aaa 2px;
+  border-collapse: separate;
+  border-spacing: 5px
+}
+
+td,
+th {
+  padding: 5px;
+  text-align: center;
+  border-color: #ddd;
+  border-width: 1px;
+  border-style: solid
+}
+
+tr:nth-child(2n) {
+  background: #F5F5F5;
+}
+
+@media screen and (min-width:1200px){
+  #bar{
+    display: none;
+  }
+
+  .posttop{
+    margin-top:50px;
+  }
+}
+
+#postmain{
+  justify-content: center;
+  padding: 0;
+  z-index: 98;
+  animation: fade-in;/*动画名称*/  
+  animation-duration: 1s;/*动画持续时间*/  
+  -webkit-animation:fade-in 1s;/*针对webkit内核*/  
+}

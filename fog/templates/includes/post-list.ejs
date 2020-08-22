@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/font-awesome.css%>">
 <div id="post-container">
     <% posts.forEach(function(post) { %>
-    <div class="postshow">
+    <div class="postshow postlist">
         <% if (themeConfig.showFeatureImage && post.feature) { %>
         <div id="post" style="width:100%">
             <img src="<%= post.feature%>" class="postimage"

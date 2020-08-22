@@ -4,8 +4,9 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
 <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/bootstrap.min.css%>">
-<link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/live2d.css%>">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/css/live2d.css">
 <link rel="stylesheet" href="<%= themeConfig.domain %>/styles/main.css">
+<link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/font-awesome.css%>">
 <title><%- themeConfig.siteName %></title>
 
 
@@ -16,14 +17,15 @@
             <div class="row">
                 <%if(site.customConfig.menuposition=='left'){%>
                 <div class="side"><%- include('./includes/side') %></div>
-                <div id="main" class="col-xs-12 col-sm-7">
+                <div class="col-md-1 col-lg-3"></div>
+                <div id="main" class="col-xs-12 col-sm-12 col-md-10 col-lg-7">
                     <%- include('./includes/tag-detail') %>
                     <div>
                         <%- include('./includes/pagination') %>
                         <div style="padding-bottom:10%"></div>
                     </div>
                 </div>
-                <div class="col-xs-6 col-sm-2"></div>
+                <div class="col-md-1 col-lg-2"></div>
                 <%}else{%>
                 <div class="side"><%- include('./includes/side') %></div>
                 <div id="main" class="col-xs-12 col-sm-7" style="width:50%;margin-top:50px;left:27%">
@@ -80,7 +82,7 @@
     var message_Path = '/live2d/'
     var home_Path = document.getElementById("domainname").innerHTML + "/"; //此处修改为你的域名，必须带斜杠
 </script>
-<script type="text/javascript" src="<%= themeConfig.domain %>/media/live2d/js/live2d.js%>"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/js/live2d.js"></script>
 <script type="text/javascript" src="<%= themeConfig.domain %>/media/live2d/js/message.js%>"></script>
 <script type="text/javascript">
     loadlive2d("live2d", "<%= themeConfig.domain %>/media/live2d/assets/tororo.model.json%>");
@@ -95,6 +97,10 @@
             for (var i = 0; i < 3; i++)
                 bgurl = bgurl.replace("\\", "/");
         bg.css("background", "url('" + bgurl + "')");
+
+        window.onload = function(){
+            aplayerbtnInit();
+        }
 </script>
 <%if (site.customConfig.menuposition=='left'){ %>
 <script src="<%= themeConfig.domain %>/media/js/index.js%>"></script>

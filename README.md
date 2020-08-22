@@ -36,6 +36,16 @@
 # 更新日志
 
 <details>
+<summary><b>version 0.7</b></summary>
+<pre>
+<ul>
+- 更新：valine-1.4.14
+- 其他：全局bug优化
+  </ul>
+  </pre>
+</details>
+
+<details>
 <summary><b>version 0.6</b></summary>
 <pre>
 <ul>
