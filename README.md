@@ -8,6 +8,8 @@
 
 主题国内码云下载地址：（<https://gitee.com/ericam/gridea-theme-fog> ）
 
+使用文档：进入help文件夹，查看使用文档。
+
 主题截图介绍：（请拖动进度条到下方查看）
 
 欢迎加入Fog主题交流群（可以分享你遇到的问题，或者咨询主题开发建议）
@@ -272,18 +274,14 @@
 
 ```html
 <div class="tvcontainer">
-
-​                        <iframe class="tv"
-
-​                            src="https://player.bilibili.com/player.html?cid=145147963&aid=84267566&page=1&as_wide=1&high_quality=1&danmaku=0"
-
-​                            frameborder="no" scrolling="no"></iframe>
-
+<iframe class="tv"                         src="https://player.bilibili.com/player.html?cid=145147963&aid=84267566&page=1&as_wide=1&high_quality=1&danmaku=0"frameborder="no" scrolling="no"></iframe>
 </div>
 
 ```
 
-通过修改cid来更换视频。
+在b站视频下分享按钮，有个将视频嵌入博客的链接，拿过来替换上述代码块里的iframe标签，最后记得添加class="tv"，会布局的好看一点~
+
+
 
 ## 关于添加QQ联系方式
 
@@ -321,4 +319,15 @@
 
 ### 目前支持的主题自定义目录
 
+
+
 ![](https://ericamblog.oss-cn-shanghai.aliyuncs.com/GrideaFog/TIM图片20200713180316.png)
+
+
+
+## 为爱发电
+
+如果你觉得主题好用，希望可以赞助该主题6元表示支持~
+
+![](https://ericamblog.oss-cn-shanghai.aliyuncs.com/GrideaFog/mm_facetoface_collect_qrcode_1601312482725.png )
+
