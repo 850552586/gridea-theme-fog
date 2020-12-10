@@ -38,6 +38,15 @@
 # 更新日志
 
 <details>
+<summary><b>version 0.8</b></summary>
+<pre>
+<ul>
+- 更新：全局优化
+  </ul>
+  </pre>
+</details>
+
+<details>
 <summary><b>version 0.7</b></summary>
 <pre>
 <ul>

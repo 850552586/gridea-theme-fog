@@ -23,6 +23,7 @@
         animation: fade-in;/*动画名称*/  
         animation-duration: 1s;/*动画持续时间*/  
         -webkit-animation:fade-in 1s;/*针对webkit内核*/  
+        width: 100vw;
     }
 
     .fricontent{
@@ -79,7 +80,6 @@
     }
 
     #friendscontainer {
-        width: 80%;
         min-height: 100vh;
         animation: fade-in;/*动画名称*/  
         animation-duration: 1s;/*动画持续时间*/  
@@ -138,7 +138,7 @@
     }
 
     .fcl{
-        width: 80%;
+        width: 100%;
         margin-left: 5%;
     }
 
@@ -157,13 +157,14 @@
         padding: 0px;
     }
 
+
     .fcl,.fct{
         width: 100%;
     }
 }
 
 @media screen and (max-width: 750px){
-    .fcl,.fct{
-        margin-left: 5%;
+    .fcl{
+        width: 100vw;
     }
 }

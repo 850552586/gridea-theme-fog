@@ -3,6 +3,19 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/css/bootstrap.min.css">
 </head>
 <style>
+  .navmobile {
+    z-index: 15;
+    max-height: 40vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+
+  @media screen and (max-width: 1200px) {
+    .navbar {
+      max-width: 100vw;
+    }
+  }
+
   @media screen and (max-width:1200px) and (min-width: 768px) {
     @media (min-width: 768px) {
       .navbar-nav {
@@ -11,53 +24,59 @@
       }
     }
   }
-  @media screen and (max-width:768px){
-    .mbapspan{
+
+  @media screen and (max-width:768px) {
+    .mbapspan {
       padding: 0;
     }
   }
 </style>
+<div class="pjaxloading">
+  <div class="loadingbackground"></div>
+  <div id="loading">
+    <div class="loading">
+    </div>
+  </div>
+</div>
+<nav class="navbar navbar-inverse navbar-fixed-top navmobile">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#barmenu"
+        aria-expanded="false" id="barbutton">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a data-pjax class="navbar-brand" href="<%= themeConfig.domain %>"><%=themeConfig.siteName%>&nbsp;&nbsp;|</a>
+      <span class="navbar-brand mbapspan"><i id="mbaplayer" class="fa fa-play-circle-o" aria-hidden="true"
+          style="font-size: 28px;top: 12px;position: absolute;" onclick="aplayerPlay();"></i></span>
+    </div>
 
-<body>
-  <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#barmenu"
-          aria-expanded="false" id="barbutton">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="<%= themeConfig.domain %>"><%=themeConfig.siteName%>&nbsp;&nbsp;|</a>
-        <span class="navbar-brand mbapspan"><i id="mbaplayer" class="fa fa-play-circle-o" aria-hidden="true"
-            style="font-size: 28px;top: 12px;position: absolute;" onclick="aplayerPlay();"></i></span>
-      </div>
-
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="barmenu">
-        <ul class="nav navbar-nav">
-          <% menus.forEach(function(menu) { %>
-          <% if (menu.openType === 'External') { %>
-          <li><a href="<%= menu.link %>" target="_blank">
-              <%= menu.name %>
-            </a></li>
-          <% } else { %>
-          <li>
-            <a href="<%= menu.link %>">
-              <%= menu.name %>
-            </a>
-          </li>
-          <% } %>
-          <% }); %>
-          <%if(site.customConfig.talkchoice){%>
-          <li><a href="<%= themeConfig.domain %>/talk">说说</a></li>
-          <%}%>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="barmenu">
+      <ul class="nav navbar-nav">
+        <% menus.forEach(function(menu) { %>
+        <% if (menu.openType === 'External') { %>
+        <li><a href="<%= menu.link %>" target="_blank">
+            <%= menu.name %>
+          </a></li>
+        <% } else { %>
+        <li>
+          <a data-pjax href="<%= menu.link %>">
+            <%= menu.name %>
+          </a>
+        </li>
+        <% } %>
+        <% }); %>
+        <%if(site.customConfig.talkchoice){%>
+        <li><a data-pjax href="<%= themeConfig.domain %>/talk">说说</a></li>
+        <%}%>
           <%if(site.customConfig.friendschoice){%>
-          <li><a href="<%= themeConfig.domain %>/friends">友链</a></li>
+        <li><a data-pjax href="<%= themeConfig.domain %>/friends">友链</a></li>
 
-          <%}%>
+        <%}%>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -67,30 +86,29 @@
   <!-- 引入jQuery核心js文件 -->
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
   <script>
-  var btstate = false;
-  var bt = $("#barbutton");
-  var bm = $("#barmenu");
-  bt.click(function(){
-    dropdown();
-  })
-  function dropdown(){
-    console.log(btstate);
-    //下拉
-    if(btstate==false){
-      bt.removeClass("collapsed");
-      bt.attr("aria-expanded","true");
-      bm.attr("aria-expanded","true")
-      bm.fadeIn(700);
-      btstate = true;
+    let btstate = false;
+    var bt = $("#barbutton");
+    var bm = $("#barmenu");
+    bt.click(function () {
+      dropdown();
+    })
+    function dropdown() {
+      console.log(btstate);
+      //下拉
+      if (btstate == false) {
+        bt.removeClass("collapsed");
+        bt.attr("aria-expanded", "true");
+        bm.attr("aria-expanded", "true")
+        bm.fadeIn(700);
+        btstate = true;
+      }
+      else {
+        bt.addClass("collapsed");
+        bt.attr("aria-expanded", "false");
+        bm.removeClass("in");
+        bm.hide();
+        bm.attr("aria-expanded", "false");
+        btstate = false;
+      }
     }
-    else{
-      bt.addClass("collapsed");
-      bt.attr("aria-expanded","false");
-      bm.removeClass("in");
-      bm.hide();
-      bm.attr("aria-expanded","false");
-      btstate = false;
-    }
-  }
   </script> 
-</body>

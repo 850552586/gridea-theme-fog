@@ -14,12 +14,11 @@
 <body>
     <!-- 响应式布局，针对PC端内容显示 -->
     <div id="content">
-        <div class="fricontent">
-            <div id="bar">
-                <%- include('./includes/bar') %>
-            </div>
+        <div class="nav-large">
             <div class="row">
                 <div class="side"><%- include('./includes/side') %></div>
+                <div class="mobilebar"><%- include('./includes/bar') %>
+                </div>
                 <% if(site.customConfig.menuposition == 'left'){ %>
                 <div id="tab1" class="tab">
                     <div class="bars">
@@ -30,7 +29,7 @@
                     <div class="close"></div>
                 </div>
                 <div class="col-md-1 col-lg-3"></div>
-                <div id="main" class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+                <div id="main" class="col-xs-12 col-sm-12 col-md-12 col-lg-7">
                     <%- include('./includes/friends-detail') %>
                 <div id="comment" class="fcl" style="background: white;">
                     <div class="commentcontainer">
@@ -55,29 +54,36 @@
                 </div>
             </div>
             <% }else{ %>
-            <div class="col-md-2 col-lg-2"></div>
-            <div id="postmain" class="col-xs-12 col-sm-12 col-md-8  col-lg-10 posttop" >
-                <%- include('./includes/friends-detail') %>
-                <div id="comment" class="fct" style="background: white;">
-                    <div class="commentcontainer">
-                        <% if (site.customConfig.valineID && site.customConfig.valineKey) { %>
-                        <%- include('./includes/valine') %>
-                        <div class="clear"></div>
-                        <% }else if ( typeof commentSetting !== 'undefined' && commentSetting.showComment) { %>
-                        <% if (commentSetting.commentPlatform === 'gitalk') { %>
-                        <%- include('./includes/gitalk') %>
-                        <% } %>
-                        <% if (commentSetting.commentPlatform === 'disqus') { %>
-                        <%- include('./includes/disqus') %>
-                        <% } %>
-                        <% }else { %>
-                        <p>请到客户端“主题--自定义配置--valine”中填入ID和KEY</p>
-                        <% } %>
+                <div class="col-md-2 col-lg-3"></div>
+                <div id="main" class="col-xs-12 col-sm-12 col-md-12 col-lg-6 posttop">
+                    <%- include('./includes/friends-detail') %>
+                    <div class="tog">
+                        <div class="toggleContainer">
+                            <div class="toggle">
+                                <i class="fas fa-angle-double-up"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="comment" class="comment" style="background: white">
+                        <div class="commentcontainer">
+                            <% if (site.customConfig.valineID && site.customConfig.valineKey) { %>
+                            <%- include('./includes/valine') %>
+                            <div class="clear"></div>
+                            <% }else if ( typeof commentSetting !== 'undefined' && commentSetting.showComment) { %>
+                            <% if (commentSetting.commentPlatform === 'gitalk') { %>
+                            <%- include('./includes/gitalk') %>
+                            <% } %>
+                            <% if (commentSetting.commentPlatform === 'disqus') { %>
+                            <%- include('./includes/disqus') %>
+                            <% } %>
+                            <% }else { %>
+                            <p>请到客户端“主题--自定义配置--valine”中填入ID和KEY</p>
+                            <% } %>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-2 col-lg-1">
-            </div>
+                <div class="col-md-2 col-lg-3">
+                </div>
             <div id="bg">
             </div>
         </div>
@@ -87,6 +93,7 @@
         <%}%>
 
     </div>
+    
     <div class="tog">
         <div class="toggleContainer">
             <div class="toggle">

@@ -2,7 +2,7 @@
 
 <body>
     <div class="allcontent" id="postdetail">
-        <div class="postshow" style="padding-bottom: 0;">
+        <div class="postshow postpadding" style="padding-bottom: 0;">
             <% if (themeConfig.showFeatureImage && post.feature) { %>
             <div class="postdetailimg" style="width:100%;overflow: hidden;">
                 <img src="<%= post.feature%>" class="postimage" style="cursor:auto">
@@ -12,7 +12,7 @@
                 <div class="poststatus postdate"><i class="fa fa-clock-o"></i> <%= post.stats.text %></div>
                 <div class="posttag">
                     <% post.tags.forEach(function(tag) { %>
-                    <a href="<%= tag.link %>" class="postlink">
+                    <a data-pjax href="<%= tag.link %>" class="postlink">
                         <i class="fa fa-tag"></i> <%= tag.name %>
                     </a>
                     <% }); %>
@@ -31,7 +31,7 @@
             <div class="poststatus postdate"><i class="fa fa-clock-o"></i> <%= post.stats.text %></div>
             <div class="posttag">
                 <% post.tags.forEach(function(tag) { %>
-                <a href="<%= tag.link %>" class="postlink">
+                <a data-pjax href="<%= tag.link %>" class="postlink">
                     <i class="fa fa-tag"></i> <%= tag.name %>
                 </a>
                 <% }); %>
@@ -40,7 +40,7 @@
         <% } %>
         <div id="articlecontent">
             <div id="texttitle" style="text-align: center">
-                <h2><%= post.title %></h2>
+                <h2 id="ptitle"><%= post.title %></h2>
                 <!-- id 将作为查询条件 -->
                 <div id="pl" style="display:none"><%=post.link%></div>
                 <div id="rootaddr" style="display:none"><%= themeConfig.domain %></div>
@@ -94,8 +94,8 @@
         </div>
         <div id="otherpost">
             <% if (post.prevPost && !post.hideInList) { %>
-            <div class="prev-post-pc">
-                <div id="ppcontainer" onclick="window.location.href= '<%=post.prevPost.link%>';return false">
+            <a  data-pjax class="prev-post-pc" href="<%=post.prevPost.link%>"  style="color: black;">
+                <div id="ppcontainer">
                     <% if (themeConfig.showFeatureImage && post.prevPost.feature) { %>
                     <img src="<%= post.prevPost.feature%>" style="width: 100%;" class="opimg">
                     <% } else {%>
@@ -107,14 +107,14 @@
                     <%}%>
                     <h4 class="optitle"><%= post.prevPost.title%></h4>
                 </div>
-            </div>
+            </a>
             <div class="prev-post">
-                上一篇 <a href="<%= post.prevPost.link%>"><%= post.prevPost.title%></a>
+                上一篇 <a  data-pjax href="<%= post.prevPost.link%>"><%= post.prevPost.title%></a>
             </div>
             <% } %>
             <% if (post.nextPost && !post.hideInList) { %>
-            <div class="next-post-pc">
-                <div id="npcontainer" onclick="window.location.href= '<%=post.nextPost.link%>';return false">
+            <a data-pjax class="next-post-pc" href="<%=post.nextPost.link%>"  style="color: black;">
+                <div id="npcontainer">
                     <% if (themeConfig.showFeatureImage && post.nextPost.feature) { %>
                     <img src="<%= post.nextPost.feature%>" style="width: 100%;" class="opimg">
                     <% } else {%>
@@ -123,19 +123,22 @@
                     <%}else{%>
                     <img src="<%= site.customConfig['postdefaultimagelink'] %>" style="width: 100%;" class="opimg">
                     <%}%>
-                        <%}%>
+                    <%}%>
                     <h4 class="optitle"><%= post.nextPost.title%></h4>
                 </div>
-            </div>
+            </a>
             <div class="next-post">
-                下一篇 <a href="<%= post.nextPost.link%>"><%= post.nextPost.title%></a>
+                下一篇 <a  data-pjax href="<%= post.nextPost.link%>"><%= post.nextPost.title%></a>
             </div>
             <% } %>
         </div>
     </div>
     </div>
     </div>
-
+    <!-- 弹窗 -->
+    <div id="myModal" class="modal">
+        <img class="modal-content" id="img01">
+    </div>
 </body>
 <script>
     //文章阅读热度

@@ -1,6 +1,4 @@
 <style>
-
-
     @media screen and (min-width: 1300px) {
         .veditor::placeholder {
             color: #b3b3b3;
@@ -16,11 +14,13 @@
     <div id="vcomments">
     </div>
     <script src="<%= themeConfig.domain %>/media/js/valine.min.js%>"></script>
-    <!-- <script src="https://unpkg.com/valine/dist/Valine.min.js"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
     <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
     <script>
-        new Valine({
+        var valine = new Valine();
+        var curpath = window.location.pathname;
+        if (curpath[curpath.length - 1] != '/')
+            curpath += '/'
+        valine.init({
             el: '#vcomments',
             appId: '<%= site.customConfig.valineID %>',
             appKey: '<%= site.customConfig.valineKey %>',
@@ -30,21 +30,17 @@
             pageSize: 10,
             placeholder: '既然来了，何不畅所欲言呢？',
             visitor: true, // 阅读量统计
+            recordIP: true,
+            path: curpath //[重点] 记得添加path路径
         });
     </script>
     <script type="text/javascript">
-        // jinrishici.load(function (result) {
-        //     var jrsc_plac = result.data.content + "\n「" + result.data.origin.title + "」" + result.data.origin
-        //         .dynasty + " · " + result.data.origin.author;
-        //     if (jrsc_plac != undefined)
-        //         document.getElementById("veditor").setAttribute("placeholder", jrsc_plac);
-        // 
         var jrsc = '既然来了，何不畅所欲言呢？';
         jinrishici.load(function (result) {
-                // 自己的处理逻辑
-                jrsc = result.data.content + "\n「" + result.data.origin.title + "」" + result.data.origin
-                 .dynasty + " · " + result.data.origin.author;
-            });
-    </script> 
-    
+            // 自己的处理逻辑
+            jrsc = result.data.content + "\n「" + result.data.origin.title + "」" + result.data.origin
+                .dynasty + " · " + result.data.origin.author;
+        });
+    </script>
+
 </body>

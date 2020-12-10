@@ -79,8 +79,17 @@ body {
     }
 }
 
+#talks {
+    animation: fade-in;
+    /*动画名称*/
+    animation-duration: 1s;
+    /*动画持续时间*/
+    -webkit-animation: fade-in 1s;
+    /*针对webkit内核*/
+}
+
 #talkContainer .talk {
-    width: 80%;
+    width: 100%;
     min-height: 130px;
     height: auto;
     position: relative;
@@ -171,6 +180,10 @@ body {
 }
 
 @media screen and (min-width: 1200px) {
+    #getmorebt {
+        margin-left: 10%;
+    }
+
     .talkShow {
         display: block;
         position: absolute;
@@ -197,7 +210,7 @@ body {
     }
 }
 
-@media screen and (max-width: 1200px){
+@media screen and (max-width: 1200px) {
     .side {
         display: none;
     }
@@ -208,6 +221,11 @@ body {
 
     #talkContainer .talk {
         width: 110%;
+    }
+
+    #talks {
+        max-width: 90vw;
+
     }
 
     #getmorebt {
@@ -222,10 +240,10 @@ body {
 @media screen and (max-width: 1200px) {
 
     #talkContainer .talk .talkcontent {
-        font-size : 15px;
+        font-size: 15px;
     }
 
-    .talkShow{
+    .talkShow {
         width: 90%;
     }
 

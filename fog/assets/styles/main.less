@@ -6,7 +6,7 @@
 
     .tab {
         position: fixed;
-        z-index: 1000;
+        z-index: 15;
         top: 5%;
         left: 15%;
         width: 50px;
@@ -126,12 +126,14 @@
 
     body {
         overflow-x: hidden;
+        height: 100vh;
+        overflow-y: scroll;
     }
 
     .side {
         position: fixed;
-        width: 25%;
-        z-index: 1000;
+        width: 22%;
+        z-index: 20;
         justify-content: center;
         display: flex;
     }
@@ -139,7 +141,7 @@
     #main {
         justify-content: center;
         text-align: center;
-        z-index: 99;
+        z-index: 10;
     }
 
     #content {
@@ -170,24 +172,31 @@
         text-align: center;
         z-index: 2;
         /*将内容至于上层*/
+        min-height: 100vh;
     }
 
-    .nav-small {
+    .mobilebar{
         display: none;
+    }
+
+    .topindex{
+        width:60vw;
+        margin-top:50px;
+        left:25vw;
     }
 }
 
 
 @media screen and (max-width: 1200px) {
+    #content{
+        max-width: 100vw;
+    }
+
     #landlord {
         display: none;
     }
 
-    .nav-large {
-        display: none;
-    }
-
-    .nav-small {
+    .mobilebar{
         display: block;
     }
 

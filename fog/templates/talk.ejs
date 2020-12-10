@@ -8,28 +8,36 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/css/live2d.css">
     <meta name="description" content="<%- site.customConfig.metaDescription || themeConfig.siteDescription %>" />
     <link rel="stylesheet" href="<%= themeConfig.domain %>/styles/main.css">
-    <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/font-awesome.css%>">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <title><%- themeConfig.siteName %></title>
 </head>
 
 <body>
     <!-- 响应式布局，针对PC端内容显示 -->
     <div id="content">
-        <div class="talkShow">
+        <div class="nav-large">
             <div class="row">
                 <div class="side"><%- include('./includes/side') %></div>
                 <div class="tbar"> <%- include('./includes/bar') %>
                     <div style="margin-top:60px"></div>
                 </div>
                 <%if(site.customConfig.menuposition=='left'){%>
+                    <div id="tab1" class="tab">
+                        <div class="bars">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="close"></div>
+                    </div>
                 <div class="col-md-1 col-lg-3"></div>
-                <div id="main" class="col-xs-12 col-sm-12 col-md-10 col-lg-8" style="z-index: 999;">
+                <div id="main" class="col-xs-12 col-sm-12 col-md-12 col-lg-7" style="z-index: 11;">
                     <%- include('./includes/talk-detail') %>
                 </div>
-                <div class="col-md-1 col-lg-1"></div>
+                <div class="col-md-1 col-lg-2"></div>
                 <%}else{%>
-                <div class="col-md-1 col-lg-3"></div>
-                <div id="main" class="col-xs-12 col-sm-12 col-md-10 col-lg-8 top" style="z-index: 999;">
+                <div class="col-lg-3"></div>
+                <div id="main" class="col-xs-12 col-sm-12 col-md-12  col-lg-6 top" style="z-index: 11;">
                     <%- include('./includes/talk-detail') %>
                 </div>
                 <div class="col-md-1 col-lg-1"></div>
@@ -49,6 +57,7 @@
             <div id="bgurl" style="display:none"><%= site.customConfig['bgimagelink'] %></div>
             <%}%>   
     </div>
+    
     <div id="landlord">
         <div class="message" style="opacity:0"></div>
         <canvas id="live2d" width="240" height="250" class="live2d"></canvas>
@@ -68,7 +77,6 @@
                 loadlive2d("live2d", "<%= themeConfig.domain %>/media/live2d/assets/tororo.model.json%>");
             </script>
             <%}%>
-
 <script>
         var bgchoice=$('#bgchoice').html();
         var bg = $('#bg');
@@ -79,7 +87,7 @@
         bg.css("background", "url('" + bgurl + "')");
 </script>
 <%if (site.customConfig.menuposition=='left'){ %>
-            <script src="<%= themeConfig.domain %>/media/js/index.js%>"></script>
+        <script src="<%= themeConfig.domain %>/media/js/index.js%>"></script>
 <%}%>
 
 <script>
@@ -93,7 +101,7 @@
     function get() {
         var t = JSON.parse('<%- JSON.stringify(site.customConfig.talks) %>');
         talkindex = t.length - 1;
-        for (var i = t.length - 1; i >= 0; i--) {
+        for (var i = 0; i <=t.length - 1; i++) {
             var d = {};
             d["time"] = t[i].time;
             d["author"] = t[i].author;
@@ -110,7 +118,7 @@
         talkindex = (talkindex - 3) >= 0 ? (talkindex - 3) : -1;
         if (talkindex < 0) $("#getmorebt").hide();
         show();
-        refreshImg();
+        refreshImg("talkimg");
     }
 
     function show() {
@@ -148,12 +156,12 @@
         }
     }
 
-    function refreshImg() {
+    function refreshImg(imgclass) {
         // 获取弹窗
         var modal = document.getElementById('myModal');
 
         // 获取图片插入到弹窗 - 使用 "alt" 属性作为文本部分的内容
-        var img = document.getElementsByClassName("talkimg");
+        var img = document.getElementsByClassName(imgclass);
         var modalImg = document.getElementById("img01");
         var captionText = document.getElementById("caption");
         for (var i in img) {

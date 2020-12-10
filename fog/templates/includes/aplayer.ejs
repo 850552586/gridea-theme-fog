@@ -1,26 +1,30 @@
 <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
 </head>
+
 <body>
     <div class="miniMode">
         <meting-js id="myaplayer" server="netease" type="playlist" fixed="true" order="default">
         </meting-js>
-    </div>   
+    </div>
 </body>
 
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
 <script>
-    var aplayerid = "<%= site.customConfig.aplayerid%>";
-    var aplayerserver = "<%= site.customConfig.aplayerserver%>";
-    var aplayerorder = "<%= site.customConfig.aplayerorder%>";
-    var aplayerautoplay = "<%= site.customConfig.aplayerautoplay%>";
-    var aplayer = $("#myaplayer");
-    aplayer.attr("server",aplayerserver);
-    aplayer.attr("id",aplayerid);
-    aplayer.attr("order",aplayerorder);
-    if(aplayerautoplay=="true")
-        aplayer.attr("autoplay","true");
+    function aplayerInit() {
+        var aplayerid = "<%= site.customConfig.aplayerid%>";
+        var aplayerserver = "<%= site.customConfig.aplayerserver%>";
+        var aplayerorder = "<%= site.customConfig.aplayerorder%>";
+        var aplayerautoplay = "<%= site.customConfig.aplayerautoplay%>";
+        var aplayer = $("#myaplayer");
+        aplayer.attr("server", aplayerserver);
+        aplayer.attr("id", aplayerid);
+        aplayer.attr("order", aplayerorder);
+        if (aplayerautoplay == "true")
+            aplayer.attr("autoplay", "true");
+    }
+    aplayerInit();
 </script>
 
 <script src="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/js/Aplayer.min.js"></script>
@@ -28,33 +32,28 @@
 <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
 
 <script>
-    function aplayerbtnInit(){
+    function aplayerbtnInit() {
         var player = document.querySelectorAll('meting-js')[0].aplayer;
+        if(player==undefined)return false;
         player.lrc.hide();
         var mbabtn = $("#mbaplayer");
-        if(player.paused==false)
-        {
+        if (player.paused == false) {
             mbabtn.removeClass("fa-play-circle-o");
             mbabtn.addClass("fa-pause-circle");
-        }
-        else
-        {
+        } else {
             mbabtn.addClass("fa-play-circle-o");
             mbabtn.removeClass("fa-pause-circle");
         }
     }
 
-    function aplayerPlay(){
+    function aplayerPlay() {
         var player = document.querySelectorAll('meting-js')[0].aplayer;
         var mbabtn = $("#mbaplayer");
-        if(player.paused==true)
-        {
+        if (player.paused == true) {
             player.play();
             mbabtn.removeClass("fa-play-circle-o");
             mbabtn.addClass("fa-pause-circle");
-        }
-        else
-        {
+        } else {
             player.pause();
             mbabtn.addClass("fa-play-circle-o");
             mbabtn.removeClass("fa-pause-circle");

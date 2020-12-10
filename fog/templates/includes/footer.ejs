@@ -1,32 +1,54 @@
 <style>
- .copyright{
-    font-size: 15px;
-    color: #d9d9d9;
- }
-</style>
-<body>
-    <div style="width:100%;height:130px;padding:15px">
-        <%if (site.customConfig.sitenumChoice){ %>
-        <script async src="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/js/busuanzi.pure.mini.js"></script>
-        <div id="vistornum" style="margin:0">
-            <span id="busuanzi_container_site_uv">
-                <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i> 总访问量:<span id="busuanzi_value_site_pv"></span>&nbsp;&nbsp;|&nbsp;&nbsp;
-                <i class="fa fa-user-o" aria-hidden="true"></i> 访问人数:<span id="busuanzi_value_site_uv"></span>
-            </span>
-        </div>
-        <%}%>
+    .copyright {
+        font-size: 15px;
+        color: #d9d9d9;
+    }
 
-        <%if (site.customConfig.sitegotimeChoice){ %>
-        <div id="sitegotimeDate">载入天数...</div>
-        <div id="sitegotimes">载入时分秒...</div>
-        <div id="cussitetime" style="display:none"><%= site.customConfig['sitegotime'] %></div>
-        <%}%>
+
+    @media screen and (min-width: 1200px) {
+        .foot {
+            width: 100%;
+            height: 130px;
+        }
+    }
+
+    @media screen and (max-width: 1200px) {
+        .foot {
+            display: none;
+        }
+    }
+</style>
+
+<body>
+    <div class="foot">
         <div id="footinfo"><%- themeConfig.footerInfo%> | Theme: <a
-            href="https://github.com/850552586/gridea-theme-fog">Fog</a>
-    </div>
-    <div class="copyright">
-        <%= site.customConfig.recordText %>
-    </div>
+                href="https://github.com/850552586/gridea-theme-fog">Fog</a>
+            <div>
+                <%if (site.customConfig.sitegotimeChoice){ %>
+                <div id="sitegotimeDate">载入天数...</div>
+                <div id="sitegotimes">载入时分秒...</div>
+                <div id="cussitetime" style="display:none"><%= site.customConfig['sitegotime'] %></div>
+                <%}%>
+            </div>
+            <div>
+                <%if (site.customConfig.sitenumChoice){ %>
+                <script async
+                    src="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/js/busuanzi.pure.mini.js"></script>
+                <div id="vistornum" style="margin:0">
+                    <span id="busuanzi_container_site_uv">
+                        <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i> 总访问量:<span
+                            id="busuanzi_value_site_pv"></span>&nbsp;&nbsp;|&nbsp;&nbsp;
+                        <i class="fa fa-user-o" aria-hidden="true"></i> 访问人数:<span id="busuanzi_value_site_uv"></span>
+                    </span>
+                </div>
+                <%}%>
+            </div>
+            <div class="copyright" style="color:white;text-align: center;"><%- site.customConfig.recordText %>
+            </div>
+        </div>
+
+
+
     </div>
 </body>
 <%if (site.customConfig.sitegotimeChoice){ %>
@@ -58,6 +80,7 @@
         document.getElementById("sitegotimeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
         document.getElementById("sitegotimes").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
     }
-    setInterval("createtime()", 250);
+
+    let intervalId = setInterval("createtime()", 250);
 </script>
 <%}%>

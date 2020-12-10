@@ -3,53 +3,54 @@
     <% posts.forEach(function(post) { %>
     <div class="postshow postlist">
         <% if (themeConfig.showFeatureImage && post.feature) { %>
-        <div id="post" style="width:100%">
-            <img src="<%= post.feature%>" class="postimage"
-                onclick="window.location.href= '<%=post.link%>';return false">
-            <div class="posttitlebox">
-                <div class="posttitle" onclick="window.location.href= '<%=post.link%>';return false">
-                    <%= post.title %>
+        <a data-pjax href="<%=post.link%>" class="apost">
+            <div id="post" style="width:100%">
+                <img src="<%= post.feature%>" class="postimage">
+                <div class="posttitlebox">
+                    <div class="posttitle">
+                        <%= post.title %>
+                    </div>
                 </div>
             </div>
-        </div>
+        </a>
         <div class="postinfo">
             <div class="postdate"><i class="fa fa-calendar"></i><%= post.dateFormat %></div>
             <div class="poststatus postdate"><i class="fa fa-clock-o"></i> <%= post.stats.text %></div>
             <div class="posttag">
                 <% post.tags.forEach(function(tag) { %>
-                <a href="<%= tag.link %>" class="postlink">
+                <a data-pjax href="<%= tag.link %>" class="postlink">
                     <i class="fa fa-tag"></i> <%= tag.name %>
                 </a>
                 <% }); %>
             </div>
         </div>
         <% } else {%>
-        <div id="post" style="width:100%">
-            <%if(site.customConfig.bgchoice=='default'){%>
-            <img src="<%= site.customConfig['postdefaultimage'] %>" class="postimage"
-                onclick="window.location.href= '<%=post.link%>';return false">
-            <%}else{%>
-            <img src="<%= site.customConfig['postdefaultimagelink'] %>" class="postimage"
-                onclick="window.location.href= '<%=post.link%>';return false">  
-            <%}%>
+        <a data-pjax href="<%=post.link%>" class="apost">
+            <div id="post" style="width:100%">
+                <%if(site.customConfig.bgchoice=='default'){%>
+                <img src="<%= site.customConfig['postdefaultimage'] %>" class="postimage">
+                <%}else{%>
+                <img src="<%= site.customConfig['postdefaultimagelink'] %>" class="postimage">
+                <%}%>
             <div class="posttitlebox">
-                <div class="posttitlewithoutimg" onclick="window.location.href= '<%=post.link%>';return false">
-                    <%= post.title %>
-                </div>
+                <div class="posttitle" >
+                <%= post.title %>
             </div>
-        </div>
-        <div class="postinfo">
-            <div class="postdate"><i class="fa fa-calendar"></i><%= post.dateFormat %></div>
-            <div class="poststatus postdate"><i class="fa fa-clock-o"></i> <%= post.stats.text %></div>
-            <div class="posttag">
-                <% post.tags.forEach(function(tag) { %>
-                <a href="<%= tag.link %>" class="postlink">
-                    <i class="fa fa-tag"></i> <%= tag.name %>
-                </a>
-                <% }); %>
-            </div>
-        </div>
-        <% } %>
     </div>
-    <% }); %>
+</div>
+</a>
+<div class="postinfo">
+    <div class="postdate"><i class="fa fa-calendar"></i><%= post.dateFormat %></div>
+    <div class="poststatus postdate"><i class="fa fa-clock-o"></i> <%= post.stats.text %></div>
+    <div class="posttag">
+        <% post.tags.forEach(function(tag) { %>
+        <a data-pjax href="<%= tag.link %>" class="postlink">
+            <i class="fa fa-tag"></i> <%= tag.name %>
+        </a>
+        <% }); %>
+    </div>
+</div>
+<% } %>
+</div>
+<% }); %>
 </div>

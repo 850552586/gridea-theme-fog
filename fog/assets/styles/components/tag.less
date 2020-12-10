@@ -58,17 +58,17 @@ a {
 .tagsbackgroundleft{
     position: fixed;
     min-height: 100vh;
-    background: whitesmoke;
+    background: #363433;
     width: 58.33%;
-    opacity: 0.6;
+    opacity: 0.7;
 }
 
 .tagsbackgroundtop{
     position: fixed;
     min-height: 100vh;
-    background: whitesmoke;
+    background: #363433;
     width: 50%;
-    opacity: 0.6;
+    opacity: 0.7;
 }
 
 .tagintro {
@@ -95,11 +95,23 @@ a {
 
 .tagsimg {
     width: 100%;
+    max-height: 60vh;
 }
 
 @media screen and (max-width: 1200px) {
     .tag {
         width: 40%;
+        margin-top:2vh;
+    }
+    .tagsbackgroundleft{
+        display: none;
+    }
+    .tags-container{
+        margin-top: 5vh;
+    }
+
+    .tagsbackgroundtop{
+        display: none;
     }
 }
 

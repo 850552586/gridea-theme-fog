@@ -20,29 +20,41 @@
             <div class="row">
                 <div class="side"><%- include('./includes/side') %></div>
                 <%if(site.customConfig.menuposition=='left'){%>
+                <div id="tab1" class="tab">
+                    <div class="bars">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="close"></div>
+                </div>
                 <div class="col-md-1 col-lg-3"></div>
-                <div id="main" class="col-xs-12 col-sm-12 col-md-10 col-lg-7">
+                <div class="mobilebar"><%- include('./includes/bar') %>
+                </div>
+                <div id="main" class="col-xs-12 col-sm-12 col-md-12 col-lg-7">
                     <%- include('./includes/archives-detail') %>
-                    <div style="background:white">
+                    <div>
                         <%- include('./includes/pagination') %>
                         <div style="padding-bottom:10%"></div>
                     </div>
                 </div>
                 <div class="col-md-1 col-lg-2"></div>
                 <%}else{%>
-                <div id="main" class="col-xs-12 col-sm-7" style="width:50%;margin-top:50px;left:27%">
+                <div class="mobilebar"><%- include('./includes/bar') %>
+                </div>
+                <div id="main" class="col-xs-12 col-sm-12 col-md-12 col-lg-6 topindex">
                     <%- include('./includes/archives-detail') %>
-                    <div style="background:white">
+                    <div>
                         <%- include('./includes/pagination') %>
                         <div style="padding-bottom:10%"></div>
                     </div>
                 </div>
                 <%}%>
-                <div class="col-xs-6 col-sm-2"></div>
+                <div class="col-xs-6 col-sm-3"></div>
             </div>
             <%if(site.customConfig.aplayerchoice){%>
                 <%- include('./includes/aplayer') %>
-            <%}%>
+                <%}%>
         </div>
         <div id="bg">
         </div>
@@ -55,35 +67,19 @@
             <%}%>   
     </div>
 
-    <!-- 响应式布局，针对手机端内容显示 -->
-    <div class="nav-small">
-        <%- include('./includes/bar') %>
-            <div style="margin-top:60px"></div>
-            <%- include('./includes/archives-detail') %>
-            <div class="pagination-container">
-                <% if (pagination.prev) { %>
-                <a href="<%= pagination.prev %>" class="mobile-prevpage">上一页</a>
-                <% }else if (pagination.next){%>
-                <a href="#" class="mobile-prevpage"></a>
-                <%}%>
-                <% if (pagination.next) { %>
-                <a href="<%= pagination.next %>" class="mobile-nextpage">下一页</a>
-                <% } %>
-            </div>
-            <div style="margin-bottom:60px">&nbsp;</div>
-        </div>
         <div id="landlord">
             <div class="message" style="opacity:0"></div>
             <canvas id="live2d" width="240" height="250" class="live2d"></canvas>
         </div>
-        <div id="domainname" style="display:none"><%= themeConfig.domain %></div>
+        <div id="domainname" style="display:none"><%= themeConfig.domain %>
+        </div>
 </body>
 
 </html>
 <%if (site.customConfig.live2d){ %>
 <script type="text/javascript">
     var message_Path = '/live2d/'
-    var home_Path = document.getElementById("domainname").innerHTML+"/"; //此处修改为你的域名，必须带斜杠
+    var home_Path = document.getElementById("domainname").innerHTML + "/"; //此处修改为你的域名，必须带斜杠
 </script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/js/live2d.js"></script>
 <script type="text/javascript" src="<%= themeConfig.domain %>/media/live2d/js/message.js%>"></script>
@@ -93,18 +89,18 @@
 <%}%>
 
 <script>
-        var bgchoice=$('#bgchoice').html();
-        var bg = $('#bg');
-        var bgurl = document.getElementById("bgurl").innerHTML;
-        if(bgchoice=='default')
-            for (var i = 0; i < 3; i++)
-                bgurl = bgurl.replace("\\", "/");
-        bg.css("background", "url('" + bgurl + "')");
+    var bgchoice = $('#bgchoice').html();
+    var bg = $('#bg');
+    var bgurl = document.getElementById("bgurl").innerHTML;
+    if (bgchoice == 'default')
+        for (var i = 0; i < 3; i++)
+            bgurl = bgurl.replace("\\", "/");
+    bg.css("background", "url('" + bgurl + "')");
 
-        window.onload = function(){
-            aplayerbtnInit();
-        }
+    window.onload = function () {
+        aplayerbtnInit();
+    }
 </script>
 <%if (site.customConfig.menuposition=='left'){ %>
-    <script src="<%= themeConfig.domain %>/media/js/index.js%>"></script>
+<script src="<%= themeConfig.domain %>/media/js/index.js%>"></script>
 <%}%>

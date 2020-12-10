@@ -1,6 +1,7 @@
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
     <meta name="description" content="<%- post.description %>" />
     <meta name="keywords" content="<%- post.tags.map(tag => tag.name).join(',') %>" />
     <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/bootstrap.min.css%>">
@@ -45,7 +46,6 @@
             ]
         });
     </script>
-
     <% } %>
     <title><%- themeConfig.siteName %></title>
     <% if(site.customConfig.menuposition == 'left'){ %>
@@ -99,34 +99,54 @@
                     <div class="close"></div>
                 </div>
                 <div class="col-md-1 col-lg-3"></div>
-                <div id="main" class="col-xs-12 col-sm-12 col-md-10 col-lg-7">
+                <div id="main" class="col-xs-12 col-sm-12 col-md-12 col-lg-7">
                     <%- include('./includes/post-detail') %>
-                <div id="comment"  class="comment" style="background: white">
-                    <div class="commentcontainer">
-                        <% if (site.customConfig.valineID && site.customConfig.valineKey) { %>
-                        <%- include('./includes/valine') %>
-                        <div class="clear"></div>
-                        <% }else if ( typeof commentSetting !== 'undefined' && commentSetting.showComment) { %>
-                        <% if (commentSetting.commentPlatform === 'gitalk') { %>
-                        <%- include('./includes/gitalk') %>
-                        <% } %>
-                        <% if (commentSetting.commentPlatform === 'disqus') { %>
-                        <%- include('./includes/disqus') %>
-                        <% } %>
-                        <% }else { %>
-                        <p>请到客户端“主题--自定义配置--valine”中填入ID和KEY</p>
-                        <% } %>
+                    <div class="toc-container">
+                        <%- post.toc %>
                     </div>
-                </div>
+                    <div class="tog">
+                        <div class="toggleContainer">
+                            <div class="toggle">
+                                <i class="fas fa-angle-double-up"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="comment" class="comment" style="background: white">
+                        <div class="commentcontainer">
+                            <% if (site.customConfig.valineID && site.customConfig.valineKey) { %>
+                            <%- include('./includes/valine') %>
+                            <div class="clear"></div>
+                            <% }else if ( typeof commentSetting !== 'undefined' && commentSetting.showComment) { %>
+                            <% if (commentSetting.commentPlatform === 'gitalk') { %>
+                            <%- include('./includes/gitalk') %>
+                            <% } %>
+                            <% if (commentSetting.commentPlatform === 'disqus') { %>
+                            <%- include('./includes/disqus') %>
+                            <% } %>
+                            <% }else { %>
+                            <p>请到客户端“主题--自定义配置--valine”中填入ID和KEY</p>
+                            <% } %>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-1 col-lg-2"></div>
                 <div id="bg">
                 </div>
             </div>
             <% }else{ %>
-            <div class="col-md-2 col-lg-3"></div>
-            <div id="postmain" class="col-xs-12 col-sm-12 col-md-8  col-lg-6 posttop" >
+            <div class="col-lg-3"></div>
+            <div id="main" class="col-xs-12 col-sm-12 col-md-12  col-lg-6 posttop">
                 <%- include('./includes/post-detail') %>
+                <div class="toc-container">
+                    <%- post.toc %>
+                </div>
+                <div class="tog">
+                    <div class="toggleContainer">
+                        <div class="toggle">
+                            <i class="fas fa-angle-double-up"></i>
+                        </div>
+                    </div>
+                </div>
                 <div id="comment" class="comment" style="background: white">
                     <div class="commentcontainer">
                         <% if (site.customConfig.valineID && site.customConfig.valineKey) { %>
@@ -154,25 +174,15 @@
         <%if(site.customConfig.aplayerchoice){%>
         <%- include('./includes/aplayer') %>
         <%}%>
-        <div class="toc-container">
-            <%- post.toc %>
     </div>
+    
+    <div id="bgchoice" style="display: none"><%= site.customConfig.bgchoice %>
     </div>
-    </div>
-    <div class="tog">
-        <div class="toggleContainer">
-            <div class="toggle">
-                <i class="fas fa-angle-double-up"></i>
-            </div>
-        </div>
-    </div>
-    <div id="bgchoice" style="display: none"><%= site.customConfig.bgchoice %></div>
     <% if(site.customConfig.bgchoice == 'default'){ %>
     <div id="bgurl" style="display:none"><%= site.customConfig['bgimage'] %></div>
     <% } else{ %>
     <div id="bgurl" style="display:none"><%= site.customConfig['bgimagelink'] %></div>
     <% } %>
-    </div>
 </body>
 <script>
     var img = $("img");
@@ -185,6 +195,37 @@
             img.eq(i).hide();
         }
     }
+    
+    function refreshImg(imgclass) {
+            // 获取弹窗
+            var modal = document.getElementById('myModal');
+
+            // 获取图片插入到弹窗 - 使用 "alt" 属性作为文本部分的内容
+            var img = document.getElementsByClassName(imgclass);
+            var modalImg = document.getElementById("img01");
+            var captionText = document.getElementById("caption");
+            for (var i in img) {
+                img[i].onclick = function () {
+                    modal.style.display = "block";
+                    modalImg.src = this.src;
+                }
+            }
+
+            // 图片关闭
+            var modalImg = document.getElementById('img01');
+            // 鼠标点击模型外区域关闭登录框
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+                if (menupos == 'left')
+                    return true;
+                if (event.target == social) {
+                    social.style.display = "none";
+                }
+            }
+        }
+
 </script>
 <script>
     hljs.initHighlightingOnLoad();
@@ -367,6 +408,7 @@
             }), $(window).bind("scroll", fLazyload), fLazyload();
         }
         lazyload();
+        refreshImg("lazyload");
     });
 </script>
 
@@ -375,51 +417,5 @@
 <!-- <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@4.6.1/dist/av-live-query-min.js"></script> -->
 
 <script>
-    function getHotnum() {
-        //文章阅读热度（重构，利用leancloud原生api）
-        var pl = $("#pl").html();
-        var rootaddr = $("#rootaddr").html();
-        pl = pl.replace(rootaddr, "");
 
-        var appid = '<%= site.customConfig.valineID %>';
-        var appkey = '<%= site.customConfig.valineKey %>';
-        console.log(appid, appkey)
-        if(AV==undefined)
-            AV.init({
-                appId: appid,
-                appKey: appkey
-            });
-        const query = new AV.Query('Counter');
-        query.equalTo('url', pl);
-        var time = 'Loading...';
-        query.find().then(function (results) {
-            console.log(results)
-            if (results.length == 0) {
-                console.log("0")
-                var NewCounter = AV.Object.extend('Counter');
-                var nc = new NewCounter();
-                nc.save({
-                    time: 1,
-                    title: "<%= post.title%>",
-                    url: pl,
-                    xid: pl,
-                }).then(function (object) {
-                    $(".hotnum").eq(0).html(1);
-                    $(".hotnum").eq(1).html(1);
-                });
-            } else {
-                id = results[0].id;
-                var todo = AV.Object.createWithoutData('Counter', id);
-                time = results[0].attributes.time + 1;
-                todo.set("time", time);
-                todo.save();
-                console.log(todo);
-                $(".hotnum").eq(0).html(time);
-                $(".hotnum").eq(1).html(time);
-            }
-
-        }, function (error) {
-            console.log(error)
-        });
-    }
 </script>

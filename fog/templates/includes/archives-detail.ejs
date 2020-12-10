@@ -8,13 +8,12 @@
             <%if (post.date.indexOf(year) !== -1) { %>
             <li><span></span>
                 <div>
-                  <a href="<%= post.link %>" class="post">
+                  <a data-pjax href="<%= post.link %>" class="post">
                     <div class="archives-title"><%= post.title %></div>
                     <div class="archives-time"><%= post.dateFormat %></div>
                 </a>
                     
                 </div>
-                <!-- <%= post.dateFormat %> -->
             </li>
             <% } %>
             <% }); %>
