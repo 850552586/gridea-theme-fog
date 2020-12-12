@@ -69,6 +69,11 @@
                                 <a data-pjax class="tag" href="<%= tag.link %>"># <%= tag.name %></a>
                                 <% }); %>
                             </div>
+                            <div style="display: none;">
+                                <%if(site.customConfig.menuposition=='top'){%>
+                                    <%- include('./includes/footer') %>
+                                    <%}%>
+                            </div>
                         </div>
                         <%}%>
                 <div class="col-xs-6 col-sm-3"></div>

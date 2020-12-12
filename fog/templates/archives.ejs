@@ -48,6 +48,9 @@
                         <%- include('./includes/pagination') %>
                         <div style="padding-bottom:10%"></div>
                     </div>
+                    <%if(site.customConfig.menuposition=='top'){%>
+                        <%- include('./includes/footer') %>
+                    <%}%>
                 </div>
                 <%}%>
                 <div class="col-xs-6 col-sm-3"></div>

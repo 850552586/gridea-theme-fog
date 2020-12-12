@@ -4,7 +4,7 @@
     <div class="allcontent" id="postdetail">
         <div class="postshow postpadding" style="padding-bottom: 0;">
             <% if (themeConfig.showFeatureImage && post.feature) { %>
-            <div class="postdetailimg" style="width:100%;overflow: hidden;">
+            <div class="postdetailimg">
                 <img src="<%= post.feature%>" class="postimage" style="cursor:auto">
             </div>
             <div class="postinfo-detail">
@@ -19,7 +19,7 @@
                 </div>
             </div>
             <% } else {%>
-            <div class="postdetailimg" style="width:100%;overflow: hidden;">
+            <div class="postdetailimg">
                 <%if(site.customConfig.bgchoice=='default'){%>
                 <img src="<%= site.customConfig['postdefaultimage'] %>" class="postimage">
                 <%}else{%>

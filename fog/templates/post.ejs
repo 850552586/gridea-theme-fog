@@ -27,22 +27,22 @@
         integrity="sha384-9tPv11A+glH/on/wEu99NVwDPwkMQESOocs/ZGXPoIiLE8MU/qkqUcZ3zzL+6DuH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/katex.min.js"
         integrity="sha384-U8Vrjwb8fuHMt6ewaCy8uqeUXv4oitYACKdB0VziCerzt011iQ/0TqlSlv8MReCm" crossorigin="anonymous">
-    </script>
+        </script>
     <script src="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/contrib/auto-render.min.js"
         integrity="sha384-aGfk5kvhIq5x1x5YdvCp4upKZYnA8ckafviDpmWEKp4afOZEqOli7gqSnh8I6enH" crossorigin="anonymous">
-    </script>
+        </script>
     <script>
         renderMathInElement(document.body, {
             delimiters: [{
-                    left: "$$",
-                    right: "$$",
-                    display: true
-                },
-                {
-                    left: "$",
-                    right: "$",
-                    display: false
-                }
+                left: "$$",
+                right: "$$",
+                display: true
+            },
+            {
+                left: "$",
+                right: "$",
+                display: false
+            }
             ]
         });
     </script>
@@ -79,7 +79,6 @@
         <div class="message" style="opacity:0"></div>
         <canvas id="live2d" width="240" height="250" class="live2d"></canvas>
     </div>
-    <div id="codeCopyText" style="display: none"><%= site.customConfig.codeCopyText %></div>
     <div id="domainname" style="display:none"><%= themeConfig.domain %></div>
     <!-- 响应式布局，针对PC端内容显示 -->
     <div id="content">
@@ -164,6 +163,11 @@
                         <% } %>
                     </div>
                 </div>
+                <div style="margin-top:5vh">
+                    <%if(site.customConfig.menuposition=='top'){%>
+                        <%- include('./includes/footer') %>
+                        <%}%>
+                </div>
             </div>
             <div class="col-md-2 col-lg-3">
             </div>
@@ -195,36 +199,36 @@
             img.eq(i).hide();
         }
     }
-    
+
     function refreshImg(imgclass) {
-            // 获取弹窗
-            var modal = document.getElementById('myModal');
+        // 获取弹窗
+        var modal = document.getElementById('myModal');
 
-            // 获取图片插入到弹窗 - 使用 "alt" 属性作为文本部分的内容
-            var img = document.getElementsByClassName(imgclass);
-            var modalImg = document.getElementById("img01");
-            var captionText = document.getElementById("caption");
-            for (var i in img) {
-                img[i].onclick = function () {
-                    modal.style.display = "block";
-                    modalImg.src = this.src;
-                }
-            }
-
-            // 图片关闭
-            var modalImg = document.getElementById('img01');
-            // 鼠标点击模型外区域关闭登录框
-            window.onclick = function (event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-                if (menupos == 'left')
-                    return true;
-                if (event.target == social) {
-                    social.style.display = "none";
-                }
+        // 获取图片插入到弹窗 - 使用 "alt" 属性作为文本部分的内容
+        var img = document.getElementsByClassName(imgclass);
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        for (var i in img) {
+            img[i].onclick = function () {
+                modal.style.display = "block";
+                modalImg.src = this.src;
             }
         }
+
+        // 图片关闭
+        var modalImg = document.getElementById('img01');
+        // 鼠标点击模型外区域关闭登录框
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+            if (menupos == 'left')
+                return true;
+            if (event.target == social) {
+                social.style.display = "none";
+            }
+        }
+    }
 
 </script>
 <script>
@@ -252,13 +256,12 @@
         }
     };
     var cop = new ClipboardJS('.copybt');
-    var codeCopyText = $("#codeCopyText").html();
     cop.on('success', function (e) {
-        alert(codeCopyText);
+        e.trigger.innerHTML = "复制成功~"
+        e.trigger.style.background = "#894e54"
         e.clearSelection();
     });
     cop.on('error', function (e) {
-        alert("矮油，复制失败了...手动复制吧勇士！");
         e.clearSelection();
     });
 </script>
@@ -332,7 +335,7 @@
 
 <script>
     var title = document.getElementById("texttitle").getElementsByTagName("h2");
-    
+
     var share = new Share('.share', {
         title: title[0].innerHTML,
         initialized: true,
@@ -353,13 +356,11 @@
     //点击分享按钮展现出分享icons
     var sharebtnTag = false;
     $(".sharebtn").click(function () {
-        if(!sharebtnTag)
-        {
+        if (!sharebtnTag) {
             $(".share").show();
             sharebtnTag = true;
         }
-        else
-        {
+        else {
             $(".share").hide();
             sharebtnTag = false;
         }
@@ -367,19 +368,18 @@
 
     var donatebtnTag = false;
     $(".donateImg").click(function () {
-        if(!donatebtnTag)
-        {
+        if (!donatebtnTag) {
             $(".donate").show();
             donatebtnTag = true;
         }
-        else{
+        else {
             $(".donate").hide();
             donatebtnTag = false;
         }
     })
 
     //加载后的事件同步（阅读量、移动端评论等
-    window.onload=function(){
+    window.onload = function () {
         getHotnum();
         var sharepc = $(".share").eq(0).html();
         $(".share").eq(1).html(sharepc);
@@ -416,6 +416,3 @@
 <!-- <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@3.13.0/dist/av-min.js"></script> -->
 <!-- <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@4.6.1/dist/av-live-query-min.js"></script> -->
 
-<script>
-
-</script>

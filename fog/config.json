@@ -1,6 +1,6 @@
 {
   "name": "fog",
-  "version": "0.8",
+  "version": "0.9",
   "author": "Ericam_",
   "repository": "https://github.com/850552586/gridea-theme-fog",
   "customConfig": [ {
@@ -333,14 +333,6 @@
       ]
     },
     {
-      "name": "codeCopyText",
-      "label": "复制代码-提示文字",
-      "group": "代码",
-      "value": "代码复制成功了哦",
-      "type": "input",
-      "note": "点击代码框内复制代码按钮时弹出的提示文字"
-    },
-    {
       "name": "Mathchoice",
       "label": "是否开启数学公式",
       "group": "代码",
@@ -463,6 +455,22 @@
       "value": false,
       "type": "switch",
       "note": ""
+    },
+    {
+      "name": "daovoicechoice",
+      "label": "是否开启Daovoice",
+      "group": "DaoVoice",
+      "value": false,
+      "type": "switch",
+      "note": "daovoice是一款可以实现即时聊天的工具。"
+    },
+    {
+      "name": "daovoice_id",
+      "label": "app_id",
+      "group": "DaoVoice",
+      "value": "",
+      "type": "input",
+      "note": "在控制台-安装到网站-appid里的内容复制过来"
     }
   ]
 }

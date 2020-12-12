@@ -39,6 +39,11 @@
                 <div class="col-lg-3"></div>
                 <div id="main" class="col-xs-12 col-sm-12 col-md-12  col-lg-6 top" style="z-index: 11;">
                     <%- include('./includes/talk-detail') %>
+                    <div style="display: none;">
+                        <%if(site.customConfig.menuposition=='top'){%>
+                            <%- include('./includes/footer') %>
+                            <%}%>
+                    </div>
                 </div>
                 <div class="col-md-1 col-lg-1"></div>
                 <%}%>
