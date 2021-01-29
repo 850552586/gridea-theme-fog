@@ -233,7 +233,7 @@
       "name": "bgchoice",
       "label": "图片加载方式",
       "group": "背景图",
-      "value": "",
+      "value": "default",
       "type": "select",
       "note":"选择本地上传便在下方选项添加图片，选择外链则在下方输入框输入外链链接【推荐使用外链】",
       "options": [
