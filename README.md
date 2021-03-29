@@ -5,13 +5,15 @@
 
 **最新版本：version_0.9**
 
-主题介绍：[Gridea主题Fog](<http://ericam.top/post/gridea-zhu-ti-fog-geng-xin-ri-zhi/> )
+主题介绍：[Gridea主题Fog](<https://ericam.top/post/gridea-zhu-ti-fog-geng-xin-ri-zhi/> )
 
 主题Github下载地址：[github下载]（<https://github.com/850552586/gridea-theme-fog> ）
 
 主题国内码云下载地址：（<https://gitee.com/ericam/gridea-theme-fog> ）
 
-使用文档：进入help文件夹，查看使用文档。
+使用文档：[https://ericam.top/post/fog-zhu-ti-shi-yong-bang-zhu/](https://ericam.top/post/fog-zhu-ti-shi-yong-bang-zhu/)
+
+主题更新日志：[https://ericam.top/post/fog-zhu-ti-geng-xin-ri-zhi/](https://ericam.top/post/fog-zhu-ti-geng-xin-ri-zhi/)
 
 欢迎加入Fog主题交流群（可以分享你遇到的问题，或者咨询主题开发建议）
 <img width="30vw" src="https://ericamblog.oss-cn-shanghai.aliyuncs.com/GrideaFog/qrcode_1594635464040.jpg">
