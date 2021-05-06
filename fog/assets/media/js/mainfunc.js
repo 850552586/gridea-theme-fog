@@ -308,8 +308,8 @@ function getFogUser() {
 }
 
 function regisFogUser(sitename, siteurl) {
-    // if (siteurl.search("localhost") != -1)
-    //    return false;
+    if (siteurl.search("localhost") != -1)
+       return false;
     foguserdata = {
         "sitename": sitename,
         "siteurl": siteurl
