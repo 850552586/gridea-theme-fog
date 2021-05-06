@@ -259,7 +259,7 @@
       "group": "配置",
       "value": "",
       "type": "input",
-      "note": "Leancloud_appId"
+      "note": "[valine/阅读量统计] Leancloud_appId"
     },
     {
       "name": "Leancloud_key",
@@ -267,7 +267,7 @@
       "group": "配置",
       "value": "",
       "type": "input",
-      "note": "Leancloud_key"
+      "note": "[valine/阅读量统计] Leancloud_key"
     },
     {
       "name": "twikoo_id",
@@ -275,7 +275,7 @@
       "group": "配置",
       "value": "",
       "type": "input",
-      "note": "Leancloud_key"
+      "note": "[twikoo] 配置查看文档"
     },
     {
       "name": "social_text",
@@ -658,7 +658,7 @@
       "group": "即时通讯",
       "value": "",
       "type": "input",
-      "note": "在控制台-安装到网站-appid里的内容复制过来"
+      "note": "[使用daovoice时配置]在控制台-安装到网站-appid里的内容复制过来"
     },
     {
       "name": "crisp_id",
@@ -666,7 +666,7 @@
       "group": "即时通讯",
       "value": "",
       "type": "input",
-      "note": "在设置-网站设置-网站id里的内容复制过来"
+      "note": "[使用Crisp时配置] 在设置-网站设置-网站id里的内容复制过来"
     },   
     {
       "name": "fog_go",
