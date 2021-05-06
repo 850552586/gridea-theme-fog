@@ -90,15 +90,21 @@
 }
 
 
+.r_m_div{
+    width: 100%;
+    display: flex;
+}
+
 .musicbtn {
-    position: fixed;
-    left: 18%;
-    top: 1%;
     width: 40px;
+    cursor: pointer;
+    margin-left: 80%;
+    position: absolute;
+    top: 1%;
     cursor: pointer;
 }
 
-.describtion {
+.description {
     margin-top: 5%;
     text-align: center;
     font-size: 12px;
@@ -115,6 +121,13 @@
     font-weight: 900;
     color: antiquewhite;
     font-family: Arial, Verdana, "宋体";
+}
+
+.menuicon{
+    height: auto;
+    width:23px;
+    padding-bottom: 3px;
+    display: none;
 }
 
 .sitetime {
@@ -163,7 +176,7 @@
     width: 250px;
     height: 35px;
     background: #dfe6e9;
-    border-radius: 10px;
+    border-radius: 3px;
     align-items: center;
     justify-content: center;
     display: flex;
@@ -189,7 +202,7 @@
     padding: 10px;
     font-weight: lighter;
     transition: .6s linear;
-    border-radius: 5px;
+    border-radius: 3px;
     z-index: 2;
 }
 
@@ -218,15 +231,33 @@
     transform: translateX(0);
 }
 
+.siteinfocontainer{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top:10px;
+}
 
+.siteinfo{
+    width: 100px;
+    font-size: 18px;
+    color:white;
+    display: flex;
+    justify-content: center;
+    font-family:Arial;
+}
+
+.menucontainer{
+    margin-top:5px;
+}
 
 .mchocie {
-    margin-top: 3%;
+    margin-top: 4%;
     text-align: center;
     font-size: 16px;
     color: #495057;
     font-weight: bold;
-    height: 4%;
+    height: 30px;
 }
 
 
@@ -236,6 +267,59 @@ hr {
     width: 200px;
 }
 
+.menucontainer span {
+    font-size:19px;
+	color: transparent;
+	text-transform: uppercase;
+	line-height: 1em;
+	width: 7em;
+	border-top: 1px solid transparent;
+	position: relative;
+    transition: 0.3s;
+    top:25%;
+}
+
+.menucontainer span:hover {
+	border-top: 1px solid yellow;
+}
+
+.menucontainer span::before,
+.menucontainer span::after {
+	content: attr(data-text);
+	position: absolute;
+	top: -0.5em;
+	left: 0;
+	width: 100%;
+	color: silver;
+	transition: 0.3s ease-out;
+}
+
+.menucontainer span::before {
+	clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+}
+
+.menucontainer span::after {
+	clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);
+}
+
+.menucontainer span:hover::before,
+.menucontainer span:hover::after {
+	color: yellow;
+	transition: left 0.2s ease-out;
+	transition-delay: 0.1s;
+}
+
+.menucontainer .mchocie:nth-child(odd) span:hover::before,
+.menucontainer .mchocie:nth-child(even) span:hover::after {
+	left: -0.15em;
+}
+
+.menucontainer .mchocie:nth-child(even) span:hover::before,
+.menucontainer .mchocie:nth-child(odd) span:hover::after {
+	left: 0.15em;
+}
+
+
 .menubutton {
     font-size: 1.1em;
     font-family: kaiti;
@@ -244,7 +328,16 @@ hr {
 
 .menubutton:hover {
     font-size: 1.2em;
-    color: white;
+    color: black;
+    text-decoration:none;
+}
+
+.mchocie a:active{
+    text-decoration:none;
+}
+
+.mchocie a:visited {
+    text-decoration:none;
 }
 
 
@@ -272,6 +365,7 @@ hr {
 
 .icon {
     width: 18px;
+    cursor: pointer;
 }
 
 .search {
@@ -412,6 +506,7 @@ hr {
         height: 120px;
         margin-top: 0;
     }
+
 
     .avatar {
         width: 120px;
@@ -611,4 +706,123 @@ hr {
         top:30vh;
         left:45vw;
     }
+
+    .menutopavatar{
+        margin-top:5%;
+    }
 }
+
+
+//<!------------- Fog1.0版本彩蛋👇 -------------->
+.popup {
+    position: absolute;
+    top: 0;
+    width: 200vw;
+    height: inherit;
+    flex-direction: column;
+    justify-content: flex-start;
+    display: none;
+    z-index: 9999;
+}
+
+.popup:target {
+    display: flex;
+}
+
+.popup .back {
+    font-size: 20px;
+    font-family: sans-serif;
+    text-align: center;
+    height: 2em;
+    line-height: 2em;
+    background-color: #ddd;
+    color: black;
+    text-decoration: none;
+}
+
+.popup .back:visited {
+    color: black;
+}
+
+.popup .back:hover {
+    background-color: #eee;
+}
+
+.popup p {
+    font-size: 100px;
+    text-align: center;
+    margin: 0.1em 0.05em;
+}
+
+/* animation effects */
+
+.popup > * {
+    filter: opacity(0);
+    animation: fade-in 0.5s ease-in forwards;
+    animation-delay: 1s;
+}
+
+@keyframes fade-in {
+    to {
+        filter: opacity(1);
+    }
+}
+
+.popup::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 0;
+    top: 50%;
+    background-color: black;
+    animation: open-animate 1s cubic-bezier(0.8, 0.2, 0, 1.2) forwards;
+    animation-delay: 1.5s;
+}
+
+@keyframes open-animate {
+    to {
+        height: 100vh;
+        top: 0;
+    }
+}
+
+.popup::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: white;
+    top: calc((100% - 2px) / 2);
+    left: 0;
+    animation: line-animate 1.5s cubic-bezier(0.8, 0.2, 0, 1.2);
+}
+
+@keyframes line-animate {
+    20%{
+        width:20%
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+.flycontainer{
+    width:200vw;
+    height:100vh;
+    background-color: black;
+    justify-content:center;
+    align-items:center;
+    display: flex;
+    position:absolute;
+    z-index:1040;
+    display:none;
+}
+
+.flyword{
+    display:flex;
+    color:white;
+    font-family:kaiti;
+    font-size: 100px;
+    margin-left: 40%;
+}
+//<!------------- Fog1.0版本彩蛋👆 -------------->

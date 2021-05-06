@@ -1,6 +1,7 @@
+<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
@@ -9,18 +10,23 @@
     <meta name="description" content="<%- site.customConfig.metaDescription || themeConfig.siteDescription %>" />
     <link rel="stylesheet" href="<%= themeConfig.domain %>/styles/main.css">
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <title><%- themeConfig.siteName %></title>
+    <title><%- themeConfig.siteName%>-说说</title>
 </head>
 
 <body>
-    <!-- 响应式布局，针对PC端内容显示 -->
     <div id="content">
         <div class="nav-large">
             <div class="row">
+                <!--------------- pc端菜单栏👇 ---------------->
                 <div class="side"><%- include('./includes/side') %></div>
+                <!--------------- pc端菜单栏👆 ---------------->
+
+                <!----------- 移动端导航栏👇 ----------------->
                 <div class="tbar"> <%- include('./includes/bar') %>
-                    <div style="margin-top:60px"></div>
+                <!----------- 移动端导航栏👆 ----------------->
                 </div>
+
+                <!-- ----------------左侧菜单栏html 👇-------------------------------------->
                 <%if(site.customConfig.menuposition=='left'){%>
                     <div id="tab1" class="tab">
                         <div class="bars">
@@ -32,12 +38,21 @@
                     </div>
                 <div class="col-md-1 col-lg-3"></div>
                 <div id="main" class="col-xs-12 col-sm-12 col-md-12 col-lg-7" style="z-index: 11;">
+                    <div class="mobilebar">
+                        <%- include('./includes/mobilebg') %>
+                    </div>
                     <%- include('./includes/talk-detail') %>
                 </div>
                 <div class="col-md-1 col-lg-2"></div>
+                <!-- ----------------左侧菜单栏html 👆-------------------------------------->
+                
+                <!--------------- 顶部菜单栏html👇--------->
                 <%}else{%>
                 <div class="col-lg-3"></div>
                 <div id="main" class="col-xs-12 col-sm-12 col-md-12  col-lg-6 top" style="z-index: 11;">
+                    <div class="mobilebar">
+                        <%- include('./includes/mobilebg') %>
+                    </div>
                     <%- include('./includes/talk-detail') %>
                     <div style="display: none;">
                         <%if(site.customConfig.menuposition=='top'){%>
@@ -47,13 +62,17 @@
                 </div>
                 <div class="col-md-1 col-lg-1"></div>
                 <%}%>
+                <!--------------- 顶部菜单栏html👆--------->
             </div>
+            <!-- aplayer播放器加载👇 -->
             <%if(site.customConfig.aplayerchoice){%>
                 <%- include('./includes/aplayer') %>
             <%}%>
+            <!-- aplayer播放器加载👆 -->
         </div>
         <div id="bg">
         </div>
+        <!-- 背景图加载方式👇 -->
         <div id="bgchoice" style="display: none"><%= site.customConfig.bgchoice%>
             </div>
             <%if(site.customConfig.bgchoice=='default'){%>
@@ -61,6 +80,7 @@
             <%} else{%>
             <div id="bgurl" style="display:none"><%= site.customConfig['bgimagelink'] %></div>
             <%}%>   
+        <!-- 背景图加载方式👆 -->
     </div>
     
     <div id="landlord">
@@ -70,18 +90,21 @@
     <div id="domainname" style="display:none"><%= themeConfig.domain %></div>
 </body>
 
-</html>
-        <%if (site.customConfig.live2d){ %>
-            <script type="text/javascript">
-                var message_Path = '/live2d/'
-                var home_Path = document.getElementById("domainname").innerHTML+"/"; //此处修改为你的域名，必须带斜杠
-            </script>
-            <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/js/live2d.js"></script>
-            <script type="text/javascript" src="<%= themeConfig.domain %>/media/live2d/js/message.js%>"></script>
-            <script type="text/javascript">
-                loadlive2d("live2d", "<%= themeConfig.domain %>/media/live2d/assets/tororo.model.json%>");
-            </script>
-            <%}%>
+<!-------------------- live2d功能👇 --------------------------->
+<%if (site.customConfig.live2d){ %>
+    <script type="text/javascript">
+        var message_Path = '/live2d/'
+        var home_Path = document.getElementById("domainname").innerHTML+"/"; //此处修改为你的域名，必须带斜杠
+    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/js/live2d.js"></script>
+    <script type="text/javascript" src="<%= themeConfig.domain %>/media/live2d/js/message.js%>"></script>
+    <script type="text/javascript">
+            loadlive2d("live2d", "<%= themeConfig.domain %>/media/live2d/assets/tororo.model.json%>");
+    </script>
+<%}%>
+<!-------------------- live2d功能👆 --------------------------->
+
+<!------------ 加载全局背景图功能👇（开始时没有写好，这功能有点鸡肋/(ㄒoㄒ)/~~） -->
 <script>
         var bgchoice=$('#bgchoice').html();
         var bg = $('#bg');
@@ -91,105 +114,19 @@
                 bgurl = bgurl.replace("\\", "/");
         bg.css("background", "url('" + bgurl + "')");
 </script>
+<!------------ 加载全局背景图功能👆（开始时没有写好，这功能有点鸡肋/(ㄒoㄒ)/~~） -->
+
 <%if (site.customConfig.menuposition=='left'){ %>
         <script src="<%= themeConfig.domain %>/media/js/index.js%>"></script>
 <%}%>
 
+<!--------------------------- 说说功能👇------------------------- -->
 <script>
-    var talksall = [];
-    var talks = [];
-    var talkindex;
-
-    get();
-    add();
-
-    function get() {
-        var t = JSON.parse('<%- JSON.stringify(site.customConfig.talks) %>');
-        talkindex = t.length - 1;
-        for (var i = 0; i <=t.length - 1; i++) {
-            var d = {};
-            d["time"] = t[i].time;
-            d["author"] = t[i].author;
-            d["text"] = t[i].text;
-            d["img"] = t[i].img;
-            talksall.push(d);
-        }
-    }
-
-    function add() {
-        for (var i = talkindex; i >= 0 && i > talkindex - 3; i--) {
-            talks.push(talksall[i]);
-        }
-        talkindex = (talkindex - 3) >= 0 ? (talkindex - 3) : -1;
-        if (talkindex < 0) $("#getmorebt").hide();
-        show();
-        refreshImg("talkimg");
-    }
-
-    function show() {
-        var talkT = document.getElementById("talkContainer");
-        talkT.innerHTML = "";
-        for (var i = 0; i < talks.length; i++) {
-            if (talks[i].img != '') {
-                talkT.innerHTML += '\
-            <div class="talk" v-for="t in talks"> \
-                <img src="' + talks[i].img + '" class="talkimg"> \
-                <div class="ainfo">\
-                    <div class="ainfo-intro">\
-                        <img class="intro1" src="<%= themeConfig.domain %>/images/avatar.png?v=<%= site.utils.now %>">\
-                        <div class="author">' + talks[i].author + '</div>·\
-                        <div class="time">' + talks[i].time + '</div>\
-                    </div>\
-                </div>\
-                <div class="talkcontent">' + talks[i].text + '\
-                </div\>\
-            ';
-            } else {
-                talkT.innerHTML += '\
-            <div class="talk" v-for="t in talks"> \
-                <div class="ainfo">\
-                    <div class="ainfo-intro">\
-                        <img class="intro1" src="<%= themeConfig.domain %>/images/avatar.png?v=<%= site.utils.now %>">\
-                        <div class="author">' + talks[i].author + '</div>·\
-                        <div class="time">' + talks[i].time + '</div>\
-                    </div>\
-                </div>\
-                <div class="talkcontent">' + talks[i].text + '\
-                </div\>\
-            ';
-            }
-        }
-    }
-
-    function refreshImg(imgclass) {
-        // 获取弹窗
-        var modal = document.getElementById('myModal');
-
-        // 获取图片插入到弹窗 - 使用 "alt" 属性作为文本部分的内容
-        var img = document.getElementsByClassName(imgclass);
-        var modalImg = document.getElementById("img01");
-        var captionText = document.getElementById("caption");
-        for (var i in img) {
-            img[i].onclick = function () {
-                modal.style.display = "block";
-                modalImg.src = this.src;
-            }
-        }
-    
-        // 图片关闭
-        var modalImg = document.getElementById('img01');
-        // 鼠标点击模型外区域关闭登录框
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-            if (event.target == social) {
-                social.style.display = "none";
-            }
-        }
-    }
 
     window.onload = function(){
         aplayerbtnInit();
+        get();
+        add();
     }
 </script>
+<!--------------------------- 说说功能👆------------------------- -->

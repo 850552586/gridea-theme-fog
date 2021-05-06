@@ -1,6 +1,7 @@
+<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/css/live2d.css">
@@ -13,11 +14,18 @@
 
 
 <body>
-    <!-- 响应式布局，针对PC端内容显示 -->
     <div id="content">
         <div class="nav-large">
             <div class="row">
+                <!--------------- pc端菜单栏👇 ---------------->
                 <div class="side"><%- include('./includes/side') %></div>
+                <!--------------- pc端菜单栏👆 ---------------->
+               
+                <!----------- 移动端导航栏👇 ----------------->
+                <div class="tbar"> <%- include('./includes/bar') %></div>
+                <!----------- 移动端导航栏👆 ----------------->
+
+                <!-- ----------------左侧菜单栏html 👇-------------------------------------->
                 <%if(site.customConfig.menuposition=='left'){%>
                 <div id="tab1" class="tab">
                     <div class="bars">
@@ -28,8 +36,10 @@
                     <div class="close"></div>
                 </div>
                 <div class="col-md-1 col-lg-3"></div>
-                <div class="mobilebar"><%- include('./includes/bar') %></div>
                     <div id="main" class="col-xs-12 col-sm-12 col-md-12 col-lg-7">
+                        <div class="mobilebar">
+                            <%- include('./includes/mobilebg') %>
+                        </div>
                         <script>
                             $(".tag").each(function () {
                                 var rgb = '#' + Math.floor((Math.random()) * 0xffffff).toString(16);;
@@ -49,9 +59,14 @@
                         </div>
                     </div>
                     <div class="col-lg-2"></div>
+                    <!-- ----------------左侧菜单栏html 👆-------------------------------------->
+                    
+                    <!------------------ 顶部菜单栏html👇--------->
                     <%}else{%>
-                    <div class="mobilebar"><%- include('./includes/bar') %></div>
                         <div id="main" class="col-xs-12 col-sm-12 col-md-12 col-lg-6 topindex">
+                            <div class="mobilebar">
+                                <%- include('./includes/mobilebg') %>
+                            </div>
                             <script>
                                 $(".tag").each(function () {
                                     var rgb = '#' + Math.floor((Math.random()) * 0xffffff).toString(16);;
@@ -76,6 +91,7 @@
                             </div>
                         </div>
                         <%}%>
+                <!--------------- ---顶部菜单栏html👆--------->
                 <div class="col-xs-6 col-sm-3"></div>
             </div>
             <%if(site.customConfig.aplayerchoice){%>
@@ -84,6 +100,7 @@
         </div></div>
         <div id="bg">
         </div>
+        <!-- 背景图加载方式👇 -->
         <div id="bgchoice" style="display: none"><%= site.customConfig.bgchoice%>
                     </div>
                     <%if(site.customConfig.bgchoice=='default'){%>
@@ -91,8 +108,8 @@
                     <%} else{%>
                     <div id="bgurl" style="display:none"><%= site.customConfig['bgimagelink'] %></div>
                     <%}%>   
-    </div>
-
+        </div>
+        <!-- 背景图加载方式👆 -->
         <div id="landlord">
             <div class="message" style="opacity:0"></div>
             <canvas id="live2d" width="240" height="250" class="live2d"></canvas>
@@ -102,13 +119,16 @@
 </body>
 
 </html>
+<!-- 标签框随机色彩功能👇 -->
 <script>
     $(".tag").each(function () {
         var rgb = '#' + Math.floor((Math.random()) * 0xffffff).toString(16);;
         $(this).css('color', rgb);
     });
 </script>
+<!-- 标签框随机色彩功能👆 -->
 
+<!-------------------- live2d功能👇 --------------------------->
 <%if (site.customConfig.live2d){ %>
 <script type="text/javascript">
     var message_Path = '/live2d/'
@@ -120,7 +140,9 @@
     loadlive2d("live2d", "<%= themeConfig.domain %>/media/live2d/assets/tororo.model.json%>");
 </script>
 <%}%>
+<!-------------------- live2d功能👆 --------------------------->
 
+<!------------ 加载全局背景图功能👇（开始时没有写好，这功能有点鸡肋/(ㄒoㄒ)/~~） -->
 <script>
     var bgchoice = $('#bgchoice').html();
     var bg = $('#bg');
@@ -134,6 +156,7 @@
         aplayerbtnInit();
     }
 </script>
+<!------------ 加载全局背景图功能👆（开始时没有写好，这功能有点鸡肋/(ㄒoㄒ)/~~） -->
 <%if (site.customConfig.menuposition=='left'){ %>
 <script src="<%= themeConfig.domain %>/media/js/index.js%>"></script>
 <%}%>

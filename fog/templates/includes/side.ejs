@@ -13,32 +13,378 @@
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/js/clipboard.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/css/live2d.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
     <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.1/css/all.min.css" rel="stylesheet">
-    <!-- 数学公式 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- fancybox -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+    <!--------- 数学公式👇---- -->
     <% if (site.customConfig.Mathchoice){ %>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/katex.min.css"
         integrity="sha384-9tPv11A+glH/on/wEu99NVwDPwkMQESOocs/ZGXPoIiLE8MU/qkqUcZ3zzL+6DuH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/katex.min.js"
         integrity="sha384-U8Vrjwb8fuHMt6ewaCy8uqeUXv4oitYACKdB0VziCerzt011iQ/0TqlSlv8MReCm" crossorigin="anonymous">
-        </script>
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/contrib/auto-render.min.js"
         integrity="sha384-aGfk5kvhIq5x1x5YdvCp4upKZYnA8ckafviDpmWEKp4afOZEqOli7gqSnh8I6enH" crossorigin="anonymous">
-        </script>
+    </script>
+    <script>
+        renderMathInElement(document.body, {
+            delimiters: [{
+                    left: "$$",
+                    right: "$$",
+                    display: true
+                },
+                {
+                    left: "$",
+                    right: "$",
+                    display: false
+                }
+            ]
+        });
+    </script>
     <%}%>
-    <% if (site.customConfig.daovoicechoice){ %>
-    <script>(function (i, s, o, g, r, a, m) { i["DaoVoiceObject"] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o), m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; a.charset = "utf-8"; m.parentNode.insertBefore(a, m) })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/" + "<%=site.customConfig.daovoice_id%>" + ".js", "daovoice")</script>
+    <!--------- 数学公式👆----------------- -->
+    <!--------- daovocie功能👇 ------------------->
+    <% if (site.customConfig.instantchoice=='daovoice'){ %>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i["DaoVoiceObject"] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            a.charset = "utf-8";
+            m.parentNode.insertBefore(a, m)
+        })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
+            "//widget.daovoice.io/widget/" + "<%=site.customConfig.daovoice_id%>" + ".js", "daovoice")
+    </script>
+    <%}else if(site.customConfig.instantchoice=='crisp'){%>
+    <script type="text/javascript">
+        window.$crisp = [];
+        window.CRISP_WEBSITE_ID = "<%= site.customConfig.crisp_id%>";
+        (function () {
+            d = document;
+            s = d.createElement("script");
+            s.src = "https://client.crisp.chat/l.js";
+            s.async = 1;
+            d.getElementsByTagName("head")[0].appendChild(s);
+        })();
+    </script>
     <%}%>
+    <!--------- daovocie功能👆 ------------------->
+    <!-- -----------------twikoo评论系统引入👇 --------->
+    <script src="https://cdn.jsdelivr.net/npm/twikoo@1.3.0/dist/twikoo.all.min.js"></script>
+    <!-- -----------------twikoo评论系统引入👆 --------->
+    <!---------------- leancloud api 功能依赖引入👇 -------->
+    <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@3.13.0/dist/av-min.js"></script>
+    <!---------------- leancloud api 功能依赖引入👆 -------->
+    <!------------------ valine评论系统引入👇 ------------------>
+    <script src="<%= themeConfig.domain %>/media/js/valine.min.js%>"></script>
+    <!------------------ valine评论系统引入👆 ------------------>
+    <!---------------- 今日诗词api功能依赖👇 ----------------------->
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+    <!---------------- 今日诗词api功能依赖👆 ----------------------->
 </head>
+
 <style>
-    body{
-    cursor: url("<%= themeConfig.domain %>/media/images/mouse_cursor.png%>"),auto
+    body {
+        overflow-x: hidden;
+        height: 100vh;
+        overflow-y: scroll;
+        cursor: url("<%= themeConfig.domain %>/media/images/mouse_cursor.png%>"), auto
     }
-    </style>
+</style>
 
 <body>
+    <!--=------ 页面加载动态画面👇 --------------->
+    <div class="pjaxloading" onclick="pjaxloadingClose()">
+        <div class="loadingbackground"></div>
+        <div id="loading">
+            <div class="loading">
+            </div>
+        </div>
+    </div>
+    <!--=------ 页面加载动态画面👆 --------------->
+
+    <!--------------- 左侧菜单栏👇 ------------------------>
+    <%if(site.customConfig.menuposition=='left'){%>
+    <div id=side>
+        <div class="r_m_div">
+            <a onclick="showAaplayer()"><i style="font-size: 20px;"><img
+                        src='<%= themeConfig.domain %>/media/images/music.png%>' alt="音乐播放器" class="musicbtn"></i></a>
+        </div>
+        <div class="avatar-border">
+            <img src="<%= themeConfig.domain %>/images/avatar.png?v=<%= site.utils.now %>" class="avatar">
+        </div>
+        <div class="sitename"><%=themeConfig.siteName%></div>
+        <span class="description" data-text='["<%- themeConfig.siteDescription %>"]'>&nbsp;</span>
+        <div class="siteinfocontainer">
+            <span class="siteinfo">文章</span>
+            <span class="siteinfo">标签</span>
+        </div>
+        <div class="siteinfocontainer">
+            <span class="siteinfo"><%= site.posts.length%></span>
+            <span class="siteinfo"><%= site.tags.length%></span>
+        </div>
+        <%if (site.customConfig.search){ %>
+        <div class="search">
+            <!-- <input type="text" class="search-input" placeholder="标题搜索(●'◡'●)" /> -->
+            <input type="text" class="search-input" placeholder="<%= site.customConfig['searchplaceholder'] %>">
+            <div class="search-results"></div>
+        </div>
+        <%}%>
+    <div class="share-button">
+        <span><%= site.customConfig.social_text%></span>
+        <% if (site.customConfig['github']) { %>
+        <a href="<%= site.customConfig['github'] %>" target="_blank"><i style="font-size: 20px;"><img class="icon"
+                    src="<%= themeConfig.domain %>/media/images/github.png%>" alt=""></i></a>
+        <% } %>
+        <% if (site.customConfig['QQ']) { %>
+        <a onclick="showqq()"><i style="font-size: 20px;"><img class="icon"
+                    src="<%= themeConfig.domain %>/media/images/QQ.png%>" alt=""></i></a>
+        <% } %>
+        <% if (site.customConfig['zhihu']) { %>
+        <a href="<%= site.customConfig['zhihu'] %>" target="_blank"><i style="font-size: 20px;"><img class="icon"
+                    src="<%= themeConfig.domain %>/media/images/zh.png%>" alt=""></i></a>
+        <% } %>
+        <% if (site.customConfig['bilibili']) { %>
+        <a href="<%= site.customConfig['bilibili'] %>" target="_blank"><i style="font-size: 20px;"><img class="icon"
+                    src="<%= themeConfig.domain %>/media/images/bilibili.png%>" alt=""></i></a>
+        <% } %>
+        <% if (site.customConfig['wechat']) { %>
+        <a onclick="showWechat()"><i style="font-size: 20px;"><img class="icon"
+                    src="<%= themeConfig.domain %>/media/images/wechat.png%>" alt=""></i></a>
+        <% } %>
+        <% if (site.customConfig['weibo']) { %>
+        <a href="<%= site.customConfig['weibo'] %>" target="_blank"><i style="font-size: 20px;"><img class="icon"
+                    src="<%= themeConfig.domain %>/media/images/weibos.png%>" alt=""></i></a>
+        <% } %>
+        <% if (site.customConfig['wyy']) { %>
+        <a href="<%= site.customConfig['wyy'] %>" target="_blank"><i style="font-size: 20px;"><img class="icon"
+                    src="<%= themeConfig.domain %>/media/images/wyy.png%>" alt=""></i></a>
+        <% } %>
+        <% if (site.customConfig['steam']) { %>
+        <a href="<%= site.customConfig['steam'] %>" target="_blank"><i style="font-size: 20px;"><img class="icon"
+                    src="<%= themeConfig.domain %>/media/images/steam.png%>" alt=""></i></a>
+        <% } %>
+    </div>
+    <div id="qq" style="display:none"><%= site.customConfig['QQ'] %></div>
+    <!------------ 加载菜单按钮👇 ------------------------->
+    <div class="menucontainer">
+        <% menus.forEach(function(menu) { %>
+        <% if (menu.openType === 'External') { %>
+        <div class="mchocie description">
+            <a href="<%= menu.link %>" class="mchocie description" target="_blank" style="margin-right: 15px;">
+                <i><img class="icon menuicon" src="" alt="<%= menu.name%>"></i>&nbsp;<span
+                    data-text="<%= menu.name%>"><%= menu.name %></span>
+            </a>
+        </div>
+        <% } else { %>
+        <div class="mchocie description">
+            <a data-pjax href="<%= menu.link %>" class="menubutton" style="margin-right: 15px;">
+                <i><img class="icon menuicon" src="" alt="<%= menu.name%>"></i>&nbsp;<span
+                    data-text="<%= menu.name%>"><%= menu.name %></span>
+            </a>
+        </div>
+        <% } %>
+        <% });%>
+
+        <%if(site.customConfig.talkchoice){%>
+        <div class="mchocie description">
+            <a data-pjax href="<%= themeConfig.domain %>/talk" class="menubutton" style="margin-right: 15px;">
+                <i><img class="icon menuicon" src="" alt="说说"></i>&nbsp;<span data-text="说说">说说</span>
+            </a>
+        </div>
+        <%}%>
+            <%if(site.customConfig.friendschoice){%>
+        <div class="mchocie description">
+            <a data-pjax href="<%= themeConfig.domain %>/friends" class="menubutton" style="margin-right: 15px;">
+                <i><img class="icon menuicon" src="" alt="友人帐"></i>&nbsp;<span data-text="友人帐">友人帐</span>
+            </a>
+        </div>
+        <%}%>
+        <%if(site.customConfig.fog_go){%>
+        <div class="mchocie description">
+            <a data-pjax href="#terrestrial" id="fog_go" class="open-popup menubutton" style="margin-right: 15px;">
+                    <i><img class="icon menuicon" src="" alt="御风飞行"></i>&nbsp;<span data-text="御风飞行">御风飞行</span>
+            </a>
+        </div>
+        <%}%>
+    </div>
+    <!------------ 加载菜单按钮👆 ------------------------->
+    <hr>
+    <%- include('./footer') %>
+    </div>
+
+
+    <script src="<%= themeConfig.domain %>/media/js/wordshow.js%>"></script>
+    <%}%>
+    <!--------------- 左侧菜单栏👆 ------------------------>
+
+    <!----------------- 顶部菜单栏👇 ------------------------>
     <%if(site.customConfig.menuposition=='top'){%>
+    <div>
+        <nav class="navbar navbar-inverse navbar-fixed-top navbartop">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <a data-pjax class="navbar-brand" href="<%= themeConfig.domain %>"
+                        style="font-size:21px"><%=themeConfig.siteName%>&nbsp;&nbsp;|&nbsp;&nbsp;</a>
+                    <a class="navbar-brand" href=""
+                        style="font-size:15px;font-family:kaiti"><%- themeConfig.siteDescription %></a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse">
+                    <%if (site.customConfig.search){ %>
+                    <div class="search nav navbar-nav" style="margin-top:8px">
+                        <!-- <input type="text" class="search-input" placeholder="标题搜索(●'◡'●)" /> -->
+                        <input type="text" class="search-input"
+                            placeholder="<%= site.customConfig['searchplaceholder'] %>">
+                        <div class="search-results"></div>
+                    </div>
+                    <%}%>
+                <div class="search nav navbar-nav searchtop">
+                <a title="text" onclick="document.getElementById('socialMenu').style.display='block'"><i><img class="social"
+                    src="<%= themeConfig.domain %>/media/images/social.png%>" alt=""></i></a>
+                    <a onclick="showAaplayer()"><i style="font-size: 20px;"><img
+                                src='<%= themeConfig.domain %>/media/images/music.png%>' alt="音乐播放器"
+                                class="musicbtn musictop"></i></a>
+                </div>
+                <ul class="nav navbar-nav" style="float: right;margin-right:5%">
+                    <% menus.forEach(function(menu) { %>
+                    <% if (menu.openType === 'External') { %>
+                    <li><a href="<%= menu.link %>" target="_blank" style="color:white;">
+                            <i style="font-size: 40px;"><img class="icon menuicon" src=""
+                                    alt="<%= menu.name%>"></i><%= menu.name %>
+                        </a></li>
+                    <% } else { %>
+                    <li>
+                        <a data-pjax href="<%= menu.link %>" style="color:white">
+                            <i style="font-size: 40px;"><img class="icon menuicon" src="" alt="<%= menu.name%>"></i>
+                            <%= menu.name %>
+                        </a>
+                    </li>
+                    <% } %>
+                    <% }); %>
+                    <%if(site.customConfig.talkchoice){%>
+                    <li><a data-pjax href="<%= themeConfig.domain %>/talk" style="color:white;">
+                            <i style="font-size: 40px;"><img class="icon menuicon" src="" alt="说说"></i>说说
+                        </a></li>
+                    <%}%>
+                    <%if(site.customConfig.friendschoice){%>
+                    <li><a data-pjax href="<%= themeConfig.domain %>/friends" style="color:white">
+                            <i style="font-size: 40px;"><img class="icon menuicon" src="" alt="友人帐"></i>友人帐
+                        </a></li>
+                    <%}%>
+                    <%if(site.customConfig.fog_go){%>
+                        <li><a data-pjax href="#terrestrial" id="fog_go" class="open-popup" style="color:white">
+                                <i style="font-size: 40px;"><img class="icon menuicon" src="" alt="御风飞行"></i>御风飞行
+                            </a></li>
+                    <%}%>
+                  <li><img src="<%= themeConfig.domain %>/images/avatar.png?v=<%= site.utils.now %>" alt=""
+                    class="menutopavatar"></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+    </nav>
+    <div id="socialMenu">
+        <div class="animate">
+            <div class="socialContainer">
+                <% if (site.customConfig['github']) { %>
+                <a href="<%= site.customConfig['github'] %>" target="_blank"><i style="font-size: 40px;"><img
+                            class="icon " src="<%= themeConfig.domain %>/media/images/github.png" alt=""></i></a>
+                <% } %>
+                <% if (site.customConfig['QQ']) { %>
+                <a onclick="showqq()" style="cursor:pointer"><i style="font-size: 40px;"><img class="icon"
+                            src="<%= themeConfig.domain %>/media/images/QQ.png" alt=""></i></a>
+                <% } %>
+                <% if (site.customConfig['zhihu']) { %>
+                <a href="<%= site.customConfig['zhihu'] %>" target="_blank"><i style="font-size: 40px;"><img
+                            class="icon" src="<%= themeConfig.domain %>/media/images/zh.png" alt=""></i></a>
+                <% } %>
+                <% if (site.customConfig['bilibili']) { %>
+                <a href="<%= site.customConfig['bilibili'] %>" target="_blank"><i style="font-size: 40px;"><img
+                            class="icon" src="<%= themeConfig.domain %>/media/images/bilibili.png" alt=""></i></a>
+                <% } %>
+                <% if (site.customConfig['wechat']) { %>
+                <a onclick="showWechat()"><i style="font-size: 40px;"><img class="icon"
+                            src="<%= themeConfig.domain %>/media/images/wechat.png" alt=""></i></a>
+                <% } %>
+                <% if (site.customConfig['weibo']) { %>
+                <a href="<%= site.customConfig['weibo'] %>" target="_blank"><i style="font-size: 40px;"><img
+                            class="icon" src="<%= themeConfig.domain %>/media/images/weibos.png%>" alt=""></i></a>
+                <% } %>
+                <% if (site.customConfig['wyy']) { %>
+                <a href="<%= site.customConfig['wyy'] %>" target="_blank"><i style="font-size: 40px;"><img class="icon"
+                            src="<%= themeConfig.domain %>/media/images/wyy.png%>" alt=""></i></a>
+                <% } %>
+                <% if (site.customConfig['steam']) { %>
+                <a href="<%= site.customConfig['steam'] %>" target="_blank"><i style="font-size: 40px;"><img
+                            class="icon" src="<%= themeConfig.domain %>/media/images/steam.png" alt=""></i></a>
+                <% } %>
+            </div>
+            <div id="qq" style="display:none"><%= site.customConfig['QQ'] %></div>
+        </div>
+    </div>
+
+    <script>
+        var social = document.getElementById('socialMenu');
+        var fancybox = document.getElementsByClassName('fancybox-stage');
+        // 鼠标点击模型外区域关闭登录框
+        window.onclick = function (event) {
+            if (event.target == social) {
+                social.style.display = "none";
+            }
+        }
+    </script>
+    </div>
+    <%}%>
+    <!----------------- 顶部菜单栏👆 ------------------------>
+
+<!--核心功能加载-->
+<script src="<%= themeConfig.domain %>/media/js/mainfunc.js"></script>
+
+<!------------- Fog1.0版本彩蛋👇 -------------->
+    <section id="terrestrial" class="popup">
+        <a href="#" class="back">&lt; back</a>
+    </section>
+
+    <div class="flycontainer">
+        <div class="flyword">御风飞行中...</div>
+    </div>
+
+    <script>
+        $("#fog_go").click(function(){fog_go()});
+        async function fog_go(){
+            $(".bars").hide()
+            $("#live2d").hide()
+            await sleep(3000);
+            $(".flycontainer").css("display","flex");
+            $(".popup").fadeOut(500)
+            await sleep(2000);
+            getFogUser()
+        }
+
+        function fog_goregis(){
+            var sitename = "<%=themeConfig.siteName%>";
+            var siteurl = "<%= themeConfig.domain %>";
+            regisFogUser(sitename,siteurl);
+        }
+        fog_goregis();
+    </script>
+<!------------- Fog1.0版本彩蛋👆 -------------->
+
+
+<!------ 根据自定义配置声明变量👇 --------------------->
+<%if(site.customConfig.menuposition=='top'){%>
     <script>
         let menupos = 'top'
     </script>
@@ -79,752 +425,412 @@
         <% site.posts.forEach(function(post) { %>
     <% if(!post.hideInList){ %>
     <%= post.title %>
-    <script>postsnum += 1</script>
+    <script>
+        postsnum += 1
+    </script>
     <% } %>
     <%});%>
     </div>
-    <div class="pjaxloading" onclick="pjaxloadingClose()">
-        <div class="loadingbackground"></div>
-        <div id="loading">
-            <div class="loading">
-            </div>
-        </div>
-    </div>
-    <%if(site.customConfig.menuposition=='left'){%>
-    <div id=side>
-        <a onclick="showAaplayer()"><i style="font-size: 20px;"><img
-                    src='<%= themeConfig.domain %>/media/images/music.png%>' alt="音乐播放器" class="musicbtn"></i></a>
-        <div class="avatar-border">
-            <img src="<%= themeConfig.domain %>/images/avatar.png?v=<%= site.utils.now %>" class="avatar">
-        </div>
-        <div class="sitename"><%=themeConfig.siteName%></div>
-        <span class="describtion" data-text='["<%- themeConfig.siteDescription %>"]'>&nbsp;</span>
-        <%if (site.customConfig.search){ %>
-        <div class="search">
-            <!-- <input type="text" class="search-input" placeholder="标题搜索(●'◡'●)" /> -->
-            <input type="text" class="search-input" placeholder="<%= site.customConfig['searchplaceholder'] %>">
-            <div class="search-results"></div>
-        </div>
-        <%}%>
-    <div class="share-button">
-        <span>社交按钮</span>
-        <% if (site.customConfig['github']) { %>
-        <a href="<%= site.customConfig['github'] %>" target="_blank"><i style="font-size: 20px;"><img class="icon"
-                    src="<%= themeConfig.domain %>/media/images/github.png%>" alt=""></i></a>
-        <% } %>
-        <% if (site.customConfig['QQ']) { %>
-        <a onclick="showqq()"><i style="font-size: 20px;"><img class="icon"
-                    src="<%= themeConfig.domain %>/media/images/QQ.png%>" alt=""></i></a>
-        <% } %>
-        <% if (site.customConfig['zhihu']) { %>
-        <a href="<%= site.customConfig['zhihu'] %>" target="_blank"><i style="font-size: 20px;"><img class="icon"
-                    src="<%= themeConfig.domain %>/media/images/zh.png%>" alt=""></i></a>
-        <% } %>
-        <% if (site.customConfig['bilibili']) { %>
-        <a href="<%= site.customConfig['bilibili'] %>" target="_blank"><i style="font-size: 20px;"><img class="icon"
-                    src="<%= themeConfig.domain %>/media/images/bilibili.png%>" alt=""></i></a>
-        <% } %>
-        <% if (site.customConfig['wechat']) { %>
-        <a href="<%= site.customConfig['wechat'] %>" target="_blank"><i style="font-size: 20px;"><img class="icon"
-                    src="<%= themeConfig.domain %>/media/images/wechat.png%>" alt=""></i></a>
-        <% } %>
-        <% if (site.customConfig['steam']) { %>
-        <a href="<%= site.customConfig['steam'] %>" target="_blank"><i style="font-size: 20px;"><img class="icon"
-                    src="<%= themeConfig.domain %>/media/images/steam.png%>" alt=""></i></a>
-        <% } %>
-    </div>
-    <div id="qq" style="display:none"><%= site.customConfig['QQ'] %></div>
-    <% menus.forEach(function(menu) { %>
-    <% if (menu.openType === 'External') { %>
-    <div class="mchocie describtion">
-        <a href="<%= menu.link %>" class="mchocie describtion" target="_blank">
-            <%= menu.name %>
-        </a>
-    </div>
-    <% } else { %>
-    <div class="mchocie describtion">
-        <a data-pjax href="<%= menu.link %>" class="menubutton">
-            <%= menu.name %>
-        </a>
-    </div>
-    <% } %>
-    <% });%>
-    <%if(site.customConfig.talkchoice){%>
-    <div class="mchocie describtion">
-        <a data-pjax href="<%= themeConfig.domain %>/talk" class="menubutton">说说</a>
-    </div>
-    <%}%>
-    <%if(site.customConfig.friendschoice){%>
-    <div class="mchocie describtion">
-        <a data-pjax href="<%= themeConfig.domain %>/friends" class="menubutton">友人帐</a>
-    </div>
-    <%}%>
-    <hr>
-    <%- include('./footer') %>
-    </div>
+    <!------ 根据自定义配置声明变量👆 --------------------->
 
 
-    <script src="<%= themeConfig.domain %>/media/js/wordshow.js%>"></script>
-    <%}%>
-    <%if(site.customConfig.menuposition=='top'){%>
-    <nav class="navbar navbar-inverse navbar-fixed-top navbartop">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <a data-pjax class="navbar-brand" href="<%= themeConfig.domain %>"
-                    style="font-size:21px"><%=themeConfig.siteName%>&nbsp;&nbsp;|&nbsp;&nbsp;</a>
-                <a class="navbar-brand" href=""
-                    style="font-size:15px;font-family:kaiti"><%- themeConfig.siteDescription %></a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse">
-                <%if (site.customConfig.search){ %>
-                <div class="search nav navbar-nav" style="margin-top:8px">
-                    <!-- <input type="text" class="search-input" placeholder="标题搜索(●'◡'●)" /> -->
-                    <input type="text" class="search-input" placeholder="<%= site.customConfig['searchplaceholder'] %>">
-                    <div class="search-results"></div>
-                </div>
-                <%}%>
-                <div class="search nav navbar-nav searchtop">
-                <a title="text" onclick="document.getElementById('socialMenu').style.display='block'"><i><img class="social"
-                    src="<%= themeConfig.domain %>/media/images/social.png%>" alt=""></i></a>
-                <a onclick="showAaplayer()"><i style="font-size: 20px;"><img
-                            src='<%= themeConfig.domain %>/media/images/music.png%>' alt="音乐播放器"
-                            class="musicbtn musictop"></i></a>
-            </div>
-            <ul class="nav navbar-nav" style="float: right;margin-right:5%">
-                <% menus.forEach(function(menu) { %>
-                <% if (menu.openType === 'External') { %>
-                <li><a href="<%= menu.link %>" target="_blank" style="color:white">
-                        <%= menu.name %>
-                    </a></li>
-                <% } else { %>
-                <li>
-                    <a data-pjax href="<%= menu.link %>" style="color:white">
-                        <%= menu.name %>
-                    </a>
-                </li>
-                <% } %>
-                <% }); %>
-                <%if(site.customConfig.talkchoice){%>
-                <li><a data-pjax href="<%= themeConfig.domain %>/talk" style="color:white;">说说</a></li>
-                <%}%>
-                <%if(site.customConfig.friendschoice){%>
-                <li><a data-pjax href="<%= themeConfig.domain %>/friends" style="color:white">友链</a></li>
-                <%}%>
-                  <li><img src="<%= themeConfig.domain %>/images/avatar.png?v=<%= site.utils.now %>" alt=""
-                class="menutopavatar"></li>
-            </ul>
-        </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-    </nav>
-    <div id="socialMenu">
-        <div class="animate">
-            <div class="socialContainer">
-                <% if (site.customConfig['github']) { %>
-                <a href="<%= site.customConfig['github'] %>" target="_blank"><i style="font-size: 40px;"><img
-                            class="icon " src="<%= themeConfig.domain %>/media/images/github.png%>" alt=""></i></a>
-                <% } %>
-                <% if (site.customConfig['QQ']) { %>
-                <a onclick="showqq()" style="cursor:pointer"><i style="font-size: 40px;"><img class="icon"
-                            src="<%= themeConfig.domain %>/media/images/QQ.png%>" alt=""></i></a>
-                <% } %>
-                <% if (site.customConfig['zhihu']) { %>
-                <a href="<%= site.customConfig['zhihu'] %>" target="_blank"><i style="font-size: 40px;"><img
-                            class="icon" src="<%= themeConfig.domain %>/media/images/zh.png%>" alt=""></i></a>
-                <% } %>
-                <% if (site.customConfig['bilibili']) { %>
-                <a href="<%= site.customConfig['bilibili'] %>" target="_blank"><i style="font-size: 40px;"><img
-                            class="icon" src="<%= themeConfig.domain %>/media/images/bilibili.png%>" alt=""></i></a>
-                <% } %>
-                <% if (site.customConfig['wechat']) { %>
-                <a href="<%= site.customConfig['wechat'] %>" target="_blank"><i style="font-size: 40px;"><img
-                            class="icon" src="<%= themeConfig.domain %>/media/images/wechat.png%>" alt=""></i></a>
-                <% } %>
-                <% if (site.customConfig['steam']) { %>
-                <a href="<%= site.customConfig['steam'] %>" target="_blank"><i style="font-size: 40px;"><img
-                            class="icon" src="<%= themeConfig.domain %>/media/images/steam.png%>" alt=""></i></a>
-                <% } %>
-            </div>
-            <div id="qq" style="display:none"><%= site.customConfig['QQ'] %></div>
-        </div>
-    </div>
-    <!-- 引入jQuery核心js文件 -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+    <!----------根据自定义配置设置图标信息👇---------->
     <script>
-        var social = document.getElementById('socialMenu');
-        // 鼠标点击模型外区域关闭登录框
-        window.onclick = function (event) {
-            if (event.target == social) {
-                social.style.display = "none";
-            }
-        }
+        var icondict = new Array();
     </script>
-    <%}%>
+    <% site.customConfig.icons.forEach(function(icon) {%>
+    <script>
+        var iconname = "<%= icon.menuname%>";
+        var iconurl = "<%= icon.iconurl%>";
+        icondict[iconname] = iconurl;
+    </script>
+    <%})%>
+    <!----------根据自定义配置设置图标信息👆---------->
 </body>
+
+<script src="<%= themeConfig.domain %>/media/share/dist/Share.js"></script>
+<!-- 页面pjax测试 -->
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.pjax/2.0.1/jquery.pjax.js"></script>
+<!--确保jQuery已经在此之前加载-->
+<!-- <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script> -->
+<script src="<%= themeConfig.domain %>/media/js/all-pjax.js"></script>
 <script>
-    function showqq() {
-        var qq = document.getElementById("qq").innerHTML;
-        if (qq != '')
-            window.location.href = "tencent://message/?uin=" + qq + "&Site=&Menu=yes";
-        else
-            alert("博主暂未设置QQ联系方式");
+    //-------------------------------说说功能👇--------------------------------------
+    let talksall = [];
+    let talks = [];
+    let talkindex = 0;
+    get();
+
+    function get() {
+        var t = JSON.parse('<%- JSON.stringify(site.customConfig.talks) %>');
+        talkindex = t.length - 1;
+        for (var i = 0; i <= t.length - 1; i++) {
+            var d = {};
+            d["time"] = t[i].time;
+            d["author"] = t[i].author;
+            d["text"] = t[i].text;
+            d["img"] = t[i].img;
+            talksall.push(d);
+        }
     }
 
-    //音乐播放器的显示
-    function showAaplayer() {
-        var aplayer = $(".aplayer-body");
-        if (aplayer.css("display") == 'block')
-            aplayer.fadeOut(200)
-        else
-            aplayer.fadeIn(200)
+    function add() {
+        for (var i = talkindex; i >= 0 && i > talkindex - 3; i--) {
+            talks.push(talksall[i]);
+        }
+        talkindex = (talkindex - 3) >= 0 ? (talkindex - 3) : -1;
+        if (talkindex < 0) $("#getmorebt").hide();
+        show();
     }
-</script>
-<script>
-    function getHotnum() {
-        //文章阅读热度（重构，利用leancloud原生api）
-        var pl = window.location.pathname;
-        if (pl.search("post") == -1)
-            return false;
-        if (pl[pl.length - 1] != '/')
-            pl += '/'
-        var ptitle = $("#ptitle").html();
-        var rootaddr = $("#rootaddr").html();
-        pl = pl.replace(rootaddr, "");
-        var appid = '<%= site.customConfig.valineID %>';
-        var appkey = '<%= site.customConfig.valineKey %>';
-        console.log(appid, appkey)
-        if (AV == undefined)
-            AV.init({
-                appId: appid,
-                appKey: appkey
-            });
-        const query = new AV.Query('Counter');
-        query.equalTo('url', pl);
-        var time = 'Loading...';
-        query.find().then(function (results) {
-            console.log(results)
-            if (results.length == 0) {
-                console.log("0")
-                var NewCounter = AV.Object.extend('Counter');
-                var nc = new NewCounter();
-                nc.save({
-                    time: 1,
-                    title: ptitle,
-                    url: pl,
-                    xid: pl,
-                }).then(function (object) {
-                    $(".hotnum").eq(0).html(1);
-                    $(".hotnum").eq(1).html(1);
-                });
+
+    function show() {
+        var talkT = document.getElementById("talkContainer");
+        talkT.innerHTML = "";
+        for (var i = 0; i < talks.length; i++) {
+            if (talks[i].img != '') {
+                talkT.innerHTML += '\
+            <div class="talk" v-for="t in talks"> \
+                <span data-fancybox="images" href="' + talks[i].img + '"><img src="' + talks[i].img + '" class="talkimg"></span> \
+                <div class="ainfo">\
+                    <div class="ainfo-intro">\
+                        <div class="author">' + talks[i].author + '</div>·\
+                        <div class="time">' + talks[i].time + '</div>\
+                    </div>\
+                </div>\
+                <div class="talkcontent">' + talks[i].text + '\
+                </div\>\
+            ';
             } else {
-                id = results[0].id;
-                var todo = AV.Object.createWithoutData('Counter', id);
-                time = results[0].attributes.time + 1;
-                todo.set("time", time);
-                todo.save();
-                console.log(todo);
-                $(".hotnum").eq(0).html(time);
-                $(".hotnum").eq(1).html(time);
+                talkT.innerHTML += '\
+            <div class="talk" v-for="t in talks"> \
+                <div class="ainfo">\
+                    <div class="ainfo-intro">\
+                        <div class="author">' + talks[i].author + '</div>·\
+                        <div class="time">' + talks[i].time + '</div>\
+                    </div>\
+                </div>\
+                <div class="talkcontent">' + talks[i].text + '\
+                </div\>\
+            ';
             }
+        }
+    }
+    //-------------------------------说说功能👆--------------------------------------
+</script>
 
-        }, function (error) {
-            console.log(error)
-        });
+<!---->
+<script>
+    function replaceAvatar() {
+        twikoo_avatar = $(".tk-avatar-img");
+        for (var i = 0; i < twikoo_avatar.length; i++) {
+            var asrc = twikoo_avatar.eq(i).attr('src');
+            if (asrc.search('cn.gravatar.com') != -1) {
+                twikoo_avatar.eq(i).attr('src', '<%= themeConfig.domain %>/media/images/comavatar.png%>');
+            }
+        }
+    }
+
+    function showWechat() {
+        var wechat = '<%= site.customConfig.wechat %>';
+        alert("博主微信号：" + wechat);
+        return false;
     }
 </script>
-    <script src="<%= themeConfig.domain %>/media/share/dist/Share.js%>"></script>
-    <!-- 页面pjax测试 -->
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery.pjax/2.0.1/jquery.pjax.js"></script>
-    <!--确保jQuery已经在此之前加载-->
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-    <script src="<%= themeConfig.domain %>/media/js/all-pjax.js%>"></script>
-    <script>
-        //loading加载关闭
-        function pjaxloadingClose() {
-            var pjaxloading = $(".pjaxloading");
-            pjaxloading.hide();
+
+<script>
+    /**
+     * https://github.com/tangkaichuan/gridea-search
+     */
+    // 检查缓存是否最新
+    function checkCache() {
+        var caches_postsnum = localStorage.getItem("postsnum");
+        var pt = document.getElementById("side-posttitle").innerHTML;
+        pt = pt.replace(/\s+/g, '').replace(/<script>.*?<\/script>/gi, "")
+        var ptlen = pt.length;
+        var ptlen_storage = localStorage.getItem("poststitlelen");
+        if (caches_postsnum != postsnum || ptlen != ptlen_storage) {
+            console.log("更新缓存");
+            return false
+        }
+        return true;
+    }
+
+    (function () {
+        var CACHES = checkCache()
+        if (!CACHES) {
+            var NOW = Date.now()
+            var API_CONTENT = '../api-content/index.html' + '?_=' + NOW
+            preload(API_CONTENT);
+            getContents(show_getContentresult);
+        }
+
+        function show_getContentresult(data) {
+            console.log("获取成功");
+            var postslen = data["posts"].length;
+            localStorage.setItem('postsnum', postslen);
+            var poststitlelen = 0;
+            var pt = document.getElementById("side-posttitle").innerHTML;
+            pt = pt.replace(/\s+/g, '').replace(/<script>.*?<\/script>/gi, "");
+            localStorage.setItem('poststitlelen', pt.length);
         }
 
 
 
-        function imglazyloadinit() {
-            var img = $("img");
-            for (var i = 0; i < img.length; i++) {
-                if (img.eq(i).attr("class") == undefined) {
-                    img.eq(i).attr("class", "lazyload");
-                    var imgsrc = img.eq(i).attr("src");
-                    img.eq(i).attr("data-original", imgsrc);
-                    img.eq(i).attr("src", "");
-                    img.eq(i).hide();
-                }
-            }
+        // preload
+        function preload(url) {
+            var preloadLink = document.createElement('link')
+            preloadLink.href = url
+            preloadLink.rel = 'preload'
+            preloadLink.as = 'fetch'
+            preloadLink.crossOrigin = 'anonymous'
+            document.head.appendChild(preloadLink)
         }
 
-        function sleep(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms));
-        }
-
-        async function codebtncolorinit(e) {
-            await sleep(2000);
-            e.trigger.innerHTML = "复制代码"
-            e.trigger.style.background = "cornflowerblue"
-        }
-
-        function codeinit() {
-            //寻找所有code标签，加复制按钮鸭！(行内代码除外)
-            var codes = document.getElementsByTagName('code');
-            if (codes.length) {
-                for (var i = 0; i < codes.length; i++) {
-                    //高度/行高=文本行数
-                    // var rowNum=Math.round(codes[i].height()/parseFloat(codes[i].css('line-height')));
-                    // console.log("当前有"+rowNum+"行");
-                    var code_id = "code_id_" + i;
-                    codes[i].setAttribute("id", code_id);
-                    var ci = "#" + code_id;
-                    var codedot = $(ci);
-                    var rowNum = Math.round(codedot.height() / parseFloat(codedot.css('line-height')));
-                    if (rowNum <= 1) continue;
-                    var btn = document.createElement("button");
-                    btn.setAttribute("class", "copybt");
-                    btn.setAttribute("data-clipboard-target", "#" + code_id);
-                    btn.innerHTML = '复制代码';
-                    codes[i].parentNode.insertBefore(btn, codes[i]);
-                }
-            };
-            var cop = new ClipboardJS('.copybt');
-            cop.on('success', function (e) {
-                e.trigger.innerHTML = "复制成功~"
-                e.trigger.style.background = "#894e54"
-                codebtncolorinit(e)
-                e.clearSelection();
-            });
-            cop.on('error', function (e) {
-                alert("矮油，复制失败了...手动复制吧勇士！");
-                e.clearSelection();
-            });
-        }
-
-        function lazyload() {
-            var oLazyload = $("img.lazyload"),
-                fLazyload = function (hLazyload) {
-                    var nLazyload = $(window).height() + $(document).scrollTop();
-                    oLazyload.each(function () {
-                        $(this).offset().top < nLazyload && ($(this).trigger("appear"), oLazyload =
-                            oLazyload.not(this));
-                    }), 0 == oLazyload.length && $(window).unbind("scroll", fLazyload);
-                };
-            oLazyload.each(function () {
-                $(this).one("appear", function () {
-                    $(this).attr("src", $(this).attr("data-original"));
-                    $(this).fadeIn(500);
-                });
-            }), $(window).bind("scroll", fLazyload), fLazyload();
-        }
-
-        let talksall = [];
-        let talks = [];
-        let talkindex = 0;
-        get();
-        function get() {
-            var t = JSON.parse('<%- JSON.stringify(site.customConfig.talks) %>');
-            talkindex = t.length - 1;
-            for (var i = 0; i <= t.length - 1; i++) {
-                var d = {};
-                d["time"] = t[i].time;
-                d["author"] = t[i].author;
-                d["text"] = t[i].text;
-                d["img"] = t[i].img;
-                talksall.push(d);
-            }
-        }
-
-        function add() {
-            for (var i = talkindex; i >= 0 && i > talkindex - 3; i--) {
-                talks.push(talksall[i]);
-            }
-            talkindex = (talkindex - 3) >= 0 ? (talkindex - 3) : -1;
-            if (talkindex < 0) $("#getmorebt").hide();
-            show();
-            refreshImg("talkimg");
-        }
-
-        function show() {
-            var talkT = document.getElementById("talkContainer");
-            talkT.innerHTML = "";
-            for (var i = 0; i < talks.length; i++) {
-                if (talks[i].img != '') {
-                    talkT.innerHTML += '\
-            <div class="talk" v-for="t in talks"> \
-                <img src="' + talks[i].img + '" class="talkimg"> \
-                <div class="ainfo">\
-                    <div class="ainfo-intro">\
-                        <img class="intro1" src="<%= themeConfig.domain %>/images/avatar.png?v=<%= site.utils.now %>">\
-                        <div class="author">' + talks[i].author + '</div>·\
-                        <div class="time">' + talks[i].time + '</div>\
-                    </div>\
-                </div>\
-                <div class="talkcontent">' + talks[i].text + '\
-                </div\>\
-            ';
-                } else {
-                    talkT.innerHTML += '\
-            <div class="talk" v-for="t in talks"> \
-                <div class="ainfo">\
-                    <div class="ainfo-intro">\
-                        <img class="intro1" src="<%= themeConfig.domain %>/images/avatar.png?v=<%= site.utils.now %>">\
-                        <div class="author">' + talks[i].author + '</div>·\
-                        <div class="time">' + talks[i].time + '</div>\
-                    </div>\
-                </div>\
-                <div class="talkcontent">' + talks[i].text + '\
-                </div\>\
-            ';
-                }
-            }
-        }
-
-        function refreshImg(imgclass) {
-            // 获取弹窗
-            var modal = document.getElementById('myModal');
-
-            // 获取图片插入到弹窗 - 使用 "alt" 属性作为文本部分的内容
-            var img = document.getElementsByClassName(imgclass);
-            var modalImg = document.getElementById("img01");
-            var captionText = document.getElementById("caption");
-            for (var i in img) {
-                img[i].onclick = function () {
-                    modal.style.display = "block";
-                    modalImg.src = this.src;
-                }
-            }
-
-            // 图片关闭
-            var modalImg = document.getElementById('img01');
-            // 鼠标点击模型外区域关闭登录框
-            window.onclick = function (event) {
-                console.log(event.target);
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-                if (menupos == 'left')
-                    return true;
-                if (event.target == social) {
-                    social.style.display = "none";
-                }
-            }
-        }
-
-        function shareInit() {
-            var title = document.getElementById("texttitle").getElementsByTagName("h2");
-            if (menupos == 'top') {
-                var avatarSrc = $(".menutopavatar").attr("src");
-                var dp = document.getElementsByClassName("navbar-brand")[1].innerHTML;
-            }
-            else {
-                var avatarSrc = $(".avatar").attr("src");
-                var dp = document.getElementsByClassName("describtion")[0].innerHTML;
-            }
-            var share = new Share('.share', {
-                title: title[0].innerHTML,
-                initialized: true,
-                //默认获取网站描述
-                description: dp,
-                //网站图片默认获取的是设置的用户头像
-                image: avatarSrc,
-                //激活的分享网站
-                sites: ["weibo", "qq", "wechat", "douban", "qzone", "facebook", "twitter", "google"],
-                //微信分享PC端会生成二维码分享,移动端如果可以唤起微信最好
-                wechatQrcodeTitle: "微信扫一扫：分享", // 微信二维码提示文字
-                wechatQrcodeHelper: '<p>微信里扫一下二维码</p><p>便可将本文分享至朋友圈。</p>',
-                //关闭的网站分享
-                disabled: ['google', 'linkedin'],
-                wechatQrcodePosition: 'bottom'
-            });
-            //点击分享按钮展现出分享icons
-            var sharebtnTag = false;
-            $(".sharebtn").click(function () {
-                if (!sharebtnTag) {
-                    $(".share").show();
-                    sharebtnTag = true;
-                }
-                else {
-                    $(".share").hide();
-                    sharebtnTag = false;
-                }
-            })
-        }
-
-        function donateInit() {
-            var donatebtnTag = false;
-            $(".donateImg").click(function () {
-                if (!donatebtnTag) {
-                    $(".donate").show();
-                    donatebtnTag = true;
-                }
-                else {
-                    $(".donate").hide();
-                    donatebtnTag = false;
-                }
-            })
-        }
-
-
-        let talkinit = false;
-        $(document).pjax('a[data-pjax]', '#main', {
-            fragment: '#main',
-            timeout: 8000
-        }).on('pjax:complete', function () {
-            //hljs.initHighlightingOnLoad();
-            document.querySelectorAll('pre code').forEach((block) => {
-                hljs.highlightBlock(block);
-            });
-            //文章热度
-            getHotnum();
-            //文章索引
-            toginit();
-            //清空搜索栏
-            if (searchChoice) {
-                searchInit();
-                searchInput.value = "";
-            }
-            var pl = window.location.pathname;
-            //说说更新
-            if (pl.search("talk") != -1 && !talkinit) {
-                add();
-                talkinit = true;
-            }
-            else if (pl.search("talk") != -1) {
-                show();
-                refreshImg("talkimg");
-            }
-            //分享按钮更新
-            if (pl.search("post") != -1) {
-                if (shareChoice)
-                    shareInit();
-                if (donateChoice)
-                    donateInit();
-                imglazyloadinit();
-                lazyload();
-                refreshImg("lazyload");
-                codeinit();
-            }
-            if (btstate == true)
-                dropdown();
-        }).on('pjax:start', function () {
-            $(".pjaxloading").fadeIn(50);
-        }).on('pjax:end', function () {
-            $(".pjaxloading").fadeOut(50);
-        });
-    </script>
-
-    <script>
-        /**
-         * https://github.com/tangkaichuan/gridea-search
-         */
-        (function () {
-            var CACHES = checkCache()
-            if (!CACHES) {
-                var NOW = Date.now()
-                var API_CONTENT = '../api-content/index.html' + '?_=' + NOW
-                preload(API_CONTENT);
-                getContents(show_getContentresult);
-            }
-
-            function show_getContentresult(data) {
-                console.log("获取成功");
-                var postslen = data["posts"].length;
-                localStorage.setItem('postsnum', postslen);
-                var poststitlelen = 0;
-                var pt = document.getElementById("side-posttitle").innerHTML;
-                pt = pt.replace(/\s+/g, '').replace(/<script>.*?<\/script>/gi, "");
-                localStorage.setItem('poststitlelen', pt.length);
-            }
-
-
-
-            // preload
-            function preload(url) {
-                var preloadLink = document.createElement('link')
-                preloadLink.href = url
-                preloadLink.rel = 'preload'
-                preloadLink.as = 'fetch'
-                preloadLink.crossOrigin = 'anonymous'
-                document.head.appendChild(preloadLink)
-            }
-
-            // 异步 GET 请求
-            function get(obj) {
-                var xhr = new XMLHttpRequest()
-                xhr.open('get', obj.url, true)
-                xhr.send(null)
-                xhr.onreadystatechange = function () {
-                    // 异步请求：响应状态为4，数据加载完毕
-                    if (xhr.readyState === 4) {
-                        if (xhr.status === 200) {
-                            obj.success(xhr.responseText)
-                        } else {
-                            obj.error(xhr.status)
-                        }
+        // 异步 GET 请求
+        function get(obj) {
+            var xhr = new XMLHttpRequest()
+            xhr.open('get', obj.url, true)
+            xhr.send(null)
+            xhr.onreadystatechange = function () {
+                // 异步请求：响应状态为4，数据加载完毕
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        obj.success(xhr.responseText)
+                    } else {
+                        obj.error(xhr.status)
                     }
                 }
             }
+        }
 
-
-            // 检查缓存是否最新
-            function checkCache() {
-                var caches_postsnum = localStorage.getItem("postsnum");
-                var pt = document.getElementById("side-posttitle").innerHTML;
-                pt = pt.replace(/\s+/g, '').replace(/<script>.*?<\/script>/gi, "")
-                var ptlen = pt.length;
-                var ptlen_storage = localStorage.getItem("poststitlelen");
-                console.log(parseInt(postsnum));
-                if (caches_postsnum != postsnum || ptlen != ptlen_storage) {
-                    console.log("更新缓存");
-                    return false
-                }
-                return true;
+        // 获取博客全文 api
+        function getContents(callback) {
+            if (CACHES) {
+                callback(CACHES.contents)
+            } else {
+                get({
+                    url: API_CONTENT,
+                    success: function (data) {
+                        callback(JSON.parse(data));
+                        localStorage.setItem('ContentsCache', data);
+                        getStorageContent();
+                    }
+                })
             }
-
-            // 获取博客全文 api
-            function getContents(callback) {
-                if (CACHES) {
-                    callback(CACHES.contents)
-                } else {
-                    get({
-                        url: API_CONTENT,
-                        success: function (data) {
-                            callback(JSON.parse(data));
-                            localStorage.setItem('ContentsCache', data);
-                        }
-                    })
-                }
-            }
-        })()
-
-        //-------------------------------------------------搜索
-        // 获取搜索框、搜索按钮、清空搜索、结果输出对应的元素
+        }
+    })()
+    //------------------------核心功能--pjax全局渲染👇-------------------
+    let talkinit = false;
+    $(document).pjax('a[data-pjax]', '#main', {
+        fragment: '#main',
+        timeout: 8000
+    }).on('pjax:complete', function () {
+        //代码块高亮渲染
+        document.querySelectorAll('pre code').forEach((block) => {
+            hljs.highlightBlock(block);
+        });
+        //文章热度
+        getHotnum();
+        //文章索引
+        toginit();
+        //清空搜索栏
         if (searchChoice) {
-            var searchInput = document.querySelector('.search-input');
-            var searchResults = document.querySelector('.search-results');
+            searchInit();
+            searchInput.value = "";
         }
-        // 申明保存文章的标题、链接、内容的数组变量
-        var searchValue = '',
-            arrItems = [],
-            arrLinks = [],
-            arrTitles = [],
-            arrContents = [],
-            arrResults = [],
-            indexItem = [],
-            itemLength = 0;
-        var tmpDiv = document.createElement('div');
-        tmpDiv.className = 'result-item';
-
-
-        function getStorageContent() {
-            var data = localStorage.getItem('ContentsCache');
-            data = JSON.parse(data);
-            posts = data["posts"];
-            for (var i = 0; i < posts.length; i++) {
-                arrLinks[i] = posts[i].link;
-                arrTitles[i] = posts[i].title;
-                arrContents[i] = posts[i].content;
-                itemLength++;
+        var pl = window.location.pathname;
+        //说说更新
+        if (pl.search("talk") != -1 && !talkinit) {
+            add();
+            talkinit = true;
+        } else if (pl.search("talk") != -1) {
+            show();
+        }
+        if (pl.search("post") != -1) {
+            if (shareChoice)
+                shareInit();
+            if (donateChoice)
+                donateInit();
+            imglazyloadinit();
+            lazyload();
+            codeinit();
+            if ("<%= site.customConfig.commentschoice%>" == "twikoo") {
+                //twikoo头像更换
+                setTimeout(replaceAvatar, 3000);
+                setTimeout(replaceAvatar, 8000); //部分博主站点速度加载过慢，再添加一个延迟
             }
         }
+        if (btstate == true)
+            dropdown();
+    }).on('pjax:start', function () {
+        $(".pjaxloading").fadeIn(50);
+    }).on('pjax:end', function () {
+        $(".pjaxloading").fadeOut(50);
+    });
+    //------------------------核心功能--pjax全局渲染👆-------------------
+
+    //-------------------------------------------------搜索
+    // 获取搜索框、搜索按钮、清空搜索、结果输出对应的元素
+    if (searchChoice) {
+        var searchInput = document.querySelector('.search-input');
+        var searchResults = document.querySelector('.search-results');
+    }
+    // 申明保存文章的标题、链接、内容的数组变量
+    var searchValue = '',
+        arrItems = [],
+        arrLinks = [],
+        arrTitles = [],
+        arrContents = [],
+        arrResults = [],
+        indexItem = [],
+        itemLength = 0;
+    var tmpDiv = document.createElement('div');
+    tmpDiv.className = 'result-item';
+
+
+    function getStorageContent() {
+        var data = localStorage.getItem('ContentsCache');
+        data = JSON.parse(data);
+        posts = data["posts"];
+        for (var i = 0; i < posts.length; i++) {
+            arrLinks[i] = posts[i].link;
+            arrTitles[i] = posts[i].title;
+            arrContents[i] = posts[i].content;
+            itemLength++;
+        }
+    }
+    if (checkCache())
         getStorageContent();
-        // 输入框内容变化后就开始匹配，可以不用点按钮
-        // 经测试，onkeydown, onchange 等方法效果不太理想，
-        // 存在输入延迟等问题，最后发现触发 input 事件最理想，
-        // 并且可以处理中文输入法拼写的变化
-        searchInput.oninput = function () {
-            setTimeout(searchConfirm, 0);
-        }
-        searchInput.onfocus = function () {
-            searchResults.style.display = 'block';
-        }
+    // 输入框内容变化后就开始匹配，可以不用点按钮
+    // 经测试，onkeydown, onchange 等方法效果不太理想，
+    // 存在输入延迟等问题，最后发现触发 input 事件最理想，
+    // 并且可以处理中文输入法拼写的变化
+    searchInput.oninput = function () {
+        setTimeout(searchConfirm, 0);
+    }
+    searchInput.onfocus = function () {
+        searchResults.style.display = 'block';
+    }
 
-        function searchConfirm() {
-            if (searchInput.value == '') {
-                searchResults.style.display = 'none';
-            } else if (searchInput.value.search(/^\s+$/) >= 0) {
-                // 检测输入值全是空白的情况
-                searchInit();
-                var itemDiv = tmpDiv.cloneNode(true);
-                itemDiv.innerText = '请输入有效内容...';
-                searchResults.appendChild(itemDiv);
-            } else {
-                // 合法输入值的情况
-                searchInit();
-                searchValue = searchInput.value;
-                // 在标题、内容中查找
-                searchMatching(arrTitles, arrContents, searchValue);
-            }
+    function searchConfirm() {
+        if (searchInput.value == '') {
+            searchResults.style.display = 'none';
+        } else if (searchInput.value.search(/^\s+$/) >= 0) {
+            // 检测输入值全是空白的情况
+            searchInit();
+            var itemDiv = tmpDiv.cloneNode(true);
+            itemDiv.innerText = '请输入有效内容...';
+            searchResults.appendChild(itemDiv);
+        } else {
+            // 合法输入值的情况
+            searchInit();
+            searchValue = searchInput.value;
+            // 在标题、内容中查找
+            searchMatching(arrTitles, arrContents, searchValue);
         }
+    }
 
-        // 每次搜索完成后的初始化
-        function searchInit() {
-            arrResults = [];
-            indexItem = [];
-            searchResults.innerHTML = '';
-            searchResults.style.display = 'block';
-        }
+    // 每次搜索完成后的初始化
+    function searchInit() {
+        arrResults = [];
+        indexItem = [];
+        searchResults.innerHTML = '';
+        searchResults.style.display = 'block';
+    }
 
-        function searchMatching(arr1, arr2, input) {
-            // 忽略输入大小写
-            input = new RegExp(input, 'i');
-            var step = 10;
-            // 在所有文章标题、内容中匹配查询值
-            for (i = 0; i < itemLength; i++) {
-                var indexContent = arr2[i].search(input);
-                //标题匹配
-                if (arr1[i].search(input) != -1) {
-                    indexItem.push(i); // 保存匹配值的索引
-                    if (indexContent != -1) {
-                        startindex = (indexContent - step) >= 0 ? (indexContent - step) : 0;
-                        var searchcontent = arr2[i].slice(indexContent - step, indexContent + 5)
-                        arrResults.push("....." + searchcontent + ".....");
-                    }
-                    else
-                        arrResults.push("");
-                }
-                //内容匹配
-                else if (indexContent != -1) {
-                    indexItem.push(i); // 保存匹配值的索引
-
+    function searchMatching(arr1, arr2, input) {
+        // 忽略输入大小写
+        input = new RegExp(input, 'i');
+        var step = 10;
+        // 在所有文章标题、内容中匹配查询值
+        for (i = 0; i < itemLength; i++) {
+            var indexContent = arr2[i].search(input);
+            //标题匹配
+            if (arr1[i].search(input) != -1) {
+                indexItem.push(i); // 保存匹配值的索引
+                if (indexContent != -1) {
                     startindex = (indexContent - step) >= 0 ? (indexContent - step) : 0;
                     var searchcontent = arr2[i].slice(indexContent - step, indexContent + 5)
                     arrResults.push("....." + searchcontent + ".....");
-                }
+                } else
+                    arrResults.push("");
             }
+            //内容匹配
+            else if (indexContent != -1) {
+                indexItem.push(i); // 保存匹配值的索引
 
-            // 输出总共匹配到的数目
-            var totalDiv = tmpDiv.cloneNode(true);
-            totalDiv.innerHTML = '<b>总匹配：' + indexItem.length + ' 项<hr></b>';
-            searchResults.appendChild(totalDiv);
-
-            // 未匹配到内容的情况
-            if (indexItem.length == 0) {
-                var itemDiv = tmpDiv.cloneNode(true);
-                itemDiv.innerText = '未匹配到内容...';
-                searchResults.appendChild(itemDiv);
-            }
-
-            // 将所有匹配内容进行组合
-            for (i = 0; i < arrResults.length; i++) {
-                var itemDiv = tmpDiv.cloneNode(true);
-                itemDiv.innerHTML = '<a data-pjax class="searchresults" href="' + arrLinks[indexItem[i]] + '"><b>[' + arrTitles[indexItem[i]] +
-                    ']</b><p>' + arrResults[i] + '</p></a><hr />';
-                searchResults.appendChild(itemDiv);
+                startindex = (indexContent - step) >= 0 ? (indexContent - step) : 0;
+                var searchcontent = arr2[i].slice(indexContent - step, indexContent + 5)
+                arrResults.push("....." + searchcontent + ".....");
             }
         }
-    </script>
-    <% if (site.customConfig.daovoicechoice){ %>
-    <script>
-        daovoice('init', {
-            app_id: "<%= site.customConfig.daovoice_id%>"
-        });
-        daovoice('update');
-    </script>
-    <%}%>
+
+        // 输出总共匹配到的数目
+        var totalDiv = tmpDiv.cloneNode(true);
+        totalDiv.innerHTML = '<b>总匹配：' + indexItem.length + ' 项<hr></b>';
+        searchResults.appendChild(totalDiv);
+
+        // 未匹配到内容的情况
+        if (indexItem.length == 0) {
+            var itemDiv = tmpDiv.cloneNode(true);
+            itemDiv.innerText = '未匹配到内容...';
+            searchResults.appendChild(itemDiv);
+        }
+
+        // 将所有匹配内容进行组合
+        for (i = 0; i < arrResults.length; i++) {
+            var itemDiv = tmpDiv.cloneNode(true);
+            itemDiv.innerHTML = '<a data-pjax class="searchresults" href="' + arrLinks[indexItem[i]] + '"><b>[' +
+                arrTitles[indexItem[i]] +
+                ']</b><p>' + arrResults[i] + '</p></a><hr />';
+            searchResults.appendChild(itemDiv);
+        }
+    }
+</script>
+<% if (site.customConfig.instantchoice=='daovoice'){ %>
+<script>
+    daovoice('init', {
+        app_id: "<%= site.customConfig.daovoice_id%>"
+    });
+    daovoice('update');
+</script>
+<%}%>
+
+
+<!--------------------- 菜单栏图标加载功能👇 ----------------------->
+<script>
+var menulist = $(".menuicon");
+var menulength = menulist.length;
+for (var i = 0; i < menulength; i++) {
+    var altname = menulist.eq(i).attr("alt");
+    var iconurl = icondict[altname];
+    if (iconurl == undefined || iconurl == '')
+        continue;
+    if (iconurl == 'Home') {
+        menulist.eq(i).attr("src", "<%= themeConfig.domain %>/media/images/Home.png%>");
+menulist.eq(i).show();
+} else if (iconurl == 'Archive') {
+menulist.eq(i).attr("src", "<%= themeConfig.domain %>/media/images/Archive.png%>");
+menulist.eq(i).show();
+} else if (iconurl == 'Tag') {
+menulist.eq(i).attr("src", "<%= themeConfig.domain %>/media/images/Tag.png%>");
+menulist.eq(i).show();
+} else if (iconurl == 'About') {
+menulist.eq(i).attr("src", "<%= themeConfig.domain %>/media/images/About.png%>");
+menulist.eq(i).show();
+} else if (iconurl == 'Talk') {
+menulist.eq(i).attr("src", "<%= themeConfig.domain %>/media/images/Talk.png%>");
+menulist.eq(i).show();
+} else if (iconurl == 'Friends') {
+menulist.eq(i).attr("src", "<%= themeConfig.domain %>/media/images/Friends.png%>");
+menulist.eq(i).show();
+} else if (iconurl == 'Fly') {
+menulist.eq(i).attr("src", "<%= themeConfig.domain %>/media/images/wind.png%>");
+menulist.eq(i).show();
+} else {
+menulist.eq(i).attr("src", iconurl);
+menulist.eq(i).show();
+}
+}
+</script>
+<!--------------------- 菜单栏图标加载功能👆 ----------------------->

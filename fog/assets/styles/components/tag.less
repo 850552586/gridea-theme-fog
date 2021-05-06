@@ -79,7 +79,7 @@ a {
     text-align: left;
 }
 
-.tag {
+.tags-container .tag {
     display: inline;
     float: left;
     width: 20%;
@@ -99,15 +99,16 @@ a {
 }
 
 @media screen and (max-width: 1200px) {
-    .tag {
+    .tags-container   .tag {
         width: 40%;
         margin-top:2vh;
     }
     .tagsbackgroundleft{
         display: none;
     }
+    
     .tags-container{
-        margin-top: 5vh;
+        background: rgba(255,255,255,0.6);
     }
 
     .tagsbackgroundtop{
@@ -146,3 +147,9 @@ a {
     }
 }
 //---------end:tag-detail.ejs-------------------
+
+@media screen and (max-width: 768px) {
+    .tag-container{
+        margin-top:2%;
+    }
+}

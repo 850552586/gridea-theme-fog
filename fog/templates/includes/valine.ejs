@@ -1,46 +1,30 @@
-<style>
-    @media screen and (min-width: 1300px) {
-        .veditor::placeholder {
-            color: #b3b3b3;
-            font-size: 18px;
-            text-align: center;
-            line-height: 3rem;
-            font-family: kaiti;
-        }
-    }
-</style>
-
-<body>
-    <div id="vcomments">
-    </div>
-    <script src="<%= themeConfig.domain %>/media/js/valine.min.js%>"></script>
-    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-    <script>
-        var valine = new Valine();
-        var curpath = window.location.pathname;
-        if (curpath[curpath.length - 1] != '/')
-            curpath += '/'
-        valine.init({
-            el: '#vcomments',
-            appId: '<%= site.customConfig.valineID %>',
-            appKey: '<%= site.customConfig.valineKey %>',
-            notify: true,
-            verify: false,
-            avatar: 'retro',
-            pageSize: 10,
-            placeholder: '既然来了，何不畅所欲言呢？',
-            visitor: true, // 阅读量统计
-            recordIP: true,
-            path: curpath //[重点] 记得添加path路径
-        });
-    </script>
-    <script type="text/javascript">
-        var jrsc = '既然来了，何不畅所欲言呢？';
-        jinrishici.load(function (result) {
-            // 自己的处理逻辑
-            jrsc = result.data.content + "\n「" + result.data.origin.title + "」" + result.data.origin
-                .dynasty + " · " + result.data.origin.author;
-        });
-    </script>
-
-</body>
+<%if(site.customConfig.commentschoice=='valine'){%>
+        <div id="vcomments">
+        </div>
+        <script>
+            var valine = new Valine();
+            var curpath = window.location.pathname;
+            if (curpath[curpath.length - 1] != '/')
+                curpath += '/'
+            valine.init({
+                el: '#vcomments',
+                appId: '<%= site.customConfig.Leancloud_appId %>',
+                appKey: '<%= site.customConfig.Leancloud_key %>',
+                notify: true,
+                verify: false,
+                avatar: 'retro',
+                pageSize: 10,
+                placeholder: '既然来了，何不畅所欲言呢？',
+                recordIP: true,
+                path: curpath //[重点] 记得添加path路径
+            });
+        </script>
+        <script type="text/javascript">
+            var jrsc = '既然来了，何不畅所欲言呢？';
+            jinrishici.load(function (result) {
+                // 自己的处理逻辑
+                jrsc = result.data.content + "\n「" + result.data.origin.title + "」" + result.data.origin
+                    .dynasty + " · " + result.data.origin.author;
+            });
+        </script>
+<%}%>

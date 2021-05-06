@@ -1,9 +1,9 @@
+<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
-    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/bootstrap.min.css%>">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/css/live2d.css">
     <link rel="stylesheet" href="<%= themeConfig.domain %>/styles/main.css">
@@ -12,13 +12,17 @@
     <title><%- themeConfig.siteName %></title>
 </head>
 <body>
-    <!-- 响应式布局，针对PC端内容显示 -->
     <div id="content">
         <div class="nav-large">
             <div class="row">
+                <!--------------- pc端菜单栏👇 ---------------->
                 <div class="side"><%- include('./includes/side') %></div>
+                <!--------------- pc端菜单栏👆 ---------------->
+                <!----------- 移动端导航栏👇 ----------------->
                 <div class="mobilebar"><%- include('./includes/bar') %>
+                <!----------- 移动端导航栏👆 ----------------->
                 </div>
+                <!-- ----------------左侧菜单栏html 👇-------------------------------------->
                 <% if(site.customConfig.menuposition == 'left'){ %>
                 <div id="tab1" class="tab">
                     <div class="bars">
@@ -31,28 +35,41 @@
                 <div class="col-md-1 col-lg-3"></div>
                 <div id="main" class="col-xs-12 col-sm-12 col-md-12 col-lg-7">
                     <%- include('./includes/friends-detail') %>
-                <div id="comment" class="fcl" style="background: white;">
-                    <div class="commentcontainer">
-                        <% if (site.customConfig.valineID && site.customConfig.valineKey) { %>
-                        <%- include('./includes/valine') %>
-                        <div class="clear"></div>
-                        <% }else if ( typeof commentSetting !== 'undefined' && commentSetting.showComment) { %>
-                        <% if (commentSetting.commentPlatform === 'gitalk') { %>
-                        <%- include('./includes/gitalk') %>
-                        <% } %>
-                        <% if (commentSetting.commentPlatform === 'disqus') { %>
-                        <%- include('./includes/disqus') %>
-                        <% } %>
-                        <% }else { %>
-                        <p>请到客户端“主题--自定义配置--valine”中填入ID和KEY</p>
-                        <% } %>
+                    <div id="comment" class="comment" >
+                        <div class="commentcontainer">
+                            <%if(site.customConfig.commentschoice=='valine'){%>
+                                <% if (site.customConfig.valineID && site.customConfig.valineKey) { %>
+                                    <%- include('./includes/valine') %>
+                                    <div class="clear"></div>
+                                <%}else{%>
+                                    <p>请到客户端“主题--自定义配置--配置”中填入leancloud_appID和key</p>
+                                <%}%>
+                            <%}else if(site.customConfig.commentschoice=='twikoo'){%>
+                                <%if(site.customConfig.twikoo_id){%>
+                                    <%- include('./includes/twikoo') %>
+                                    <div class="clear"></div>
+                                <%}else{%>
+                                    <p>请到客户端“主题--自定义配置--配置”中填入cloudbase环境id</p>
+                                <%}%>
+                            <%}else if(site.customConfig.commentschoice=='default'){%>
+                                <%if ( typeof commentSetting !== 'undefined' && commentSetting.showComment) { %>
+                                    <% if (commentSetting.commentPlatform === 'gitalk') { %>
+                                        <%- include('./includes/gitalk') %>
+                                    <% } %>
+                                    <% if (commentSetting.commentPlatform === 'disqus') { %>
+                                        <%- include('./includes/disqus') %>
+                                    <% } %>
+                                <% } %>
+                            <%}%>
+                        </div>
                     </div>
-                </div>
                 </div>
                 <div class="col-md-1 col-lg-1"></div>
                 <div id="bg">
                 </div>
             </div>
+            <!-- ----------------左侧菜单栏html 👆-------------------------------------->
+            <!------------------ 顶部菜单栏html👇--------->
             <% }else{ %>
                 <div class="col-md-2 col-lg-3"></div>
                 <div id="main" class="col-xs-12 col-sm-12 col-md-12 col-lg-6 posttop">
@@ -64,21 +81,32 @@
                             </div>
                         </div>
                     </div>
-                    <div id="comment" class="comment" style="background: white">
+                    <div id="comment" class="comment">
                         <div class="commentcontainer">
-                            <% if (site.customConfig.valineID && site.customConfig.valineKey) { %>
-                            <%- include('./includes/valine') %>
-                            <div class="clear"></div>
-                            <% }else if ( typeof commentSetting !== 'undefined' && commentSetting.showComment) { %>
-                            <% if (commentSetting.commentPlatform === 'gitalk') { %>
-                            <%- include('./includes/gitalk') %>
-                            <% } %>
-                            <% if (commentSetting.commentPlatform === 'disqus') { %>
-                            <%- include('./includes/disqus') %>
-                            <% } %>
-                            <% }else { %>
-                            <p>请到客户端“主题--自定义配置--valine”中填入ID和KEY</p>
-                            <% } %>
+                            <%if(site.customConfig.commentschoice=='valine'){%>
+                                <% if (site.customConfig.valineID && site.customConfig.valineKey) { %>
+                                    <%- include('./includes/valine') %>
+                                    <div class="clear"></div>
+                                <%}else{%>
+                                    <p>请到客户端“主题--自定义配置--配置”中填入leancloud_appID和key</p>
+                                <%}%>
+                            <%}else if(site.customConfig.commentschoice=='twikoo'){%>
+                                <%if(site.customConfig.twikoo_id){%>
+                                    <%- include('./includes/twikoo') %>
+                                    <div class="clear"></div>
+                                <%}else{%>
+                                    <p>请到客户端“主题--自定义配置--配置”中填入cloudbase环境id</p>
+                                <%}%>
+                            <%}else if(site.customConfig.commentschoice=='default'){%>
+                                <%if ( typeof commentSetting !== 'undefined' && commentSetting.showComment) { %>
+                                    <% if (commentSetting.commentPlatform === 'gitalk') { %>
+                                        <%- include('./includes/gitalk') %>
+                                    <% } %>
+                                    <% if (commentSetting.commentPlatform === 'disqus') { %>
+                                        <%- include('./includes/disqus') %>
+                                    <% } %>
+                                <% } %>
+                            <%}%>
                         </div>
                     </div>
                     <div style="display: none;">
@@ -93,6 +121,7 @@
             </div>
         </div>
         <% } %>
+        <!------------------ 顶部菜单栏html👆--------->
         <%if(site.customConfig.aplayerchoice){%>
         <%- include('./includes/aplayer') %>
         <%}%>
@@ -119,8 +148,9 @@
     </div>
     <div id="domainname" style="display:none"><%= themeConfig.domain %></div>
 </body>
-
 </html>
+
+<!-------------------- live2d功能👇 --------------------------->
 <%if (site.customConfig.live2d){ %>
 <script type="text/javascript">
     var message_Path = '/live2d/'
@@ -132,7 +162,9 @@
     loadlive2d("live2d", "<%= themeConfig.domain %>/media/live2d/assets/tororo.model.json%>");
 </script>
 <%}%>
+<!-------------------- live2d功能👆 --------------------------->
 
+<!------------ 加载全局背景图功能👇（开始时没有写好，这功能有点鸡肋/(ㄒoㄒ)/~~） -->
 <script>
         var bgchoice=$('#bgchoice').html();
         var bg = $('#bg');
@@ -146,6 +178,7 @@
             aplayerbtnInit();
         }
 </script>
+<!------------ 加载全局背景图功能👆（开始时没有写好，这功能有点鸡肋/(ㄒoㄒ)/~~） -->
 <%if (site.customConfig.menuposition=='left'){ %>
     <script src="<%= themeConfig.domain %>/media/js/index.js%>"></script>
 <%}%>

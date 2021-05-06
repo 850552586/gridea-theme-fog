@@ -55,7 +55,10 @@
     border-radius: 10px;
 }
 
-
+blockquote{
+    background-color: #eff8f0;
+    border-color: #5cb85c;
+}
 
 .text {
 
@@ -109,6 +112,13 @@
 }
 
 
+.imgloading{
+    padding: 30%;
+    border-radius: 20px;
+    background: rgba(204,204,214,0.4);
+}
+
+
 @media screen and (min-width: 1200px) {
 
     .prev-post,
@@ -141,6 +151,10 @@
 }
 
 @media screen and (max-width: 1200px) {
+    #articlecontent{
+        background: none;
+    }
+
     .postpadding{
         padding: 0;
     }
@@ -181,6 +195,7 @@
     -webkit-box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, .5);
     border-radius: 10px;
     cursor: pointer;
+    max-height: 200px;
 }
 
 #ppcontainer {
@@ -192,10 +207,12 @@
     -webkit-box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, .5);
     border-radius: 10px;
     cursor: pointer;
+    max-height: 200px;
 }
 
 .opimg {
     border-radius: 10px 10px 0 0;
+    height: 200px;
 }
 
 .optitle {
@@ -229,9 +246,6 @@
     outline: none;
 }
 
-.share {
-    display: none;
-}
 
 .shareicon{
     width: 30px;
@@ -252,9 +266,11 @@
 
 .shareContainer {
     background: white;
-    display: flex;
-    justify-content: center;
     padding-bottom: 10px;
+    background: white;
+    text-align: right;
+    border-radius: 10px;
+    margin-right: 20px;
 }
 
 .postdetailimg {
@@ -271,6 +287,21 @@
     display: flex;
     justify-content: center;
     padding-bottom: 20px;
+}
+
+.donatebtn{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: rgba(#ec2d7a,0.7);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-family: kaiti;
+    font-weight: bold;
 }
 
 .donateImg {

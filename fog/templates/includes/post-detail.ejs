@@ -44,41 +44,20 @@
                 <!-- id 将作为查询条件 -->
                 <div id="pl" style="display:none"><%=post.link%></div>
                 <div id="rootaddr" style="display:none"><%= themeConfig.domain %></div>
-                <span id="hotnum">
-                    <h4><i class="fa fa-eye" aria-hidden="true" style="color: #FF8C00;"></i>&nbsp;&nbsp;热度</i>: <i
-                            class="hotnum">loading...</i></h4>
-                </span>
+                <%if(site.customConfig.postnumChoice){%>
+                    <span id="hotnum">
+                        <h4><i class="fa fa-eye" aria-hidden="true" style="color: #FF8C00;"></i>&nbsp;&nbsp;热度</i>: <i
+                                class="hotnum">loading...</i></h4>
+                    </span>
+                <%}%>
             </div>
             <div class="text ">
                 <%- post.content %>
             </div>
             <hr style="width: 80%;">
-            <%if(site.customConfig.shareChoice==true){%>
-            <div class="sharebtnContainer">
-                <button type="button" class="sharebtn">转载分享</button>
-            </div>
-            <div class="shareContainer">
-                <div class="share" style="height:30px;background: white;">
-                    <a class="qq" href=""><i><img class="shareicon"
-                                src="<%= themeConfig.domain %>/media/images/QQ.png%>" alt=""></i></a>
-                    <a class="wechat" href=""><i><img class="shareicon"
-                                src="<%= themeConfig.domain %>/media/images/wechat.png%>" alt=""></i></a>
-                    <a class="weibo" href=""><i><img class="shareicon"
-                                src="<%= themeConfig.domain %>/media/images/weibo.png%>" alt=""></i></a>
-                    <a class="qzone" href=""><i><img class="shareicon"
-                                src="<%= themeConfig.domain %>/media/images/qzone.png%>" alt=""></i></a>
-                    <a class="douban" href=""><i><img class="shareicon"
-                                src="<%= themeConfig.domain %>/media/images/douban.png%>" alt=""></i></a>
-                    <a class="facebook" href=""><i><img class="shareicon"
-                                src="<%= themeConfig.domain %>/media/images/facebook.png%>" alt=""></i></a>
-                    <a class="twitter" href=""><i><img class="shareicon"
-                                src="<%= themeConfig.domain %>/media/images/twitter.png%>" alt=""></i></a>
-                </div>
-            </div>
-            <%}%>
             <%if(site.customConfig.donateChoice==true){%>
             <div class="donateContainer">
-                <img src="<%= themeConfig.domain %>/media/images/donate.png%>" alt="" class="donateImg">
+                <span class="donatebtn">赏</span>
             </div>
             <div class="donateContainer">
                 <img src="<%= site.customConfig.donateImg%>" alt="" class="donate">
@@ -92,6 +71,26 @@
                 许可协议。转载请注明出处！</li>
             </ul>
         </div>
+        <%if(site.customConfig.shareChoice==true){%>
+            <div class="shareContainer">
+                <div class="share" style="height:30px;background: white;">
+                    <a class="qq" href=""><i><img class="shareicon"
+                                src="<%= themeConfig.domain %>/media/images/qqs.png%>" alt=""></i></a>
+                    <a class="wechat" href=""><i><img class="shareicon"
+                                src="<%= themeConfig.domain %>/media/images/wechats.png%>" alt=""></i></a>
+                    <a class="weibo" href=""><i><img class="shareicon"
+                                src="<%= themeConfig.domain %>/media/images/weibos.png%>" alt=""></i></a>
+                    <a class="qzone" href=""><i><img class="shareicon"
+                                src="<%= themeConfig.domain %>/media/images/qzones.png%>" alt=""></i></a>
+                    <a class="douban" href=""><i><img class="shareicon"
+                                src="<%= themeConfig.domain %>/media/images/doubans.png%>" alt=""></i></a>
+                    <a class="facebook" href=""><i><img class="shareicon"
+                                src="<%= themeConfig.domain %>/media/images/facebooks.png%>" alt=""></i></a>
+                    <a class="twitter" href=""><i><img class="shareicon"
+                                src="<%= themeConfig.domain %>/media/images/twitter.png%>" alt=""></i></a>
+                </div>
+            </div>
+            <%}%>
         <div id="otherpost">
             <% if (post.prevPost && !post.hideInList) { %>
             <a  data-pjax class="prev-post-pc" href="<%=post.prevPost.link%>"  style="color: black;">

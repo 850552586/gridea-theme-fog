@@ -68,6 +68,7 @@
     /*考虑浏览器兼容性*/
     -moz-box-shadow: 10px 10px 10px rgba(0,0,0,.5);
     -webkit-box-shadow: 10px 10px 10px rgba(0,0,0,.5);
+    max-height: 550px;
 }
 
 
@@ -125,6 +126,10 @@ a:hover {
     text-decoration: none
 }
 
+.elegloading{
+    padding:50px;
+}
+
 @media screen and (max-width:1200px) {
     #post{
         width: 100%;
@@ -153,7 +158,6 @@ a:hover {
     }
 
     #post-container {
-        background: white;
         margin-top:50px;
     }
     .postshow {
@@ -184,3 +188,432 @@ a:hover {
         font-weight: bold;
     }
 } 
+
+//----优雅模式-------
+@media screen and (min-width:768px)
+{
+    .eleg-allpostscontainer{
+        width: 90%;
+        margin-left: 5%;
+        background: none;
+    }
+
+    .eleg-posts{
+        margin-top:20px;
+        margin-bottom:50px;
+    }
+
+    .eleg-postcontainer-left{
+        width: 100%;
+        max-height: 250px;
+        justify-content: left;
+        display: flex;
+        background:rgba(226,225,228,0.7);
+        border-radius: 10px;
+        box-shadow: 10px 10px 10px rgba(0,0,0,.5);
+        /*考虑浏览器兼容性*/
+        -moz-box-shadow: 10px 10px 10px rgba(0,0,0,.5);
+        -webkit-box-shadow: 10px 10px 10px rgba(0,0,0,.5);
+    }
+
+    .eleg-postcontainer-right{
+        width: 100%;
+        max-height: 250px;
+        text-align: right;
+        display: flex;
+        background:rgba(226,225,228,0.7);
+        border-radius: 10px;
+        box-shadow: 10px 10px 10px rgba(0,0,0,.5);
+        /*考虑浏览器兼容性*/
+        -moz-box-shadow: 10px 10px 10px rgba(0,0,0,.5);
+        -webkit-box-shadow: 10px 10px 10px rgba(0,0,0,.5);
+    }
+    
+    .eleg-img-left{
+        width:400px;
+        height: 250px;
+        max-width:50%;
+        position: relative;
+        -webkit-mask-image: linear-gradient(250deg, transparent 20%, white 50%);
+        border-radius: 10px 0 0 10px;
+    }
+
+    .eleg-img-right{
+        width:400px;
+        height: 250px;
+        max-width:50%;
+        position: relative;
+        -webkit-mask-image: linear-gradient(110deg, transparent 20%, white 50%);
+        border-radius:0 10px 10px 0;
+    }
+
+    .eleg-title{
+        width: 100%;
+        font-size: 25px;
+        margin-top: 20px;
+        color: black;
+        z-index: 1;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .eleg-info{
+        margin-top: 20px;
+        width: 100%;
+        z-index: 1;
+        text-align: center;
+    }
+
+    .eleg-tags{
+        width: 100%;
+        justify-content: center;
+        display: inline;
+    }
+
+    .eleg-date{
+
+        font-size:9px;
+        float: none;
+    }
+
+    .eleg-stats{
+        
+        font-size:9px;
+        width:auto;
+        float: none;
+    }
+
+    .eleg-postlink{
+        font-size: 9px;
+    }
+
+    .eleg-swordsmen{
+        display:none;
+    }
+
+    .eleg-swordsmen-left{
+        display:none;
+    }
+
+    .eleg-btn{
+        color: #806d9e;
+        border: 1px solid;
+        padding: 10px 50px 10px 50px;
+        border-radius: 5px;
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 50px;
+    }
+
+    .eleg-btn:hover{
+        color:#806d9e;
+        font-size: 22px;
+    }
+}
+
+@media screen and (min-width:1200px)
+{
+    .eleg-allpostscontainer{
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .eleg-posts{
+        margin-top:20px;
+        margin-bottom:80px;
+    }
+    
+    .eleg-postcontainer-left{
+        width: 100%;
+        max-height: 250px;
+        justify-content: left;
+        display: flex;
+        background:rgba(226,225,228,0.7);
+        border-radius: 10px;
+        box-shadow: 10px 10px 10px rgba(0,0,0,.5);
+        /*考虑浏览器兼容性*/
+        -moz-box-shadow: 10px 10px 10px rgba(0,0,0,.5);
+        -webkit-box-shadow: 10px 10px 10px rgba(0,0,0,.5);
+    }
+
+    .eleg-postcontainer-right{
+        width: 100%;
+        max-height: 250px;
+        text-align: right;
+        display: flex;
+        background:rgba(226,225,228,0.7);
+        border-radius: 10px;
+        box-shadow: 10px 10px 10px rgba(0,0,0,.5);
+        /*考虑浏览器兼容性*/
+        -moz-box-shadow: 10px 10px 10px rgba(0,0,0,.5);
+        -webkit-box-shadow: 10px 10px 10px rgba(0,0,0,.5);
+    }
+    
+    .eleg-img-left{
+        width:400px;
+        height: 250px;
+        max-width:50%;
+        position: relative;
+        -webkit-mask-image: linear-gradient(250deg, transparent 20%, white 50%);
+        border-radius: 10px 0 0 10px;
+    }
+
+    .eleg-img-right{
+        width:400px;
+        height: 250px;
+        max-width:50%;
+        position: relative;
+        -webkit-mask-image: linear-gradient(110deg, transparent 20%, white 50%);
+        border-radius: 0 10px 10px 0;
+    }
+
+    .eleg-info{
+        margin-top: 20px;
+        width: 100%;
+        z-index: 1;
+        text-align: center;
+    }
+
+    .eleg-title{
+        margin-top: 20px;
+        color: black;
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    .eleg-tags{
+        width: 100%;
+        justify-content: center;
+        display: inline;
+    }
+
+    .eleg-date{
+
+        font-size:9px;
+        float: none;
+    }
+
+    .eleg-stats{
+        
+        font-size:9px;
+        width:auto;
+        float: none;
+    }
+
+    .eleg-postlink{
+        font-size: 9px;
+    }
+
+    .eleg-swordsmen{
+        height: 150px;
+        z-index: 1;
+        position: absolute;
+        margin-top: 100px;
+        left: -10px;
+        display: block;
+    }
+
+    .eleg-swordsmen-left{
+        height: 130px;
+        z-index: 1;
+        position: absolute;
+        margin-top: 120px;
+        right: 10px;
+        display: block;
+    }
+
+    .eleg-btn{
+        color: #806d9e;
+        border: 1px solid;
+        padding: 10px 50px 10px 50px;
+        border-radius: 5px;
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 50px;
+    }
+
+    .eleg-btn:hover{
+        color:#806d9e;
+        font-size: 22px;
+    }
+}
+
+@media screen and (max-width:768px)
+{
+    .eleg-allpostscontainer{
+        width: 90%;
+        margin-left: 5%;
+        background: none;
+    }
+
+    .eleg-posts{
+        margin-top:20px;
+        margin-bottom:50px;
+    }
+    
+    .eleg-bg{
+        width: 86%;
+        height: 250px;
+        background: #e2e1e4;
+        opacity: 0.7;
+        position: absolute;
+        border-radius: 10px;
+        box-shadow: 10px 10px 10px rgba(0,0,0,.5);
+        /*考虑浏览器兼容性*/
+        -moz-box-shadow: 10px 10px 10px rgba(0,0,0,.5);
+        -webkit-box-shadow: 10px 10px 10px rgba(0,0,0,.5);
+    }
+    
+    .eleg-postcontainer-left{
+        width: 100%;
+        height: 250px;
+        justify-content: left;
+        display: flex;
+        background:rgba(226,225,228,0.7);
+        border-radius: 10px;
+        box-shadow: 10px 10px 10px rgba(0,0,0,.5);
+        /*考虑浏览器兼容性*/
+        -moz-box-shadow: 10px 10px 10px rgba(0,0,0,.5);
+        -webkit-box-shadow: 10px 10px 10px rgba(0,0,0,.5);
+    }
+
+    .eleg-postcontainer-right{
+        width: 100%;
+        height: 250px;
+        text-align: right;
+        display: flex;
+        background:rgba(226,225,228,0.7);
+        border-radius: 10px;
+        box-shadow: 10px 10px 10px rgba(0,0,0,.5);
+        /*考虑浏览器兼容性*/
+        -moz-box-shadow: 10px 10px 10px rgba(0,0,0,.5);
+        -webkit-box-shadow: 10px 10px 10px rgba(0,0,0,.5);
+    }
+    
+    .eleg-img-left{
+        width:400px;
+        height: 250px;
+        max-width:50%;
+        position: relative;
+        -webkit-mask-image: linear-gradient(250deg, transparent 20%, white 50%);
+        border-radius: 10px 0 0 10px;
+    }
+
+    .eleg-img-right{
+        width:400px;
+        height: 250px;
+        max-width:50%;
+        position: relative;
+        -webkit-mask-image: linear-gradient(110deg, transparent 20%, white 50%);
+        border-radius:0 10px 10px 0;
+    }
+
+    .eleg-title{
+        width: 100%;
+        font-size: 25px;
+        margin-top: 20px;
+        color: black;
+        z-index: 1;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .eleg-info{
+        margin-top: 20px;
+        width: 100%;
+        z-index: 1;
+        text-align: center;
+    }
+
+    .eleg-tags{
+        width: 100%;
+        justify-content: center;
+        display: inline;
+    }
+
+    .eleg-date{
+
+        font-size:9px;
+        float: none;
+    }
+
+    .eleg-stats{
+        
+        font-size:9px;
+        width:auto;
+        float: none;
+    }
+
+    .eleg-postlink{
+        font-size: 9px;
+    }
+
+    .eleg-swordsmen{
+        display:none;
+    }
+
+    .eleg-swordsmen-left{
+        display:none;
+    }
+
+    .eleg-btn{
+        color: #806d9e;
+        border: 1px solid;
+        padding: 10px 50px 10px 50px;
+        border-radius: 5px;
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 50px;
+    }
+
+    .eleg-btn:hover{
+        color:#806d9e;
+        font-size: 22px;
+    }
+}
+
+@media screen and (max-width:500px){
+    .eleg-allpostscontainer{
+        margin-left: 1vw;
+        width: 98vw;
+        margin-top:0;
+        background: none;
+    }
+
+    .eleg-bg{
+        width: 98vw;
+    }
+
+    .eleg-posts{
+        margin-bottom: 60px;
+    }
+
+    .eleg-img-left{
+        width: 98vw;
+        position: absolute;
+        max-width: 98%;
+        -webkit-mask-image: linear-gradient(0, transparent 0, white 50%);
+        border-radius: 10px;
+    }
+
+    .eleg-img-right{
+        width: 98vw;
+        position: absolute;
+        max-width: 98%;
+        -webkit-mask-image: linear-gradient(0, transparent 0, white 50%);
+        border-radius: 10px;
+    }
+
+    .eleg-btn{
+        color: white;
+    }
+
+    .eleg-btn:hover{
+        color: white;
+        font-size: 22px;
+    }
+
+    .eleg-title{
+        color:white;
+    }
+}

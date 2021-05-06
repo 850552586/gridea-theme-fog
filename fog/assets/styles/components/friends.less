@@ -14,7 +14,25 @@
     z-index: 999;
 }
 
+#friendsrule{
+    background:rgba(#93d5dc,0.4);
+    margin-left:5%;
+    width: 90%;
+    padding: 30px;
+    min-height:50px;
+    text-align:left;
+    color:white;
+    border-radius:5px;
+    border-left:#22a2c3 10px solid;
+    border-right:#22a2c3 10px solid;
+    font-size:20px;
+}
+
 @media screen and (max-width: 1200px) {
+    #pcintroimg{
+        display:none
+    }
+
     #friendscontainermobile {
         margin-top: 60px;
         position: relative;
@@ -71,6 +89,70 @@
 }
 
 @media screen and (min-width: 1200px) {
+    #pcintroimg{
+        margin-top:20px;
+        display:flex;
+        justify-content:center;
+    }
+
+    .sea {
+        width: 500px;
+        height: 200px;
+        background-color: whitesmoke;
+        border-radius: 5px;
+        box-shadow: 0 2px 30px rgba(0, 0, 0, 0.2);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .sea .title {
+        color: white;
+        font-size: 24px;
+        font-family: serif;
+        text-align: center;
+        line-height: 250px;
+        text-transform: uppercase;
+        letter-spacing: 0.4em;
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+    }
+    
+    .sea .wave {
+        position: absolute;
+        width: 800px;
+        height: 800px;
+        border-radius: 43%;
+        top: -650px;
+        left: calc((350px - 650px) / 2);
+        animation: drift linear infinite;
+        transform-origin: 50% 48%;
+    }
+    
+    .sea .wave:nth-of-type(1) {
+        background: deepskyblue;
+        filter: opacity(0.4);
+        animation-duration: 5s;
+    }
+    
+    .sea .wave:nth-of-type(2) {
+        background: deepskyblue;
+        filter: opacity(0.4);
+        animation-duration: 7s;
+    }
+    
+    .sea .wave:nth-of-type(3) {
+        background-color: orangered;
+        filter: opacity(0.1);
+        animation-duration: 9s;
+    }
+    
+    @keyframes drift {
+        from {
+            transform: rotate(1turn);
+        }
+    }
+
     #friendscontainermobile {
         display: none;
     }
@@ -80,10 +162,12 @@
     }
 
     #friendscontainer {
-        min-height: 100vh;
+        margin-top:50px;
+        min-height: 80vh;
         animation: fade-in;/*动画名称*/  
         animation-duration: 1s;/*动画持续时间*/  
         -webkit-animation:fade-in 1s;/*针对webkit内核*/  
+        border-radius: 20px;
     }
 
     /* ---------------------------------用户信息展示表单 ------------------------------*/

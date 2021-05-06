@@ -3,7 +3,7 @@
 <img src="https://ericamblog.oss-cn-shanghai.aliyuncs.com/2020/20201213.png">
 <img src="https://ericamblog.oss-cn-shanghai.aliyuncs.com/2020/QQ%E5%9B%BE%E7%89%8720201213004926.png" width="40vw"><img src="https://ericamblog.oss-cn-shanghai.aliyuncs.com/2020/QQ%E5%9B%BE%E7%89%8720201213005107.png" width="40vw">
 
-**最新版本：version_0.9**
+**最新版本：version_1.0**
 
 主题介绍：[Gridea主题Fog](<https://ericam.top/post/gridea-zhu-ti-fog-geng-xin-ri-zhi/> )
 

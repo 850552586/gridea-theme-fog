@@ -14,11 +14,23 @@
         <% } %>
     </div>
 
+    <div id="pcintroimg">
+        <div class="sea">
+            <p class="title">友人帐</p>
+            <span class="wave"></span>
+            <span class="wave"></span>
+            <span class="wave"></span>
+        </div>
+    </div>
+
     <div id="friendscontainer">
+        <div id="friendsrule">
+
+        </div>
         <% if (site.customConfig.friendschoice) { %>
         <% site.customConfig.friends.forEach(function(friend) { %>
         <div class="background" onclick="window.open('<%= friend.siteLink %>');return false">
-            <div class="infoForm">
+            <div class="infoForm" title="<%= friend.description %>">
                 <img class="favatar" src="<%= friend.siteLogo %>">
                 <h2><%= friend.siteName %></h2>
                 <h3><%= friend.description %></h3>
@@ -28,3 +40,9 @@
         <% } %>
     </div>
 </body>
+
+
+<script>
+    var friendsrule = "<%- site.customConfig.friendsrule %>"
+    $("#friendsrule").html(friendsrule);
+</script>

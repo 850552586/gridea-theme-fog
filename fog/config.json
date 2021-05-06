@@ -1,6 +1,6 @@
 {
   "name": "fog",
-  "version": "0.9",
+  "version": "1.0",
   "author": "Ericam_",
   "repository": "https://github.com/850552586/gridea-theme-fog",
   "customConfig": [ {
@@ -28,6 +28,32 @@
       }
     ],
     "note": "两种风格"
+  },
+  {
+    "name": "postlistMode",
+    "label": "文章列表风格",
+    "group": "布局",
+    "value": "default",
+    "type": "select",
+    "options": [
+      {
+        "label": "经典模式",
+        "value": "default"
+      },
+      {
+        "label": "优雅模式",
+        "value": "elegant"
+      }
+    ],
+    "note": "两种风格"
+  },
+  {
+    "name": "elegantMen",
+    "label": "优雅模式武侠风",
+    "group": "布局",
+    "value": true,
+    "type": "switch",
+    "note": ""
   },
     {
       "name": "sitenameColor",
@@ -86,6 +112,54 @@
       "note": "手机端博客首页网站描述颜色（默认:white）"
     },
     {
+      "name": "topmenuColor",
+      "group": "颜色",
+      "value": "black",
+      "type": "input",
+      "card": "color",
+      "note": "顶部菜单栏颜色(空值则为透明色)"
+    },
+    {
+      "name": "sitenameFont",
+      "label": "站点名称字体",
+      "group": "字体",
+      "value": "Arial",
+      "type": "input",
+      "note": ""
+    },
+    {
+      "name": "sitedescFont",
+      "label": "站点介绍字体",
+      "group": "字体",
+      "value": "Arial",
+      "type": "input",
+      "note": ""
+    },
+    {
+      "name": "siteinfoFont",
+      "label": "站点文章信息字体",
+      "group": "字体",
+      "value": "Arial",
+      "type": "input",
+      "note": ""
+    },
+    {
+      "name": "sitemenuFont",
+      "label": "菜单栏字体",
+      "group": "字体",
+      "value": "kaiti",
+      "type": "input",
+      "note": ""
+    },
+    {
+      "name": "postFont",
+      "label": "文章正文字体",
+      "group": "字体",
+      "value": "Noto Serif SC",
+      "type": "input",
+      "note": ""
+    },
+    {
       "name": "sitegotimeChoice",
       "label": "是否开启站点创建时间",
       "group": "统计",
@@ -108,6 +182,14 @@
       "value": false,
       "type": "switch",
       "note": "不蒜子会影响网页加载速度，请慎重考虑！"
+    },
+    {
+      "name": "postnumChoice",
+      "label": "是否开启文章阅读量统计",
+      "group": "统计",
+      "value": false,
+      "type": "switch",
+      "note": "需要在配置页面填写Leancloud_id和key值！"
     },
     {
       "name": "recordText",
@@ -150,20 +232,58 @@
       "note": "请输入图片外链"
     },
     {
-      "name": "valineID",
-      "label": "appId",
-      "group": "Valine 评论配置",
-      "value": "",
-      "type": "input",
-      "note": "请输入appId"
+      "name": "commentschoice",
+      "label": "第三方评论系统选择",
+      "group": "配置",
+      "value": "valine",
+      "type": "select",
+      "note":"valine需要配置Leancloud，twikoo需要配置cloudbase",
+      "options": [
+        {
+          "label": "不使用",
+          "value": "default"
+        },
+        {
+          "label": "valine",
+          "value": "valine"
+        },
+        {
+          "label": "twikoo",
+          "value": "twikoo"
+        }
+      ]
     },
     {
-      "name": "valineKey",
-      "label": "appKey",
-      "group": "Valine 评论配置",
+      "name": "Leancloud_appId",
+      "label": "Leancloud_appId",
+      "group": "配置",
       "value": "",
       "type": "input",
-      "note": "请输入appKey"
+      "note": "Leancloud_appId"
+    },
+    {
+      "name": "Leancloud_key",
+      "label": "Leancloud_key",
+      "group": "配置",
+      "value": "",
+      "type": "input",
+      "note": "Leancloud_key"
+    },
+    {
+      "name": "twikoo_id",
+      "label": "cloudbase环境id",
+      "group": "配置",
+      "value": "",
+      "type": "input",
+      "note": "Leancloud_key"
+    },
+    {
+      "name": "social_text",
+      "label": "社交按钮名称",
+      "group": "社交",
+      "value": "",
+      "type": "input",
+      "note": "社交按钮上的文字显示"
     },
     {
       "name": "github",
@@ -200,6 +320,22 @@
     {
       "name": "wechat",
       "label": "wechat",
+      "group": "社交",
+      "value": "",
+      "type": "input",
+      "note": "链接地址"
+    },
+    {
+      "name": "weibo",
+      "label": "weibo",
+      "group": "社交",
+      "value": "",
+      "type": "input",
+      "note": "链接地址"
+    },
+    {
+      "name": "wyy",
+      "label": "网易云",
       "group": "社交",
       "value": "",
       "type": "input",
@@ -276,6 +412,13 @@
       "type": "input"
     },
     {
+      "name": "mobileplbgimagelink",
+      "label": "移动端全局背景图-外链",
+      "group": "背景图",
+      "value": "",
+      "type": "input"
+    },
+    {
       "name": "postdefaultimage",
       "label": "文章封面默认背景图",
       "group": "背景图",
@@ -306,6 +449,13 @@
       "value": "/media/images/mobilebgimg.jpg",
       "type": "picture-upload",
       "note": "本地上传"
+    },
+    {
+      "name": "mobileplbgimage",
+      "label": "移动端全局背景图",
+      "group": "背景图",
+      "value": "",
+      "type": "picture-upload"
     },
     {
       "name": "codetheme",
@@ -349,6 +499,14 @@
       "note": ""
     },
     {
+      "name": "friendsrule",
+      "label": "添加友链提示",
+      "group": "友链",
+      "value": "<p>暂无提示</p><p>暂无提示</p>",
+      "type": "input",
+      "note": "提示信息"
+    },
+    {
       "name": "friends",
       "label": "友链",
       "group": "友链",
@@ -383,6 +541,22 @@
         { "label": "配图", "name": "img", "type": "input", "value": "","note":"外链"}
       ],
       "note": ""
+    },
+    {
+      "name": "icons",
+      "label": "图标",
+      "group": "图标icon",
+      "type": "array",
+      "value": [
+        { "menuname":"首页",
+          "iconurl":""
+        }
+      ],
+      "arrayItems": [
+        { "label": "菜单栏名称", "name": "menuname", "type": "input", "value": "","note":"对应菜单名称"},
+        { "label": "图标（外链）", "name": "iconurl", "type": "input", "value": "","note":"使用默认值 / 或填写图标外链"}
+      ],
+      "note": "默认值：Home / Archive / Tag / About / Talk / Friends (填写时删除空格)"
     },
     {
       "name": "aplayerchoice",
@@ -457,20 +631,50 @@
       "note": ""
     },
     {
-      "name": "daovoicechoice",
-      "label": "是否开启Daovoice",
-      "group": "DaoVoice",
-      "value": false,
-      "type": "switch",
-      "note": "daovoice是一款可以实现即时聊天的工具。"
+      "name": "instantchoice",
+      "label": "即时通讯工具",
+      "group": "即时通讯",
+      "value": "default",
+      "type": "select",
+      "options": [
+        {
+          "label": "不使用",
+          "value": "default"
+        },
+        {
+          "label": "Daovoice",
+          "value": "daovoice"
+        },
+        {
+          "label": "Crisp",
+          "value": "crisp"
+        }
+      ],
+      "note": "请自行查阅介绍"
     },
     {
       "name": "daovoice_id",
       "label": "app_id",
-      "group": "DaoVoice",
+      "group": "即时通讯",
       "value": "",
       "type": "input",
       "note": "在控制台-安装到网站-appid里的内容复制过来"
+    },
+    {
+      "name": "crisp_id",
+      "label": "网站id",
+      "group": "即时通讯",
+      "value": "",
+      "type": "input",
+      "note": "在设置-网站设置-网站id里的内容复制过来"
+    },   
+    {
+      "name": "fog_go",
+      "label": "是否开启探索其他fog小伙伴的飞行通道",
+      "group": "御风飞行",
+      "value": true,
+      "type": "switch",
+      "note": "fog1.0版本福利功能，结束时间不定~"
     }
   ]
 }

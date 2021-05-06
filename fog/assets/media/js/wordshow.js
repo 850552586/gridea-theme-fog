@@ -1,7 +1,7 @@
 // ------------------介绍内容闪烁弹出-----------------------------------------------------
 
 // 获取显示文字的span元素
-var textEl = document.querySelector(".describtion");
+var textEl = document.querySelector(".description");
 // 获取并解析要展示的文本数组
 var texts = JSON.parse(
   textEl.getAttribute("data-text")

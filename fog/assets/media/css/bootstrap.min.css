@@ -240,11 +240,6 @@ th {
         box-shadow: none !important
     }
 
-    a,
-    a:visited {
-        text-decoration: underline
-    }
-
     a[href]:after {
         content: " ("attr(href) ")"
     }
@@ -1427,7 +1422,6 @@ a {
 a:focus,
 a:hover {
     color: #23527c;
-    text-decoration: underline
 }
 
 a:focus {
@@ -1521,7 +1515,7 @@ h5,
 h6 {
     font-family: inherit;
     font-weight: 500;
-    line-height: 1.1;
+    line-height: 1.5;
     color: inherit
 }
 
@@ -1973,9 +1967,6 @@ pre {
     color: #333;
     word-break: break-all;
     word-wrap: break-word;
-    background-color: #f5f5f5;
-    border: 1px solid #ccc;
-    border-radius: 4px
 }
 
 pre code {
@@ -1983,12 +1974,10 @@ pre code {
     font-size: 13px;
     color: inherit;
     background-color: transparent;
-    border-radius: 0;
     word-break: break-word;
     font-family: "Microsoft JhengHei", miranafont, "Hiragino Sans GB", STXihei, "Microsoft YaHei", SimSun, Sans-Serif;
     text-shadow: none;
     letter-spacing: 1px;
-    line-height: 1.7
 }
 
 .pre-scrollable {
@@ -5729,8 +5718,6 @@ fieldset[disabled] .navbar-default .btn-link:hover {
 }
 
 .navbar-inverse {
-    background-color: #222;
-    border-color: #080808
 }
 
 .navbar-inverse .navbar-brand {

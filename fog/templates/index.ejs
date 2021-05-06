@@ -1,14 +1,12 @@
+<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
-    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/bootstrap.min.css%>">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/css/live2d.css">
     <link rel="stylesheet" href="<%= themeConfig.domain %>/styles/main.css">
-
-    <!-- pjax 加载valine文件 -->
     <script src="<%= themeConfig.domain %>/media/js/valine.min.js%>"></script>
     <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
     <meta name="description" content="<%- site.customConfig.metaDescription || themeConfig.siteDescription %>" />
@@ -18,12 +16,14 @@
 
 
 <body>
-    <!-- 响应式布局，针对PC端内容显示 -->
     <div id="content">
         <div class="nav-large">
             <div class="row">
+                <!-- ----------------左侧菜单栏html 👇-------------------------------------->
                 <%if(site.customConfig.menuposition=='left'){%>
+                <!--------------- pc端菜单栏👇 ---------------->
                 <div class="side"><%- include('./includes/side') %></div>
+                <!--------------- pc端菜单栏👆 ---------------->
                 <div id="tab1" class="tab">
                     <div class="bars">
                         <span></span>
@@ -33,11 +33,14 @@
                     <div class="close"></div>
                 </div>
                 <div class="col-md-1 col-lg-3"></div>
+                <!----------- 移动端导航栏👇 ----------------->
                 <div class="mobilebar"><%- include('./includes/bar') %>
+                <!----------- 移动端导航栏👆 ----------------->
                 </div>
-                <div id="main" class="col-xs-12 col-sm-12 col-md-11 col-lg-7">
+                <div id="main" class="col-xs-12 col-sm-12 col-md-12 col-lg-7">
                     <!-- 移动端 -->
                     <div class="mobilebar">
+                        <%- include('./includes/mobilewelcome') %>
                         <%- include('./includes/mobilebg') %>
                     </div>
                     <div style="display:none"><%- include('./includes/valine') %></div>
@@ -48,6 +51,8 @@
                 </div>
                 <div class="col-md-1 col-lg-2"></div>
                 <%}%>
+                <!-- ----------------左侧菜单栏html 👆-------------------------------------->
+                <!------------------ 顶部菜单栏html👇--------->
                  <%if(site.customConfig.menuposition=='top'){%>
                 <div class="side"><%- include('./includes/side') %></div>
                 <div class="mobilebar"><%- include('./includes/bar') %>
@@ -55,6 +60,7 @@
                 <div id="main" class="col-xs-12 col-sm-12 col-md-12 col-lg-6 topindex">
                     <!-- 移动端 -->
                     <div class="mobilebar">
+                        <%- include('./includes/mobilewelcome') %>
                         <%- include('./includes/mobilebg') %>
                     </div>
                     <%- include('./includes/post-list') %>
@@ -67,28 +73,33 @@
                 </div>
                 <div class="col-xs-6 col-sm-3"></div>
                 <%}%>
+                <!------------------ 顶部菜单栏html👆--------->
                 </div>
             </div>
             <div id="bg">
             </div>
+            <!------- 背景图加载方式👇----- -->
             <div id="bgchoice" style="display: none"><%= site.customConfig.bgchoice%>
             </div>
             <%if(site.customConfig.bgchoice=='default'){%>
             <div id="bgurl" style="display:none"><%= site.customConfig['bgimage'] %></div>
             <%} else{%>
             <div id="bgurl" style="display:none"><%= site.customConfig['bgimagelink'] %></div>
-            <%}%> 
+            <%}%>
+            <!------- 背景图加载方式👆----- --> 
         <div id="landlord">
             <div class="message" style="opacity:0"></div>
             <canvas id="live2d" width="240" height="250" class="live2d"></canvas>
         </div>
     </div>
-    <%if(site.customConfig.aplayerchoice){%>
+        <%if(site.customConfig.aplayerchoice){%>
             <%- include('./includes/aplayer') %>
-            <%}%>
+        <%}%>
     <div id="domainname" style="display:none"><%= themeConfig.domain %>
         </div>
-        <%if (site.customConfig.live2d){ %>
+
+<!-------------------- live2d功能👇 --------------------------->
+    <%if (site.customConfig.live2d){ %>
         <script type="text/javascript">
             var message_Path = '/live2d/'
             var home_Path = document.getElementById("domainname").innerHTML + "/"; //此处修改为你的域名，必须带斜杠
@@ -98,8 +109,10 @@
         <script type="text/javascript">
             loadlive2d("live2d", "<%= themeConfig.domain %>/media/live2d/assets/tororo.model.json%>");
         </script>
-        <%}%>
+    <%}%>
+<!-------------------- live2d功能👆 --------------------------->
 
+<!------------ 加载全局背景图功能👇（开始时没有写好，这功能有点鸡肋/(ㄒoㄒ)/~~） -->
 <script>
     var bgchoice = $('#bgchoice').html();
     var bg = $('#bg');
@@ -113,9 +126,9 @@
         aplayerbtnInit();
     }
 </script>
-<!-- 页内pjax刷新 -->
+<!------------ 加载全局背景图功能👆（开始时没有写好，这功能有点鸡肋/(ㄒoㄒ)/~~） -->
+
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery.pjax/2.0.1/jquery.pjax.js"></script>
 <%if (site.customConfig.menuposition=='left'){ %>
         <script src="<%= themeConfig.domain %>/media/js/index.js%>"></script>
         <%}else{%>

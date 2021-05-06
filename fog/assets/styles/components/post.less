@@ -52,6 +52,18 @@
 
 .text {
   padding: 20px;
+  font-family: 'Noto Serif SC','Source Han Serif SC','Source Han Serif','source-han-serif-sc','PT Serif','SongTi SC','MicroSoft Yahei',Georgia,serif;
+}
+
+.text p,.text ul {
+      color: #797979
+}
+
+
+
+.text h1,.text h2,.text h3,.text h4,.text h5,.text h6{
+  font-family:"宋体",'Noto Serif SC','Source Han Serif SC','Source Han Serif','source-han-serif-sc','PT Serif','SongTi SC','MicroSoft Yahei',Georgia,serif;
+  font-weight:1000;
 }
 
 .markdownIt-TOC{
@@ -85,7 +97,7 @@
 
 .markdownIt-TOC::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background-color: rgba(0, 0, 0, .2);
+  background-color: #a7a8bd;
   -webkit-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1)
 }
 
@@ -116,7 +128,7 @@ div {
 }
 
 .text {
-  line-height: 1.8;
+  line-height: 2.3;
 }
 
 h1 {
@@ -153,9 +165,8 @@ code {
   -moz-box-shadow: 10px 10px 10px rgba(0, 0, 0, .5);
   -webkit-box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, .5);
   border-radius: 10px;
-  background: white;
+  background: rgba(0,0,0,0.5);
   z-index: 99;
-  padding: 10px;
   width: 100%;
 }
 
@@ -182,6 +193,10 @@ code {
 pre code {
   font-size: 13px;
   white-space: inherit; //不换行
+  overflow-y:auto;
+  border-radius: 10px;
+  line-height: 25px;
+  padding:20px
 }
 
 
@@ -246,6 +261,16 @@ pre code {
 }
 
 @media screen and (max-width: 1200px) {
+
+  #comment {
+    background:rgba(0,0,0,0.8);
+    color:white;
+  }
+
+  .commentcontainer{
+    padding:30px;
+  }
+
   //复制代码button
   .copybt {
     position: absolute;
@@ -268,6 +293,7 @@ pre code {
     cursor: pointer;
   }
 }
+
 
 /* for block of numbers */
 .hljs-ln-numbers {
@@ -334,6 +360,11 @@ tr:nth-child(2n) {
 }
 
 @media screen and (min-width:1200px){
+  #comment {
+    background:rgba(0,0,0,0.5);
+    color:white;
+  }
+
   #bar{
     display: none;
   }

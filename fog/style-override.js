@@ -36,6 +36,10 @@ const generateOverride = (params = {}) => {
         .menubutton {
           color: ${params.sitemenuColor};
         }
+
+        .menubutton:visited{
+          color: ${params.sitemenuColor};
+        }
       `
     }
 
@@ -61,6 +65,51 @@ const generateOverride = (params = {}) => {
       result += `
         .mobiledescribtion{
           color: ${params.footinfoColor};
+        }
+      `
+    }
+
+    //顶部菜单栏颜色
+    if (params.topmenuColor && params.topmenuColor !== 'black') {
+      result += `
+        .navbar-inverse{
+          background-color: ${params.topmenuColor};
+        }
+      `
+    }
+
+    //站点名称字体
+    if (params.sitenameFont && params.sitenameFont !== 'Arial') {
+      result += `
+        .sitename{
+          font-family: ${params.sitenameFont};
+        }
+      `
+    }
+
+    //站点介绍字体
+    if (params.sitedescFont && params.sitedescFont !== 'Arial') {
+      result += `
+        .description{
+          font-family: ${params.sitedescFont};
+        }
+      `
+    }
+
+   //站点文章信息字体
+    if (params.siteinfoFont && params.siteinfoFont !== 'Arial') {
+      result += `
+        .siteinfo{
+          font-family: ${params.sitedescFont};
+        }
+      `
+    }
+
+    //菜单栏字体
+    if (params.sitemenuFont && params.sitemenuFont !== 'kaiti') {
+      result += `
+        .menubutton{
+          font-family: ${params.sitemenuFont};
         }
       `
     }

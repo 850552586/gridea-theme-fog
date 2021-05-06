@@ -1,3 +1,8 @@
+// @font-face {
+//    font-family: 'aqqxs';
+//    src: url('/media/fonts/FXAiQingQiXiangSuo.ttf');
+// }
+
 @media screen and (min-width:1200px) {
     #tab1 {
         position: fixed;
@@ -91,7 +96,6 @@
     body::-webkit-scrollbar {
         width: 8px;
         height: 8px;
-        background-color: rgba(0, 0, 0, .1)
     }
 
     body::-webkit-scrollbar-track {
@@ -112,7 +116,7 @@
 
     body::-webkit-scrollbar-thumb {
         border-radius: 10px;
-        background-color: rgba(0, 0, 0, .2);
+        background-color: #1ba784;
         -webkit-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1)
     }
 
@@ -125,18 +129,13 @@
         background: rgba(0, 0, 0, .4)
     }
 
-    body {
-        overflow-x: hidden;
-        height: 100vh;
-        overflow-y: scroll;
-    }
-
     .side {
         position: fixed;
         width: 22%;
         z-index: 20;
         justify-content: center;
         display: flex;
+        max-width: 350px;
     }
 
     #main {
@@ -189,6 +188,9 @@
 
 
 @media screen and (max-width: 1200px) {
+    html,body{height:auto}
+    html,body{overflow-x:hidden;overflow-y:scroll;}
+
     #content{
         max-width: 100vw;
     }
@@ -243,3 +245,5 @@
 @import "./components/tag.less";
 @import "./components/tag-detail.less";
 @import "./components/aplayer.less";
+@import "./components/twikoo.less";
+@import "./components/valine.less";
