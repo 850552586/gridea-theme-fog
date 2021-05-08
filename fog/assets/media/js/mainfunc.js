@@ -1,11 +1,11 @@
-// document.onkeydown = function(){
+document.onkeydown = function(){
 
-//     if(window.event && window.event.keyCode == 123) {
-//         alert("F12被禁用,请勿随意查看哦~");
-//         event.keyCode=0;
-//         event.returnValue=false;
-//     }
-// }
+    if(window.event && window.event.keyCode == 123) {
+        alert("F12被禁用,请勿随意查看哦~");
+        event.keyCode=0;
+        event.returnValue=false;
+    }
+}
 
 function showqq() {
     var qq = document.getElementById("qq").innerHTML;
