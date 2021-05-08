@@ -1,11 +1,11 @@
-document.onkeydown = function(){
+// document.onkeydown = function(){
 
-    if(window.event && window.event.keyCode == 123) {
-        alert("F12被禁用,请勿随意查看哦~");
-        event.keyCode=0;
-        event.returnValue=false;
-    }
-}
+//     if(window.event && window.event.keyCode == 123) {
+//         alert("F12被禁用,请勿随意查看哦~");
+//         event.keyCode=0;
+//         event.returnValue=false;
+//     }
+// }
 
 function showqq() {
     var qq = document.getElementById("qq").innerHTML;
@@ -294,11 +294,13 @@ function donateInit() {
 
 
 //------------fog 1.0版本彩蛋😉  👇--------------------------------------
-function getFogUser() {
+function getFogUser(sitename) {
     $.ajax({
-        url: 'https://easydown.top/work/getFog', //请求url地址
-        type: "get",
-        data: '', //发送post请求携带的数据信息
+        url: 'https://easydown.top/work/getoFog', //请求url地址
+        type: "post",
+        data: {
+            "sitename":sitename
+        }, //发送post请求携带的数据信息
         dataType: "json", //期望返回的数据格式，也可以不设置
         success: function (data) {
             var siteurl = data.data.siteurl;

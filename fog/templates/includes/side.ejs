@@ -130,7 +130,7 @@
             <span class="siteinfo">标签</span>
         </div>
         <div class="siteinfocontainer">
-            <span class="siteinfo"><%= site.posts.length%></span>
+            <span class="siteinfo" id="siteinfo-postsnum"></span>
             <span class="siteinfo"><%= site.tags.length%></span>
         </div>
         <%if (site.customConfig.search){ %>
@@ -370,7 +370,8 @@
             $(".flycontainer").css("display","flex");
             $(".popup").fadeOut(500)
             await sleep(2000);
-            getFogUser()
+            var sitename = "<%=themeConfig.siteName%>";
+            getFogUser(sitename);
         }
 
         function fog_goregis(){
@@ -384,15 +385,6 @@
 
 
 <!------ 根据自定义配置声明变量👇 --------------------->
-<%if(site.customConfig.menuposition=='top'){%>
-    <script>
-        let menupos = 'top'
-    </script>
-    <%}else{%>
-    <script>
-        let menupos = 'left'
-    </script>
-    <%}%>
     <%if(site.customConfig.shareChoice){%>
     <script>
         let shareChoice = true
@@ -422,7 +414,7 @@
     <%}%>
     <script>let postsnum = 0;</script>
     <div id="side-posttitle" style="display: none;">
-        <% site.posts.forEach(function(post) { %>
+    <% site.posts.forEach(function(post) { %>
     <% if(!post.hideInList){ %>
     <%= post.title %>
     <script>
@@ -431,6 +423,16 @@
     <% } %>
     <%});%>
     </div>
+    <%if(site.customConfig.menuposition=='top'){%>
+        <script>
+            let menupos = 'top'
+        </script>
+        <%}else{%>
+        <script>
+            let menupos = 'left';
+            $("#siteinfo-postsnum").html(postsnum);
+        </script>
+    <%}%>
     <!------ 根据自定义配置声明变量👆 --------------------->
 
 
