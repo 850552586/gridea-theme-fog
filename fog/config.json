@@ -535,7 +535,7 @@
       "type": "array",
       "value": [],
       "arrayItems": [
-        { "label": "昵称", "name": "author", "type": "input", "value": "" },
+        { "label": "标签", "name": "author", "type": "input", "value": "" },
         { "label": "发布时间", "name": "time", "type": "input", "value": "" },
         { "label": "说说内容", "name": "text", "type": "input", "value": ""},
         { "label": "配图", "name": "img", "type": "input", "value": "","note":"外链"}
