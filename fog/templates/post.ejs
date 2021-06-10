@@ -253,10 +253,10 @@
     // --------为每张图片添加懒加载（lazyload）标签-->懒加载功能 👇------------
     imglazyloadinit()
     lazyload();
-    // ------代码高亮显示功能-------------
-    hljs.initHighlightingOnLoad();
     //为文章内所有代码块添加代码复制功能 👇
     codeinit();
+    // ------代码高亮显示功能-------------
+    hljs.initHighlightingOnLoad();
     if (shareChoice)
         shareInit();
     if (donateChoice)
@@ -320,6 +320,11 @@
 <script>
     //加载后的事件同步（阅读量、移动端评论等
     window.onload = function () {
+    //代码块高亮渲染
+    document.querySelectorAll('pre code').forEach((block) => {
+            hljs.highlightBlock(block);
+    });
+    alert("hljs load ok")
         getHotnum();
         var sharepc = $(".share").eq(0).html();
         $(".share").eq(1).html(sharepc);   //插件只会寻找一个分享标签渲染，所以需要手动添加到移动端

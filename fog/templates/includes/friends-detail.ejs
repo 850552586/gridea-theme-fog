@@ -25,7 +25,7 @@
 
     <div id="friendscontainer">
         <div id="friendsrule">
-
+            <%- site.customConfig.friendsrule %>
         </div>
         <% if (site.customConfig.friendschoice) { %>
         <% site.customConfig.friends.forEach(function(friend) { %>
@@ -40,9 +40,3 @@
         <% } %>
     </div>
 </body>
-
-
-<script>
-    var friendsrule = "<%- site.customConfig.friendsrule %>"
-    $("#friendsrule").html(friendsrule);
-</script>

@@ -171,9 +171,9 @@
       "name": "sitegotime",
       "label": "站点创建时间",
       "group": "统计",
-      "value": "02/02/2020",
+      "value": "02/22/2020",
       "type": "input",
-      "note": "输入日期（格式:02/02/2020）"
+      "note": "输入日期（格式:02/22/2020）"
     },
     {
       "name": "sitenumChoice",
@@ -275,7 +275,7 @@
       "group": "配置",
       "value": "",
       "type": "input",
-      "note": "[twikoo] 配置查看文档"
+      "note": "[twikoo] 配置查看文档 https://twikoo.js.org/"
     },
     {
       "name": "social_text",
@@ -503,7 +503,7 @@
       "label": "添加友链提示",
       "group": "友链",
       "value": "<p>暂无提示</p><p>暂无提示</p>",
-      "type": "input",
+      "type": "textarea",
       "note": "提示信息"
     },
     {
@@ -547,11 +547,7 @@
       "label": "图标",
       "group": "图标icon",
       "type": "array",
-      "value": [
-        { "menuname":"首页",
-          "iconurl":""
-        }
-      ],
+      "value": [],
       "arrayItems": [
         { "label": "菜单栏名称", "name": "menuname", "type": "input", "value": "","note":"对应菜单名称"},
         { "label": "图标（外链）", "name": "iconurl", "type": "input", "value": "","note":"使用默认值 / 或填写图标外链"}
