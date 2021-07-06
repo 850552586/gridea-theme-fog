@@ -73,6 +73,9 @@
         <%if(site.customConfig.talkchoice){%>
         <li><a data-pjax href="<%= themeConfig.domain %>/talk">说说</a></li>
         <%}%>
+        <%if(site.customConfig.bbchoice){%>
+          <li><a data-pjax href="<%= themeConfig.domain %>/bber">哔哔</a></li>
+          <%}%>
           <%if(site.customConfig.friendschoice){%>
         <li><a data-pjax href="<%= themeConfig.domain %>/friends">友链</a></li>
 

@@ -1,11 +1,11 @@
-document.onkeydown = function(){
+// document.onkeydown = function(){
 
-    if(window.event && window.event.keyCode == 123) {
-        alert("F12被禁用,请勿随意查看哦~");
-        event.keyCode=0;
-        event.returnValue=false;
-    }
-}
+//     if(window.event && window.event.keyCode == 123) {
+//         alert("F12被禁用,请勿随意查看哦~");
+//         event.keyCode=0;
+//         event.returnValue=false;
+//     }
+// }
 
 function showqq() {
     var qq = document.getElementById("qq").innerHTML;
@@ -203,9 +203,10 @@ function codeinit() {
 //---------------------图片懒加载功能--------------------------
 function lazyload() {
     if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
-        var pcmode = 1
+        var pcmode = 1;
     } else {
         var pcmode = 2;
+        imglazyloadinit()
     }
     var oLazyload = $("img.lazyload");
     if (pcmode == 2) {
@@ -230,6 +231,7 @@ function lazyload() {
             $(this).attr("src", $(this).attr("data-original"));
             $(this).on('load', function () {
                 $(this).removeClass("imgloading");
+                $(this).attr("src", $(this).attr("data-original"));
             });
         })
     }
@@ -294,38 +296,5 @@ function donateInit() {
 
 
 //------------fog 1.0版本彩蛋😉  👇--------------------------------------
-function getFogUser(sitename) {
-    $.ajax({
-        url: 'https://easydown.top/work/getoFog', //请求url地址
-        type: "post",
-        data: {
-            "sitename":sitename
-        }, //发送post请求携带的数据信息
-        dataType: "json", //期望返回的数据格式，也可以不设置
-        success: function (data) {
-            var siteurl = data.data.siteurl;
-            window.location.href=siteurl;
-        }
-    })
-}
-
-function regisFogUser(sitename, siteurl) {
-    if (siteurl.search("localhost") != -1)
-       return false;
-    foguserdata = {
-        "sitename": sitename,
-        "siteurl": siteurl
-    }
-    $.ajax({
-        url: 'https://easydown.top/work/getFog', //请求url地址
-        type: "post",
-        dataType: 'json',
-        contentType: 'application/json;charset=UTF-8',
-        data: JSON.stringify(foguserdata), //发送post请求携带的数据信息
-        dataType: "json",     //期望返回的数据格式，也可以不设置
-        success: function (data) {
-        }
-    })
-}
-
 //------------fog 1.0版本彩蛋😉  👆--------------------------------------
+

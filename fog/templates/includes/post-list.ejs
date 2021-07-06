@@ -1,4 +1,9 @@
 <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/font-awesome.css">
+<%if(site.customConfig.bbonetalkchoice){%>
+<div id="bbonetalkContainer">
+    <div id="bber-talk"></div>
+</div>
+<%}%>
 <%if(site.customConfig.postlistMode == "default"){%>
 <div id="post-container">
     <% posts.forEach(function(post) { %>
@@ -99,9 +104,9 @@
                         </div>
                     </div>
                     <div class='eleg-tags'>
-                        <div v-for="tag in post.tags">
+                        <div v-for="(tag,i) in post.tags">
                             <div class="posttag">
-                                <a data-pjax href="" class="postlink eleg-postlink">
+                                <a data-pjax :href="post.taglink[i]" class="postlink eleg-postlink">
                                     <i class="fa fa-tag"></i>{{tag}}
                                 </a>
                             </div>
@@ -126,9 +131,9 @@
                         <img :src="post.feature" alt="" :class="post.imgclass">
                     </div>
                     <div class='eleg-tags'>
-                        <div v-for="tag in post.tags">
+                        <div v-for="(tag,i) in post.tags">
                             <div class="posttag">
-                                <a data-pjax href="" class="postlink eleg-postlink">
+                                <a data-pjax :href="post.taglink[i]" class="postlink eleg-postlink">
                                     <i class="fa fa-tag"></i>{{tag}}
                                 </a>
                             </div>
@@ -153,9 +158,11 @@
              var pldlist = $("span[name='pldate']");
              var plslist = $("span[name='plstats']");
              var pltaglist = $("span[name='pltag']");
+             var pltaglinklist = $("span[name='pltaglink']")
              for(var i=0;i<this.pagesize&&i<plflist.length;i++){
                  var d = {};
                  var tags = []
+                 var taglink = []
                  d["feature"] = plflist.eq(i).html();
                  d["title"] = pltlist.eq(i).html();
                  d["link"] = plllist.eq(i).html();
@@ -166,6 +173,11 @@
                         tags.push(pltaglist.eq(j).html())
                  }
                  d["tags"] = tags;
+                 for(var j=0;j<pltaglinklist.length;j++){
+                    if(pltaglinklist.eq(j).attr('alt')==d['title'])
+                        taglink.push(pltaglinklist.eq(j).html())
+                 }
+                 d["taglink"] = taglink
                  if(i%2==0)
                  {
                      d['elegcontainer'] = 'eleg-postcontainer-left';
@@ -185,4 +197,9 @@
       }
     })
     </script>
+<%}%>
+<%if(site.customConfig.bbonetalkchoice){%>
+<script>
+    bberonetalkLoad()
+</script>
 <%}%>

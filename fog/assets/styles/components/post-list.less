@@ -129,6 +129,33 @@ a:hover {
     padding:50px;
 }
 
+#bbonetalkContainer{
+    margin-top:20px;
+    margin-bottom: 20px;
+    padding-top:5px;
+    height: 50px;
+    padding-left: 40px;
+    background:rgba(239, 52, 115, 0.5);
+    border-radius:5px;
+    text-align: left;
+    display: block;
+    color: white;
+    font-size: 18px;
+
+}
+
+#bbonetalkContainer a{
+    font-family:kaiti;
+    color:white;
+    font-size: 18px;
+}
+
+//-------------bber-onetalk
+#bber-talk{display:-webkit-flex;display:flex;width:100%;line-height:2em;height:45px;max-width:760px;text-align:left;padding:5px 15px;margin-bottom:3em;position: relative;background-color: var(--light-header);border-radius:8px;font-size:15px;}
+#bber-talk svg{fill: currentColor;vertical-align: middle;display: inline;margin-right:5px;}
+.talk-list{margin: 0;max-height: 35px;overflow: hidden;}
+.talk-list li {list-style: none;margin-bottom: 10px;width: 100%;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
+
 @media screen and (max-width:1200px) {
     #post{
         width: 100%;
@@ -167,6 +194,11 @@ a:hover {
         cursor: pointer;
         border-radius: 5px;
         width:90%;
+    }
+
+    //其他端bber-onetalk隐藏
+    #bbonetalkContainer{
+        display:none
     }
 }
 

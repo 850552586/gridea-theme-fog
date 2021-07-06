@@ -45,10 +45,14 @@
                 <div id="pl" style="display:none"><%=post.link%></div>
                 <div id="rootaddr" style="display:none"><%= themeConfig.domain %></div>
                 <%if(site.customConfig.postnumChoice){%>
+                    <% if(site.customConfig.commentschoice=="valine"){%>
                     <span id="hotnum">
                         <h4><i class="fa fa-eye" aria-hidden="true" style="color: #FF8C00;"></i>&nbsp;&nbsp;热度</i>: <i
                                 class="hotnum">loading...</i></h4>
                     </span>
+                    <%}else if (site.customConfig.commentschoice=="twikoo"){%>
+                    <h4><i class="fa fa-eye" aria-hidden="true" style="color: #FF8C00;"></i>&nbsp;&nbsp;热度</i>: <span id="twikoo_visitors" class="hotnum">loading...</span></h4>
+                    <%}%>
                 <%}%>
             </div>
             <div class="text ">

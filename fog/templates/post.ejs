@@ -251,7 +251,6 @@
     setTimeout(replaceAvatar,2000);
     setTimeout(replaceAvatar,8000);
     // --------为每张图片添加懒加载（lazyload）标签-->懒加载功能 👇------------
-    imglazyloadinit()
     lazyload();
     //为文章内所有代码块添加代码复制功能 👇
     codeinit();
@@ -324,7 +323,6 @@
     document.querySelectorAll('pre code').forEach((block) => {
             hljs.highlightBlock(block);
     });
-    alert("hljs load ok")
         getHotnum();
         var sharepc = $(".share").eq(0).html();
         $(".share").eq(1).html(sharepc);   //插件只会寻找一个分享标签渲染，所以需要手动添加到移动端

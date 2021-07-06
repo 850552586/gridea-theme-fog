@@ -290,8 +290,8 @@ hr {
 	top: -0.5em;
 	left: 0;
 	width: 100%;
-	color: silver;
 	transition: 0.3s ease-out;
+    color:antiquewhite
 }
 
 .menucontainer span::before {
@@ -608,7 +608,7 @@ hr {
 
 
 // loading
-#loading {
+#loading-aname {
     position: fixed;
     display: flex;
     left: 45vw;
@@ -616,7 +616,7 @@ hr {
     z-index:30;
 }
 
-.loading {
+.loading-aname {
     width: 200px;
     height: 200px;
     box-sizing: border-box;
@@ -625,8 +625,8 @@ hr {
     animation: a1 2s linear infinite;
 }
 
-.loading::before,
-.loading::after {
+.loading-aname::before,
+.loading-aname::after {
     content: '';
     width: 200px;
     height: 200px;
@@ -637,12 +637,12 @@ hr {
     border-radius: 50%
 }
 
-.loading::before {
+.loading-aname::before {
     border-top: 15px solid #3498db;
     transform: rotate(240deg);
 }
 
-.loading::after {
+.loading-aname::after {
     border-top: 15px solid #e67e22;
     transform: rotate(120deg);
 }
@@ -675,34 +675,34 @@ hr {
 }
 
 @media (min-width: 330px){
-    #loading {
+    #loading-aname {
         top:40vh;
         left:25vw;
     }
 }
 
 @media (min-width: 468px){
-    #loading {
+    #loading-aname {
         top:40vh;
         left:26vw;
     }
 }
 
 @media (min-width: 768px){
-    #loading {
+    #loading-aname {
         top:40vh;
         left:40vw;
     }
 }
 
 @media (min-width: 992px){
-    #loading {
+    #loading-aname {
         top:30vh;
     }
 }
 
 @media (min-width: 1200px){
-    #loading {
+    #loading-aname {
         top:30vh;
         left:45vw;
     }

@@ -1,0 +1,205 @@
+<!-- <style>
+  #bber-talk{display:-webkit-flex;display:flex;width:100%;line-height:2em;height:45px;max-width:760px;text-align:left;padding:5px 15px;margin-bottom:3em;position: relative;background-color: var(--light-header);border-radius:8px;font-size:15px;}
+#bber-talk svg{fill: currentColor;vertical-align: middle;display: inline;margin-right:5px;}
+.talk-list{margin: 0;max-height: 35px;overflow: hidden;}
+.talk-list li {list-style: none;margin-bottom: 10px;width: 100%;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
+</style>
+<div id="bber-talk"></div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script>
+  //依赖 jQuery 库，其中 jsonUrl 改为自己的
+$(document).ready(function(){
+  if ( $("#bber-talk").length > 0 ) {
+    jsonUrl = "https://7477-twikoo-6gbp33x72a40527e-1259442930.tcb.qcloud.la/json/bber.json"
+    $.getJSON(jsonUrl+"?t="+Date.parse( new Date()),function(res){
+      var bberHtml = ''
+      $.each(res.data, function(i, item){
+        d = new Date(item.date)
+        date = d.getFullYear()+'/'+(d.getMonth()+1)+'/'+d.getDate() +' '+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds()
+        dataTime = '<span class="datatime">'+date+'</span>'
+        bberHtml += '<li class="item item-'+(i+1)+'">'+dataTime+'： <a href="https://immmmm.com/bb/">'+item.content+'</a></li>'
+      });
+      $('#bber-talk').append('<span class="index-talk-icon"><svg viewBox="0 0 1024 1024" width="21" height="21"><path d="M184.32 891.667692c-12.603077 0-25.206154-2.363077-37.809231-7.876923-37.021538-14.966154-59.864615-49.624615-59.864615-89.009231v-275.692307c0-212.676923 173.292308-385.969231 385.969231-385.969231h78.76923c212.676923 0 385.969231 173.292308 385.969231 385.969231 0 169.353846-137.846154 307.2-307.2 307.2H289.083077l-37.021539 37.021538c-18.904615 18.116923-43.323077 28.356923-67.741538 28.356923zM472.615385 195.347692c-178.018462 0-322.953846 144.935385-322.953847 322.953846v275.692308c0 21.267692 15.753846 29.144615 20.48 31.507692 4.726154 2.363077 22.055385 7.876923 37.021539-7.08923l46.473846-46.473846c6.301538-6.301538 14.178462-9.452308 22.055385-9.452308h354.461538c134.695385 0 244.184615-109.489231 244.184616-244.184616 0-178.018462-144.935385-322.953846-322.953847-322.953846H472.615385z"></path><path d="M321.378462 512m-59.076924 0a59.076923 59.076923 0 1 0 118.153847 0 59.076923 59.076923 0 1 0-118.153847 0Z"></path><path d="M518.301538 512m-59.076923 0a59.076923 59.076923 0 1 0 118.153847 0 59.076923 59.076923 0 1 0-118.153847 0Z"></path><path d="M715.224615 512m-59.076923 0a59.076923 59.076923 0 1 0 118.153846 0 59.076923 59.076923 0 1 0-118.153846 0Z"></path></svg></span><ul class="talk-list">'+bberHtml+'</ul>')
+      Lately({ 'target': '#bber-talk .datatime' });
+    });
+    function Roll (){
+      var list_li = $('.talk-list li'),cur_li = list_li.first(),last_li = list_li.last();
+      last_li.after(cur_li);
+    };
+    setInterval(Roll,3000);
+  }
+});
+</script> -->
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/bootstrap.min.css%>">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/css/live2d.css">
+    <link rel="stylesheet" href="<%= themeConfig.domain %>/styles/main.css">
+    <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/font-awesome.css%>">
+    <meta name="description" content="<%- site.customConfig.metaDescription || themeConfig.siteDescription %>" />
+    <title><%- themeConfig.siteName %></title>
+</head>
+
+
+<body>
+    <div id="content">
+        <div class="nav-large">
+            <div class="row">
+                <div class="side"><%- include('./includes/side') %></div>
+                <!-- ----------------左侧菜单栏html 👇-------------------------------------->
+                <%if(site.customConfig.menuposition=='left'){%>
+                <div id="tab1" class="tab">
+                    <div class="bars">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="close"></div>
+                </div>
+                <div class="col-md-1 col-lg-3"></div>
+                <div class="mobilebar"><%- include('./includes/bar') %>
+                </div>
+                <div id="main" class="col-xs-12 col-sm-12 col-md-12 col-lg-7">
+                    <div class="mobilebar">
+                        <%- include('./includes/mobilebg') %>
+                    </div>
+                    <%- include('./includes/bber-detail') %>
+                    <!---------------------------- 评论系统👇 ------------------------->
+                    <div id="comment" class="comment">
+                        <div class="commentcontainer">
+                           <%if(site.customConfig.commentschoice=='valine'){%>
+                              <% if (site.customConfig.valineID && site.customConfig.valineKey) { %>
+                                  <%- include('./includes/valine') %>
+                                    <div class="clear"></div>
+                              <%}else{%>
+                                  <p>请到客户端“主题--自定义配置--配置”中填入leancloud_appID和key</p>
+                                  <%}%>
+                              <%}else if(site.customConfig.commentschoice=='twikoo'){%>
+                              <%if(site.customConfig.twikoo_id){%>
+                              <%- include('./includes/twikoo') %>
+                                  <div class="clear"></div>
+                                <%}else{%>
+                                   <p>请到客户端“主题--自定义配置--配置”中填入cloudbase环境id</p>
+                               <%}%>
+                               <%}else if(site.customConfig.commentschoice=='default'){%>
+                                    <%if ( typeof commentSetting !== 'undefined' && commentSetting.showComment) { %>
+                              <% if (commentSetting.commentPlatform === 'gitalk') { %>
+                                           <%- include('./includes/gitalk') %>
+                                                      <% } %>
+                               <% if (commentSetting.commentPlatform === 'disqus') { %>
+                                 <%- include('./includes/disqus') %>
+                                <% } %>
+                                <% } %>
+                              <%}%>
+                          </div>
+                      </div>
+                     <!---------------------------- 评论系统👆 ------------------------->
+                </div>
+                <div class="col-md-1 col-lg-2"></div>
+                <!-- ----------------左侧菜单栏html 👆-------------------------------------->
+                <!------------------ 顶部菜单栏html👇--------->
+                <%}else{%>
+                <div class="mobilebar"><%- include('./includes/bar') %>
+                </div>
+                <div id="main" class="col-xs-12 col-sm-12 col-md-12 col-lg-6 topindex">
+                    <div class="mobilebar">
+                        <%- include('./includes/mobilebg') %>
+                    </div>
+                    <%- include('./includes/bber-detail') %>
+                    <!---------------------------- 评论系统👇 ------------------------->
+                    <div id="comment" class="comment">
+                      <div class="commentcontainer">
+                         <%if(site.customConfig.commentschoice=='valine'){%>
+                            <% if (site.customConfig.valineID && site.customConfig.valineKey) { %>
+                                <%- include('./includes/valine') %>
+                                  <div class="clear"></div>
+                            <%}else{%>
+                                <p>请到客户端“主题--自定义配置--配置”中填入leancloud_appID和key</p>
+                                <%}%>
+                            <%}else if(site.customConfig.commentschoice=='twikoo'){%>
+                            <%if(site.customConfig.twikoo_id){%>
+                            <%- include('./includes/twikoo') %>
+                                <div class="clear"></div>
+                              <%}else{%>
+                                 <p>请到客户端“主题--自定义配置--配置”中填入cloudbase环境id</p>
+                             <%}%>
+                             <%}else if(site.customConfig.commentschoice=='default'){%>
+                                  <%if ( typeof commentSetting !== 'undefined' && commentSetting.showComment) { %>
+                            <% if (commentSetting.commentPlatform === 'gitalk') { %>
+                                         <%- include('./includes/gitalk') %>
+                                                    <% } %>
+                             <% if (commentSetting.commentPlatform === 'disqus') { %>
+                               <%- include('./includes/disqus') %>
+                              <% } %>
+                              <% } %>
+                            <%}%>
+                        </div>
+                    </div>
+                   <!---------------------------- 评论系统👆 ------------------------->
+                </div>
+                <%}%>
+                <!------------------ 顶部菜单栏html👆--------->
+                <div class="col-xs-6 col-sm-3"></div>
+            </div>
+            <%if(site.customConfig.aplayerchoice){%>
+                <%- include('./includes/aplayer') %>
+                <%}%>
+        </div>
+        <div id="bg">
+        </div>
+        <!------- 背景图加载方式👇----- -->
+        <div id="bgchoice" style="display: none"><%= site.customConfig.bgchoice%>
+            </div>
+            <%if(site.customConfig.bgchoice=='default'){%>
+            <div id="bgurl" style="display:none"><%= site.customConfig['bgimage'] %></div>
+            <%} else{%>
+            <div id="bgurl" style="display:none"><%= site.customConfig['bgimagelink'] %></div>
+            <%}%>   
+        <!------- 背景图加载方式👆----- -->
+    </div>
+
+        <div id="landlord">
+            <div class="message" style="opacity:0"></div>
+            <canvas id="live2d" width="240" height="250" class="live2d"></canvas>
+        </div>
+        <div id="domainname" style="display:none"><%= themeConfig.domain %>
+        </div>
+</body>
+
+</html>
+<!-------------------- live2d功能👇 --------------------------->
+<%if (site.customConfig.live2d){ %>
+<script type="text/javascript">
+    var message_Path = '/live2d/'
+    var home_Path = document.getElementById("domainname").innerHTML + "/"; //此处修改为你的域名，必须带斜杠
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/js/live2d.js"></script>
+<script type="text/javascript" src="<%= themeConfig.domain %>/media/live2d/js/message.js%>"></script>
+<script type="text/javascript">
+    loadlive2d("live2d", "<%= themeConfig.domain %>/media/live2d/assets/tororo.model.json%>");
+</script>
+<%}%>
+<!-------------------- live2d功能👆 --------------------------->
+
+<!------------ 加载全局背景图功能👇（开始时没有写好，这功能有点鸡肋/(ㄒoㄒ)/~~） -->
+<script>
+    var bgchoice = $('#bgchoice').html();
+    var bg = $('#bg');
+    var bgurl = document.getElementById("bgurl").innerHTML;
+    if (bgchoice == 'default')
+        for (var i = 0; i < 3; i++)
+            bgurl = bgurl.replace("\\", "/");
+    bg.css("background", "url('" + bgurl + "')");
+
+    window.onload = function () {
+        aplayerbtnInit();
+    }
+</script>
+<!------------ 加载全局背景图功能👆（开始时没有写好，这功能有点鸡肋/(ㄒoㄒ)/~~） -->
+<%if (site.customConfig.menuposition=='left'){ %>
+<script src="<%= themeConfig.domain %>/media/js/index.js%>"></script>
+<%}%>

@@ -37,6 +37,17 @@ const generateOverride = (params = {}) => {
           color: ${params.sitemenuColor};
         }
 
+        .menucontainer span::before,
+        .menucontainer span::after {
+          color:${params.sitemenuColor};
+          content: attr(data-text);
+          position: absolute;
+          top: -0.5em;
+          left: 0;
+          width: 100%;
+          transition: 0.3s ease-out;
+        }
+
         .menubutton:visited{
           color: ${params.sitemenuColor};
         }
