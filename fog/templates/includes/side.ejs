@@ -869,7 +869,7 @@ menulist.eq(i).show();
     function bberonetalkLoad(){
         bberjsonurl = '<%=site.customConfig.bbjson%>';
         if ( $("#bber-talk").length > 0 ) {
-        jsonUrl = "https://7477-twikoo-6gbp33x72a40527e-1259442930.tcb.qcloud.la/json/bber.json?sign=4fd961a57291623e982e883acb8bddee&t=1625566437"
+        jsonUrl = bberjsonurl
         $.getJSON(jsonUrl+"?t="+Date.parse( new Date()),function(res){
         var bberHtml = ''
         $.each(res.data, function(i, item){
