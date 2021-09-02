@@ -5,7 +5,7 @@
 
 ![](https://ericamblog.oss-cn-shanghai.aliyuncs.com/2021/20210706211900.png)
 
-**最新版本：version_1.2**
+**最新版本：version_1.3**
 
 主题介绍：[Gridea主题Fog](<https://ericam.top/post/gridea-zhu-ti-fog-geng-xin-ri-zhi/> )
 
