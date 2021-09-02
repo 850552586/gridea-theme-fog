@@ -38,7 +38,7 @@
                     <div id="comment" class="comment" >
                         <div class="commentcontainer">
                             <%if(site.customConfig.commentschoice=='valine'){%>
-                                <% if (site.customConfig.valineID && site.customConfig.valineKey) { %>
+                                <% if (site.customConfig.Leancloud_appId && site.customConfig.Leancloud_key) { %>
                                     <%- include('./includes/valine') %>
                                     <div class="clear"></div>
                                 <%}else{%>
@@ -84,7 +84,7 @@
                     <div id="comment" class="comment">
                         <div class="commentcontainer">
                             <%if(site.customConfig.commentschoice=='valine'){%>
-                                <% if (site.customConfig.valineID && site.customConfig.valineKey) { %>
+                                <% if (site.customConfig.Leancloud_appId && site.customConfig.Leancloud_key) { %>
                                     <%- include('./includes/valine') %>
                                     <div class="clear"></div>
                                 <%}else{%>

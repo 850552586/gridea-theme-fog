@@ -72,8 +72,8 @@ $(document).ready(function(){
                     <div id="comment" class="comment">
                         <div class="commentcontainer">
                            <%if(site.customConfig.commentschoice=='valine'){%>
-                              <% if (site.customConfig.valineID && site.customConfig.valineKey) { %>
-                                  <%- include('./includes/valine') %>
+                            <% if (site.customConfig.Leancloud_appId && site.customConfig.Leancloud_key) { %>
+                                <%- include('./includes/valine') %>
                                     <div class="clear"></div>
                               <%}else{%>
                                   <p>请到客户端“主题--自定义配置--配置”中填入leancloud_appID和key</p>
@@ -114,7 +114,7 @@ $(document).ready(function(){
                     <div id="comment" class="comment">
                       <div class="commentcontainer">
                          <%if(site.customConfig.commentschoice=='valine'){%>
-                            <% if (site.customConfig.valineID && site.customConfig.valineKey) { %>
+                            <% if (site.customConfig.Leancloud_appId && site.customConfig.Leancloud_key) { %>
                                 <%- include('./includes/valine') %>
                                   <div class="clear"></div>
                             <%}else{%>
@@ -187,12 +187,15 @@ $(document).ready(function(){
 
 <!------------ 加载全局背景图功能👇（开始时没有写好，这功能有点鸡肋/(ㄒoㄒ)/~~） -->
 <script>
-    var bgchoice = $('#bgchoice').html();
+    var bgchoice = "<%=site.customConfig.bgchoice%>"
     var bg = $('#bg');
     var bgurl = document.getElementById("bgurl").innerHTML;
     if (bgchoice == 'default')
+    {
         for (var i = 0; i < 3; i++)
             bgurl = bgurl.replace("\\", "/");
+        bgurl = "<%= themeConfig.domain %>/" + bgurl;
+    }
     bg.css("background", "url('" + bgurl + "')");
 
     window.onload = function () {

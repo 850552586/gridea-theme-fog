@@ -459,6 +459,9 @@
             $("#siteinfo-postsnum").html(postsnum);
         </script>
     <%}%>
+    <script>
+        let commentsHide = false
+    </script>
     <!------ 根据自定义配置声明变量👆 --------------------->
 
 
@@ -466,13 +469,15 @@
     <script>
         var icondict = new Array();
     </script>
-    <% site.customConfig.icons.forEach(function(icon) {%>
-    <script>
-        var iconname = "<%= icon.menuname%>";
-        var iconurl = "<%= icon.iconurl%>";
-        icondict[iconname] = iconurl;
-    </script>
-    <%})%>
+    <%if(site.customConfig.icons){%>
+        <% site.customConfig.icons.forEach(function(icon) {%>
+            <script>
+                var iconname = "<%= icon.menuname%>";
+                var iconurl = "<%= icon.iconurl%>";
+                icondict[iconname] = iconurl;
+            </script>
+        <%})%>
+    <%}%>
     <!----------根据自定义配置设置图标信息👆---------->
 </body>
 
@@ -681,6 +686,10 @@
                 shareInit();
             if (donateChoice)
                 donateInit();
+            if ("<%= site.customConfig.commentschoice%>" == "default"&&!commentsHide) {
+                $("#comment").hide()
+                commentsHide = true
+            }
             lazyload();
             codeinit();
             if ("<%= site.customConfig.commentschoice%>" == "twikoo") {

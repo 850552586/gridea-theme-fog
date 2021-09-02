@@ -1,6 +1,6 @@
 {
   "name": "fog",
-  "version": "1.2",
+  "version": "1.3",
   "author": "Ericam_",
   "repository": "https://github.com/850552586/gridea-theme-fog",
   "customConfig": [ {
@@ -211,7 +211,7 @@
       "name": "shareChoice",
       "label": "是否开启文章分享转载功能",
       "group": "文章",
-      "value": true,
+      "value": false,
       "type": "switch",
       "note": ""
     },
@@ -219,7 +219,7 @@
       "name": "donateChoice",
       "label": "是否开启文章赞赏功能",
       "group": "文章",
-      "value": true,
+      "value": false,
       "type": "switch",
       "note": "请在下方放置赞赏图片外链"
     },
@@ -235,7 +235,7 @@
       "name": "commentschoice",
       "label": "第三方评论系统选择",
       "group": "配置",
-      "value": "valine",
+      "value": "default",
       "type": "select",
       "note":"valine需要配置Leancloud，twikoo需要配置cloudbase",
       "options": [
