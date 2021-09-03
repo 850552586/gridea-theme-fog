@@ -15,48 +15,6 @@ function showqq() {
         alert("博主暂未设置QQ联系方式");
 }
 
-
-function getHotnum() {
-    //文章阅读热度（重构，利用leancloud原生api）
-    var pl = window.location.pathname;
-    if (pl.search("post") == -1)
-        return false;
-    if (pl[pl.length - 1] != '/')
-        pl += '/'
-    var ptitle = $("#ptitle").html();
-    var rootaddr = $("#rootaddr").html();
-    pl = pl.replace(rootaddr, "");
-    avquery = new AV.Query('Counter');
-    avquery.equalTo('url', pl);
-    var time = 'Loading...';
-    avquery.find().then(function (results) {
-        if (results.length == 0) {
-            var NewCounter = AV.Object.extend('Counter');
-            var nc = new NewCounter();
-            nc.save({
-                time: 1,
-                title: ptitle,
-                url: pl,
-                xid: pl,
-            }).then(function (object) {
-                $(".hotnum").eq(0).html(1);
-                $(".hotnum").eq(1).html(1);
-            });
-        } else {
-            id = results[0].id;
-            var todo = AV.Object.createWithoutData('Counter', id);
-            time = results[0].attributes.time + 1;
-            todo.set("time", time);
-            todo.save();
-            $(".hotnum").eq(0).html(time);
-            $(".hotnum").eq(1).html(time);
-        }
-
-    }, function (error) {
-        console.log(error)
-    });
-}
-
 // --------------点击按钮显示Aplayer👇--------------
 function showAaplayer() {
     var aplayer = $(".aplayer");
@@ -79,6 +37,13 @@ function getHotnum() {
     var ptitle = $("#ptitle").html();
     var rootaddr = $("#rootaddr").html();
     pl = pl.replace(rootaddr, "");
+    var appid = '<%= site.customConfig.Leancloud_appId %>';
+    var appkey = '<%= site.customConfig.Leancloud_key %>';
+    if(AV==undefined)
+            AV.init({
+                appId: appid,
+                appKey: appkey
+            });
     avquery = new AV.Query('Counter');
     avquery.equalTo('url', pl);
     var time = 'Loading...';
