@@ -51,6 +51,14 @@ const generateOverride = (params = {}) => {
         .menubutton:visited{
           color: ${params.sitemenuColor};
         }
+
+        .menutopbutton{
+          color: ${params.sitemenuColor};
+        }
+
+        .menutopbutton:visited{
+          color: ${params.sitemenuColor};
+        }
       `
     }
 
@@ -80,14 +88,13 @@ const generateOverride = (params = {}) => {
       `
     }
 
-    //顶部菜单栏颜色
-    if (params.topmenuColor && params.topmenuColor !== 'black') {
+
       result += `
         .navbar-inverse{
-          background-color: ${params.topmenuColor};
+          background-color: rgba(143,168,171,0.8);
         }
       `
-    }
+    
 
     //站点名称字体
     if (params.sitenameFont && params.sitenameFont !== 'Arial') {
@@ -131,7 +138,17 @@ const generateOverride = (params = {}) => {
     `
   }
 
+  if (params.menuposition == 'top'){
+    result += `
+    .navbar-inverse .navbar-nav>li>a{
+      color: ${params.sitemenuColor};
+    }
+    ` 
+  }
+
   return result
 }
+
+
 
 module.exports = generateOverride

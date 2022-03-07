@@ -12,7 +12,7 @@
     <% } %>
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/js/clipboard.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/css/live2d.css">
+    <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/live2d.css%>">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
     <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.1/css/all.min.css" rel="stylesheet">
@@ -235,7 +235,7 @@
     <%- include('./footer') %>
     </div>
 
-
+    <img class="moon" src="<%= themeConfig.domain %>/media/images/moon.png%>" onclick="moonlight()">
     <script src="<%= themeConfig.domain %>/media/js/wordshow.js%>"></script>
     <%}%>
     <!--------------- 左侧菜单栏👆 ------------------------>
@@ -273,13 +273,13 @@
                 <ul class="nav navbar-nav" style="float: right;margin-right:5%">
                     <% menus.forEach(function(menu) { %>
                     <% if (menu.openType === 'External') { %>
-                    <li><a href="<%= menu.link %>" target="_blank" style="color:white;">
+                    <li><a href="<%= menu.link %>" target="_blank"  class="menutopbutton">
                             <i style="font-size: 40px;"><img class="icon menuicon" src=""
                                     alt="<%= menu.name%>"></i><%= menu.name %>
                         </a></li>
                     <% } else { %>
                     <li>
-                        <a data-pjax href="<%= menu.link %>" style="color:white">
+                        <a data-pjax href="<%= menu.link %>"  class="menutopbutton">
                             <i style="font-size: 40px;"><img class="icon menuicon" src="" alt="<%= menu.name%>"></i>
                             <%= menu.name %>
                         </a>
@@ -287,17 +287,17 @@
                     <% } %>
                     <% }); %>
                     <%if(site.customConfig.talkchoice){%>
-                    <li><a data-pjax href="<%= themeConfig.domain %>/talk" style="color:white;">
+                    <li><a data-pjax href="<%= themeConfig.domain %>/talk"  class="menutopbutton">
                             <i style="font-size: 40px;"><img class="icon menuicon" src="" alt="说说"></i>说说
                         </a></li>
                     <%}%>
                     <%if(site.customConfig.bbchoice){%>
-                        <li><a data-pjax href="<%= themeConfig.domain %>/bber" style="color:white;">
+                        <li><a data-pjax href="<%= themeConfig.domain %>/bber"  class="menutopbutton">
                             <i style="font-size: 40px;"><img class="icon menuicon" src="" alt="哔哔"></i>哔哔
                         </a></li>
                     <%}%>
                     <%if(site.customConfig.friendschoice){%>
-                    <li><a data-pjax href="<%= themeConfig.domain %>/friends" style="color:white">
+                    <li><a data-pjax href="<%= themeConfig.domain %>/friends"  class="menutopbutton">
                             <i style="font-size: 40px;"><img class="icon menuicon" src="" alt="友人帐"></i>友人帐
                         </a></li>
                     <%}%>
@@ -351,7 +351,7 @@
             <div id="qq" style="display:none"><%= site.customConfig['QQ'] %></div>
         </div>
     </div>
-
+    <img class="moon" src="<%= themeConfig.domain %>/media/images/moon.png%>" onclick="moonlight()">
     <script>
         var social = document.getElementById('socialMenu');
         var fancybox = document.getElementsByClassName('fancybox-stage');
@@ -399,43 +399,51 @@
         fog_goregis();
     </script> -->
 <!------------- Fog1.0版本彩蛋👆 -------------->
-
+<script>
+    function change_topmenu(){
+        tmcolor = "<%=site.customConfig.sitemenuColor%>"
+        tsnamecolor = "<%=site.customConfig.sitenameColor%>"
+        $(".navbar-inverse .navbar-nav>li>a").css("color",tmcolor)
+        $(".navbar-inverse .navbar-brand").css("color",tsnamecolor)
+        $(".navbar-fixed-top").css("border-radius","0 0 10px 10px")
+    }
+</script>
 
 <!------ 根据自定义配置声明变量👇 --------------------->
     <%if(site.customConfig.postnumChoice){%>
     <script>
-        let postnumChoice = true
+        var postnumChoice = true
     </script>
     <%}else{%>
     <script>
-        let postnumChoice = false
+        var postnumChoice = false
     </script>
     <%}%>
     <%if(site.customConfig.shareChoice){%>
     <script>
-        let shareChoice = true
+        var shareChoice = true
     </script>
     <%}else{%>
     <script>
-        let shareChoice = false
+        var shareChoice = false
     </script>
     <%}%>
     <%if(site.customConfig.donateChoice){%>
     <script>
-        let donateChoice = true
+        var donateChoice = true
     </script>
     <%}else{%>
     <script>
-        let donateChoice = false
+        var donateChoice = false
     </script>
     <%}%>
     <%if(site.customConfig.search){%>
     <script>
-        let searchChoice = true
+        var searchChoice = true
     </script>
     <%}else{%>
     <script>
-        let searchChoice = false
+        var searchChoice = false
     </script>
     <%}%>
     <script>let postsnum = 0;</script>
@@ -451,11 +459,12 @@
     </div>
     <%if(site.customConfig.menuposition=='top'){%>
         <script>
-            let menupos = 'top'
+            change_topmenu()
+            var menupos = 'top'
         </script>
         <%}else{%>
         <script>
-            let menupos = 'left';
+            var menupos = 'left';
             $("#siteinfo-postsnum").html(postsnum);
         </script>
     <%}%>
@@ -900,4 +909,66 @@ menulist.eq(i).show();
   //--------------------bber-onetalk加载👆--------------------------------
 </script>
 
+<script>
+    var ClicksideState = 1
+    var cur_readingmode = false
+    function readingmode(){
+        if (!cur_readingmode){
+            if(menupos == 'left'){
+                if(ClicksideState==1)
+                menu_openclose1()
+            }
+            $("#tab1").fadeOut(50)
+            $("#bg").fadeOut(50)
+            $(".navbar").fadeOut(50)
+            $(".markdownIt-TOC li a").css("color","black")
+            cur_readingmode = true
+        }else{
+            if(menupos == 'left'){
+                if(ClicksideState==0)
+                    menu_openclose1()
+            }
+            $("#tab1").fadeIn(50)
+            $("#bg").fadeIn(50)
+            $(".navbar").fadeIn(50)
+            $(".markdownIt-TOC li a").css("color","antiquewhite")
+            cur_readingmode = false  
+        }
+    }
+</script>
 
+
+<!----夜间模式👇-->
+<script>
+    var moonlightState = false
+    function moonlight(){
+        if(!moonlightState){
+            $("#bg").fadeOut(200)
+            $('body').css("background","rgba(0,0,0,0.8)")
+            $(".markdownIt-TOC li a").css("color","white")
+            $(".text p, .text ul").css("color","white")
+            $("#articlecontent").css("color","white")
+            $(".post-copyright").css("background","black")
+            $('blockquote').css("background","black")
+            $("#articlecontent").css("background","rgba(0,0,0,0.9)")
+            $(".shareContainer").css("background","black")
+            $(".share").css("background","black")
+            moonlightState = true
+            $(".moon").attr("src","<%= themeConfig.domain %>/media/images/sun.png%>")
+        }else{
+            $("#bg").show()
+            $(".markdownIt-TOC li a").css("color","antiquewhite")
+            $(".text p, .text ul").css("color","rgba(0, 0, 0, 0.7)")
+            $("#articlecontent").css("color","black")
+            $(".post-copyright").css("background","#f9f9f9")
+            $('blockquote').css("background","#eff8f0")
+            $("#articlecontent").css("background","white")
+            $(".shareContainer").css("background","white")
+            $(".share").css("background","white")
+            $(".moon").attr("src","<%= themeConfig.domain %>/media/images/moon.png%>")
+            $('body').css("background","white")
+            moonlightState = false
+        }
+    }
+</script>
+<!----夜间模式👆-->

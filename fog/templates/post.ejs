@@ -21,7 +21,7 @@
     <!-- 代码复制插件 -->
     <script src="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/js/clipboard.min.js"></script>
     <!-- live2d插件 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/css/live2d.css">
+    <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/live2d.css%>">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
     <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.1/css/all.min.css" rel="stylesheet">
@@ -112,6 +112,7 @@
                 <div class="col-md-1 col-lg-3"></div>
                 <!-- main标签，pjax渲染时加载以下内容👇 -->
                 <div id="main" class="col-xs-12 col-sm-12 col-md-12 col-lg-7" style="padding:0;">
+                    <div class="readingmode" onclick="readingmode()">阅</div>
                     <%- include('./includes/post-detail') %>
                     <div class="toc-container">
                         <%- post.toc %>
@@ -166,6 +167,7 @@
                 <div class="col-lg-3"></div>
                 <!-- main标签，pjax渲染时加载以下内容👇 -->
                 <div id="main" class="col-xs-12 col-sm-12 col-md-12  col-lg-6 posttop" style="padding:0;">
+                    <div class="readingmode" onclick="readingmode()">阅</div>
                     <%- include('./includes/post-detail') %>
                     <div class="toc-container">
                         <%- post.toc %>
@@ -231,8 +233,6 @@
             <%}%>
         <!-- aplayer播放器加载👆 -->
     </div>
-    
-
     <!-- 背景图加载方式👇 -->
     <div id="bgchoice" style="display: none"><%= site.customConfig.bgchoice %>
                 </div>
@@ -268,7 +268,7 @@
     var message_Path = '/live2d/'
     var home_Path = document.getElementById("domainname").innerHTML + "/"; //此处修改为你的域名，必须带斜杠
 </script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/js/live2d.js"></script>
+<script type="text/javascript" src="<%= themeConfig.domain %>/media/js/live2d.js%>"></script>
 <script type="text/javascript" src="<%= themeConfig.domain %>/media/live2d/js/message.js%>"></script>
 <script type="text/javascript">
     loadlive2d("live2d", "<%= themeConfig.domain %>/media/live2d/assets/tororo.model.json%>");

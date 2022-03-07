@@ -6,7 +6,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/bootstrap.min.css%>">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/css/live2d.css">
+    <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/live2d.css%>">
     <meta name="description" content="<%- site.customConfig.metaDescription || themeConfig.siteDescription %>" />
     <link rel="stylesheet" href="<%= themeConfig.domain %>/styles/main.css">
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.1/css/all.min.css">
@@ -96,7 +96,7 @@
         var message_Path = '/live2d/'
         var home_Path = document.getElementById("domainname").innerHTML+"/"; //此处修改为你的域名，必须带斜杠
     </script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/js/live2d.js"></script>
+    <script type="text/javascript" src="<%= themeConfig.domain %>/media/js/live2d.js%>"></script>
     <script type="text/javascript" src="<%= themeConfig.domain %>/media/live2d/js/message.js%>"></script>
     <script type="text/javascript">
             loadlive2d("live2d", "<%= themeConfig.domain %>/media/live2d/assets/tororo.model.json%>");

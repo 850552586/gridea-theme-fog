@@ -1,11 +1,13 @@
 # 💖Gridea-theme-fog
 
 <img src="https://ericamblog.oss-cn-shanghai.aliyuncs.com/2020/20201213.png">
-<img src="https://ericamblog.oss-cn-shanghai.aliyuncs.com/2020/QQ%E5%9B%BE%E7%89%8720201213004926.png" ><img src="https://ericamblog.oss-cn-shanghai.aliyuncs.com/2020/QQ%E5%9B%BE%E7%89%8720201213005107.png" >
+<img src="https://ericamblog.oss-cn-shanghai.aliyuncs.com/2020/QQ%E5%9B%BE%E7%89%8720201213004926.png" 
 
 ![](https://ericamblog.oss-cn-shanghai.aliyuncs.com/2021/20210706211900.png)
 
-**最新版本：version_1.3**
+![](https://ericamblog.oss-cn-shanghai.aliyuncs.com/2021/20220307203826.png)
+
+**最新版本：version_1.4**
 
 主题介绍：[Gridea主题Fog](<https://ericam.top/post/gridea-zhu-ti-fog-geng-xin-ri-zhi/> )
 

@@ -1,7 +1,9 @@
-// @font-face {
-//    font-family: 'aqqxs';
-//    src: url('/media/fonts/FXAiQingQiXiangSuo.ttf');
-// }
+
+@font-face {
+   font-family: 'FXAiQingQiXiangSuo';
+   src: url('https://cdn.jsdelivr.net/gh/2x-ercha/cdn-for-try/fonts/FXAiQingQiXiangSuo.ttf');
+}
+
 @media screen and (min-width:1200px) {
     #tab1 {
         position: fixed;
@@ -141,6 +143,9 @@
         justify-content: center;
         text-align: center;
         z-index: 10;
+        left:0;
+        width:60vw;
+        margin-left:20vw;
     }
 
     #content {
@@ -148,8 +153,11 @@
         position: relative;
     }
 
+
+
     #bg {
-        width: 100%;
+        background-size: cover !important;
+        width: 100vw;
         /*宽度铺满屏幕*/
         min-height: 100vh;
         padding-top: 52.734%;
@@ -188,6 +196,10 @@
 
 
 @media screen and (max-width: 1200px) {
+    #main{
+        margin-left: 0;
+    }
+
     html,body{height:auto}
     html,body{overflow-x:hidden;overflow-y:scroll;}
 

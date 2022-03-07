@@ -30,65 +30,7 @@
     font-size:20px;
 }
 
-@media screen and (max-width: 1200px) {
-    #pcintroimg{
-        display:none
-    }
 
-    #friendscontainermobile {
-        margin-top: 60px;
-        position: relative;
-        min-height: 70vh;
-        display: block;
-        animation: fade-in;/*动画名称*/  
-        animation-duration: 1s;/*动画持续时间*/  
-        -webkit-animation:fade-in 1s;/*针对webkit内核*/  
-        width: 100vw;
-    }
-
-    .fricontent{
-        width: 90%;
-    }
-
-    #friendscontainer {
-        display: none;
-    }
-
-    .friend-box img {
-        height: 100px;
-        width: 100px;
-        border-radius: 10px;
-        overflow: hidden;
-        float: left;
-        overflow: hidden;
-    }
-
-    .friend-box {
-        border-radius: 10px;
-        cursor: pointer;
-        background: black;
-        width: 100%;
-        height: 100px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        margin-left: 0;
-    }
-
-    .flink-info {
-        padding: 5px;
-        color: white;
-        overflow-y: scroll;
-        overflow-x: hidden;
-    }
-
-    .friend-box .title {
-        margin-top: 10px;
-        color: white;
-        font-size: 24px;
-        font-weight: 600;
-        text-decoration: none;
-    }
-}
 
 @media screen and (min-width: 1200px) {
     #pcintroimg{
@@ -175,18 +117,14 @@
     /* ---------------------------------用户信息展示表单 ------------------------------*/
     #friendscontainer .infoForm {
         float: left;
-        width: 40%;
-        height: 70px;
+        width: 25%;
+        height: 100px;
         margin-top: 20px;
-        margin-left: 50px;
+        margin-left: 75px;
         flex-direction: column;
-        box-shadow: inset 0 0 0 300px
-            /*渲染阴影*/
-            #363636;
-        opacity: 0.8;
+        background: rgba(251,242,227,0.5);
         text-align: center;
         z-index: 100;
-        border-radius: 18px;
         overflow:hidden;
         line-height:5px;
         word-wrap:break-word;
@@ -196,8 +134,8 @@
 
 
     #friendscontainer .favatar {
-        width: 70px;
-        height: 70px;
+        width: 100px;
+        height: 100px;
         overflow: hidden;
         float: left;
         display: inline;
@@ -249,8 +187,69 @@
     }
 }
 
+@media screen and (max-width: 1200px) {
+    #pcintroimg{
+        display:none
+    }
+
+    #friendscontainermobile {
+        margin-top: 60px;
+        position: relative;
+        min-height: 70vh;
+        display: block;
+        animation: fade-in;/*动画名称*/  
+        animation-duration: 1s;/*动画持续时间*/  
+        -webkit-animation:fade-in 1s;/*针对webkit内核*/  
+        width: 100vw;
+    }
+
+    .fricontent{
+        width: 90%;
+    }
+
+    #friendscontainer {
+        display: none;
+    }
+
+    .friend-box img {
+        height: 100px;
+        width: 100px;
+        border-radius: 10px;
+        overflow: hidden;
+        float: left;
+        overflow: hidden;
+    }
+
+    .friend-box{
+        cursor: pointer;
+        background: rgba(173,213,162,0.7);
+        width: 90%;
+        height: 100px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-left: 5%;
+    }
+
+    .flink-info {
+        padding: 5px;
+        color: white;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+
+    .friend-box .title {
+        margin-top: 10px;
+        color: white;
+        font-size: 24px;
+        font-weight: 600;
+        text-decoration: none;
+    }
+}
+
 @media screen and (max-width: 750px){
     .fcl{
         width: 100vw;
     }
 }
+
+

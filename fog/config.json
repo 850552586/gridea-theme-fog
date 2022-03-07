@@ -1,6 +1,6 @@
 {
   "name": "fog",
-  "version": "1.3",
+  "version": "1.4",
   "author": "Ericam_",
   "repository": "https://github.com/850552586/gridea-theme-fog",
   "customConfig": [ {
@@ -117,7 +117,7 @@
       "value": "black",
       "type": "input",
       "card": "color",
-      "note": "顶部菜单栏颜色(空值则为透明色)"
+      "note": "暂无作用"
     },
     {
       "name": "sitenameFont",

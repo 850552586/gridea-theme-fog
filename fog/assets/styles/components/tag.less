@@ -44,28 +44,32 @@ a {
 }
 
 .tags-container {
-    min-height: 100vh;
+    margin-top: 50px;
+    min-height: 30vh;
+    width: 100%;
+    border-radius: 40px;
     position: absolute;
     padding-bottom: 70px;
     animation: fade-in;
     /*动画名称*/
     animation-duration: 1s;
+    background: rgba(204,204,214,0.5);
     /*动画持续时间*/
     -webkit-animation: fade-in 1s;
     /*针对webkit内核*/
 }
 
 .tagsbackgroundleft{
-    position: fixed;
-    min-height: 100vh;
+    // position: fixed;
+    // min-height: 100vh;
     background: #363433;
     width: 58.33%;
     opacity: 0.7;
 }
 
 .tagsbackgroundtop{
-    position: fixed;
-    min-height: 100vh;
+    // position: fixed;
+    // min-height: 100vh;
     background: #363433;
     width: 50%;
     opacity: 0.7;
@@ -94,14 +98,20 @@ a {
 }
 
 .tagsimg {
-    width: 100%;
+    width: 60%;
     max-height: 60vh;
+    border-radius: 40px;
+    margin-left: 0;
 }
+
+
+
 
 @media screen and (max-width: 1200px) {
     .tags-container   .tag {
-        width: 40%;
+        width: 20%;
         margin-top:2vh;
+        border: none;
     }
     .tagsbackgroundleft{
         display: none;
@@ -109,6 +119,12 @@ a {
     
     .tags-container{
         background: rgba(255,255,255,0.6);
+        border-radius: 0px;
+    }
+
+    .tagsimg{
+        margin-left: 20%;
+        margin-top: 70px;
     }
 
     .tagsbackgroundtop{
@@ -151,5 +167,16 @@ a {
 @media screen and (max-width: 768px) {
     .tag-container{
         margin-top:2%;
+    }
+
+    .tags-container  .tag {
+        width: 25%;
+    }
+}
+
+
+@media screen and (max-width: 425px) {
+    .tags-container  .tag {
+        width: 40%;
     }
 }
