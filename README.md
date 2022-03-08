@@ -24,19 +24,9 @@
 
 **走过路过留个star⭐️可好？🤒😎**
 
-## 为爱发电
-
-如果你觉得主题好用，希望可以赞助该主题表示支持~
-
-<img src="https://ericamblog.oss-cn-shanghai.aliyuncs.com/GrideaFog/mm_facetoface_collect_qrcode_1597384660504.png">
-
-
-## 主题博客预览
-这是已经使用上fog主题的小伙伴~(排名不分先后)
 
 
 
-<a href="https://ericam.top/"><img src="https://ericam.top/images/avatar.png?v=1607787924196" width="100px" height="100px" style="border-radius:40%"></a><a href="https://hkjyh5.coding-pages.com/"><img src="https://hkjyh5.coding-pages.com/images/avatar.png?v=1607775007533" width="100px" height="100px" style="border-radius:40%"></a><a href="https://beimumu.top/"><img src="https://beimumu.top/images/avatar.png?v=1607069556599" width="100px" height="100px" style="border-radius:40%"></a><a href="https://codingbear.top/"><img src="https://codingbear.top/images/avatar.png?v=1605196379447" width="100px" height="100px" style="border-radius:40%"></a><a href="https://imon.eu.org/"><img src="https://imon.eu.org/images/avatar.png?v=1613524519610" width="100px" height="100px" style="border-radius:40%"></a>
 
 
 

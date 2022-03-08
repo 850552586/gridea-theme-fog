@@ -112,14 +112,6 @@
       "note": "手机端博客首页网站描述颜色（默认:white）"
     },
     {
-      "name": "topmenuColor",
-      "group": "颜色",
-      "value": "black",
-      "type": "input",
-      "card": "color",
-      "note": "暂无作用"
-    },
-    {
       "name": "sitenameFont",
       "label": "站点名称字体",
       "group": "字体",
