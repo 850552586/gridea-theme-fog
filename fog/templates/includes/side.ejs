@@ -249,7 +249,7 @@
                 <div class="navbar-header">
                     <a data-pjax class="navbar-brand" href="<%= themeConfig.domain %>"
                         style="font-size:21px"><%=themeConfig.siteName%>&nbsp;&nbsp;|&nbsp;&nbsp;</a>
-                    <a class="navbar-brand" href=""
+                    <a class="navbar-brand topdescription" href=""
                         style="font-size:15px;font-family:kaiti"><%- themeConfig.siteDescription %></a>
                 </div>
 
@@ -264,7 +264,7 @@
                     </div>
                     <%}%>
                 <div class="search nav navbar-nav searchtop">
-                <a title="text" onclick="document.getElementById('socialMenu').style.display='block'"><i><img class="social"
+                <a title="社交信息" onclick="document.getElementById('socialMenu').style.display='block'" class="topshare-button"><i><img class="social"
                     src="<%= themeConfig.domain %>/media/images/social.png%>"></i></a>
                     <a onclick="showAaplayer()"><i style="font-size: 20px;"><img
                                 src='<%= themeConfig.domain %>/media/images/music.png%>' alt="音乐播放器"
@@ -461,6 +461,7 @@
         <script>
             change_topmenu()
             var menupos = 'top'
+            $(".topdescription").css("color","<%=site.customConfig.sitedescribtionColor%>")
         </script>
         <%}else{%>
         <script>
@@ -948,11 +949,11 @@ menulist.eq(i).show();
             $(".markdownIt-TOC li a").css("color","white")
             $(".text p, .text ul").css("color","white")
             $("#articlecontent").css("color","white")
-            $(".post-copyright").css("background","black")
-            $('blockquote').css("background","black")
-            $("#articlecontent").css("background","rgba(0,0,0,0.9)")
-            $(".shareContainer").css("background","black")
-            $(".share").css("background","black")
+            $(".post-copyright").css("background","rgba(10,10,10,0.5)")
+            $('blockquote').css("background","rgba(10,10,10,0.6)")
+            $("#articlecontent").css("background","rgba(10,10,10,0.5)")
+            $(".shareContainer").css("background","rgba(10,10,10,0.5)")
+            $(".share").css("background","rgba(10,10,10,0.5)")
             moonlightState = true
             $(".moon").attr("src","<%= themeConfig.domain %>/media/images/sun.png%>")
         }else{

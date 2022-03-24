@@ -23,7 +23,7 @@ const generateOverride = (params = {}) => {
     //网站描述颜色
     if (params.sitedescribtionColor && params.sitedescribtionColor !== 'white') {
       result += `
-        .describtion {
+        .description {
           color: ${params.sitedescribtionColor};
         }
       `
@@ -62,11 +62,14 @@ const generateOverride = (params = {}) => {
       `
     }
 
-    // 有图标题 - titleWithImgColor
-    if (params.titleWithImgColor && params.titleWithImgColor !== 'white') {
+
+    if (params.titleColor && params.titleColor !== 'white') {
       result += `
         .posttitle {
-          color: ${params.titleWithImgColor};
+          color: ${params.titleColor};
+        }
+        .eleg-title{
+          color: ${params.titleColor};
         }
       `
     }
@@ -142,6 +145,18 @@ const generateOverride = (params = {}) => {
     result += `
     .navbar-inverse .navbar-nav>li>a{
       color: ${params.sitemenuColor};
+    }
+    ` 
+  }
+
+  if(params.socialchoice=='close'){
+    result += `
+    #socialMenu{
+      display:none;
+    }
+
+    .topshare-button{
+      display:none;
     }
     ` 
   }

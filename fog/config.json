@@ -1,6 +1,6 @@
 {
   "name": "fog",
-  "version": "1.4",
+  "version": "1.5",
   "author": "Ericam_",
   "repository": "https://github.com/850552586/gridea-theme-fog",
   "customConfig": [ {
@@ -80,20 +80,12 @@
       "note": "网站菜单按钮颜色 默认：antiquewhite"
     },
     {
-      "name": "titleWithImgColor",
+      "name": "titleColor",
       "group": "颜色",
       "value": "white",
       "type": "input",
       "card": "color",
-      "note": "有封面图文章标题颜色 默认：white"
-    },
-    {
-      "name": "titleWithoutImgColor",
-      "group": "颜色",
-      "value": "white",
-      "type": "input",
-      "card": "color",
-      "note": "无封面图文章标题颜色 默认：white"
+      "note": "文章标题颜色 默认：white"
     },
     {
       "name": "footinfoColor",
@@ -326,6 +318,24 @@
       "note": "首页轮播哔哔消息时配置"
     },
     {
+      "name": "socialchoice",
+      "label": "社交按钮开关",
+      "group": "社交",
+      "value": "default",
+      "type": "select",
+      "note":"是否开启个人社交信息展示栏",
+      "options": [
+        {
+          "label": "打开",
+          "value": "default"
+        },
+        {
+          "label": "关闭",
+          "value": "close"
+        }
+      ]
+    },
+    {
       "name": "social_text",
       "label": "社交按钮名称",
       "group": "社交",
@@ -417,7 +427,7 @@
       "name": "bgchoice",
       "label": "图片加载方式",
       "group": "背景图",
-      "value": "default",
+      "value": "link",
       "type": "select",
       "note":"选择本地上传便在下方选项添加图片，选择外链则在下方输入框输入外链链接【推荐使用外链】",
       "options": [
@@ -470,7 +480,7 @@
       "name": "postdefaultimage",
       "label": "文章封面默认背景图",
       "group": "背景图",
-      "value": "/media/images/postdefault.png",
+      "value": "/media/images/custom-postdefaultimage.png",
       "type": "picture-upload",
       "note": "本地上传"
     },
@@ -478,7 +488,7 @@
       "name": "tagimage",
       "label": "标签云页面置顶图",
       "group": "背景图",
-      "value": "/media/images/tagimg.png",
+      "value": "/media/images/custom-tagimage.png",
       "type": "picture-upload",
       "note": "本地上传"
     },
@@ -486,7 +496,7 @@
       "name": "bgimage",
       "label": "全局背景虚化图",
       "group": "背景图",
-      "value": "/media/images/bgimg.png",
+      "value": "/media/images/custom-bgimage.png",
       "type": "picture-upload",
       "note": "本地上传"
     }, 
@@ -494,7 +504,7 @@
       "name": "mobilebgimage",
       "label": "移动端首页图",
       "group": "背景图",
-      "value": "/media/images/mobilebgimg.jpg",
+      "value": "/media/images/custom-mobilebgimage.jpg",
       "type": "picture-upload",
       "note": "本地上传"
     },
@@ -502,7 +512,7 @@
       "name": "mobileplbgimage",
       "label": "移动端全局背景图",
       "group": "背景图",
-      "value": "",
+      "value": "/media/images/custom-mobilebg.jpg",
       "type": "picture-upload"
     },
     {
