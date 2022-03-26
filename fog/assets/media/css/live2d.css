@@ -7,7 +7,7 @@
     position: fixed;
     right: 10px;
     bottom: 0;
-    z-index:10;
+    z-index:1;
 }
 
 #live2d {
