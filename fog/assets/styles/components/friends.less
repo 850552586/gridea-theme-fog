@@ -32,6 +32,8 @@
 
 
 
+
+
 @media screen and (min-width: 1200px) {
     #pcintroimg{
         margin-top:20px;
@@ -117,7 +119,7 @@
     /* ---------------------------------用户信息展示表单 ------------------------------*/
     #friendscontainer .infoForm {
         float: left;
-        width: 25%;
+        width: 80%;
         height: 100px;
         margin-top: 20px;
         margin-left: 75px;
@@ -172,6 +174,16 @@
     }
 }
 
+@media screen and (min-width: 1308px) {
+    #friendscontainer .infoForm {width: 40%;}
+}
+
+@media screen and (min-width: 1565px) {
+    #friendscontainer .infoForm {width: 25%;}
+}
+
+
+
 @media screen and (max-width: 1200px) {
     .archives-content ul li>span {
         display: none;
@@ -217,7 +229,6 @@
         border-radius: 10px;
         overflow: hidden;
         float: left;
-        overflow: hidden;
     }
 
     .friend-box{
@@ -228,6 +239,7 @@
         margin-top: 10px;
         margin-bottom: 10px;
         margin-left: 5%;
+        overflow: hidden;
     }
 
     .flink-info {
@@ -252,4 +264,9 @@
     }
 }
 
+@media screen and (max-width: 425px) {
+    .friend-box .title{
+        font-size: 15px;
+    }
+}
 
