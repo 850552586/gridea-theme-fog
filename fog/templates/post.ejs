@@ -8,16 +8,17 @@
     <link rel="stylesheet" href="<%= themeConfig.domain %>/styles/main.css">
     <!-- 代码渲染风格css -->
     <% if(site.customConfig.codetheme == 'default'){ %>
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/default.min.css">
-    <% }else if(site.customConfig.codetheme == 'vs2015'){ %>
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/vs2015.min.css">
-    <% }else if(site.customConfig.codetheme == 'rainbow'){ %>
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/rainbow.min.css">
-    <% }else{ %>
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/dracula.min.css">
+        <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css//default.min.css%>">
+        <% }else if(site.customConfig.codetheme == 'vs2015'){ %>
+        <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css//vs2015.min.css%>">
+        <% }else if(site.customConfig.codetheme == 'rainbow'){ %>
+        <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css//rainbow.min.css%>">
+        <% }else{ %>
+        <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css//dracula.min.css%>">
     <% } %>
     <!-- 代码高亮插件 -->
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.3.1/build/highlight.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/highlightjs-line-numbers.js@2.8.0/dist/highlightjs-line-numbers.min.js"></script>
     <!-- 代码复制插件 -->
     <script src="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/js/clipboard.min.js"></script>
     <!-- live2d插件 -->
@@ -329,6 +330,7 @@
     //代码块高亮渲染
     document.querySelectorAll('pre code').forEach((block) => {
             hljs.highlightBlock(block);
+            hljs.lineNumbersBlock(block);
     });
         getHotnum();
         var sharepc = $(".share").eq(0).html();

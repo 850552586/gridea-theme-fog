@@ -1,16 +1,17 @@
 <head>
     <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/bootstrap.min.css%>">
     <link rel="stylesheet" href="<%= themeConfig.domain %>/styles/main.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.3.1/build/highlight.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/highlightjs-line-numbers.js@2.8.0/dist/highlightjs-line-numbers.min.js"></script>
     <% if(site.customConfig.codetheme == 'default'){ %>
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/default.min.css">
-    <% }else if(site.customConfig.codetheme == 'vs2015'){ %>
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/vs2015.min.css">
-    <% }else if(site.customConfig.codetheme == 'rainbow'){ %>
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/rainbow.min.css">
-    <% }else{ %>
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/dracula.min.css">
+        <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css//default.min.css%>">
+        <% }else if(site.customConfig.codetheme == 'vs2015'){ %>
+        <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css//vs2015.min.css%>">
+        <% }else if(site.customConfig.codetheme == 'rainbow'){ %>
+        <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css//rainbow.min.css%>">
+        <% }else{ %>
+        <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css//dracula.min.css%>">
     <% } %>
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/js/clipboard.min.js"></script>
     <link rel="stylesheet" href="<%= themeConfig.domain %>/media/css/live2d.css%>">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
@@ -80,7 +81,7 @@
     <%}%>
     <!--------- daovocie功能👆 ------------------->
     <!-- -----------------twikoo评论系统引入👇 --------->
-    <script src="https://cdn.jsdelivr.net/npm/twikoo@1.3.1/dist/twikoo.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js"></script>
     <!-- -----------------twikoo评论系统引入👆 --------->
     <!---------------- leancloud api 功能依赖引入👇 -------->
     <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@3.13.0/dist/av-min.js"></script>
@@ -668,16 +669,6 @@
         fragment: '#main',
         timeout: 8000
     }).on('pjax:complete', function () {
-        //代码块高亮渲染
-        document.querySelectorAll('pre code').forEach((block) => {
-            hljs.highlightBlock(block);
-        });
-        //文章热度
-        if(postnumChoice){
-            getHotnum();
-        }
-        //文章索引
-        toginit();
         //清空搜索栏
         if (searchChoice) {
             searchInit();
@@ -692,6 +683,16 @@
             show();
         }
         if (pl.search("post") != -1) {
+            document.querySelectorAll('pre code').forEach((block) => {
+                hljs.highlightBlock(block);
+                hljs.lineNumbersBlock(block);
+            });
+            //文章热度
+            if(postnumChoice){
+                getHotnum();
+            }
+            //文章索引
+            toginit();
             if (shareChoice)
                 shareInit();
             if (donateChoice)

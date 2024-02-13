@@ -262,62 +262,6 @@
       "note": "[twikoo] 配置查看文档 https://twikoo.js.org/"
     },
     {
-      "name": "bbchoice",
-      "label": "是否开启哔哔",
-      "group": "配置",
-      "value": false,
-      "type": "switch",
-      "note": "[丰富版说说系统]配置查看文档"
-    },
-    {
-      "name": "bbname",
-      "label": "哔哔-昵称",
-      "group": "配置",
-      "value": "",
-      "type": "input",
-      "note": "哔哔-昵称"
-    },
-    {
-      "name": "bbavatar",
-      "label": "哔哔-头像",
-      "group": "配置",
-      "value": "",
-      "type": "input",
-      "note": "请输入头像外链【可以填写自己站点头像地址】"
-    },
-    {
-      "name": "bblimit",
-      "label": "哔哔-加载条数",
-      "group": "配置",
-      "value": "5",
-      "type": "input",
-      "note": "哔哔-每次加载的数目，默认值：5"
-    },
-    {
-      "name": "bbgif",
-      "label": "哔哔-加载动画",
-      "group": "配置",
-      "value": "https://7.dusays.com/2021/03/04/d2d5e983e2961.gif",
-      "type": "input",
-      "note": "哔哔-加载时gif动画（请输入外链），默认：https://7.dusays.com/2021/03/04/d2d5e983e2961.gif"
-    },
-    {
-      "name": "bbonetalkchoice",
-      "label": "是否开启哔哔-ontalk",
-      "group": "配置",
-      "value": false,
-      "type": "switch",
-      "note": "首页轮播哔哔消息"
-    },
-    {
-      "name": "bbjson",
-      "label": "哔哔云存储json地址",
-      "group": "配置",
-      "value": "",
-      "type": "input",
-      "note": "首页轮播哔哔消息时配置"
-    },
-    {
       "name": "socialchoice",
       "label": "社交按钮开关",
       "group": "社交",
@@ -553,6 +497,14 @@
       "label": "是否开启友链",
       "group": "友链",
       "value": true,
+      "type": "switch",
+      "note": ""
+    },
+    {
+      "name": "friendsruleChoice",
+      "label": "是否开启友链提示",
+      "group": "友链",
+      "value": false,
       "type": "switch",
       "note": ""
     },
