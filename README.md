@@ -15,9 +15,9 @@
 
 主题国内码云下载地址：（<https://gitee.com/ericam/gridea-theme-fog> ）
 
-使用文档：[https://ericam.top/post/fog-zhu-ti-shi-yong-bang-zhu/](https://ericam.top/post/fog-zhu-ti-shi-yong-bang-zhu/)
+使用文档：[https://ericam.top/posts/fog-zhu-ti-shi-yong-bang-zhu/](https://ericam.top/posts/fog-zhu-ti-shi-yong-bang-zhu/)
 
-主题更新日志：[https://ericam.top/post/fog-zhu-ti-geng-xin-ri-zhi/](https://ericam.top/post/fog-zhu-ti-geng-xin-ri-zhi/)
+主题更新日志：[https://ericam.top/posts/fog-zhu-ti-geng-xin-ri-zhi/](https://ericam.top/posts/fog-zhu-ti-geng-xin-ri-zhi/)
 
 欢迎加入Fog主题交流群（可以分享你遇到的问题，或者咨询主题开发建议）
 <img  src="https://ericamblog.oss-cn-shanghai.aliyuncs.com/GrideaFog/qrcode_1594635464040.jpg">
